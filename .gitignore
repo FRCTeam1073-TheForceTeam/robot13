@@ -25,4 +25,5 @@ PPC32diab\*
 #Exclude PPC603 and PPC32 directories
 PPC32\*
 PPC603\*
+PPC603gnu\*
 
