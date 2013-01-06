@@ -15,3 +15,10 @@
 *.lai
 *.la
 *.a
+
+# PPCdiab everything
+PPC32diab\*
+
+# Everything thaty ends in ~
+*~
+
