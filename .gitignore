@@ -1,3 +1,7 @@
+#WindRiver Project Files
+*.wrproject
+
+
 # Compiled Object files
 *.slo
 *.lo
