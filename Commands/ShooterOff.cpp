@@ -1,6 +1,3 @@
-
-
-
 #include "ShooterOff.h"
 ShooterOff::ShooterOff() {
 	// Use requires() here to declare subsystem dependencies
