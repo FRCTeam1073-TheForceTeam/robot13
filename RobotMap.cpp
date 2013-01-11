@@ -15,7 +15,7 @@ void RobotMap::init() {
 	driveTrainRightDriveMotor = new CANJaguar(3);
 	
 	
-	shooterShooterJag = new CANJaguar(4);
+	shooterShooterJag = new CANJaguar(5);
 	
 	
 	shooterShooterEncoder = new Encoder(1, 1, 1, 2, false, Encoder::k4X);

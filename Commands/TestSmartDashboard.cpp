@@ -9,8 +9,7 @@
 // it from being updated in th future.
 #include "SmartDashboard/SmartDashboard.h"
 #include "TestSmartDashboard.h"
-
-
+int TestSmartDashboard::testValue = 1;
 TestSmartDashboard::TestSmartDashboard() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -20,17 +19,18 @@ TestSmartDashboard::TestSmartDashboard() {
 // Called just before this Command runs the first time
 void TestSmartDashboard::Initialize() {
 	
-	testValue = 1;
+	testValue = testValue + 1;
 }
 // Called repeatedly when this Command is scheduled to run
 void TestSmartDashboard::Execute() {
 	
 	SmartDashboard::PutNumber("Test Value", testValue);
+	printf("TestSmartDashboard Command is executed. %d\n", testValue);
 	
 }
 // Make this return true when this Command no longer needs to run execute()
 bool TestSmartDashboard::IsFinished() {
-	return false;
+	return true;
 }
 // Called once after isFinished returns true
 void TestSmartDashboard::End() {

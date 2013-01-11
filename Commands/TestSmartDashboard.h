@@ -31,7 +31,7 @@ public:
 	virtual void Interrupted();
 	
 private:
-	int testValue;
+	static int testValue;
 
 };
 

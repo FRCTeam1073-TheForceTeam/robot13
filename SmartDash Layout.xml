@@ -1,0 +1,30 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Jag 5 Temperature" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="0" y="128"/>
+	</widget>
+	<widget field="Test Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
+		<location x="0" y="33"/>
+		<property name="Maximum" value="50.0"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="187" y="57"/>
+		<property name="Text" value="(Degrees C)"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="0" y="0"/>
+	</static-widget>
+</dashboard>
+<live-window>
+	<widget field="Shooter" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="ShooterEncoder" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="16"/>
+			<height>98</height>
+			<width>212</width>
+		</widget>
+		<location x="0" y="0"/>
+		<width>224</width>
+		<height>121</height>
+	</widget>
+</live-window>
+</xml>
