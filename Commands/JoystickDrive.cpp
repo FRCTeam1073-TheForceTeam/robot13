@@ -8,7 +8,7 @@ JoystickDrive::JoystickDrive() {
 }
 // Called just before this Command runs the first time
 void JoystickDrive::Initialize() {
-	
+	Robot::driveTrain->Move();
 }
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
