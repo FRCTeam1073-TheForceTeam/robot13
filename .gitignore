@@ -21,6 +21,8 @@ PPC32diab\*
 
 # Everything thaty ends in ~
 *~
+#Everything that starts in ~
+~*
 
 #Exclude PPC603 and PPC32 directories
 
