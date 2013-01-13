@@ -27,4 +27,5 @@ void DriveTrain::Move(){
 	//creates ratio between y-value of joystick and jag speed
 	leftDriveMotor->Set(MAXJAGSPEED * left->GetY());
 	rightDriveMotor->Set(MAXJAGSPEED * right->GetY());
+	printf("DriveTrainMove leftmotor:%f  rightmotor:%f\n",left->GetY(),right->GetY());
 }

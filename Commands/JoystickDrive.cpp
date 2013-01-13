@@ -8,11 +8,12 @@ JoystickDrive::JoystickDrive() {
 }
 // Called just before this Command runs the first time
 void JoystickDrive::Initialize() {
-	
+	printf("JoystickDriveInitializeMethod\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
 	Robot::driveTrain->Move();
+	printf("JoystickDriveExecuteMethod\n");
 }
 // Make this return true when this Command no longer needs to run execute()
 bool JoystickDrive::IsFinished() {
