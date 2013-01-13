@@ -1,4 +1,4 @@
-Version 0.0.2
+Version 0.0.1
 
 ---
 Name: robot13
@@ -131,7 +131,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: &id010 [CANID]
-          value: '2'
+          value: '6'
     - Name: RightDriveMotor
       Base: CAN Jaguar
       Children: []
@@ -141,7 +141,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id010
-          value: '3'
+          value: '2'
     - Name: LeftEncoder
       Base: Quadrature Encoder
       Children: []
@@ -574,7 +574,7 @@ Properties:
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
   Wiring File: !!robotbuilder.data.properties.FileProperty {default: '', extension: html,
     folder: false, name: Wiring File, validators: null, value: 'C:\WindRiver\workspace\robot13\WiringTable.html'}
-  C++ Windriver Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Windriver\workspace',
+  C++ Windriver Workspace: !!robotbuilder.data.properties.FileProperty {default: '',
     extension: null, folder: true, name: C++ Windriver Workspace, validators: null,
     value: 'C:\Windriver\workspace'}
   Use Default Java Package: !!robotbuilder.data.properties.BooleanProperty {default: true,
@@ -590,3 +590,5 @@ Properties:
   Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Infern0\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\Infern0\workspace'}
+  Java Project: !!robotbuilder.data.properties.FileProperty {default: '', extension: null,
+    folder: true, name: Java Project, validators: null, value: ''}
