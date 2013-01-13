@@ -33,7 +33,7 @@ void Shooter::UpdateDefaults(int defaultSpeed, int defaultElevationAngle){
 	this->defaultElevationAngle = defaultElevationAngle;
 }
 void Shooter::IncrementSpeed(int speedIncrement){
-	speed += newSpeed;
+	speed += speedIncrement;
 }
 void Shooter::IncrementAngle(int angleIncrement){
 	elevationAngle += angleIncrement;
