@@ -28,9 +28,8 @@ void Shooter::SetToDefaults(){
 	speed = defaultSpeed;
 	elevationAngle = defaultElevationAngle;
 }
-void Shooter::UpdateDefaults(int defaultSpeed, int defaultElevationAngle){
-	this->defaultSpeed = defaultSpeed;
-	this->defaultElevationAngle = defaultElevationAngle;
+void Shooter::UpdateDefaults(int distanceToTarget, int robotAngleToTarget){
+	//TODO: Math
 }
 void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
