@@ -2,6 +2,7 @@
 #include "../Robotmap.h"
 #include "../Commands/JoystickDrive.h"
 #include "../OI.h"
+#include "GenericHID.h"
 #define MAXJAGSPEED 2500
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 	left = Robot::oi->getLeftStick();
@@ -24,8 +25,13 @@ void DriveTrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::Move(){ 
+	printf("calling move\n");
 	//creates ratio between y-value of joystick and jag speed
-	leftDriveMotor->Set(MAXJAGSPEED * left->GetY());
-	rightDriveMotor->Set(MAXJAGSPEED * right->GetY());
-	printf("DriveTrainMove leftmotor:%f  rightmotor:%f\n",left->GetY(),right->GetY());
+	//leftDriveMotor->Set(MAXJAGSPEED,0);
+	leftDriveMotor->Set(left->GetY(GenericHID::kLeftHand));
+	rightDriveMotor->Set(-1 * right->GetY(GenericHID::kRightHand));
+	//printf("DriveTrainMove leftmotor:%f  rightmotor:%f\n",left->GetY(),right->GetY());
+	//printf("DriveTrainMove  left:%x  right:%x \n", left, right);
+	printf("Left Y: %f  Right Y: %f\n", left->GetY(GenericHID::kLeftHand), right->GetY(GenericHID::kLeftHand));
+	printf("Left M: %f  Right M: %f\n", leftDriveMotor->Get(), rightDriveMotor->Get());
 }
