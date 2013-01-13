@@ -23,7 +23,7 @@ void Shooter::ShooterOff(){
 int Shooter::GetSetSpeed() {return speed;}
 int Shooter::GetSetElevationAngle() {return elevationAngle;}
 int Shooter::GetDefaultSpeed() {return defaultSpeed;}
-int Shooter::GetDefaultElevationAngle() {return defaultElevationAngle}
+int Shooter::GetDefaultElevationAngle() {return defaultElevationAngle;}
 void Shooter::SetToDefaults(){
 	speed = defaultSpeed;
 	elevationAngle = defaultElevationAngle;
@@ -37,4 +37,10 @@ void Shooter::IncrementSpeed(int speedIncrement){
 }
 void Shooter::IncrementAngle(int angleIncrement){
 	elevationAngle += angleIncrement;
+}
+bool Shooter::IsUpLimitPressed(){
+	return elevatorTopSwitch->Get() == 1;
+}
+bool Shooter::IsDownLimitPressed(){
+	return elevatorBottomSwitch->Get() == 1;
 }

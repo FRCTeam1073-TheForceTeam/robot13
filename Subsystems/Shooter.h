@@ -29,5 +29,7 @@ public:
 	int GetSetElevationAngle();
 	int GetDefaultSpeed();
 	int GetDefaultElevationAngle();
+	bool IsUpLimitPressed();
+	bool IsDownLimitPressed();
 };
 #endif
