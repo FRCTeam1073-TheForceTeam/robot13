@@ -10,7 +10,6 @@ Shooter* Robot::shooter = NULL;
 Light* Robot::light = NULL;
 Navigation* Robot::navigation = NULL;
 AllignmentData* Robot::allignmentData = NULL;
-
 void Robot::RobotInit() {
 	RobotMap::init();
 	oi = new OI();

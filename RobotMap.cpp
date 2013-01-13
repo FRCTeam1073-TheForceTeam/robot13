@@ -33,7 +33,10 @@ void RobotMap::init() {
 	climberLeftServo = new Servo(1, 2);
 	lw->AddActuator("Climber", "LeftServo", climberLeftServo);
 	
-
+	driveTrainLeftDriveMotor = new CANJaguar(6);
+	
+	
+	driveTrainRightDriveMotor = new CANJaguar(3);
 	
 	
 	shooterElevationJag = new CANJaguar(4);
