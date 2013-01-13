@@ -17,8 +17,6 @@ public:
 	static Servo* climberLeftServo;
 	static CANJaguar* driveTrainLeftDriveMotor;
 	static CANJaguar* driveTrainRightDriveMotor;
-	static Encoder* driveTrainLeftEncoder;
-	static Encoder* driveTrainRightEncoder;
 	static CANJaguar* shooterElevationJag;
 	static Encoder* shooterElevationEncoder;
 	static CANJaguar* shooterShooterJag;
