@@ -8,6 +8,8 @@ Servo* RobotMap::climberRightServo = NULL;
 Servo* RobotMap::climberLeftServo = NULL;
 CANJaguar* RobotMap::driveTrainLeftDriveMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightDriveMotor = NULL;
+Encoder* RobotMap::driveTrainLeftEncoder = NULL;
+Encoder* RobotMap::driveTrainRightEncoder = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
 Encoder* RobotMap::shooterElevationEncoder = NULL;
 CANJaguar* RobotMap::shooterShooterJag = NULL;
@@ -39,6 +41,16 @@ void RobotMap::init() {
 	driveTrainRightDriveMotor = new CANJaguar(3);
 	
 	
+	driveTrainLeftEncoder = new Encoder(1, 5, 1, 6, false, Encoder::k4X);
+	lw->AddSensor("DriveTrain", "LeftEncoder", driveTrainLeftEncoder);
+	driveTrainLeftEncoder->SetDistancePerPulse(1.0);
+        driveTrainLeftEncoder->SetPIDSourceParameter(Encoder::kRate);
+        driveTrainLeftEncoder->Start();
+	driveTrainRightEncoder = new Encoder(1, 11, 1, 12, false, Encoder::k4X);
+	lw->AddSensor("DriveTrain", "RightEncoder", driveTrainRightEncoder);
+	driveTrainRightEncoder->SetDistancePerPulse(1.0);
+        driveTrainRightEncoder->SetPIDSourceParameter(Encoder::kRate);
+        driveTrainRightEncoder->Start();
 	shooterElevationJag = new CANJaguar(4);
 	
 	
