@@ -22,7 +22,7 @@ public:
 	void SetToDefaults();
 	void IncrementSpeed(int speedIncrement);
 	void IncrementAngle(int angleIncrement);
-	void UpdateDefaults(int defaultSpeed, int defaultElevationAngle);
+	void UpdateDefaults(int distanceToTarget, int robotAngleToTarget);
 	void ShooterOn();
 	void ShooterOff();
 	int GetSetSpeed();
