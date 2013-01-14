@@ -352,7 +352,7 @@ Children:
           value: '1'
         Reverse Direction: !!robotbuilder.data.properties.BooleanProperty {default: false,
           name: Reverse Direction, validators: null, value: false}
-    - Name: ElevatorTopSwitch
+    - Name: ElevationTopSwitch
       Base: Limit Switch
       Children: []
       Properties:
@@ -369,7 +369,7 @@ Children:
           name: Input Module (Digital)
           validators: &id024 [DigitalChannel]
           value: '1'
-    - Name: ElevatorBottomSwitch
+    - Name: ElevationBottomSwitch
       Base: Limit Switch
       Children: []
       Properties:
@@ -620,7 +620,7 @@ Properties:
     validators: null, value: 1073}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Derek\NetBeansProjects',
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Infern0\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\Infern0\workspace'}
   Java Project: !!robotbuilder.data.properties.FileProperty {default: '', extension: null,
