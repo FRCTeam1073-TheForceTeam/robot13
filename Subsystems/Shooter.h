@@ -27,6 +27,7 @@ public:
 	void UpdateDefaults(int distanceToTarget, int robotAngleToTarget);
 	void ShooterOnOff(bool on);
 	bool IsShooterMotorOn();
+	float GetActualMotorSpeed();
 	int GetSetSpeed();
 	int GetSetElevationAngle();
 	int GetDefaultSpeed();
