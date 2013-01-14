@@ -37,9 +37,17 @@ void Shooter::IncrementSpeed(int speedIncrement){
 void Shooter::IncrementAngle(int angleIncrement){
 	elevationAngle += angleIncrement;
 }
+//Figured this might be useful if we want to quickly put the speed to a certain preset
+void Shooter::SetRawSpeed(int speed) {
+	if(speed < 0 ) return;
+	this->speed = speed;
+}
 bool Shooter::IsUpLimitPressed(){
 	return elevatorTopSwitch->Get() == 1;
 }
 bool Shooter::IsDownLimitPressed(){
 	return elevatorBottomSwitch->Get() == 1;
 }
+//TODO: Update with something realistic
+int Shooter::GetFineAdjustmentSpeed() {return 20;}
+int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
