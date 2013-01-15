@@ -24,7 +24,7 @@ public:
 	void IncrementSpeed(int speedIncrement);
 	void IncrementAngle(int angleIncrement);
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
-	void UpdateDefaults(int distanceToTarget, int robotAngleToTarget);
+	void UpdateDefaults(double distanceToTarget, double robotAngleToTarget);
 	void ShooterOnOff(bool on);
 	bool IsShooterMotorOn();
 	float GetActualMotorSpeed();
