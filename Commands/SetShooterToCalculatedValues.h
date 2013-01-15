@@ -1,14 +1,10 @@
-#ifndef JOYSTICKDRIVE_H
-#define JOYSTICKDRIVE_H
-
-
+#ifndef SETSHOOTERTOCALCULATEDVALUES_H
+#define SETSHOOTERTOCALCULATEDVALUES_H
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
-
-class JoystickDrive: public Command {
+class SetShooterToCalculatedValues: public Command {
 public:
-	JoystickDrive();
+	SetShooterToCalculatedValues();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
