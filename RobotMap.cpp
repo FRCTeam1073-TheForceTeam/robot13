@@ -8,6 +8,7 @@ Servo* RobotMap::climberRightServo = NULL;
 Servo* RobotMap::climberLeftServo = NULL;
 CANJaguar* RobotMap::driveTrainLeftDriveMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightDriveMotor = NULL;
+Gyro* RobotMap::driveTrainDriveTrainGyro = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
 Encoder* RobotMap::shooterElevationEncoder = NULL;
 CANJaguar* RobotMap::shooterShooterJag = NULL;
@@ -39,6 +40,9 @@ void RobotMap::init() {
 	driveTrainRightDriveMotor = new CANJaguar(3);
 	
 	
+	driveTrainDriveTrainGyro = new Gyro(1, 5);
+	lw->AddSensor("DriveTrain", "DriveTrainGyro", driveTrainDriveTrainGyro);
+	driveTrainDriveTrainGyro->SetSensitivity(1.25);
 	shooterElevationJag = new CANJaguar(4);
 	
 	
