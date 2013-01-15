@@ -15,7 +15,9 @@ void SendDiagnostics::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
+	// Example of sending diagnostics to smart dash
 	SmartDashboard::PutNumber("Jag 5 Temperature", Robot::shooter->shooterJag->GetTemperature());
+	SmartDashboard::PutNumber("Elevation", Robot::shooter->elevationJag->GetTemperature());
 }
 
 // Make this return true when this Command no longer needs to run execute()
