@@ -6,6 +6,7 @@
 #include "Commands/DiscsReverse.h"
 #include "Commands/JoystickDrive.h"
 #include "Commands/LightOn.h"
+#include "Commands/PullNewAllignmentData.h"
 #include "Commands/SetShooterToCalculatedValues.h"
 #include "Commands/Shoot.h"
 #include "Commands/ShooterOff.h"
