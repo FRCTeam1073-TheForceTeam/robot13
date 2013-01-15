@@ -38,4 +38,4 @@ void DriveTrain::Move(){
 float DriveTrain::GetDriveVoltage(bool left){return left ? leftDriveMotor->GetBusVoltage() : rightDriveMotor->GetBusVoltage();}
 float DriveTrain::GetDriveCurrent(bool left){return left ? leftDriveMotor->GetOutputCurrent() : rightDriveMotor->GetOutputCurrent();}
 float DriveTrain::GetDriveSpeed(bool left){return left ? leftDriveMotor->GetSpeed() : rightDriveMotor->GetSpeed();}
-float DriveTrain::GetGyroX() {return driveTrainGyro->GetAngle();}
+float DriveTrain::GetGyroAngle() {return driveTrainGyro->GetAngle();}
