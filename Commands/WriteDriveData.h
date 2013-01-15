@@ -17,6 +17,7 @@ public:
 private:
 	FILE* file;
 	static const char* name;
+	void Finished();	//not sure if the Cancel method calls Interrupt or End so I'll just implement both...
 };
 
 #endif
