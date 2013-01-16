@@ -35,5 +35,8 @@ public:
 	bool IsDownLimitPressed();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
+	float GetEncoderSpeed();
+	float GetVoltage();
+	float GetCurrent();
 };
 #endif
