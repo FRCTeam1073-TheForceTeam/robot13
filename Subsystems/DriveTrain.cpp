@@ -3,7 +3,7 @@
 #include "../Commands/JoystickDrive.h"
 #include "../OI.h"
 #include "GenericHID.h"
-//#define  DEBUG 
+//#define  DEBUGDRIVETRAIN
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 	left = Robot::oi->getLeftStick();
 	right = Robot::oi->getRightStick();
@@ -24,13 +24,13 @@ void DriveTrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::Move(){ 
-#ifdef DEBUG
+#ifdef DEBUGDRIVETRAIN
 	printf("calling move\n");
 #endif
 	//writes y-value of joystick to jag 
 	leftDriveMotor->Set(left->GetY(GenericHID::kLeftHand));
 	rightDriveMotor->Set(-1 * right->GetY(GenericHID::kRightHand));
-#ifdef DEBUG	
+#ifdef DEBUGDRIVETRAIN	
 	printf("Left Y: %f  Right Y: %f\n", left->GetY(GenericHID::kLeftHand), right->GetY(GenericHID::kLeftHand));
 	printf("Left M: %f  Right M: %f\n", leftDriveMotor->Get(), rightDriveMotor->Get());
 #endif
