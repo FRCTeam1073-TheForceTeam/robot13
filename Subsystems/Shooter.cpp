@@ -43,7 +43,7 @@ void Shooter::SetRawSpeed(int speed) {
 	if(speed < 0 ) return;
 	IncrementSpeed(speed - this->speed);
 }
-void Shooter::SetRawAngle(int elevationAngle) {
+void Shooter::SetRawElevationAngle(int elevationAngle) {
 	this->elevationAngle = elevationAngle;
 }
 bool Shooter::IsUpLimitPressed(){return elevationTopSwitch->Get() == 1;}
