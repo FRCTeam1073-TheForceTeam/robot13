@@ -35,7 +35,7 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Shooter Jag Temperature", RobotMap::shooterShooterJag->GetTemperature());
 	//Shooter Encoders
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
-//	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shoot
+	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
 }
 
 // Make this return true when this Command no longer needs to run execute()
