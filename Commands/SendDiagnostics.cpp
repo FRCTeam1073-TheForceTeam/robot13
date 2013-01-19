@@ -24,7 +24,7 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Right Drive Jag Bus Voltage", RobotMap::driveTrainRightDriveMotor->GetBusVoltage());
 	SmartDashboard::PutNumber("Right Drive Jag Voltage", RobotMap::driveTrainRightDriveMotor->GetOutputVoltage());
 	SmartDashboard::PutNumber("Right Drive Jag Temperature", RobotMap::driveTrainRightDriveMotor->GetTemperature());
-	//Shooter Diagnostics
+	//Shooter Jaguar Diagnostics
 	SmartDashboard::PutNumber("Shooter Elevation Jag Current", RobotMap::shooterElevationJag->GetOutputCurrent());
 	SmartDashboard::PutNumber("Shooter Elevation Jag Bus Voltage", RobotMap::shooterElevationJag->GetBusVoltage());
 	SmartDashboard::PutNumber("Shooter Elevation Jag Voltage", RobotMap::shooterElevationJag->GetOutputVoltage());
@@ -33,6 +33,9 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Shooter Jag Bus Voltage", RobotMap::shooterShooterJag->GetBusVoltage());
 	SmartDashboard::PutNumber("Shooter Jag Voltage", RobotMap::shooterShooterJag->GetOutputVoltage());
 	SmartDashboard::PutNumber("Shooter Jag Temperature", RobotMap::shooterShooterJag->GetTemperature());
+	//Shooter Encoders
+	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
+//	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shoot
 }
 
 // Make this return true when this Command no longer needs to run execute()
