@@ -35,7 +35,4 @@ void DriveTrain::Move(){
 	printf("Left M: %f  Right M: %f\n", leftDriveMotor->Get(), rightDriveMotor->Get());
 #endif
 }
-float DriveTrain::GetDriveVoltage(bool left){return left ? leftDriveMotor->GetBusVoltage() : rightDriveMotor->GetBusVoltage();}
-float DriveTrain::GetDriveCurrent(bool left){return left ? leftDriveMotor->GetOutputCurrent() : rightDriveMotor->GetOutputCurrent();}
-float DriveTrain::GetDriveSpeed(bool left){return left ? leftDriveMotor->GetSpeed() : rightDriveMotor->GetSpeed();}
-float DriveTrain::GetGyroAngle() {return driveTrainGyro->GetAngle();}
+

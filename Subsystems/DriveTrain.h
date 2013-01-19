@@ -15,10 +15,7 @@ public:
 	DriveTrain();
 	void InitDefaultCommand();
 	void Move();
-	float GetDriveVoltage(bool left);
-	float GetDriveCurrent(bool left);
-	float GetDriveSpeed(bool left);
-	float GetGyroAngle();
+	
 private:
 	Joystick *left, *right;
 };

@@ -15,9 +15,15 @@ void SendDiagnostics::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
-	// Example of sending diagnostics to smart dash
-	SmartDashboard::PutNumber("Jag 5 Temperature", Robot::shooter->shooterJag->GetTemperature());
-	SmartDashboard::PutNumber("Elevation", Robot::shooter->elevationJag->GetTemperature());
+	//Drive Train Diagnostics
+	SmartDashboard::PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftDriveMotor->GetOutputCurrent());
+	SmartDashboard::PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftDriveMotor->GetBusVoltage());
+	SmartDashboard::PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftDriveMotor->GetOutputVoltage());
+	SmartDashboard::PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftDriveMotor->GetTemperature());
+	SmartDashboard::PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightDriveMotor->GetOutputCurrent());
+	SmartDashboard::PutNumber("Right Drive Jag Bus Voltage", RobotMap::driveTrainRightDriveMotor->GetBusVoltage());
+	SmartDashboard::PutNumber("Right Drive Jag Voltage", RobotMap::driveTrainRightDriveMotor->GetOutputVoltage());
+	SmartDashboard::PutNumber("Right Drive Jag Temperature", RobotMap::driveTrainRightDriveMotor->GetTemperature());
 }
 
 // Make this return true when this Command no longer needs to run execute()

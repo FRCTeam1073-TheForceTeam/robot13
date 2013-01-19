@@ -15,15 +15,6 @@ void JoystickDrive::Initialize() {
 void JoystickDrive::Execute() {
 	Robot::driveTrain->Move();
 	printf("JoystickDriveExecuteMethod\n");
-	SmartDashboard::PutNumber("Left Drive Jag Current", Robot::driveTrain->leftDriveMotor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Left Drive Jag Bus Voltage", Robot::driveTrain->leftDriveMotor->GetBusVoltage());
-	SmartDashboard::PutNumber("Left Drive Jag Voltage", Robot::driveTrain->leftDriveMotor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Left Drive Jag Temperature", Robot::driveTrain->leftDriveMotor->GetTemperature());
-	
-	SmartDashboard::PutNumber("Right Drive Jag Current", Robot::driveTrain->leftDriveMotor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Right Drive Jag Bus Voltage", Robot::driveTrain->leftDriveMotor->GetBusVoltage());
-	SmartDashboard::PutNumber("Right Drive Jag Voltage", Robot::driveTrain->leftDriveMotor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Right Drive Jag Temperature", Robot::driveTrain->leftDriveMotor->GetTemperature());
 }
 // Make this return true when this Command no longer needs to run execute()"
 bool JoystickDrive::IsFinished() {
