@@ -1,4 +1,10 @@
 #include "AutonomousMiddleBack.h"
+#include "Commands/WaitCommand.h"
+#include "ShooterOn.h"
+#include "Shoot.h"
+#include "MoveShooterToSetElevationAngle.h"
+#include "ShooterOff.h"
+#include "../Subsystems/Shooter.h"
 
 AutonomousMiddleBack::AutonomousMiddleBack() {
 	// Add Commands here:
@@ -17,4 +23,20 @@ AutonomousMiddleBack::AutonomousMiddleBack() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+	int elevationAngle = 14;
+	int shooterSpeed = 1500;
+	double waitTime = 3;
+	double shotWaitTime = 1;
+	Robot::shooter->SetRawElevationAngle(elevationAngle);
+	Robot::shooter->SetRawSpeed(shooterSpeed);
+	//TODO: Command to drive forward
+	AddSequential(new MoveShooterToSetElevationAngle());
+	AddSequential(new ShooterOn());
+	AddSequential(new WaitCommand(waitTime));
+	AddSequential(new Shoot());
+	AddSequential(new WaitCommand(shotWaitTime));
+	AddSequential(new Shoot());
+	AddSequential(new WaitCommand(shotWaitTime));
+	AddSequential(new Shoot());
+	AddSequential(new ShooterOff());
 }
