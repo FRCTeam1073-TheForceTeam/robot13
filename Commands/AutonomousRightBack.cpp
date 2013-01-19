@@ -11,6 +11,9 @@
 
 
 #include "AutonomousRightBack.h"
+#include "Commands/WaitCommand.h"
+#include "ShooterOn.h"
+#include "Shoot.h"
 
 AutonomousRightBack::AutonomousRightBack() {
 	// Add Commands here:
@@ -29,4 +32,8 @@ AutonomousRightBack::AutonomousRightBack() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+	double waitTime = 3;
+		AddSequential(new ShooterOn());
+		AddSequential(new WaitCommand(waitTime));
+		AddSequential(new Shoot());
 }
