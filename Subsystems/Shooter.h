@@ -42,5 +42,6 @@ public:
 	float GetCurrent();
 	void TurnToSetAngle();
 	void StopElevatorMotor();
+	void SetRawAngle(int elevationAngle);
 };
 #endif
