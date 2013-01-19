@@ -25,3 +25,5 @@ PPC32diab\*
 PPC603gnu/
 PPC603/
 PPC32/
+#makefile that we don't care about
+PPC32Diab/Makefile
