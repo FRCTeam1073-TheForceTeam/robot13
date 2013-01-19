@@ -35,4 +35,3 @@ void DriveTrain::Move(){
 	printf("Left M: %f  Right M: %f\n", leftDriveMotor->Get(), rightDriveMotor->Get());
 #endif
 }
-
