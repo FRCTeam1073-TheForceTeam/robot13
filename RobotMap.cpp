@@ -11,7 +11,6 @@ CANJaguar* RobotMap::driveTrainRightDriveMotor = NULL;
 Gyro* RobotMap::driveTrainDriveTrainGyro = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
 Encoder* RobotMap::shooterElevationEncoder = NULL;
-Encoder* RobotMap::shooterWheelRPMEncoder = NULL;
 CANJaguar* RobotMap::shooterShooterJag = NULL;
 DigitalInput* RobotMap::shooterElevationTopSwitch = NULL;
 DigitalInput* RobotMap::shooterElevationBottomSwitch = NULL;
@@ -51,11 +50,6 @@ void RobotMap::init() {
 	shooterElevationEncoder->SetDistancePerPulse(1.0);
         shooterElevationEncoder->SetPIDSourceParameter(Encoder::kRate);
         shooterElevationEncoder->Start();
-	shooterWheelRPMEncoder = new Encoder(1, 1, 1, 2, false, Encoder::k4X);
-	lw->AddSensor("Shooter", "WheelRPMEncoder", shooterWheelRPMEncoder);
-	shooterWheelRPMEncoder->SetDistancePerPulse(1.0);
-        shooterWheelRPMEncoder->SetPIDSourceParameter(Encoder::kRate);
-        shooterWheelRPMEncoder->Start();
 	shooterShooterJag = new CANJaguar(5);
 	
 	

@@ -21,7 +21,6 @@ public:
 	static Gyro* driveTrainDriveTrainGyro;
 	static CANJaguar* shooterElevationJag;
 	static Encoder* shooterElevationEncoder;
-	static Encoder* shooterWheelRPMEncoder;
 	static CANJaguar* shooterShooterJag;
 	static DigitalInput* shooterElevationTopSwitch;
 	static DigitalInput* shooterElevationBottomSwitch;
