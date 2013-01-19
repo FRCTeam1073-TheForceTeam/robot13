@@ -9,26 +9,20 @@
 // it from being updated in th future.
 
 
+
 #ifndef AUTONOMOUSRIGHTBACK_H
 #define AUTONOMOUSRIGHTBACK_H
 
-
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class AutonomousRightBack: public Command {
-public:
+class AutonomousRightBack: public CommandGroup {
+public:	
 	AutonomousRightBack();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
 };
 
 #endif

@@ -9,26 +9,20 @@
 // it from being updated in th future.
 
 
+
 #ifndef AUTONOMOUSLEFTBACK_H
 #define AUTONOMOUSLEFTBACK_H
 
-
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class AutonomousLeftBack: public Command {
-public:
+class AutonomousLeftBack: public CommandGroup {
+public:	
 	AutonomousLeftBack();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
 };
 
 #endif

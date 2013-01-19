@@ -9,26 +9,20 @@
 // it from being updated in th future.
 
 
+
 #ifndef AUTONOMOUSMIDDLEBACK_H
 #define AUTONOMOUSMIDDLEBACK_H
 
-
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class AutonomousMiddleBack: public Command {
-public:
+class AutonomousMiddleBack: public CommandGroup {
+public:	
 	AutonomousMiddleBack();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
 };
 
 #endif
