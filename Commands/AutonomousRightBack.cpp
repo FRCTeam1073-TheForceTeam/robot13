@@ -23,6 +23,7 @@ AutonomousRightBack::AutonomousRightBack() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+	
 	int elevationAngle = 14;
 	int shooterSpeed = 1500;
 	double waitTime = 3;
