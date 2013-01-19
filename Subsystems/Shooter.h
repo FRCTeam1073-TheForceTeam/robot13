@@ -23,6 +23,7 @@ public:
 	void IncrementSpeed(int speedIncrement);
 	void IncrementAngle(int angleIncrement);
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
+	void SetRawElevatorAngle(int elevationAngle);
 	void UpdateDefaults(double distanceToTarget, double robotAngleToTarget);
 	void ShooterOnOff(bool on);
 	bool IsShooterMotorOn();
@@ -33,10 +34,13 @@ public:
 	int GetDefaultElevationAngle();
 	bool IsUpLimitPressed();
 	bool IsDownLimitPressed();
+	bool IsAtSetAngle();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
 	float GetEncoderSpeed();
 	float GetVoltage();
 	float GetCurrent();
+	void TurnToSetAngle();
+	void StopElevatorMotor();
 };
 #endif

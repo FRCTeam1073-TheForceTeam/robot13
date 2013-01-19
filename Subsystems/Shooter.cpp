@@ -34,17 +34,31 @@ void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
 	if(isShooterMotorOn) ShooterOnOff(true);
 }
-void Shooter::IncrementAngle(int angleIncrement){elevationAngle += angleIncrement;}
+void Shooter::IncrementAngle(int angleIncrement){
+	elevationAngle += angleIncrement;
+	
+}
 //Figured this might be useful if we want to quickly put the speed to a certain preset
 void Shooter::SetRawSpeed(int speed) {
 	if(speed < 0 ) return;
 	IncrementSpeed(speed - this->speed);
 }
+void Shooter::SetRawAngle(int elevationAngle) {
+	this->elevationAngle = elevationAngle;
+}
 bool Shooter::IsUpLimitPressed(){return elevationTopSwitch->Get() == 1;}
 bool Shooter::IsDownLimitPressed(){return elevationBottomSwitch->Get() == 1;}
+bool Shooter::IsAtSetAngle(){
+	//TODO: Use elevator encoder to determine where we are and where we'd like to be
+	return false;
+}
 //TODO: Update with something realistic
 int Shooter::GetFineAdjustmentSpeed() {return 20;}
 int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
 float Shooter::GetEncoderSpeed() {return shooterJag->GetSpeed();}
 float Shooter::GetVoltage() {return shooterJag->GetOutputVoltage();}
 float Shooter::GetCurrent() {return shooterJag->GetOutputCurrent();}
+void Shooter::TurnToSetAngle(){
+	//TODO: Hardware calls to adjust angle to angle variable
+}
+void Shooter::StopElevatorMotor(){elevationJag->Set(SHOOTER_OFF);}
