@@ -8,11 +8,8 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 #include "AutonomousForward.h"
-
 #define FORWARD_SPEED 100
 #define DISTANCE 150
-
-
 AutonomousForward::AutonomousForward() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
