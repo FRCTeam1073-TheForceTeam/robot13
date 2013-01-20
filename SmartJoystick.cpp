@@ -6,6 +6,7 @@ SmartJoystick::SmartJoystick(int port, bool invertYAxis) : Joystick(port){
 float SmartJoystick::GetY(){
 	float y = Joystick::GetY();
 	return invertYAxis ? y * -1 : y;
+	//erase later for test
 }
 bool SmartJoystick::IsYAxisInverted(){
 	return invertYAxis;
