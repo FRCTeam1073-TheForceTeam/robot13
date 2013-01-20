@@ -10,6 +10,7 @@
 
 
 #include "ClimberOff.h"
+#define CLIMBER_OFF 0
 
 ClimberOff::ClimberOff() {
 	// Use requires() here to declare subsystem dependencies
@@ -26,12 +27,15 @@ void ClimberOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ClimberOff::Execute() {
-	
+	Robot::climber->climberServo->Set(CLIMBER_OFF);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberOff::IsFinished() {
-	return false;
+	if(climberDisengage()){
+		return false;
+	}
+	return true;
 }
 
 // Called once after isFinished returns true
@@ -42,5 +46,5 @@ void ClimberOff::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ClimberOff::Interrupted() {
-
+	ClimberOff::End();
 }
