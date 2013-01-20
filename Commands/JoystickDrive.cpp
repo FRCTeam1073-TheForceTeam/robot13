@@ -13,7 +13,9 @@ void JoystickDrive::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
-	Robot::driveTrain->Move();
+	float left = Robot::oi->getLeftStick()->GetY(GenericHID::kLeftHand);
+	float right = -1* Robot::oi->getRightStick()->GetY(GenericHID::kRightHand);
+	Robot::driveTrain->Move(left,right);
 	printf("JoystickDriveExecuteMethod\n");
 }
 // Make this return true when this Command no longer needs to run execute()"
