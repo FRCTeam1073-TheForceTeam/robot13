@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 #include "ClimberOff.h"
-#define CLIMBER_OFF 0
 ClimberOff::ClimberOff() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -22,7 +21,7 @@ void ClimberOff::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ClimberOff::Execute() {
-	Robot::climber->climberServo->Set(CLIMBER_OFF);
+	Robot::climber->DisengageClimber();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberOff::IsFinished() {return true;}

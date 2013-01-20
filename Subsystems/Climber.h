@@ -1,5 +1,7 @@
 #ifndef CLIMBER_H
 #define CLIMBER_H
+#define CLIMBER_ON 0.5
+#define CLIMBER_OFF 0.0
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 class Climber: public Subsystem {

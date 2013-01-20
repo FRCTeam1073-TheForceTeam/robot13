@@ -17,5 +17,8 @@ void Climber::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Climber::EngageClimber(){
-	
+	climberServo->Set(CLIMBER_ON);
+}
+void Climber::DisengageClimber(){
+	climberServo->Set(CLIMBER_OFF);
 }

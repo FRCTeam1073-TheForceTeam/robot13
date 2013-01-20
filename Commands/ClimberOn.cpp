@@ -8,8 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 #include "ClimberOn.h"
-//NEEDS CALIBRATION
-#define CLIMBER_ON 0.5
 ClimberOn::ClimberOn() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
