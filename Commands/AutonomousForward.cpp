@@ -8,6 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 #include "AutonomousForward.h"
+
+#define FORWARD_SPEED 100
+#define DISTANCE 150
+
+
 AutonomousForward::AutonomousForward() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -17,18 +22,27 @@ AutonomousForward::AutonomousForward() {
 }
 // Called just before this Command runs the first time
 void AutonomousForward::Initialize() {
+	Robot::driveTrain->GetPosition(startingLeft, startingRight);
+	Robot::driveTrain->Move(FORWARD_SPEED, FORWARD_SPEED);
+			
 	
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonomousForward::Execute() {
 	
 }
-// Make this return true when this Command no longer needs to run execute()
+// Make this return true when his Command no longer needs to run execute()
 bool AutonomousForward::IsFinished() {
+	float currentLeft = 0;
+	float currentRight= 0;
+	Robot::driveTrain->GetPosition(currentLeft, currentRight);
+	if ((currentLeft - startingLeft > DISTANCE) && (currentRight - startingRight > DISTANCE))
+			return true;
 	return false;
 }
 // Called once after isFinished returns true
 void AutonomousForward::End() {
+	Robot::driveTrain->Move(0, 0);
 	
 }
 // Called when another command which requires one or more of the same

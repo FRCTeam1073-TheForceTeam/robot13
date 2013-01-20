@@ -29,6 +29,10 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	float startingLeft;
+	float startingRight;
+	
 };
 
 #endif
