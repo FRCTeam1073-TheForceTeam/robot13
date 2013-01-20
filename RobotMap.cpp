@@ -25,7 +25,7 @@ void RobotMap::init() {
 	navigationRangeFinder = new Ultrasonic(1, 9, 1, 10);
 	lw->AddSensor("Navigation", "RangeFinder", navigationRangeFinder);
 	
-	navigationAltimiter = new AnalogChannel(1, 3);
+	navigationAltimiter = new AnalogChannel(1, 1);
 	lw->AddSensor("Navigation", "Altimiter", navigationAltimiter);
 	
 	climberClimberServo = new Servo(1, 1);
@@ -37,10 +37,10 @@ void RobotMap::init() {
 	driveTrainLeftDriveMotor = new CANJaguar(6);
 	
 	
-	driveTrainRightDriveMotor = new CANJaguar(1);
+	driveTrainRightDriveMotor = new CANJaguar(3);
 	
 	
-	driveTrainDriveTrainGyro = new Gyro(1, 1);
+	driveTrainDriveTrainGyro = new Gyro(1, 5);
 	lw->AddSensor("DriveTrain", "DriveTrainGyro", driveTrainDriveTrainGyro);
 	driveTrainDriveTrainGyro->SetSensitivity(1.25);
 	shooterElevationJag = new CANJaguar(4);

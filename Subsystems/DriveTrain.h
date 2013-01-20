@@ -16,6 +16,5 @@ public:
 	void InitDefaultCommand();
 	void Move(float left, float right);
 	
-
 };
 #endif
