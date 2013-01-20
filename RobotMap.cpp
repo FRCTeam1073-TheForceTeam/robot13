@@ -70,6 +70,7 @@ void RobotMap::init() {
      * I mean who even does that? To keep Robot Builder's automatic Jaguar indexing in line (which is off by 1,
      * for some reason), I kept the jags in RB, but I'll reconstruct them below. Some tool.
      */
+#warning "Go back here once we're done with Robot Builder"
     driveTrainLeftDriveMotor = new CANJaguar(2, CANJaguar::kPercentVbus);
     driveTrainRightDriveMotor = new CANJaguar(1, CANJaguar::kPercentVbus);
     shooterShooterJag = new CANJaguar(5, CANJaguar:: kPercentVbus);
