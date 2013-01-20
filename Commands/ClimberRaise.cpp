@@ -25,10 +25,7 @@ void ClimberRaise::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberRaise::IsFinished() {
-	if(climberUp()){
-		return false;
-	}
-	return true;
+	return false;
 }
 // Called once after isFinished returns true
 void ClimberRaise::End() {
