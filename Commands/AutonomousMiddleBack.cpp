@@ -1,4 +1,5 @@
 #include "AutonomousMiddleBack.h"
+#include "AutonomousForward.h"
 #include "Commands/WaitCommand.h"
 #include "ShooterOn.h"
 #include "Shoot.h"
@@ -30,7 +31,7 @@ AutonomousMiddleBack::AutonomousMiddleBack() {
 	double shotWaitTime = 1;
 	Robot::shooter->SetRawElevationAngle(elevationAngle);
 	Robot::shooter->SetRawSpeed(shooterSpeed);
-	//TODO: Command to drive forward
+	AddSequential(new AutonomousForward);
 	AddSequential(new MoveShooterToSetElevationAngle());
 	AddSequential(new ShooterOn());
 	AddSequential(new WaitCommand(waitTime));
