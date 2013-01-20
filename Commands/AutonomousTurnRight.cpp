@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 #include "AutonomousTurnRight.h"
+#define FORWARD_SPEED 100
 AutonomousTurnRight::AutonomousTurnRight() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -17,7 +18,7 @@ AutonomousTurnRight::AutonomousTurnRight() {
 }
 // Called just before this Command runs the first time
 void AutonomousTurnRight::Initialize() {
-	
+	Robot::driveTrain->Move(FORWARD_SPEED, 0);
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonomousTurnRight::Execute() {
