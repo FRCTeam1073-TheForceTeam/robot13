@@ -14,13 +14,11 @@ public:
 	static AnalogChannel* lightLightRing;
 	static Ultrasonic* navigationRangeFinder;
 	static AnalogChannel* navigationAltimiter;
-	static Servo* climberLeftServo;
 	static Servo* climberRightServo;
+	static Servo* climberLeftServo;
 	static CANJaguar* driveTrainLeftDriveMotor;
 	static CANJaguar* driveTrainRightDriveMotor;
 	static Gyro* driveTrainDriveTrainGyro;
-	static Encoder* driveTrainLeftDriveEncoder;
-	static Encoder* driveTrainRightDriveEncoder;
 	static CANJaguar* shooterElevationJag;
 	static Encoder* shooterElevationEncoder;
 	static Encoder* shooterWheelRPMEncoder;

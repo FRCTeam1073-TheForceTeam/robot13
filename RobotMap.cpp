@@ -4,13 +4,11 @@
 AnalogChannel* RobotMap::lightLightRing = NULL;
 Ultrasonic* RobotMap::navigationRangeFinder = NULL;
 AnalogChannel* RobotMap::navigationAltimiter = NULL;
-Servo* RobotMap::climberLeftServo = NULL;
 Servo* RobotMap::climberRightServo = NULL;
+Servo* RobotMap::climberLeftServo = NULL;
 CANJaguar* RobotMap::driveTrainLeftDriveMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightDriveMotor = NULL;
 Gyro* RobotMap::driveTrainDriveTrainGyro = NULL;
-Encoder* RobotMap::driveTrainLeftDriveEncoder = NULL;
-Encoder* RobotMap::driveTrainRightDriveEncoder = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
 Encoder* RobotMap::shooterElevationEncoder = NULL;
 Encoder* RobotMap::shooterWheelRPMEncoder = NULL;
@@ -30,11 +28,11 @@ void RobotMap::init() {
 	navigationAltimiter = new AnalogChannel(1, 1);
 	lw->AddSensor("Navigation", "Altimiter", navigationAltimiter);
 	
-	climberLeftServo = new Servo(1, 2);
-	lw->AddActuator("Climber", "LeftServo", climberLeftServo);
-	
 	climberRightServo = new Servo(1, 1);
 	lw->AddActuator("Climber", "RightServo", climberRightServo);
+	
+	climberLeftServo = new Servo(1, 2);
+	lw->AddActuator("Climber", "LeftServo", climberLeftServo);
 	
 	driveTrainLeftDriveMotor = new CANJaguar(6);
 	
@@ -45,16 +43,6 @@ void RobotMap::init() {
 	driveTrainDriveTrainGyro = new Gyro(1, 5);
 	lw->AddSensor("DriveTrain", "DriveTrainGyro", driveTrainDriveTrainGyro);
 	driveTrainDriveTrainGyro->SetSensitivity(1.25);
-	driveTrainLeftDriveEncoder = new Encoder(1, 5, 1, 6, false, Encoder::k4X);
-	lw->AddSensor("DriveTrain", "LeftDriveEncoder", driveTrainLeftDriveEncoder);
-	driveTrainLeftDriveEncoder->SetDistancePerPulse(1.0);
-        driveTrainLeftDriveEncoder->SetPIDSourceParameter(Encoder::kRate);
-        driveTrainLeftDriveEncoder->Start();
-	driveTrainRightDriveEncoder = new Encoder(1, 11, 1, 12, false, Encoder::k4X);
-	lw->AddSensor("DriveTrain", "RightDriveEncoder", driveTrainRightDriveEncoder);
-	driveTrainRightDriveEncoder->SetDistancePerPulse(1.0);
-        driveTrainRightDriveEncoder->SetPIDSourceParameter(Encoder::kRate);
-        driveTrainRightDriveEncoder->Start();
 	shooterElevationJag = new CANJaguar(4);
 	
 	
