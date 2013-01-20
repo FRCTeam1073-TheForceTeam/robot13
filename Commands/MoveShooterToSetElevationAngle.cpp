@@ -6,7 +6,7 @@ void MoveShooterToSetElevationAngle::Initialize(){
 	Robot::shooter->TurnToSetAngle();
 }
 void MoveShooterToSetElevationAngle::Execute(){}
-bool IsFinished(){
+bool MoveShooterToSetElevationAngle::IsFinished(){
 	return Robot::shooter->IsAtSetAngle() || Robot::shooter->IsUpLimitPressed()
 			|| Robot::shooter->IsDownLimitPressed();
 }
