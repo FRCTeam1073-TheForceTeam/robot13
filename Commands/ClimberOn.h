@@ -16,6 +16,7 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
+
 /**
  *
  *
@@ -29,6 +30,7 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	bool climberEngage();
 };
 
 #endif

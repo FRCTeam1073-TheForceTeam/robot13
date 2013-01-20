@@ -10,6 +10,8 @@
 
 
 #include "ClimberOn.h"
+//NEEDS CALIBRATION
+#define CLIMBER_ON 0.5
 
 ClimberOn::ClimberOn() {
 	// Use requires() here to declare subsystem dependencies
@@ -26,12 +28,15 @@ void ClimberOn::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ClimberOn::Execute() {
-	
+	Robot::climber->climberServo->Set(CLIMBER_ON);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberOn::IsFinished() {
-	return false;
+	if(climberEngage()){
+		return false;
+	}
+	return true;
 }
 
 // Called once after isFinished returns true
@@ -42,5 +47,5 @@ void ClimberOn::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ClimberOn::Interrupted() {
-
+	ClimberOn::End();
 }
