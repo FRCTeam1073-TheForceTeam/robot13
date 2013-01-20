@@ -14,8 +14,8 @@ public:
 	static AnalogChannel* lightLightRing;
 	static Ultrasonic* navigationRangeFinder;
 	static AnalogChannel* navigationAltimiter;
-	static Servo* climberRightServo;
-	static Servo* climberLeftServo;
+	static Servo* climberClimberServo;
+	static SpeedController* climberClimberVictor;
 	static CANJaguar* driveTrainLeftDriveMotor;
 	static CANJaguar* driveTrainRightDriveMotor;
 	static Gyro* driveTrainDriveTrainGyro;

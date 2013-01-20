@@ -4,8 +4,8 @@
 AnalogChannel* RobotMap::lightLightRing = NULL;
 Ultrasonic* RobotMap::navigationRangeFinder = NULL;
 AnalogChannel* RobotMap::navigationAltimiter = NULL;
-Servo* RobotMap::climberRightServo = NULL;
-Servo* RobotMap::climberLeftServo = NULL;
+Servo* RobotMap::climberClimberServo = NULL;
+SpeedController* RobotMap::climberClimberVictor = NULL;
 CANJaguar* RobotMap::driveTrainLeftDriveMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightDriveMotor = NULL;
 Gyro* RobotMap::driveTrainDriveTrainGyro = NULL;
@@ -28,11 +28,11 @@ void RobotMap::init() {
 	navigationAltimiter = new AnalogChannel(1, 1);
 	lw->AddSensor("Navigation", "Altimiter", navigationAltimiter);
 	
-	climberRightServo = new Servo(1, 1);
-	lw->AddActuator("Climber", "RightServo", climberRightServo);
+	climberClimberServo = new Servo(1, 1);
+	lw->AddActuator("Climber", "ClimberServo", climberClimberServo);
 	
-	climberLeftServo = new Servo(1, 2);
-	lw->AddActuator("Climber", "LeftServo", climberLeftServo);
+	climberClimberVictor = new Victor(1, 2);
+	lw->AddActuator("Climber", "ClimberVictor", (Victor*) climberClimberVictor);
 	
 	driveTrainLeftDriveMotor = new CANJaguar(6);
 	
