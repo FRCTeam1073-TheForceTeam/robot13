@@ -19,8 +19,9 @@ void AutonomousTurnLeft::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousTurnLeft::IsFinished() {
-	float currentLeft = 0;
-	float currentRight = FORWARD_SPEED;
+	float currentAngle = Robot::driveTrain->GetGyroAngle();
+	if (currentAngle - startingAngle > TURNING_ANGLE)
+		return true;
 	return false;
 }
 // Called once after isFinished returns true
