@@ -15,6 +15,9 @@ public:
 	DriveTrain();
 	void InitDefaultCommand();
 	void Move(float left, float right);
+	void GetPosition (float &left,float &right);
+	float TicksToInches (float ticks);
+	
 	
 };
 #endif
