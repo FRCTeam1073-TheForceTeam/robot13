@@ -12,7 +12,6 @@ Navigation* Robot::navigation = NULL;
 AllignmentData* Robot::allignmentData = NULL;
 void Robot::RobotInit() {
 	RobotMap::init();
-	oi = new OI();
 	NetworkTable::Initialize();
 	NetworkTable::SetTeam(1073);
 	NetworkTable::SetIPAddress("10.10.73.2");
@@ -31,6 +30,7 @@ void Robot::RobotInit() {
 	// which commands extend), subsystems are not guaranteed to be
 	// yet. Thus, their requires() statements may grab null pointers. Bad
 	// news. Don't move it.
+	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	
 	chooser = new SendableChooser();
