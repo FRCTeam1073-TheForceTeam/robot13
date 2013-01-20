@@ -36,6 +36,8 @@ void SendDiagnostics::Execute() {
 	//Shooter Encoders
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
 	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
+	//Climber Transmission
+	SmartDashboard::PutNumber("Climber Transmission Status", RobotMap::climberClimberServo->Get());
 }
 
 // Make this return true when this Command no longer needs to run execute()
