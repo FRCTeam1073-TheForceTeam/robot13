@@ -46,6 +46,12 @@ void DriveTrain::Move(float left, float right){
 		leftDriveMotor->Set(left != 0 ? (left < 0 ? -1 : 1) : 0);
 		rightDriveMotor->Set(right != 0 ? (right < 0 ? -1 : 1) : 0);
 	}
+	if (left < .05 && left > -.05){
+		left = 0;
+	}
+	if (right < .05 && right > -.05){
+		right = 0;
+	}
 	//writes y-value of joystick to jag 
 	leftDriveMotor->Set(left);
 	rightDriveMotor->Set(right);
