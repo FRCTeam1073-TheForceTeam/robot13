@@ -29,7 +29,6 @@ public:
 	void UpdateDefaults(double distanceToTarget, double robotAngleToTarget);
 	void ShooterOnOff(bool on);
 	bool IsShooterMotorOn();
-	float GetActualMotorSpeed();
 	int GetSetSpeed();
 	int GetSetElevationAngle();
 	int GetDefaultSpeed();
@@ -39,9 +38,6 @@ public:
 	bool IsAtSetAngle();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
-	float GetEncoderSpeed();
-	float GetVoltage();
-	float GetCurrent();
 	void TurnToSetAngle();
 	void StopElevatorMotor();
 	void SetRawAngle(int elevationAngle);
