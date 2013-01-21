@@ -12,7 +12,7 @@ void CollectDiscs::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void CollectDiscs::Execute() {
-	
+	//will need some logic somewhere to provide for toggling (press once for on, press again for off)
 }
 // Make this return true when this Command no longer needs to run execute()
 bool CollectDiscs::IsFinished() {

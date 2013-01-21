@@ -25,7 +25,7 @@ bool AutonomousForward::IsFinished() {
 	float currentRight= 0;
 	Robot::driveTrain->GetPosition(currentLeft, currentRight);
 	if ((currentLeft - startingLeft > DISTANCE) && (currentRight - startingRight > DISTANCE))
-			return true;
+			return true; //
 	return false;
 }
 // Called once after isFinished returns true

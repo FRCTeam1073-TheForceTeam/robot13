@@ -7,6 +7,7 @@
 #include "Commands/AutonomousRightBack.h"
 #include "Commands/AutonomousTurnLeft.h"
 #include "Commands/AutonomousTurnRight.h"
+#include "Commands/AutonomousTurns.h"
 #include "Commands/ClimberLower.h"
 #include "Commands/ClimberOff.h"
 #include "Commands/ClimberOn.h"
@@ -61,6 +62,7 @@ OI::OI() {
 	SmartDashboard::PutData("AutonomousRightBack", new AutonomousRightBack());
 	SmartDashboard::PutData("AutonomousLeftBack", new AutonomousLeftBack());
 	SmartDashboard::PutData("AutonomousMiddleBack", new AutonomousMiddleBack());
+	SmartDashboard::PutData("Autonomous Turns", new AutonomousTurns(false));
 	SmartDashboard::PutData("LightOn", new LightOn());
 	SmartDashboard::PutData("ClimberOn", new ClimberOn());
 	SmartDashboard::PutData("ClimberOff", new ClimberOff());
