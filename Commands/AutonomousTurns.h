@@ -23,12 +23,15 @@
  */
 class AutonomousTurns: public Command {
 public:
-	AutonomousTurns();
+	AutonomousTurns(bool isRight);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	bool turnRight;
+	float startingAngle, currentAngle;
 };
 
 #endif

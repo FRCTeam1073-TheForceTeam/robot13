@@ -59,7 +59,7 @@ OI::OI() {
 	SmartDashboard::PutData("AutonomousRightBack", new AutonomousRightBack());
 	SmartDashboard::PutData("AutonomousLeftBack", new AutonomousLeftBack());
 	SmartDashboard::PutData("AutonomousMiddleBack", new AutonomousMiddleBack());
-	SmartDashboard::PutData("Autonomous Turns", new AutonomousTurns());
+	SmartDashboard::PutData("Autonomous Turns", new AutonomousTurns(false));
 	SmartDashboard::PutData("LightOn", new LightOn());
 	SmartDashboard::PutData("ClimberOn", new ClimberOn());
 	SmartDashboard::PutData("ClimberOff", new ClimberOff());
