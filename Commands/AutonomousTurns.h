@@ -23,6 +23,7 @@
  */
 class AutonomousTurns: public Command {
 public:
+	AutonomousTurns();
 	AutonomousTurns(bool isRight);
 	virtual void Initialize();
 	virtual void Execute();
@@ -30,8 +31,9 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 private:
-	bool turnRight;
+	bool isRight;
 	float startingAngle, currentAngle;
+	void Init(bool isRight);
 };
 
 #endif
