@@ -16,11 +16,22 @@ Shooter::Shooter() : Subsystem("Shooter") {
 void Shooter::InitDefaultCommand() {SetDefaultCommand(new UpdateCalculatedShooterValues());}
 void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
-	if(on) primaryJag->Set(speed);
-	else primaryJag->Set(SHOOTER_OFF);
+	if(on){
+		primaryJag->Set(speed);
+		supportJag->Set(GetSupportSetSpeed());
+	}
+	else {
+		primaryJag->Set(SHOOTER_OFF);
+		supportJag->Set(SHOOTER_OFF);
+	}
 }
 bool Shooter::IsShooterMotorOn() {return isShooterMotorOn;}
-int Shooter::GetSetSpeed() {return speed;}
+int Shooter::GetPrimarySetSpeed() {return speed;}
+int Shooter::GetSupportSetSpeed(){
+	//TODO: Update with better math. 
+	int math = 2;
+	return speed - math;
+}
 int Shooter::GetSetElevationAngle() {return elevationAngle;}
 int Shooter::GetDefaultSpeed() {return defaultSpeed;}
 int Shooter::GetDefaultElevationAngle() {return defaultElevationAngle;}
@@ -29,7 +40,7 @@ void Shooter::SetToDefaults(){
 	elevationAngle = defaultElevationAngle;
 }
 void Shooter::UpdateDefaults(double distanceToTarget, double robotAngleToTarget){
-	//TODO: Math
+	//TODO: Takes Arguements and sets the speed and elevationAngle arguments
 }
 void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
@@ -37,7 +48,6 @@ void Shooter::IncrementSpeed(int speedIncrement){
 }
 void Shooter::IncrementAngle(int angleIncrement){
 	elevationAngle += angleIncrement;
-	
 }
 //Figured this might be useful if we want to quickly put the speed to a certain preset
 void Shooter::SetRawSpeed(int speed) {

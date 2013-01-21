@@ -29,13 +29,17 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Shooter Elevation Jag Bus Voltage", RobotMap::shooterElevationJag->GetBusVoltage());
 	SmartDashboard::PutNumber("Shooter Elevation Jag Voltage", RobotMap::shooterElevationJag->GetOutputVoltage());
 	SmartDashboard::PutNumber("Shooter Elevation Jag Temperature", RobotMap::shooterElevationJag->GetTemperature());
-#warning "update with new shooter actuators
-#if 0
-	SmartDashboard::PutNumber("Shooter Jag Current", RobotMap::shooterShooterJag->GetOutputCurrent());
-	SmartDashboard::PutNumber("Shooter Jag Bus Voltage", RobotMap::shooterShooterJag->GetBusVoltage());
-	SmartDashboard::PutNumber("Shooter Jag Voltage", RobotMap::shooterShooterJag->GetOutputVoltage());
-	SmartDashboard::PutNumber("Shooter Jag Temperature", RobotMap::shooterShooterJag->GetTemperature());
-#endif
+
+	SmartDashboard::PutNumber("Primary Shooter Jag Current", RobotMap::shooterPrimaryJag->GetOutputCurrent());
+	SmartDashboard::PutNumber("Primary Shooter Jag Bus Voltage", RobotMap::shooterPrimaryJag->GetBusVoltage());
+	SmartDashboard::PutNumber("Primary Shooter Jag Voltage", RobotMap::shooterPrimaryJag->GetOutputVoltage());
+	SmartDashboard::PutNumber("Primary Shooter Jag Temperature", RobotMap::shooterPrimaryJag->GetTemperature());
+
+	SmartDashboard::PutNumber("Support Shooter Jag Current", RobotMap::shooterSupportJag->GetOutputCurrent());
+	SmartDashboard::PutNumber("Support Shooter Jag Bus Voltage", RobotMap::shooterSupportJag->GetBusVoltage());
+	SmartDashboard::PutNumber("Support Shooter Jag Voltage", RobotMap::shooterSupportJag->GetOutputVoltage());
+	SmartDashboard::PutNumber("Support Shooter Jag Temperature", RobotMap::shooterSupportJag->GetTemperature());
+	
 	//Shooter Encoders
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
 	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
