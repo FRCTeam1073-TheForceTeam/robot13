@@ -12,10 +12,13 @@
 *.la
 *.a
 
+# Documentation
+*.pdf
+
 # PPCdiab everything
 PPC32diab\*
 
-# Everything thaty ends in ~
+# Everything that ends in ~
 *~
 #Everything that starts in ~
 ~*
