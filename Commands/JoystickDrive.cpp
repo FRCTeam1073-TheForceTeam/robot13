@@ -10,7 +10,6 @@ JoystickDrive::JoystickDrive() {
 }
 // Called just before this Command runs the first time
 void JoystickDrive::Initialize() {
-	printf("JoystickDriveInitializeMethod\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
@@ -21,7 +20,6 @@ void JoystickDrive::Execute() {
 		right = (cubicConst * right) + (1 - cubicConst) * (right*right*right);
 	}
 	Robot::driveTrain->Move(left,right);
-	printf("JoystickDriveExecuteMethod\n");
 }
 // Make this return true when this Command no longer needs to run execute()"
 bool JoystickDrive::IsFinished() {
