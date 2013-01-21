@@ -9,5 +9,6 @@ AllignmentData::AllignmentData() : Subsystem("AllignmentData") {
 	trackingDataTable = NetworkTable::GetTable("tracking");
 }
 void AllignmentData::InitDefaultCommand(){}
-double AllignmentData::GetCalculatedDistance() {return trackingDataTable->GetNumber("calculatedAngle", -1);}
+double AllignmentData::GetCalculatedDistance() {return trackingDataTable->GetNumber("calculatedDistance", -1);}
+double AllignmentData::GetCalculatedAngle() {return trackingDataTable->GetNumber("calculatedAngle", -1);}
 bool AllignmentData::IsTarget(){return calculatedDistance != DEFAULT && calculatedAngle != DEFAULT;}
