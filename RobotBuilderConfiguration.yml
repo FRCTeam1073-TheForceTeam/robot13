@@ -362,6 +362,30 @@ Children:
           name: When to Run
           validators: null
           value: whileHeld
+    - Name: SwitchDrive
+      Base: Joystick Button
+      Children: []
+      Properties:
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id021
+          value: SetCubicDrive
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id022
+          default: '1'
+          name: Button
+          validators: null
+          value: '10'
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: LeftStick}
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id023
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id024 ['1', '2', '3', '4']
@@ -771,6 +795,14 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: SetCubicDrive
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}
 Properties:
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
@@ -790,7 +822,7 @@ Properties:
     validators: null, value: 1073}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Kate\NetBeansProjects',
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Derek\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\Infern0\workspace'}
   Java Project: !!robotbuilder.data.properties.FileProperty {default: '', extension: null,
