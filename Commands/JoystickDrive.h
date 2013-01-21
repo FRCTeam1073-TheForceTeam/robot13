@@ -6,7 +6,10 @@
 #include "../Robot.h"
 
 
+
 class JoystickDrive: public Command {
+private:
+	float cubicConst;
 public:
 	JoystickDrive();
 	virtual void Initialize();
