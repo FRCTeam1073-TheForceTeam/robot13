@@ -20,7 +20,6 @@ void Shooter::ShooterOnOff(bool on){
 	else primaryJag->Set(SHOOTER_OFF);
 }
 bool Shooter::IsShooterMotorOn() {return isShooterMotorOn;}
-float Shooter::GetActualMotorSpeed() {return primaryJag->GetSpeed();}
 int Shooter::GetSetSpeed() {return speed;}
 int Shooter::GetSetElevationAngle() {return elevationAngle;}
 int Shooter::GetDefaultSpeed() {return defaultSpeed;}
@@ -57,9 +56,6 @@ bool Shooter::IsAtSetAngle(){
 //TODO: Update with something realistic
 int Shooter::GetFineAdjustmentSpeed() {return 20;}
 int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
-float Shooter::GetEncoderSpeed() {return primaryJag->GetSpeed();}
-float Shooter::GetVoltage() {return primaryJag->GetOutputVoltage();}
-float Shooter::GetCurrent() {return primaryJag->GetOutputCurrent();}
 void Shooter::TurnToSetAngle(){
 	//TODO: Hardware calls to adjust angle to angle variable
 }
