@@ -128,7 +128,7 @@ Children:
   - Name: DriveTrain
     Base: Subsystem
     Children:
-    - Name: LeftDriveMotor
+    - Name: LeftMotor
       Base: CAN Jaguar
       Children: []
       Properties:
@@ -138,7 +138,7 @@ Children:
           name: CAN ID
           validators: &id006 [CANID]
           value: '6'
-    - Name: RightDriveMotor
+    - Name: RightMotor
       Base: CAN Jaguar
       Children: []
       Properties:
@@ -147,7 +147,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id006
-          value: '1'
+          value: '8'
     - Name: DriveTrainGyro
       Base: Gyro
       Children: []

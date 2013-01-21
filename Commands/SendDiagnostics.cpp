@@ -16,14 +16,14 @@ void SendDiagnostics::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
 	//Drive Train Jaguar Diagnostics
-	SmartDashboard::PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftDriveMotor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftDriveMotor->GetBusVoltage());
-	SmartDashboard::PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftDriveMotor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftDriveMotor->GetTemperature());
-	SmartDashboard::PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightDriveMotor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Right Drive Jag Bus Voltage", RobotMap::driveTrainRightDriveMotor->GetBusVoltage());
-	SmartDashboard::PutNumber("Right Drive Jag Voltage", RobotMap::driveTrainRightDriveMotor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Right Drive Jag Temperature", RobotMap::driveTrainRightDriveMotor->GetTemperature());
+	SmartDashboard::PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftMotor->GetOutputCurrent());
+	SmartDashboard::PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftMotor->GetBusVoltage());
+	SmartDashboard::PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftMotor->GetOutputVoltage());
+	SmartDashboard::PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftMotor->GetTemperature());
+	SmartDashboard::PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightMotor->GetOutputCurrent());
+	SmartDashboard::PutNumber("Right Drive Jag Bus Voltage", RobotMap::driveTrainRightMotor->GetBusVoltage());
+	SmartDashboard::PutNumber("Right Drive Jag Voltage", RobotMap::driveTrainRightMotor->GetOutputVoltage());
+	SmartDashboard::PutNumber("Right Drive Jag Temperature", RobotMap::driveTrainRightMotor->GetTemperature());
 	//Shooter Jaguar Diagnostics
 	SmartDashboard::PutNumber("Shooter Elevation Jag Current", RobotMap::shooterElevationJag->GetOutputCurrent());
 	SmartDashboard::PutNumber("Shooter Elevation Jag Bus Voltage", RobotMap::shooterElevationJag->GetBusVoltage());
