@@ -16,6 +16,5 @@ public:
 	double GetCalculatedDistance();
 	double GetCalculatedAngle();
 	bool IsTarget();
-	void Refresh();
 };
 #endif
