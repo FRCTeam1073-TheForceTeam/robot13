@@ -39,7 +39,7 @@ void RobotMap::init() {
 	driveTrainLeftMotor = new CANJaguar(6);
 	
 	
-	driveTrainRightMotor = new CANJaguar(8);	//Gets reconstructed
+	driveTrainRightMotor = new CANJaguar(8);
 	
 	
 	driveTrainDriveTrainGyro = new Gyro(1, 1);
@@ -66,7 +66,7 @@ void RobotMap::init() {
 	
 	shooterElevationBottomSwitch = new DigitalInput(1, 4);
 	lw->AddSensor("Shooter", "ElevationBottomSwitch", shooterElevationBottomSwitch);
-
+	
 	shooterSupportJag = new CANJaguar(2);
 	
 	
