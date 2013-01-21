@@ -75,7 +75,7 @@ void RobotMap::init() {
      * for some reason), I kept the jags in RB, but I'll reconstruct them below. Some tool.
      */
 #warning "Go back here once we're done with Robot Builder"
-    driveTrainLeftDriveMotor = new CANJaguar(2, CANJaguar::kPercentVbus);
+    driveTrainLeftDriveMotor = new CANJaguar(6, CANJaguar::kPercentVbus);
     driveTrainRightDriveMotor = new CANJaguar(1, CANJaguar::kPercentVbus);
     shooterPrimaryJag = new CANJaguar(5, CANJaguar:: kPercentVbus);
 }
