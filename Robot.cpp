@@ -77,8 +77,10 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	
+#warning "upate with new shooter info"
+#if 0
 	SmartDashboard::PutNumber("Jag 5 Temperature", shooter->shooterJag->GetTemperature());
+#endif
 }
 void Robot::TestPeriodic() {
 	lw->Run();
