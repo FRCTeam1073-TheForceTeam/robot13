@@ -26,7 +26,7 @@ AutonomousLeftBack::AutonomousLeftBack() {
 	
 	int elevationAngle = 14;
 	int shooterSpeed = 1500;
-	double waitTime = SmartDashboard::GetNumber("Autonomous Wait Time");
+	double waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
 	double shotWaitTime = 1;
 	Robot::shooter->SetRawElevationAngle(elevationAngle);
 	Robot::shooter->SetRawSpeed(shooterSpeed);
