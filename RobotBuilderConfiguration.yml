@@ -168,7 +168,7 @@ Children:
           name: CAN ID
           validators: *id002
           value: '8'
-    - Name: DriveTrainGyro
+    - Name: Gyro
       Base: Gyro
       Children: []
       Properties:

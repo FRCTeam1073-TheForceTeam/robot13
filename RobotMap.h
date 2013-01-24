@@ -20,7 +20,7 @@ public:
 	static CANJaguar* climberChainsawSpeedJag;
 	static CANJaguar* driveTrainLeftMotor;
 	static CANJaguar* driveTrainRightMotor;
-	static Gyro* driveTrainDriveTrainGyro;
+	static Gyro* driveTrainGyro;
 	static CANJaguar* shooterElevationJag;
 	static Encoder* shooterElevationEncoder;
 	static Encoder* shooterWheelRPMEncoder;
