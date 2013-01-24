@@ -32,36 +32,6 @@ Children:
   - Name: Navigation
     Base: Subsystem
     Children:
-    - Name: RangeFinder
-      Base: Ultrasonic
-      Children: []
-      Properties:
-        Ping Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14']
-          default: '1'
-          name: Ping Channel (Digital)
-          validators: [DigitalChannel]
-          value: '9'
-        Ping Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2']
-          default: '1'
-          name: Ping Module (Digital)
-          validators: [DigitalChannel]
-          value: '1'
-        Echo Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2']
-          default: '1'
-          name: Echo Module (Digital)
-          validators: [DigitalChannel]
-          value: '1'
-        Echo Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14']
-          default: '1'
-          name: Echo Channel (Digital)
-          validators: [DigitalChannel]
-          value: '10'
     - Name: Altimiter
       Base: Analog Input
       Children: []
