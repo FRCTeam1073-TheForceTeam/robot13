@@ -122,6 +122,26 @@ Children:
           name: Output Channel (PWM)
           validators: [PWMOutput]
           value: '2'
+    - Name: Chainsaw Position Jag
+      Base: CAN Jaguar
+      Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id001 ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+          default: '2'
+          name: CAN ID
+          validators: &id002 [CANID]
+          value: '3'
+    - Name: Chainsaw Speed Jag
+      Base: CAN Jaguar
+      Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '2'
+          name: CAN ID
+          validators: *id002
+          value: '7'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -133,10 +153,10 @@ Children:
       Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id001 ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+          choices: *id001
           default: '2'
           name: CAN ID
-          validators: &id002 [CANID]
+          validators: *id002
           value: '6'
     - Name: RightMotor
       Base: CAN Jaguar
@@ -832,7 +852,7 @@ Properties:
     validators: null, value: 1073}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\ken\NetBeansProjects',
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Infern0\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\Infern0\workspace'}
   Java Project: !!robotbuilder.data.properties.FileProperty {default: '', extension: null,

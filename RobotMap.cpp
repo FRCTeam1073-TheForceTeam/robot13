@@ -6,6 +6,8 @@ Ultrasonic* RobotMap::navigationRangeFinder = NULL;
 AnalogChannel* RobotMap::navigationAltimiter = NULL;
 Servo* RobotMap::climberClimberServo = NULL;
 SpeedController* RobotMap::climberClimberVictor = NULL;
+CANJaguar* RobotMap::climberChainsawPositionJag = NULL;
+CANJaguar* RobotMap::climberChainsawSpeedJag = NULL;
 CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightMotor = NULL;
 Gyro* RobotMap::driveTrainDriveTrainGyro = NULL;
@@ -35,6 +37,12 @@ void RobotMap::init() {
 	
 	climberClimberVictor = new Victor(1, 2);
 	lw->AddActuator("Climber", "ClimberVictor", (Victor*) climberClimberVictor);
+	
+	climberChainsawPositionJag = new CANJaguar(3);
+	
+	
+	climberChainsawSpeedJag = new CANJaguar(7);
+	
 	
 	driveTrainLeftMotor = new CANJaguar(6);
 	

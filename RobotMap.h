@@ -16,6 +16,8 @@ public:
 	static AnalogChannel* navigationAltimiter;
 	static Servo* climberClimberServo;
 	static SpeedController* climberClimberVictor;
+	static CANJaguar* climberChainsawPositionJag;
+	static CANJaguar* climberChainsawSpeedJag;
 	static CANJaguar* driveTrainLeftMotor;
 	static CANJaguar* driveTrainRightMotor;
 	static Gyro* driveTrainDriveTrainGyro;
