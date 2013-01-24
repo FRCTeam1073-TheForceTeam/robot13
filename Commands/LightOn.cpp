@@ -17,7 +17,7 @@ LightOn::LightOn() {
 }
 // Called just before this Command runs the first time
 void LightOn::Initialize() {
-	Robot::light->SetLightOn();
+	
 }
 // Called repeatedly when this Command is scheduled to run
 void LightOn::Execute() {
