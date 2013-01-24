@@ -48,6 +48,7 @@ void Shooter::IncrementSpeed(int speedIncrement){
 }
 void Shooter::IncrementAngle(int angleIncrement){
 	elevationAngle += angleIncrement;
+	TurnToSetAngle();
 }
 //Figured this might be useful if we want to quickly put the speed to a certain preset
 void Shooter::SetRawSpeed(int speed) {
@@ -66,6 +67,8 @@ bool Shooter::IsAtSetAngle(){
 //TODO: Update with something realistic
 int Shooter::GetFineAdjustmentSpeed() {return 20;}
 int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
+int Shooter::GetFineAdjustmentAngle() {return 3;}
+int Shooter::GetCoarseAdjustmentAngle() {return 15;}
 void Shooter::TurnToSetAngle(){
 	//TODO: Hardware calls to adjust angle to angle variable
 }
