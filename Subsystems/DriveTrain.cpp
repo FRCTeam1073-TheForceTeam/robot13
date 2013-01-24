@@ -3,7 +3,7 @@
 #include "../Commands/JoystickDrive.h"
 #include "../OI.h"
 #include "GenericHID.h"
-//#define  DEBUGDRIVETRAIN 
+#define  DEBUGDRIVETRAIN 
 #define WHEEL_SIZE 7
 #define TICKS_PER_REV 1440
 #define PI 3.14159

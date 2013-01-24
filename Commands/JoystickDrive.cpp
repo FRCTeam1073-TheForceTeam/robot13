@@ -16,9 +16,11 @@ void JoystickDrive::Execute() {
 	float left = Robot::oi->getLeftStick()->GetY(GenericHID::kLeftHand);
 	float right = -1* Robot::oi->getRightStick()->GetY(GenericHID::kRightHand);
 	if (Robot::driveTrain->IsCubic()){ //cubic scale
-		left = (cubicConst * left) + (1 - cubicConst) * (left*left*left);
-		right = (cubicConst * right) + (1 - cubicConst) * (right*right*right);
+		printf("IsCubic true in Joystick Drive\n");
+		left = (cubicConst*left)+(1-cubicConst)*(left*left*left);
+		right = (cubicConst*right)+(1-cubicConst)*(right*right*right);
 	}
+		
 	Robot::driveTrain->Move(left,right);
 }
 // Make this return true when this Command no longer needs to run execute()"
