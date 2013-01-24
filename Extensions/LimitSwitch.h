@@ -5,6 +5,7 @@
 class LimitSwitch : public DigitalInput{
 public:
 	LimitSwitch(int CHANNEL);
+	LimitSwitch(int MODULE, int CHANNEL);
 	bool IsPressed();
 };
 #endif
