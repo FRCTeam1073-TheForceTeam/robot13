@@ -1,4 +1,4 @@
-#ifndef STALABLE_H
+#ifndef STALLABLE_H
 #define STALLABLE_H
 #define BUFFER 10
 #include <stdio.h>
