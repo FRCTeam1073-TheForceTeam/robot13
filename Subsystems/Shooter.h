@@ -1,10 +1,11 @@
 #ifndef SHOOTER_H
 #define SHOOTER_H
 #include "Commands/Subsystem.h"
+#include "../Extensions/StallableJaguar.h"
 #include "WPILib.h"
 #define SHOOTER_SPEED 2000
 #define SHOOTER_OFF 0
-class Shooter: public Subsystem {
+class Shooter: public Subsystem, StallableJaguar {
 private:
 	int speed, elevationAngle;
 	int defaultSpeed, defaultElevationAngle;
@@ -40,5 +41,7 @@ public:
 	int GetCoarseAdjustmentAngle();
 	void StopElevatorMotor();
 	void SetRawAngle(int elevationAngle);
+protected:
+	CANJaguar* GetJaguar() {return elevationJag;}
 };
 #endif
