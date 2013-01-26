@@ -2,12 +2,9 @@
 #include "cmath"
 #define FORWARD_SPEED 100
 #define BACKWARD_SPEED -100
-
 const float DriveSpeed = .400;
 const float P = .02; // Proportional correction factor. .02 = 20 degrees
 const float acceptableAngleError = 5.0;
-
-
 #define TURNING_ANGLE_DEGREES 90
 AutonomousTurns::AutonomousTurns() {Init(false);}
 AutonomousTurns::AutonomousTurns(bool isRight) {Init(isRight);}

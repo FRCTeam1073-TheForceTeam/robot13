@@ -40,6 +40,5 @@ public:
 	int GetCoarseAdjustmentAngle();
 	void StopElevatorMotor();
 	void SetRawAngle(int elevationAngle);
-
 };
 #endif

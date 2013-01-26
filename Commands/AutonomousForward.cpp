@@ -26,7 +26,6 @@ void AutonomousForward::Execute() {
 	
 	Robot::driveTrain->Move(leftSpeed, rightSpeed);
 	
-
 		
 	
 }
