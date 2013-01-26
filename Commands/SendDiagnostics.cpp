@@ -52,11 +52,7 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Altimiter
 	SmartDashboard::PutNumber("Altimiter Value", RobotMap::navigationAltimiter->GetValue()); //not sure if GetValue is the function we want to be using?
-	//Climber Jaguar Diagnostics
-	SmartDashboard::PutNumber("Climber Chainsaw Jag Current", RobotMap::climberChainsawPositionJag->GetOutputCurrent());
-	SmartDashboard::PutNumber("Climber Chainsaw Jag Bus Voltage", RobotMap::climberChainsawPositionJag->GetBusVoltage());
-	SmartDashboard::PutNumber("Climber Chainsaw Jag Voltage", RobotMap::climberChainsawPositionJag->GetOutputVoltage());
-	SmartDashboard::PutNumber("Climber Chainsaw Jag Temperature", RobotMap::climberChainsawPositionJag->GetTemperature());
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
