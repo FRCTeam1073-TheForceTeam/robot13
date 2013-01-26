@@ -6,7 +6,6 @@ class ManualShooterAngleAjust : public Command{
 public:
 	ManualShooterAngleAjust(bool coarse, bool positive);
 	void Initialize();
-	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();

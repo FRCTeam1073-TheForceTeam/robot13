@@ -15,7 +15,8 @@ float GetWaitTime()
 	}
 	catch(exception e)
 	{
-		//dont care
+		const char* text = e.what();
+		printf("SmartDashboard::GetNumber %s", text);
 	}
 	
 	return waitTime;
