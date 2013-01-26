@@ -6,6 +6,22 @@
 #include "ShooterOff.h"
 #include "../Subsystems/Shooter.h"
 
+float GetWaitTime()
+{
+	double waitTime = 3;
+	try
+	{
+		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
+	}
+	catch(exception e)
+	{
+		const char* text = e.what();
+		printf("SmartDashboard::GetNumber %s", text);
+	}
+	
+	return waitTime;
+}
+
 AutonomousLeftBack::AutonomousLeftBack() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -26,8 +42,8 @@ AutonomousLeftBack::AutonomousLeftBack() {
 	
 	int elevationAngle = 14;
 	int shooterSpeed = 1500;
-	double waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
 	double shotWaitTime = 1;
+	double waitTime = GetWaitTime();
 	Robot::shooter->SetRawElevationAngle(elevationAngle);
 	Robot::shooter->SetRawSpeed(shooterSpeed);
 	AddSequential(new MoveShooterToSetElevationAngle());

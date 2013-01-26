@@ -1,0 +1,6 @@
+[submodule "Scripts"]
+	path = Scripts
+	url = https://github.com/FRCTeam1073-TheForceTeam/Scripts.git
+[submodule "WPILibExtensions"]
+	path = WPILibExtensions
+	url = https://github.com/FRCTeam1073-TheForceTeam/WPILibExtensions.git

@@ -1,37 +1,3 @@
-<<<<<<< HEAD
-# Compiled Object files
-*.slo
-*.lo
-*.o
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-
-# Documentation
-*.pdf
-
-# PPCdiab everything
-PPC32diab\*
-
-# Everything that ends in ~
-*~
-#Everything that starts in ~
-~*
-
-#Exclude PPC603 and PPC32 directories
-
-PPC603gnu/
-PPC603/
-PPC32/
-#makefile that we don't care about
-PPC32Diab/Makefile
-=======
 #################
 ## Eclipse
 #################
@@ -195,4 +161,3 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
->>>>>>> 894ce98f448eede99ae4e52fe3c3263be96a9f23
