@@ -2,6 +2,8 @@
 #define CLIMBER_H
 #define CLIMBER_ON 0.5
 #define CLIMBER_OFF 0.0
+#define CHAINSAW_DOWN_SPEED -0.5
+#define CHAINSAW_UP_SPEED 0.5
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 class Climber: public Subsystem {
@@ -19,8 +21,9 @@ public:
 	void InitDefaultCommand();
 	void EngageClimber();
 	void DisengageClimber();
-//	void ChainsawPosition1();
-//	void ChainsawPosition2();
-//	void ChainsawPosition3();
+	void ChainsawPosition1();
+	void ChainsawPosition2();
+	void ChainsawPosition3();
+	void ChainsawMovementOff();
 };
 #endif

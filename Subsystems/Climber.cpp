@@ -24,6 +24,9 @@ void Climber::EngageClimber(){
 void Climber::DisengageClimber(){
 	climberServo->Set(CLIMBER_OFF);
 }
-//TODO void ChainsawPosition1(){
-//TODO	climber 
-//TODO}
+void Climber::ChainsawMovementOff(){
+	chainsawPositionJag->Set(0);
+}
+ void Climber::ChainsawPosition1(){
+	 chainsawPositionJag->Set(CHAINSAW_UP_SPEED);
+ }
