@@ -5,9 +5,9 @@
 #define MANUAL_SHOOTER_SPEED_ADJUST_H
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-class ManualShooterSpeedAdust : public Command{
+class ManualShooterSpeedAdjust : public Command{
 public:
-	ManualShooterSpeedAdust(bool positive, bool coarse);
+	ManualShooterSpeedAdjust(bool positive, bool coarse);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

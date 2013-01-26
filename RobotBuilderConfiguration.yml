@@ -359,7 +359,7 @@ Children:
         default: 1
         name: Number
         validators: &id017 [Joystick]
-        value: '1'
+        value: '2'
   - Name: RightStick
     Base: Joystick
     Children:
@@ -393,7 +393,7 @@ Children:
         default: 1
         name: Number
         validators: *id017
-        value: '2'
+        value: '3'
   - Name: 'OperatorStick '
     Base: Joystick
     Children:
@@ -595,7 +595,7 @@ Children:
         default: 1
         name: Number
         validators: *id017
-        value: '3'
+        value: '1'
   Properties: {}
 - Name: Commands
   Base: Commands
@@ -789,7 +789,7 @@ Properties:
     validators: null, value: 1073}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Infern0\NetBeansProjects',
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Greg\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\Infern0\workspace'}
   Java Project: !!robotbuilder.data.properties.FileProperty {default: '', extension: null,
