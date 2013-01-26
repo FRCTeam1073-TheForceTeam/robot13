@@ -12,7 +12,6 @@
 #ifndef CP2_H
 #define CP2_H
 
-
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
@@ -29,6 +28,7 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	double GetDistance();
 };
 
 #endif

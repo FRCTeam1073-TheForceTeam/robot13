@@ -17,7 +17,7 @@ CP2::CP2() {
 }
 // Called just before this Command runs the first time
 void CP2::Initialize() {
-
+	Robot::climber->ChainsawPosition2();
 }
 // Called repeatedly when this Command is scheduled to run
 void CP2::Execute() {
@@ -25,11 +25,14 @@ void CP2::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool CP2::IsFinished() {
+	if(45==GetDistance()){
+		return true;
+	}
 	return false;
 }
 // Called once after isFinished returns true
 void CP2::End() {
-	
+	Robot::climber->ChainsawMovementOff();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
