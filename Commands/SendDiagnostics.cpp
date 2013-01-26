@@ -40,11 +40,23 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Support Shooter Jag Voltage", RobotMap::shooterSupportJag->GetOutputVoltage());
 	SmartDashboard::PutNumber("Support Shooter Jag Temperature", RobotMap::shooterSupportJag->GetTemperature());
 	
+	//Drive Train Encoders
+	SmartDashboard::PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
+	SmartDashboard::PutNumber("Right Drive Train Position", RobotMap::driveTrainRightMotor->GetPosition());
 	//Shooter Encoders
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
 	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
 	//Climber Transmission
 	SmartDashboard::PutNumber("Climber Transmission Status", RobotMap::climberClimberServo->Get());
+	//Gyro
+	SmartDashboard::PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
+	//Altimiter
+	SmartDashboard::PutNumber("Altimiter Value", RobotMap::navigationAltimiter->GetValue()); //not sure if GetValue is the function we want to be using?
+	//Climber Jaguar Diagnostics
+	SmartDashboard::PutNumber("Climber Chainsaw Jag Current", RobotMap::climberChainsawPositionJag->GetOutputCurrent());
+	SmartDashboard::PutNumber("Climber Chainsaw Jag Bus Voltage", RobotMap::climberChainsawPositionJag->GetBusVoltage());
+	SmartDashboard::PutNumber("Climber Chainsaw Jag Voltage", RobotMap::climberChainsawPositionJag->GetOutputVoltage());
+	SmartDashboard::PutNumber("Climber Chainsaw Jag Temperature", RobotMap::climberChainsawPositionJag->GetTemperature());
 }
 
 // Make this return true when this Command no longer needs to run execute()
