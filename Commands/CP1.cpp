@@ -17,7 +17,7 @@ CP1::CP1() {
 }
 // Called just before this Command runs the first time
 void CP1::Initialize() {
-	
+	Robot::climber->ChainsawPosition1();
 }
 // Called repeatedly when this Command is scheduled to run
 void CP1::Execute() {
@@ -25,11 +25,14 @@ void CP1::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool CP1::IsFinished() {
+	if(climberChainsawTopSwitch()){
+	return true;
+	}
 	return false;
 }
 // Called once after isFinished returns true
 void CP1::End() {
-	
+	Robot::climber->ChainsawMovementOff();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
