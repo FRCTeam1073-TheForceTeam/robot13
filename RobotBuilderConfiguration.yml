@@ -476,7 +476,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: ClimberDisengage
       Base: Joystick Button
       Children: []
@@ -500,7 +500,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: ChainsawPos1
       Base: Joystick Button
       Children: []
