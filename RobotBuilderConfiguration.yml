@@ -70,16 +70,28 @@ Children:
           name: Output Channel (PWM)
           validators: [PWMOutput]
           value: '1'
-    - Name: Chainsaw Position Jag
-      Base: CAN Jaguar
+    - Name: ClimberTalon
+      Base: Speed Controller
       Children: []
       Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id001 ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
-          default: '2'
-          name: CAN ID
-          validators: &id002 [CANID]
-          value: '3'
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2']
+          default: '1'
+          name: Output Module (Digital)
+          validators: [PWMOutput]
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: [Victor, Jaguar, Talon]
+          default: Victor
+          name: Type
+          validators: null
+          value: Talon
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+          default: '1'
+          name: Output Channel (PWM)
+          validators: [PWMOutput]
+          value: '2'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -91,10 +103,10 @@ Children:
       Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
+          choices: &id001 ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
           default: '2'
           name: CAN ID
-          validators: *id002
+          validators: &id002 [CANID]
           value: '6'
     - Name: RightMotor
       Base: CAN Jaguar
