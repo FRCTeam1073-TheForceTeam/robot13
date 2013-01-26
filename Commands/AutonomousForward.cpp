@@ -1,6 +1,8 @@
 #include "AutonomousForward.h"
 #define FORWARD_SPEED 100
 #define DISTANCE 150
+const float P = .02; //.02 equals 20 degrees full power.
+const float DriveSpeed = .400;
 AutonomousForward::AutonomousForward() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -11,12 +13,21 @@ AutonomousForward::AutonomousForward() {
 // Called just before this Command runs the first time
 void AutonomousForward::Initialize() {
 	Robot::driveTrain->GetPosition(startingLeft, startingRight);
-	Robot::driveTrain->Move(FORWARD_SPEED, FORWARD_SPEED);
-			
+//	Robot::driveTrain->Move(FORWARD_SPEED, FORWARD_SPEED);
+	startingAngle = Robot::driveTrain->GetGyroAngle();
 	
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonomousForward::Execute() {
+	float errorAngle = startingAngle - Robot::driveTrain->GetGyroAngle();
+	float speedAdjuster = errorAngle * P;
+	float leftSpeed = DriveSpeed * (1 - speedAdjuster);
+	float rightSpeed = DriveSpeed * (1 + speedAdjuster);
+	
+	Robot::driveTrain->Move(leftSpeed, rightSpeed);
+	
+
+		
 	
 }
 // Make this return true when his Command no longer needs to run execute()
