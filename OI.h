@@ -9,7 +9,6 @@ private:
 	JoystickButton* climberEngage;
 	JoystickButton* climberDown;
 	JoystickButton* climberUp;
-	JoystickButton* testSmartDashboard;
 	JoystickButton* shooterOffButton;
 	JoystickButton* shooterOnButton;
 	JoystickButton* shootButton;
