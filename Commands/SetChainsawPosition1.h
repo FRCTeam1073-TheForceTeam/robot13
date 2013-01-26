@@ -9,26 +9,26 @@
 // it from being updated in th future.
 
 
-#ifndef CP2_H
-#define CP2_H
+#ifndef SETCHAINSAWPOSITION1_H
+#define SETCHAINSAWPOSITION1_H
+
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
+#include "../Extensions/LimitSwitch.h"
 /**
  *
  *
  * @author ExampleAuthor
  */
-class CP2: public Command {
+class SetChainsawPosition1: public Command {
 public:
-	CP2();
+	SetChainsawPosition1();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	double GetDistance();
 };
 
 #endif

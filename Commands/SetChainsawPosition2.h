@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef CP3_H
-#define CP3_H
+#ifndef SETCHAINSAWPOSITION2_H
+#define SETCHAINSAWPOSITION2_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class CP3: public Command {
+class SetChainsawPosition2: public Command {
 public:
-	CP3();
+	SetChainsawPosition2();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	bool climberChainsawBottomSwitch();
 };
 
 #endif

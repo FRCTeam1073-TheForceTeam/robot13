@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef CLIMBERLOWER_H
-#define CLIMBERLOWER_H
+#ifndef SETCHAINSAWPOSITION3_H
+#define SETCHAINSAWPOSITION3_H
 
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
+#include "../Extensions/LimitSwitch.h"
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ClimberLower: public Command {
+class SetChainsawPosition3: public Command {
 public:
-	ClimberLower();
+	SetChainsawPosition3();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
