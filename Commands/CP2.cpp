@@ -17,7 +17,7 @@ CP2::CP2() {
 }
 // Called just before this Command runs the first time
 void CP2::Initialize() {
-	
+
 }
 // Called repeatedly when this Command is scheduled to run
 void CP2::Execute() {
