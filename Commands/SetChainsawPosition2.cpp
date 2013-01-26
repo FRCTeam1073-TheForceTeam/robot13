@@ -17,7 +17,7 @@ SetChainsawPosition2::SetChainsawPosition2() {
 }
 // Called just before this Command runs the first time
 void SetChainsawPosition2::Initialize() {
-	
+	Robot::climber->ChainsawPosition2();
 }
 // Called repeatedly when this Command is scheduled to run
 void SetChainsawPosition2::Execute() {
@@ -25,11 +25,14 @@ void SetChainsawPosition2::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool SetChainsawPosition2::IsFinished() {
+	if(45==Robot::climber->GetDistance()){
+		return true;
+	}
 	return false;
 }
 // Called once after isFinished returns true
 void SetChainsawPosition2::End() {
-	
+	Robot::climber->ChainsawMovementOff();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

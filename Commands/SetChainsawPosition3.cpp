@@ -17,7 +17,7 @@ SetChainsawPosition3::SetChainsawPosition3() {
 }
 // Called just before this Command runs the first time
 void SetChainsawPosition3::Initialize() {
-	
+	Robot::climber->ChainsawPosition3();
 }
 // Called repeatedly when this Command is scheduled to run
 void SetChainsawPosition3::Execute() {
@@ -25,11 +25,14 @@ void SetChainsawPosition3::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool SetChainsawPosition3::IsFinished() {
-	return false;
+	if(RobotMap::climberChainsawBottomSwitch->IsPressed()){
+			return true;
+		}
+		return false;
 }
 // Called once after isFinished returns true
 void SetChainsawPosition3::End() {
-	
+	Robot::climber->ChainsawMovementOff();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

@@ -15,7 +15,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
+#include "../Extensions/LimitSwitch.h"
 /**
  *
  *
@@ -29,7 +29,6 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	bool climberChainsawTopSwitch();
 };
 
 #endif

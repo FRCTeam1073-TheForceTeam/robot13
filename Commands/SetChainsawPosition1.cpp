@@ -25,7 +25,7 @@ void SetChainsawPosition1::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool SetChainsawPosition1::IsFinished() {
-	if(climberChainsawTopSwitch()){
+	if(RobotMap::climberChainsawTopSwitch->IsPressed()){
 		return true;
 		}
 		return false;
