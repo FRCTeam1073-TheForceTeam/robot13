@@ -21,6 +21,8 @@ public:
 private:
 	float startingLeft;
 	float startingRight;
+	float targetAngle;
+	float startingAngle;
 	
 };
 

@@ -21,7 +21,7 @@ public:
 	virtual void Interrupted();
 private:
 	bool isRight;
-	float startingAngle, currentAngle;
+	float startingAngle, currentAngle, targetAngle;
 	void Init(bool isRight);
 };
 

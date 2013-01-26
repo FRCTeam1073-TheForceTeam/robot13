@@ -1,21 +1,50 @@
 #include "AutonomousTurns.h"
 #include "cmath"
 #define FORWARD_SPEED 100
-#define TURNING_ANGLE 90
+#define BACKWARD_SPEED -100
+
+const float DriveSpeed = .400;
+const float P = .02; // Proportional correction factor. .02 = 20 degrees
+const float acceptableAngleError = 5.0;
+
+
+#define TURNING_ANGLE_DEGREES 90
 AutonomousTurns::AutonomousTurns() {Init(false);}
 AutonomousTurns::AutonomousTurns(bool isRight) {Init(isRight);}
 void AutonomousTurns::Initialize() {
 	startingAngle = Robot::driveTrain->GetGyroAngle();
-	if(isRight) Robot::driveTrain->Move(0, FORWARD_SPEED);
-	else Robot::driveTrain->Move(FORWARD_SPEED, 0);
+	if (isRight)
+		targetAngle = TURNING_ANGLE_DEGREES;
+	else 
+		targetAngle = -TURNING_ANGLE_DEGREES; 
+			
+			
+//	if(isRight) Robot::driveTrain->Move(DriveSpeed, -DriveSpeed);
+	//else Robot::driveTrain->Move(-DriveSpeed, DriveSpeed);
 }
 void AutonomousTurns::Execute() {
 	
+	currentAngle = startingAngle - Robot::driveTrain->GetGyroAngle(); 
+	
+	float errorAngle = targetAngle - currentAngle;
+	
+	float motorOutput = errorAngle * P;
+	
+	if (motorOutput > DriveSpeed) 
+		motorOutput = DriveSpeed;
+	else if (motorOutput < -DriveSpeed)
+		motorOutput = -DriveSpeed;
+	
+	Robot::driveTrain->Move(motorOutput, -motorOutput);
+	
+	
+	
 }
 bool AutonomousTurns::IsFinished() {
-	float value = startingAngle - Robot::driveTrain->GetGyroAngle();
-	if(!isRight) value = abs(value); 
-	return value > TURNING_ANGLE;
+	currentAngle = startingAngle - Robot::driveTrain->GetGyroAngle();
+	float errorAngle = targetAngle - currentAngle;
+	return (abs(errorAngle)< acceptableAngleError);
+		
 }
 void AutonomousTurns::End() {
 	Robot::driveTrain->Move(0, 0);
