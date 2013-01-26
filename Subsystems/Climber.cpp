@@ -37,5 +37,5 @@ void Climber::ChainsawPosition3(){
 	chainsawPositionJag->Set(CHAINSAW_DOWN_SPEED);
 }
 double Climber::GetDistance(){
-	RobotMap::climberChainsawElevationMEncoder->GetDistance();
+	return RobotMap::climberChainsawElevationMEncoder->GetDistance();
 }
