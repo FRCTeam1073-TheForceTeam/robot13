@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 2013 Ultimate Ascent Robot Code
 ================================
 
@@ -18,9 +17,3 @@ In order to run the Robot Code you need our Smart Dashboard Running, to configur
 	bash GetDashboard.sh
 
 From there you need Java to run the program.
-=======
-FRC 1073 Scripts
-===============
-
-Useful CML Utilities to facilitate Robot Development.
->>>>>>> 894ce98f448eede99ae4e52fe3c3263be96a9f23
