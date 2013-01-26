@@ -2,11 +2,11 @@
 #define MANUAL_SHOOTER_ANGLE_ADJUST
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-class ManualShooterAngleAjust : public Command{
+class ManualShooterAngleAdjust : public Command{
 public:
-	ManualShooterAngleAjust(bool coarse, bool positive);
+	ManualShooterAngleAdjust();
+	ManualShooterAngleAdjust(bool coarse, bool positive);
 	void Initialize();
-	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();

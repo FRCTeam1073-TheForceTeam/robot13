@@ -1,7 +1,7 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 #include "WPILib.h"
-#include "Extensions/LimitSwitch.h"
+#include "WPILibExtensions/WPILibExtensions.h"
 /*
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,9 +14,7 @@ public:
 	static Relay* lightLightRing;
 	static AnalogChannel* navigationAltimiter;
 	static Servo* climberClimberServo;
-	static SpeedController* climberClimberVictor;
-	static CANJaguar* climberChainsawPositionJag;
-	static CANJaguar* climberChainsawSpeedJag;
+	static SpeedController* climberClimberTalon;
 	static CANJaguar* driveTrainLeftMotor;
 	static CANJaguar* driveTrainRightMotor;
 	static Gyro* driveTrainGyro;
@@ -31,6 +29,8 @@ public:
 	//Chainsaw Top/Bottom Switches
 	static LimitSwitch* climberChainsawTopSwitch;
 	static LimitSwitch* climberChainsawBottomSwitch;
+	//Chainsaw Magnetic Encoder
+	static Encoder* climberChainsawElevationMEncoder;
 	static void init();
 };
 #endif

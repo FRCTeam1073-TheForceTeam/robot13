@@ -1,7 +1,7 @@
 #ifndef SHOOTER_H
 #define SHOOTER_H
+#include "../RobotMap.h"
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
 #define SHOOTER_SPEED 2000
 #define SHOOTER_OFF 0
 class Shooter: public Subsystem {
@@ -40,5 +40,6 @@ public:
 	int GetCoarseAdjustmentAngle();
 	void StopElevatorMotor();
 	void SetRawAngle(int elevationAngle);
+
 };
 #endif
