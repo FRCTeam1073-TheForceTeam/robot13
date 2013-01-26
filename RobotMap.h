@@ -31,6 +31,8 @@ public:
 	//Chainsaw Top/Bottom Switches
 	static LimitSwitch* climberChainsawTopSwitch;
 	static LimitSwitch* climberChainsawBottomSwitch;
+	//Chainsaw Magnetic Encoder
+	static Encoder* climberChainsawElevationMEncoder;
 	static void init();
 };
 #endif

@@ -27,6 +27,12 @@ void Climber::DisengageClimber(){
 void Climber::ChainsawMovementOff(){
 	chainsawPositionJag->Set(0);
 }
- void Climber::ChainsawPosition1(){
+void Climber::ChainsawPosition1(){
 	 chainsawPositionJag->Set(CHAINSAW_UP_SPEED);
  }
+void Climber::ChainsawPosition2(){
+	chainsawPositionJag->Set(CHAINSAW_DOWN_SPEED);
+}
+void Climber::ChainsawPosition3(){
+	chainsawPositionJag->Set(CHAINSAW_DOWN_SPEED);
+}
