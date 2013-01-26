@@ -13,7 +13,7 @@ void ClimberOff::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ClimberOff::Execute() {
-//TODO	Robot::climber->DisengageClimber();
+Robot::climber->DisengageClimber();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberOff::IsFinished() {return true;}
