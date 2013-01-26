@@ -25,7 +25,7 @@ void CP2::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool CP2::IsFinished() {
-	if(45==GetDistance()){
+	if(45==Robot::climber->GetDistance()){
 		return true;
 	}
 	return false;
