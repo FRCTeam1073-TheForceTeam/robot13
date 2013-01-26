@@ -56,7 +56,7 @@ void DriveTrain::Move(float left, float right){
 	rightMotor->Set(right);
 #ifdef DEBUGDRIVETRAIN	
 	printf("Left Y: %f  Right Y: %f\n", left, right);
-	printf("Left M: %f  Right M: %f\n", leftDriveMotor->Get(), rightDriveMotor->Get());
+	printf("Left M: %f  Right M: %f\n", leftMotor->Get(), rightMotor->Get());
 #endif
 }
 void DriveTrain::GetPosition(float &left,float &right){
