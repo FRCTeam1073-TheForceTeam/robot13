@@ -4,7 +4,7 @@
 Relay* RobotMap::lightLightRing = NULL;
 AnalogChannel* RobotMap::navigationAltimiter = NULL;
 Servo* RobotMap::climberClimberServo = NULL;
-CANJaguar* RobotMap::climberChainsawPositionJag = NULL;
+SpeedController* RobotMap::climberClimberTalon = NULL;
 CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightMotor = NULL;
 Gyro* RobotMap::driveTrainGyro = NULL;
@@ -32,8 +32,8 @@ void RobotMap::init() {
 	climberClimberServo = new Servo(1, 1);
 	lw->AddActuator("Climber", "ClimberServo", climberClimberServo);
 	
-	climberChainsawPositionJag = new CANJaguar(3);
-	
+	climberClimberTalon = new Talon(1, 2);
+	lw->AddActuator("Climber", "ClimberTalon", (Talon*) climberClimberTalon);
 	
 	driveTrainLeftMotor = new CANJaguar(6);
 	

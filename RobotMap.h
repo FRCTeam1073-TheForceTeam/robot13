@@ -14,7 +14,7 @@ public:
 	static Relay* lightLightRing;
 	static AnalogChannel* navigationAltimiter;
 	static Servo* climberClimberServo;
-	static CANJaguar* climberChainsawPositionJag;
+	static SpeedController* climberClimberTalon;
 	static CANJaguar* driveTrainLeftMotor;
 	static CANJaguar* driveTrainRightMotor;
 	static Gyro* driveTrainGyro;

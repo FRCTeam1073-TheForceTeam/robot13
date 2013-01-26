@@ -10,7 +10,6 @@ private:
 	JoystickButton* chainsawPos1;
 	JoystickButton* climberDisengage;
 	JoystickButton* climberEngage;
-	JoystickButton* testSmartDashboard;
 	JoystickButton* shooterOffButton;
 	JoystickButton* shooterOnButton;
 	JoystickButton* shootButton;
