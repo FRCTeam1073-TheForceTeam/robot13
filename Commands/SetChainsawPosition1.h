@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef CLIMBERLOWER_H
-#define CLIMBERLOWER_H
+#ifndef SETCHAINSAWPOSITION1_H
+#define SETCHAINSAWPOSITION1_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,14 +21,15 @@
  *
  * @author ExampleAuthor
  */
-class ClimberLower: public Command {
+class SetChainsawPosition1: public Command {
 public:
-	ClimberLower();
+	SetChainsawPosition1();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	bool climberChainsawTopSwitch();
 };
 
 #endif

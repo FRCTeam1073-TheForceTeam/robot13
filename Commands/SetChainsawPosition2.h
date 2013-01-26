@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef CLIMBERRAISE_H
-#define CLIMBERRAISE_H
+#ifndef SETCHAINSAWPOSITION2_H
+#define SETCHAINSAWPOSITION2_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class ClimberRaise: public Command {
+class SetChainsawPosition2: public Command {
 public:
-	ClimberRaise();
+	SetChainsawPosition2();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
