@@ -72,10 +72,4 @@ void RobotMap::init() {
 	
 	lw->AddSensor("Shooter", "ElevationBottomSwitch", shooterElevationBottomSwitch);
 	
-	shooterSupportJag = new CANJaguar(2);
-	
-	
-    driveTrainLeftMotor = new CANJaguar(6, CANJaguar::kPercentVbus);
-    driveTrainRightMotor = new CANJaguar(1, CANJaguar::kPercentVbus);
-    shooterPrimaryJag = new CANJaguar(5, CANJaguar:: kPercentVbus);
 }
