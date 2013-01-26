@@ -14,9 +14,12 @@ void SetCubicDrive::Initialize() {
 void SetCubicDrive::Execute() {
 	if (Robot::driveTrain->IsCubic()){
 		Robot::driveTrain->CubicOnOff(false);
+		printf("SetCubicDrive executed: cubic mode off\n");
 	}
-	else
+	else {
 		Robot::driveTrain->CubicOnOff(true);
+		printf("SetCubicDrive executed: cubic mode on\n");
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool SetCubicDrive::IsFinished() {
