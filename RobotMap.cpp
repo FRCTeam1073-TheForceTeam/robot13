@@ -43,7 +43,7 @@ void RobotMap::init() {
 	driveTrainLeftMotor = new CANJaguar(6);
 	
 	
-	//driveTrainRightMotor = new CANJaguar(8);
+	driveTrainRightMotor = new CANJaguar(9);
 	
 	
 	driveTrainGyro = new Gyro(1, 1);
