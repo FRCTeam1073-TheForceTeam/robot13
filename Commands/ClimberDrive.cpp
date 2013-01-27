@@ -21,7 +21,7 @@ void ClimberDrive::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ClimberDrive::Execute() {
-	
+	Robot::climber->Climb(Robot::oi->getOperatorStick()->GetY(GenericHID::kLeftHand));
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberDrive::IsFinished() {
