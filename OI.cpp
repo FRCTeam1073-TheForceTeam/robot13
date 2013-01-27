@@ -8,6 +8,7 @@
 #include "Commands/AutonomousTurnLeft.h"
 #include "Commands/AutonomousTurnRight.h"
 #include "Commands/AutonomousTurns.h"
+#include "Commands/ClimberDrive.h"
 #include "Commands/ClimberOff.h"
 #include "Commands/ClimberOn.h"
 #include "Commands/CollectDiscs.h"
@@ -38,9 +39,9 @@ OI::OI() {
 	chainsawPos1 = new JoystickButton(operatorStick, 5);
 	chainsawPos1->WhenPressed(new SetChainsawPosition1());
 	climberDisengage = new JoystickButton(operatorStick, 12);
-	climberDisengage->WhileHeld(new ClimberOff());
+	climberDisengage->WhenPressed(new ClimberOff());
 	climberEngage = new JoystickButton(operatorStick, 11);
-	climberEngage->WhileHeld(new ClimberOn());
+	climberEngage->WhenPressed(new ClimberOn());
 	shooterOffButton = new JoystickButton(operatorStick, 6);
 	shooterOffButton->WhenPressed(new ShooterOff());
 	shooterOnButton = new JoystickButton(operatorStick, 5);
