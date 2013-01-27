@@ -1,7 +1,7 @@
 #include "AutonomousTurns.h"
 #include "cmath"
-#define FORWARD_SPEED 100
-#define BACKWARD_SPEED -100
+#define FORWARD_SPEED .5 //.5 equals half speed
+#define BACKWARD_SPEED -.5 //-.5 equals reverse half speed
 const float DriveSpeed = .400;
 const float P = .02; // Proportional correction factor. .02 = 20 degrees
 const float acceptableAngleError = 5.0;
@@ -26,7 +26,6 @@ void AutonomousTurns::Execute() {
 	float errorAngle = targetAngle - currentAngle;
 	
 	float motorOutput = errorAngle * P;
-	
 	if (motorOutput > DriveSpeed) 
 		motorOutput = DriveSpeed;
 	else if (motorOutput < -DriveSpeed)

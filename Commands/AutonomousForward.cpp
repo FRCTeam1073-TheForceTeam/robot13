@@ -1,6 +1,6 @@
 #include "AutonomousForward.h"
-#define FORWARD_SPEED 100
-#define DISTANCE 150
+#define FORWARD_SPEED .5 //.5 equals half speed
+#define DISTANCE 150 //150 equals 150 inches
 const float P = .02; //.02 equals 20 degrees full power.
 const float DriveSpeed = .400;
 AutonomousForward::AutonomousForward() {
@@ -26,7 +26,7 @@ void AutonomousForward::Execute() {
 	
 	Robot::driveTrain->Move(leftSpeed, rightSpeed);
 	
-		
+	
 	
 }
 // Make this return true when his Command no longer needs to run execute()
