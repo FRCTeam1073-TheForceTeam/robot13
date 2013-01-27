@@ -1,39 +1,28 @@
 #include "WriteDriveData.h"
 int WriteDriveData::count = 0;
-const char * WriteDriveData::name = "DriveData.csv";WriteDriveData::WriteDriveData() {
-	//Hack diagnostic command, do not actually require the drivetrain!
-	//Requires(Robot::driveTrain);
-	Requires(Robot::shooter);
-#if 0
-	file = fopen(name, "w+");
-	fprintf(file, "Left Encoder Speed, Left Encoder Voltage, Left Encoder Current, " 
-		"Right Encoder Speed, Right Encoder Voltage, Right Encoder Current, "
-		"Shooter Encoder Speed, Shooter Encoder Voltage, Shooter Encoder Current, "
-		"Battery Voltage, Gyro Angle\n");
-	fclose(file);
-#endif
-}
+extern "C" int Priv_SetwriteFileAllowed(UINT32 enable);
+WriteDriveData::WriteDriveData() {}
 void WriteDriveData::Initialize() {
-#if 0
-	file = fopen(name, "w+");
-	printf("Starting dump to:\n");
-	puts(name);
-#endif
+	sprintf(fname, "%s%d%s", "ShooterData", count, ".csv");
+	printf("Dumping %s\n", fname);
+	file = fopen(fname, "w+");
+	fprintf(file, "Timer, Primary Shooter Speed, Primary Shooter Current, Primary Shooter Voltage, "
+			"Support Shooter Speed, Support Shooter Current, Support Shooter Voltage\n");
+			//	  "Support Shooter Speed, Support Shooter Current\n");"
+	count++;
 }
 void WriteDriveData::Execute() {
-#if 0
-	fprintf(file, "%f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f\n",
-		Robot::driveTrain->GetDriveSpeed(true), Robot::driveTrain->GetDriveBusVoltage(true),
-		Robot::driveTrain->GetDriveCurrent(true), Robot::driveTrain->GetDriveSpeed(false),
-		Robot::driveTrain->GetDriveBusVoltage(false), Robot::driveTrain->GetDriveCurrent(false),
-		Robot::shooter->GetEncoderSpeed(), Robot::shooter->GetVoltage(), Robot::shooter->GetCurrent(),
-		DriverStation::GetInstance()->GetBatteryVoltage(), Robot::driveTrain->GetGyroAngle());
-#endif			
+	float time = (float)Timer::GetFPGATimestamp();
+	fprintf(file, "%f, %f, %f, %f, %f, %f, %f\n", time,
+			RobotMap::shooterPrimaryJag->GetSpeed(), RobotMap::shooterPrimaryJag->GetOutputCurrent(),
+			RobotMap::shooterPrimaryJag->GetOutputVoltage(), RobotMap::shooterSupportJag->GetSpeed(),
+			RobotMap::shooterSupportJag->GetOutputVoltage(), RobotMap::shooterSupportJag->GetOutputCurrent());
+			//RobotMap::shooterSupportJag->GetSpeed(), RobotMap::shooterSupportJag->GetOutputCurrent());
 }
-bool WriteDriveData::IsFinished() {return true;}	//TODO: make this right
+bool WriteDriveData::IsFinished() {return false;}
 void WriteDriveData::End() {Finished();}
 void WriteDriveData::Interrupted() {Finished();}
 void WriteDriveData::Finished(){
 	puts("Dump finished");
-//	fclose(file);
+	fclose(file);
 }

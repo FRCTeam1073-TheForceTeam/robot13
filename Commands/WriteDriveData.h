@@ -1,10 +1,7 @@
 #ifndef WRITEDRIVEDATA_H
 #define WRITEDRIVEDATA_H
-
-
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
 class WriteDriveData: public Command {
 public:
 	static int count;
@@ -15,9 +12,9 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 private:
+	char fname[81];
 	FILE* file;
-	static const char* name;
+	Timer* timer;
 	void Finished();	//not sure if the Cancel method calls Interrupt or End so I'll just implement both...
 };
-
 #endif

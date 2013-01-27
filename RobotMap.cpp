@@ -46,7 +46,6 @@ void RobotMap::init() {
 	driveTrainGyro->SetSensitivity(1.25);
 	shooterElevationJag = new CANJaguar(4);
 	
-	
 	shooterElevationEncoder = new Encoder(1, 7, 1, 8, false, Encoder::k4X);
 	lw->AddSensor("Shooter", "ElevationEncoder", shooterElevationEncoder);
 	shooterElevationEncoder->SetDistancePerPulse(1.0);
@@ -57,7 +56,7 @@ void RobotMap::init() {
 	shooterWheelRPMEncoder->SetDistancePerPulse(1.0);
         shooterWheelRPMEncoder->SetPIDSourceParameter(Encoder::kRate);
         shooterWheelRPMEncoder->Start();
-	shooterPrimaryJag = new CANJaguar(5);
+	shooterPrimaryJag = new CANJaguar(2);
 	
 	
 	shooterSupportJag = new CANJaguar(7);
