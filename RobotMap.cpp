@@ -60,7 +60,7 @@ void RobotMap::init() {
 	shooterWheelRPMEncoder->SetDistancePerPulse(1.0);
         shooterWheelRPMEncoder->SetPIDSourceParameter(Encoder::kRate);
         shooterWheelRPMEncoder->Start();
-	shooterPrimaryJag = new CANJaguar(2);
+	shooterPrimaryJag = new CANJaguar(5);
 	
 	
 	shooterSupportJag = new CANJaguar(7);
