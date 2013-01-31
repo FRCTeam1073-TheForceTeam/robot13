@@ -31,7 +31,7 @@ AutonomousMiddleBack::AutonomousMiddleBack() {
 	double shotWaitTime = 1;
 	Robot::shooter->SetRawElevationAngle(elevationAngle);
 	Robot::shooter->SetRawSpeed(shooterSpeed);
-	AddSequential(new AutonomousForward);
+	AddSequential(new AutonomousForward(0));
 	AddSequential(new MoveShooterToSetElevationAngle());
 	AddSequential(new ShooterOn());
 	AddSequential(new WaitCommand(waitTime));
