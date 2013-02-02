@@ -22,7 +22,12 @@ void ClimberDrive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ClimberDrive::Execute() {
 #warning "do we want the climber moving constantly...?"
-	Robot::climber->Climb(Robot::oi->getOperatorStick()->GetY(GenericHID::kLeftHand));
+	if(Robot::climber->getClimberOnOff()){
+		Robot::climber->Climb(Robot::oi->getOperatorStick()->GetY(GenericHID::kLeftHand));
+	}
+	else{
+		Robot::climber->Climb(0);
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ClimberDrive::IsFinished() {

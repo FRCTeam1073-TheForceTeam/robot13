@@ -21,6 +21,7 @@ public:
 	Climber();
 	void InitDefaultCommand();
 	void Climb(float yPosition);
+	bool getClimberOnOff();
 	void EngageClimber();
 	void DisengageClimber();
 	void ChainsawPosition1();
