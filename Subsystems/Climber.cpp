@@ -36,9 +36,12 @@ void Climber::Climb(float yPosition){
 	//	Climber::rightClimberJag->Set(0);
 		
 	}
-
-
 }
+
+bool Climber::getClimberOnOff(){
+	return ClimberOnOff;
+}
+	
 void Climber::EngageClimber(){
 	//printf("\n\n *****In engage *******\n\n");
 	ClimberOnOff=true;

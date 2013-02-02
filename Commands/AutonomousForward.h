@@ -12,7 +12,7 @@
  */
 class AutonomousForward: public Command {
 public:
-	AutonomousForward();
+	AutonomousForward(float distance);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -23,6 +23,7 @@ private:
 	float startingRight;
 	float targetAngle;
 	float startingAngle;
+	float distanceToDrive;
 	
 };
 
