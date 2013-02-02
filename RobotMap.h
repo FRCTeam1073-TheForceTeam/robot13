@@ -32,6 +32,7 @@ public:
 	static LimitSwitch* climberChainsawBottomSwitch;
 	//Chainsaw Magnetic Encoder
 	static Encoder* climberChainsawElevationMEncoder;
+	static DigitalInput* velocity1;
 	static void init();
 };
 #endif
