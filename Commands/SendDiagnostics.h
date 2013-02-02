@@ -17,6 +17,15 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	virtual bool TestJags(CANJaguar* jag);
+private:
+	bool leftDriveExists;
+	bool rightDriveExists;
+	bool leftClimberExists;
+	bool rightClimberExists;
+	bool primaryShooterExists;
+	bool supportShooterExists;
+	bool elevationShooterExists;
 };
 
 #endif

@@ -1,6 +1,10 @@
 #ifndef FIELD_ELEMENTS_H
 #define FIELD_ELEMENTS_H
 
+#define DISC_DIAMETER_FEET 1
+#define DISC_DIAMETER_INCHES (12 * DISC_DIAMETER_FEET)
+
+//field
 #define LENGTH = (54 * 12)
 #define WIDTH =  (27 * 12)
 
