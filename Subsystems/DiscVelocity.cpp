@@ -3,7 +3,7 @@
 #include "../Commands/DefaultDiscVelocityCommand.h"
 
 //C style function forinterrupt...
-int BallSenseInterrupt(uint32_t mask, DiscVelocity* discVelocity)
+int DiscInterrupt(uint32_t mask, DiscVelocity* discVelocity)
 {
 	discVelocity->ProcessInterrupt();
 	return 1;
@@ -12,6 +12,8 @@ DiscVelocity::DiscVelocity(DigitalInput* input) : Subsystem("Disc Velocity"){
 		this->input = input;
 		input->SetUpSourceEdge(true, true);
 		input->EnableInterrupts();
+		input->RequestInterrupts((tInterruptHandler)DiscInterrupt
+				, this);
 		Reset();
 		newData = false;
 }

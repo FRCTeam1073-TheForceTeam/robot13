@@ -5,13 +5,14 @@
 
 class DefaultDiscVelocityCommand : public Command{
 public:
-	DefaultDiscVelocityCommand() {}
+	DefaultDiscVelocityCommand() {Requires(Robot::discVelocity);}
 	void Initialize(){}
 	void Execute(){
-/*		if(Robot::discVelocity->IsThereNewData()){
+		Robot::discVelocity->ProcessInterrupt();
+		if(Robot::discVelocity->IsThereNewData()){
 			printf("Disc Shot @ %ffps!\n", Robot::discVelocity->GetVelocityFPS());
 		}	
-*/	}
+	}
 	bool IsFinished() {return false;}
 	void End(){}
 	void Interrupted(){}

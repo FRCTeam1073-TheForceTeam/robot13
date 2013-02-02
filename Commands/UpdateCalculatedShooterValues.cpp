@@ -6,7 +6,10 @@ UpdateCalculatedShooterValues::UpdateCalculatedShooterValues(){
 void UpdateCalculatedShooterValues::Initialize(){}
 void UpdateCalculatedShooterValues::Execute(){	
 	Robot::shooter->UpdateDefaults(Robot::allignmentData->GetCalculatedDistance(), 
-		Robot::allignmentData->GetCalculatedAngle());}
+		Robot::allignmentData->GetCalculatedAngle());
+	
+}
+
 //goes until the Shooter is required elsewhere...
 bool UpdateCalculatedShooterValues::IsFinished() {return false;}
 void UpdateCalculatedShooterValues::End() {}
