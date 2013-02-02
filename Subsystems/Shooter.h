@@ -30,7 +30,7 @@ public:
 	bool IsShooterMotorOn();
 	int GetPrimarySetSpeed();	//speed used for shooter wheel
 	int GetSupportSetSpeed();	//returns manipulation of GetPrimarySetSpeed() 
-	int GetSetElevationAngle();
+	int GetElevationAngle();
 	int GetDefaultSpeed();
 	int GetDefaultElevationAngle();
 	bool IsAtSetAngle();
