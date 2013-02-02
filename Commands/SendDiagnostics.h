@@ -17,6 +17,8 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	virtual bool TestJags(CANJaguar* jag);
+private:
 };
 
 #endif
