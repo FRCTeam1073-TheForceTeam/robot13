@@ -80,9 +80,6 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
 	//Gyro
 	SmartDashboard::PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
-	//Altimiter
-	SmartDashboard::PutNumber("Altimiter Value", RobotMap::navigationAltimiter->GetValue()); //not sure if GetValue is the function we want to be using?
-
 }
 
 // Make this return true when this Command no longer needs to run execute()
