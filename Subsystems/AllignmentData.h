@@ -15,6 +15,8 @@ public:
 	void InitDefaultCommand();
 	double GetCalculatedDistance();
 	double GetCalculatedAngle();
+	void SendCurrentAngle(int angle);
+	void SendCurrentSpeed(int speed);
 	bool IsTarget();
 };
 #endif
