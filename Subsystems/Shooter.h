@@ -34,6 +34,7 @@ public:
 	int GetDefaultSpeed();
 	int GetDefaultElevationAngle();
 	bool IsAtSetAngle();
+	float GetCurrentAngle();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
 	int GetFineAdjustmentAngle();
@@ -41,5 +42,6 @@ public:
 	void StopElevatorMotor();
 	void SetRawAngle(int elevationAngle);
 	void SetPID(double P, double I, double D);
+	void MoveElevatorMotor(float speed);
 };
 #endif
