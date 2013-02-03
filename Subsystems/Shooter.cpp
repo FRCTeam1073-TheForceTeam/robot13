@@ -43,6 +43,7 @@ void Shooter::ShooterOnOff(bool on){
 	else {
 		primaryJag->Set(SHOOTER_OFF);
 		supportJag->Set(SHOOTER_OFF);
+		isShooterMotorOn = false;
 	}
 }
 bool Shooter::IsShooterMotorOn() {return isShooterMotorOn;}
