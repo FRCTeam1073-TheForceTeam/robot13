@@ -15,7 +15,7 @@ Light* Robot::light = NULL;
 AllignmentData* Robot::allignmentData = NULL;
 DiscVelocity* Robot::discVelocity = NULL;
 Robot::Robot() {
-	NetworkTable::SetTeam(1073);
+	//NetworkTable::SetTeam(1073);
 }
 void Robot::RobotInit() {
 	printf("\n\nFRC2013 " __DATE__ " " __TIME__ "\n" __FILE__ "\n\n" );
