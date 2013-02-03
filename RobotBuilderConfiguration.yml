@@ -37,22 +37,22 @@ Children:
       Children: []
       Properties:
         Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id007 ['1', '2']
+          choices: &id003 ['1', '2']
           default: '1'
           name: Output Module (Digital)
-          validators: &id008 [PWMOutput]
+          validators: &id004 [PWMOutput]
           value: '1'
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id009 [Victor, Jaguar, Talon]
+          choices: &id005 [Victor, Jaguar, Talon]
           default: Victor
           name: Type
           validators: null
           value: Talon
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id010 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+          choices: &id006 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
           default: '1'
           name: Output Channel (PWM)
-          validators: &id011 [PWMOutput]
+          validators: &id007 [PWMOutput]
           value: '2'
     - Name: LeftClimberJag
       Base: CAN Jaguar
@@ -124,58 +124,75 @@ Children:
   - Name: Collector
     Base: Subsystem
     Children:
-    - Name: discCountSensor
-      Base: Analog Input
-      Children: []
-      Properties:
-        Input Module (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id003 ['1', '2']
-          default: '1'
-          name: Input Module (Analog)
-          validators: &id004 [AnalogInput]
-          value: '1'
-        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id005 ['1', '2', '3', '4', '5', '6', '7', '8']
-          default: '1'
-          name: Input Channel (Analog)
-          validators: &id006 [AnalogInput]
-          value: '2'
-    - Name: discPositionSensor
-      Base: Analog Input
-      Children: []
-      Properties:
-        Input Module (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
-          default: '1'
-          name: Input Module (Analog)
-          validators: *id004
-          value: '1'
-        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id005
-          default: '1'
-          name: Input Channel (Analog)
-          validators: *id006
-          value: '3'
     - Name: motor
       Base: Speed Controller
       Children: []
       Properties:
         Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id007
+          choices: *id003
           default: '1'
           name: Output Module (Digital)
-          validators: *id008
+          validators: *id004
           value: '1'
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id009
+          choices: *id005
           default: Victor
           name: Type
           validators: null
           value: Victor
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id010
+          choices: *id006
           default: '1'
           name: Output Channel (PWM)
+          validators: *id007
+          value: '1'
+    - Name: discCountSensor
+      Base: Digital Input
+      Children: []
+      Properties:
+        Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id008 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+            '12', '13', '14']
+          default: '1'
+          name: Input Channel (Digital)
+          validators: &id009 [DigitalChannel]
+          value: '3'
+        Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id010 ['1', '2']
+          default: '1'
+          name: Input Module (Digital)
+          validators: &id011 [DigitalChannel]
+          value: '1'
+    - Name: discUpsideDownSensor
+      Base: Digital Input
+      Children: []
+      Properties:
+        Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id008
+          default: '1'
+          name: Input Channel (Digital)
+          validators: *id009
+          value: '4'
+        Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id010
+          default: '1'
+          name: Input Module (Digital)
+          validators: *id011
+          value: '1'
+    - Name: discOnShooterBed
+      Base: Digital Input
+      Children: []
+      Properties:
+        Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id008
+          default: '1'
+          name: Input Channel (Digital)
+          validators: *id009
+          value: '5'
+        Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id010
+          default: '1'
+          name: Input Module (Digital)
           validators: *id011
           value: '1'
     Properties:
@@ -799,7 +816,7 @@ Children:
     Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
+        name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   - Name: SetChainsawPosition1
@@ -861,7 +878,7 @@ Properties:
     validators: null, value: 1073}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Derek\NetBeansProjects',
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Infern0\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\Infern0\workspace'}
   Java Project: !!robotbuilder.data.properties.FileProperty {default: '', extension: null,
