@@ -29,6 +29,7 @@ void DriveTrain::InitDefaultCommand() {
 // here. Call these from Commands.
 void DriveTrain::TurboOnOff(bool on){
 	isTurboOn = on;
+	//printf("TurboOnOff Called\n");
 }
 void DriveTrain::CubicOnOff(bool on){
 	isCubicOn = on;
@@ -44,16 +45,19 @@ void DriveTrain::Move(float left, float right){
 	if(isTurboOn){
 		leftMotor->Set(left != 0 ? (left < 0 ? -1 : 1) : 0);
 		rightMotor->Set(right != 0 ? (right < 0 ? -1 : 1) : 0);
+		printf("In Turbo Mode\n");
 	}
-	if (left < .05 && left > -.05){
-		left = 0;
+	else{
+		if (left < .05 && left > -.05){
+			left = 0;
+		}
+		if (right < .05 && right > -.05){
+			right = 0;
+		}
+		//writes y-value of joystick to jag 
+		leftMotor->Set(left);
+		rightMotor->Set(right);
 	}
-	if (right < .05 && right > -.05){
-		right = 0;
-	}
-	//writes y-value of joystick to jag 
-	leftMotor->Set(left);
-	rightMotor->Set(right);
 #ifdef DEBUGDRIVETRAIN	
 	printf("Left Y: %f  Right Y: %f\n", left, right);
 	printf("Left M: %f  Right M: %f\n", leftMotor->Get(), rightMotor->Get());

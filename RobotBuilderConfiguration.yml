@@ -359,7 +359,7 @@ Children:
   - Name: LeftStick
     Base: Joystick
     Children:
-    - Name: LeftTurbo
+    - Name: LeftTurboOn
       Base: Joystick Button
       Children: []
       Properties:
@@ -367,10 +367,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: &id022 [TypeDropdownSelected]
-          value: TurboDrive
+          validators: &id013 [TypeDropdownSelected]
+          value: TurboDriveOn
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id023 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+          choices: &id014 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
             '12']
           default: '1'
           name: Button
@@ -442,7 +442,7 @@ Children:
   - Name: RightStick
     Base: Joystick
     Children:
-    - Name: RightTurbo
+    - Name: RightTurboOn
       Base: Joystick Button
       Children: []
       Properties:
@@ -451,7 +451,7 @@ Children:
           name: Command
           type: Command
           validators: *id022
-          value: TurboDrive
+          value: TurboDriveOn
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id023
           default: '1'
@@ -825,7 +825,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Climber}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: TurboDrive
+  - Name: TurboDriveOn
     Base: Command
     Children: []
     Properties:
