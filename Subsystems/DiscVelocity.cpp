@@ -10,10 +10,9 @@ int DiscInterrupt(uint32_t mask, DiscVelocity* discVelocity)
 }
 DiscVelocity::DiscVelocity(DigitalInput* input) : Subsystem("Disc Velocity"){
 		this->input = input;
+		input->RequestInterrupts((tInterruptHandler)DiscInterrupt, this);
 		input->SetUpSourceEdge(true, true);
 		input->EnableInterrupts();
-		input->RequestInterrupts((tInterruptHandler)DiscInterrupt
-				, this);
 		Reset();
 		newData = false;
 }
