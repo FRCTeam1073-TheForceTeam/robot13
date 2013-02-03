@@ -39,7 +39,7 @@ void AutonomousTurns::Execute() {
 bool AutonomousTurns::IsFinished() {
 	currentAngle = startingAngle - Robot::driveTrain->GetGyroAngle();
 	float errorAngle = targetAngle - currentAngle;
-	return (abs(errorAngle)< acceptableAngleError);
+	return (fabs(errorAngle)< acceptableAngleError);
 		
 }
 void AutonomousTurns::End() {
