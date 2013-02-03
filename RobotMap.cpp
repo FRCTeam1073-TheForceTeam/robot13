@@ -9,9 +9,9 @@ CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightMotor = NULL;
 Gyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectormotor = NULL;
-DigitalInput* RobotMap::collectordiscCountSensor = NULL;
-DigitalInput* RobotMap::collectordiscUpsideDownSensor = NULL;
 DigitalInput* RobotMap::collectordiscOnShooterBed = NULL;
+AnalogChannel* RobotMap::collectordiscCountSensor = NULL;
+AnalogChannel* RobotMap::collectordiscUpsideDownSensor = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
 Encoder* RobotMap::shooterElevationEncoder = NULL;
 Encoder* RobotMap::shooterWheelRPMEncoder = NULL;
@@ -53,14 +53,14 @@ void RobotMap::init() {
 	collectormotor = new Victor(1, 1);
 	lw->AddActuator("Collector", "motor", (Victor*) collectormotor);
 	
-	collectordiscCountSensor = new DigitalInput(1, 3);
-	lw->AddSensor("Collector", "discCountSensor", collectordiscCountSensor);
-	
-	collectordiscUpsideDownSensor = new DigitalInput(1, 4);
-	lw->AddSensor("Collector", "discUpsideDownSensor", collectordiscUpsideDownSensor);
-	
 	collectordiscOnShooterBed = new DigitalInput(1, 5);
 	lw->AddSensor("Collector", "discOnShooterBed", collectordiscOnShooterBed);
+	
+	collectordiscCountSensor = new AnalogChannel(1, 2);
+	lw->AddSensor("Collector", "discCountSensor", collectordiscCountSensor);
+	
+	collectordiscUpsideDownSensor = new AnalogChannel(1, 3);
+	lw->AddSensor("Collector", "discUpsideDownSensor", collectordiscUpsideDownSensor);
 	
 	shooterElevationJag = new CANJaguar(4);
 	
