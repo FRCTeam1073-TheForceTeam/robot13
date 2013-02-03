@@ -28,13 +28,13 @@ bool SendDiagnostics::TestJags(CANJaguar* jag)
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
-leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
-rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
-leftClimberExists = TestJags(RobotMap::climberLeftClimberJag);
-rightClimberExists = TestJags(RobotMap::climberRightClimberJag);
-primaryShooterExists = TestJags(RobotMap::shooterPrimaryJag);
-supportShooterExists = TestJags(RobotMap::shooterSupportJag);
-elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
+	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
+	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
+	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
+	rightClimberExists = TestJags(RobotMap::climberRightCIM);
+	primaryShooterExists = TestJags(RobotMap::shooterPrimaryJag);
+	supportShooterExists = TestJags(RobotMap::shooterSupportJag);
+	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -32,7 +32,7 @@ Children:
   - Name: Climber
     Base: Subsystem
     Children:
-    - Name: ClimberTalon
+    - Name: RightClimbWindowTalon
       Base: Speed Controller
       Children: []
       Properties:
@@ -54,7 +54,7 @@ Children:
           name: Output Channel (PWM)
           validators: &id007 [PWMOutput]
           value: '2'
-    - Name: LeftClimberJag
+    - Name: LeftCIM
       Base: CAN Jaguar
       Children: []
       Properties:
@@ -64,7 +64,7 @@ Children:
           name: CAN ID
           validators: &id002 [CANID]
           value: '2'
-    - Name: RightClimberJag
+    - Name: RightCIM
       Base: CAN Jaguar
       Children: []
       Properties:
@@ -73,6 +73,28 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
+          value: '3'
+    - Name: LeftClimbWindowTalon
+      Base: Speed Controller
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id004
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: Victor
+          name: Type
+          validators: null
+          value: Talon
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id006
+          default: '1'
+          name: Output Channel (PWM)
+          validators: *id007
           value: '3'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
@@ -124,7 +146,7 @@ Children:
   - Name: Collector
     Base: Subsystem
     Children:
-    - Name: motor
+    - Name: Motor
       Base: Speed Controller
       Children: []
       Properties:
