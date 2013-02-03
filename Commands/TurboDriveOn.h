@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef TURBODRIVE_H
-#define TURBODRIVE_H
+#ifndef TURBODRIVEON_H
+#define TURBODRIVEON_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class TurboDrive: public Command {
+class TurboDriveOn: public Command {
 public:
-	TurboDrive();
+	TurboDriveOn();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
