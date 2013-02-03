@@ -18,6 +18,10 @@ public:
 	static CANJaguar* driveTrainLeftMotor;
 	static CANJaguar* driveTrainRightMotor;
 	static Gyro* driveTrainGyro;
+	static SpeedController* collectormotor;
+	static DigitalInput* collectordiscCountSensor;
+	static DigitalInput* collectordiscUpsideDownSensor;
+	static DigitalInput* collectordiscOnShooterBed;
 	static CANJaguar* shooterElevationJag;
 	static Encoder* shooterElevationEncoder;
 	static Encoder* shooterWheelRPMEncoder;
@@ -31,6 +35,7 @@ public:
 	static LimitSwitch* climberChainsawBottomSwitch;
 	//Chainsaw Magnetic Encoder
 	static Encoder* climberChainsawElevationMEncoder;
+	static DigitalInput* velocity2;
 	static DigitalInput* velocity1;
 	static void init();
 };

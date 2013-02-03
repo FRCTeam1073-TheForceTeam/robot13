@@ -8,10 +8,6 @@ SetCubicDrive::SetCubicDrive() {
 }
 // Called just before this Command runs the first time
 void SetCubicDrive::Initialize() {
-	
-}
-// Called repeatedly when this Command is scheduled to run
-void SetCubicDrive::Execute() {
 	if (Robot::driveTrain->IsCubic()){
 		Robot::driveTrain->CubicOnOff(false);
 		printf("SetCubicDrive executed: cubic mode off\n");
@@ -21,9 +17,12 @@ void SetCubicDrive::Execute() {
 		printf("SetCubicDrive executed: cubic mode on\n");
 	}
 }
+// Called repeatedly when this Command is scheduled to run
+void SetCubicDrive::Execute() {
+}
 // Make this return true when this Command no longer needs to run execute()
 bool SetCubicDrive::IsFinished() {
-	return false;
+	return true;
 }
 // Called once after isFinished returns true
 void SetCubicDrive::End() {
