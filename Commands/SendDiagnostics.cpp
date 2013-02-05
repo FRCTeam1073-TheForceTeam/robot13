@@ -40,6 +40,7 @@ void SendDiagnostics::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
+	printf("Execute has been called");
 	count++;
 	if(count % 20 != 0)
 	{
@@ -48,16 +49,20 @@ void SendDiagnostics::Execute() {
 	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists == true)
 	{
+		printf("Sending left drive diagnostics");
 		SmartDashboard::PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftMotor->GetOutputCurrent());
 		SmartDashboard::PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftMotor->GetBusVoltage());
 		SmartDashboard::PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftMotor->GetOutputVoltage());
 		SmartDashboard::PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftMotor->GetTemperature());
+		SmartDashboard::PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
+		printf("SENT left drive diagnostics");
 	}
 	if(rightDriveExists == true){
 		SmartDashboard::PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightMotor->GetOutputCurrent());
 		SmartDashboard::PutNumber("Right Drive Jag Bus Voltage", RobotMap::driveTrainRightMotor->GetBusVoltage());
 		SmartDashboard::PutNumber("Right Drive Jag Voltage", RobotMap::driveTrainRightMotor->GetOutputVoltage());
 		SmartDashboard::PutNumber("Right Drive Jag Temperature", RobotMap::driveTrainRightMotor->GetTemperature());
+		SmartDashboard::PutNumber("Right Drive Train Position", RobotMap::driveTrainRightMotor->GetPosition());
 	}
 	//Shooter Jaguar Diagnostics
 	if(elevationShooterExists == true){
@@ -78,9 +83,6 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Support Shooter Jag Voltage", RobotMap::shooterSupportJag->GetOutputVoltage());
 		SmartDashboard::PutNumber("Support Shooter Jag Temperature", RobotMap::shooterSupportJag->GetTemperature());
 	}
-	//Drive Train Encoders
-	SmartDashboard::PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
-	SmartDashboard::PutNumber("Right Drive Train Position", RobotMap::driveTrainRightMotor->GetPosition());
 	//Shooter Encoders
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
 	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
