@@ -12,10 +12,8 @@
 #include "Commands/ClimberOff.h"
 #include "Commands/ClimberOn.h"
 #include "Commands/DiscsReverse.h"
-#include "Commands/ElevationPID.h"
 #include "Commands/EngageClimber.h"
 #include "Commands/JoystickDrive.h"
-#include "Commands/LightOn.h"
 #include "Commands/PullShooterData.h"
 #include "Commands/SetChainsawPosition1.h"
 #include "Commands/SetChainsawPosition2.h"
@@ -23,8 +21,6 @@
 #include "Commands/SetCubicDrive.h"
 #include "Commands/SetShooterToCalculatedValues.h"
 #include "Commands/Shoot.h"
-#include "Commands/ShooterAdjustAngle.h"
-#include "Commands/ShooterDefaultCommand.h"
 #include "Commands/ShooterOff.h"
 #include "Commands/ShooterOn.h"
 #include "Commands/TurboDriveOn.h"
@@ -71,7 +67,6 @@ OI::OI() {
 	SmartDashboard::PutData("AutonomousLeftBack", new AutonomousLeftBack());
 	SmartDashboard::PutData("AutonomousMiddleBack", new AutonomousMiddleBack());
 	SmartDashboard::PutData("Autonomous Turns", new AutonomousTurns());
-	SmartDashboard::PutData("LightOn", new LightOn());
 	SmartDashboard::PutData("ShooterOn", new ShooterOn());
 	SmartDashboard::PutData("ShooterOff", new ShooterOff());
 	SmartDashboard::PutData("ClimberOn", new ClimberOn());

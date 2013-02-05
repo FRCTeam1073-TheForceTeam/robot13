@@ -26,6 +26,5 @@ void TurboDriveOn::End() {
 // subsystems is scheduled to run
 void TurboDriveOn::Interrupted() {
 	Robot::driveTrain->TurboOnOff(false);
-
 	//printf("TurboDriveOn Interrupted\n");
 }
