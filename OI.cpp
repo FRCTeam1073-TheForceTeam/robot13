@@ -14,7 +14,6 @@
 #include "Commands/DiscsReverse.h"
 #include "Commands/EngageClimber.h"
 #include "Commands/JoystickDrive.h"
-#include "Commands/LightOn.h"
 #include "Commands/PullShooterData.h"
 #include "Commands/SetChainsawPosition1.h"
 #include "Commands/SetChainsawPosition2.h"
@@ -68,7 +67,6 @@ OI::OI() {
 	SmartDashboard::PutData("AutonomousLeftBack", new AutonomousLeftBack());
 	SmartDashboard::PutData("AutonomousMiddleBack", new AutonomousMiddleBack());
 	SmartDashboard::PutData("Autonomous Turns", new AutonomousTurns());
-	SmartDashboard::PutData("LightOn", new LightOn());
 	SmartDashboard::PutData("ShooterOn", new ShooterOn());
 	SmartDashboard::PutData("ShooterOff", new ShooterOff());
 	SmartDashboard::PutData("ClimberOn", new ClimberOn());
