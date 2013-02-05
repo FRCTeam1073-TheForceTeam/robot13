@@ -19,6 +19,7 @@ public:
 	virtual void Interrupted();
 	virtual bool TestJags(CANJaguar* jag);
 private:
+	int count;
 	bool leftDriveExists;
 	bool rightDriveExists;
 	bool leftClimberExists;
