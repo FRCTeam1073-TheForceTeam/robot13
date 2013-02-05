@@ -12,8 +12,8 @@
 #include "Commands/ClimberOff.h"
 #include "Commands/ClimberOn.h"
 #include "Commands/DiscsReverse.h"
-
-#include "Commands/ElevationPID.h"#include "Commands/EngageClimber.h"
+#include "Commands/ElevationPID.h"
+#include "Commands/EngageClimber.h"
 #include "Commands/JoystickDrive.h"
 #include "Commands/LightOn.h"
 #include "Commands/PullShooterData.h"
