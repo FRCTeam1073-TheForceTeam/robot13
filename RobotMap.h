@@ -20,9 +20,9 @@ public:
 	static CANJaguar* driveTrainRightMotor;
 	static Gyro* driveTrainGyro;
 	static SpeedController* collectorMotor;
-	static DigitalInput* collectordiscOnShooterBed;
-	static AnalogChannel* collectordiscCountSensor;
-	static AnalogChannel* collectordiscUpsideDownSensor;
+	static DigitalInput* collectorDiscOnShooterBed;
+	static AnalogChannel* collectorDiscCountSensor;
+	static AnalogChannel* collectorDiscUpsideDownSensor;
 	static CANJaguar* shooterElevationJag;
 	static Encoder* shooterElevationEncoder;
 	static Encoder* shooterWheelRPMEncoder;
