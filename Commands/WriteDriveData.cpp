@@ -16,7 +16,7 @@ void WriteDriveData::Execute() {
 	fprintf(file, "%f, %f, %f, %f, %f, %f, %f\n", time,
 			RobotMap::shooterFrontJag->GetSpeed(), RobotMap::shooterFrontJag->GetOutputCurrent(),
 			RobotMap::shooterFrontJag->GetOutputVoltage(), RobotMap::shooterBackJag->GetSpeed(),
-			RobotMap::shooterBackJag->GetOutputVoltage(), RobotMap::shooterBackJag->GetOutputCurrent());
+			RobotMap::shooterBackJag->GetOutputCurrent(), RobotMap::shooterBackJag->GetOutputVoltage());
 			//RobotMap::shooterBackJag->GetSpeed(), RobotMap::shooterBackJag->GetOutputCurrent());
 }
 bool WriteDriveData::IsFinished() {return false;}
