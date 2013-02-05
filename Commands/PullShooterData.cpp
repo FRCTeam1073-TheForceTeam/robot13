@@ -10,11 +10,13 @@ void PullShooterData::Initialize() {
 			SmartDashboard::GetNumber(SHOOTER_I), SmartDashboard::GetNumber(SHOOTER_D));
 }
 void PullShooterData::Execute(){
-	int speed = (int)SmartDashboard::GetNumber(SHOOTER_PRIMARY_SPEED_SET);
-	printf("The speed we are getting from the dashboard is:\t%d!\n", speed);
+	int speed = (int)SmartDashboard::GetNumber(SHOOTER_FRONT_SET_SPEED);
+	int speed2 = (int)SmartDashboard::GetNumber(SHOOTER_BACK_SET_SPEED);
+	printf("The speed we are getting from the dashboard is:\t1: %d and 2: %d!\n", speed, speed2);
 	Robot::shooter->SetRawSpeed(speed);
+	Robot::shooter->SetRawBackSpeed(speed2);
 	SmartDashboard::PutNumber(SHOOTER_RPM_ENCODER, RobotMap::shooterWheelRPMEncoder->Get());
-	SmartDashboard::PutNumber(SHOOTER_PRIMARY_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
-	SmartDashboard::PutNumber(SHOOTER_SUPPORT_CURRENT_SPEED, RobotMap::shooterBackJag->GetSpeed());
+	SmartDashboard::PutNumber(SHOOTER_FRONT_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
+	SmartDashboard::PutNumber(SHOOTER_BACK_CURRENT_SPEED, RobotMap::shooterBackJag->GetSpeed());
 }
 bool PullShooterData::IsFinished() {return true;}
