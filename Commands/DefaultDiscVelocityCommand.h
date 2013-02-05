@@ -10,8 +10,8 @@ public:
 		
 	}
 	void Execute(){
-		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1, "primary %f", RobotMap::shooterPrimaryJag->GetSpeed());
-		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2, "support %f", RobotMap::shooterSupportJag->GetSpeed());
+		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1, "primary %f", RobotMap::shooterFrontJag->GetSpeed());
+		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2, "support %f", RobotMap::shooterBackJag->GetSpeed());
 		//printf("4:%d\t5:%d\n", RobotMap::velocity1->Get(), RobotMap::velocity2->Get());
 		Robot::discVelocity->ProcessInterrupt();
 		if(Robot::discVelocity->IsThereNewData()){

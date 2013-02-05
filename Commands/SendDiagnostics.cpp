@@ -33,8 +33,8 @@ void SendDiagnostics::Initialize() {
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
 	rightClimberExists = TestJags(RobotMap::climberRightCIM);
-	primaryShooterExists = TestJags(RobotMap::shooterPrimaryJag);
-	supportShooterExists = TestJags(RobotMap::shooterSupportJag);
+	primaryShooterExists = TestJags(RobotMap::shooterFrontJag);
+	supportShooterExists = TestJags(RobotMap::shooterBackJag);
 	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
 }
 
@@ -72,16 +72,16 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Shooter Elevation Jag Temperature", RobotMap::shooterElevationJag->GetTemperature());
 	}
 	if(primaryShooterExists == true){
-		SmartDashboard::PutNumber("Primary Shooter Jag Current", RobotMap::shooterPrimaryJag->GetOutputCurrent());
-		SmartDashboard::PutNumber("Primary Shooter Jag Bus Voltage", RobotMap::shooterPrimaryJag->GetBusVoltage());
-		SmartDashboard::PutNumber("Primary Shooter Jag Voltage", RobotMap::shooterPrimaryJag->GetOutputVoltage());
-		SmartDashboard::PutNumber("Primary Shooter Jag Temperature", RobotMap::shooterPrimaryJag->GetTemperature());
+		SmartDashboard::PutNumber("Front Shooter Jag Current", RobotMap::shooterFrontJag->GetOutputCurrent());
+		SmartDashboard::PutNumber("Front Shooter Jag Bus Voltage", RobotMap::shooterFrontJag->GetBusVoltage());
+		SmartDashboard::PutNumber("Front Shooter Jag Voltage", RobotMap::shooterFrontJag->GetOutputVoltage());
+		SmartDashboard::PutNumber("Front Shooter Jag Temperature", RobotMap::shooterFrontJag->GetTemperature());
 	}
 	if(supportShooterExists == true){
-		SmartDashboard::PutNumber("Support Shooter Jag Current", RobotMap::shooterSupportJag->GetOutputCurrent());
-		SmartDashboard::PutNumber("Support Shooter Jag Bus Voltage", RobotMap::shooterSupportJag->GetBusVoltage());
-		SmartDashboard::PutNumber("Support Shooter Jag Voltage", RobotMap::shooterSupportJag->GetOutputVoltage());
-		SmartDashboard::PutNumber("Support Shooter Jag Temperature", RobotMap::shooterSupportJag->GetTemperature());
+		SmartDashboard::PutNumber("Back Shooter Jag Current", RobotMap::shooterBackJag->GetOutputCurrent());
+		SmartDashboard::PutNumber("Back Shooter Jag Bus Voltage", RobotMap::shooterBackJag->GetBusVoltage());
+		SmartDashboard::PutNumber("Back Shooter Jag Voltage", RobotMap::shooterBackJag->GetOutputVoltage());
+		SmartDashboard::PutNumber("Back Shooter Jag Temperature", RobotMap::shooterBackJag->GetTemperature());
 	}
 	//Shooter Encoders
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());

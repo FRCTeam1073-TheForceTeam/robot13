@@ -43,7 +43,7 @@ void Robot::RobotInit() {
 	SmartDashboard::PutNumber(SHOOTER_I, 0.003);
 	SmartDashboard::PutNumber(SHOOTER_D, 0);
 	SmartDashboard::PutNumber(SHOOTER_PRIMARY_SPEED_SET, 1500);
-	SmartDashboard::PutNumber(SHOOTER_PRIMARY_CURRENT_SPEED, RobotMap::shooterPrimaryJag->GetSpeed());
+	SmartDashboard::PutNumber(SHOOTER_PRIMARY_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_RPM_ENCODER, RobotMap::shooterWheelRPMEncoder->Get());
 	
 	// instantiate the command used for the autonomous period
