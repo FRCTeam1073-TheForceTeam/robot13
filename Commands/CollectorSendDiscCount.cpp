@@ -26,6 +26,8 @@ void CollectorSendDiscCount::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void CollectorSendDiscCount::Execute() {
+	int count = Robot::collector->GetNumberOfDiscs();
+	SmartDashboard::PutNumber("Disc Count", count);
 	
 }
 
