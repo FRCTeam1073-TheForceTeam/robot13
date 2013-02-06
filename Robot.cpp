@@ -38,7 +38,6 @@ void Robot::RobotInit() {
 	//Add another option here
 	SmartDashboard::PutData(AUTONOMOUS_CHOOSER_KEY, chooser);
 	SmartDashboard::PutNumber(AUTONOMOUS_WAIT_TIME, 3);
-
 	SmartDashboard::PutNumber(SHOOTER_P, 0.04 );
 	SmartDashboard::PutNumber(SHOOTER_I, 0.003);
 	SmartDashboard::PutNumber(SHOOTER_D, 0);

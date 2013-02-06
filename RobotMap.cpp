@@ -38,7 +38,7 @@ void RobotMap::init() {
 	climberRightCIM = new CANJaguar(3);
 	
 	
-	climberLeftClimbWindowTalon = new Talon(1, 3);
+	climberLeftClimbWindowTalon = new Talon(1, 1);
 	lw->AddActuator("Climber", "LeftClimbWindowTalon", (Talon*) climberLeftClimbWindowTalon);
 	
 	driveTrainLeftMotor = new CANJaguar(6);
@@ -50,7 +50,7 @@ void RobotMap::init() {
 	driveTrainGyro = new Gyro(1, 1);
 	lw->AddSensor("DriveTrain", "Gyro", driveTrainGyro);
 	driveTrainGyro->SetSensitivity(1.25);
-	collectorMotor = new Victor(1, 1);
+	collectorMotor = new Victor(1, 3);
 	lw->AddActuator("Collector", "Motor", (Victor*) collectorMotor);
 	
 	collectorDiscOnShooterBed = new DigitalInput(1, 5);
