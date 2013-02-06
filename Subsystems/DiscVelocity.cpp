@@ -24,7 +24,8 @@ float DiscVelocity::GetStopTime() {return stopTime;}
 float DiscVelocity::GetEllapsedTime() {return ellapsedTime;}
 float DiscVelocity::GetVelocityFPS() {
 	newData = false;
-	return velocity;}
+	return velocity;
+}
 void DiscVelocity::ProcessInterrupt(){
 	switch(state){
 	case(NotWaiting):

@@ -15,8 +15,10 @@ public:
 		Robot::discVelocity->ProcessInterrupt();
 		if(Robot::discVelocity->IsThereNewData()){
 			float velocity = Robot::discVelocity->GetVelocityFPS();
-			printf("Disc Shot @ %ffps!\n",velocity);
+			float time = Robot::discVelocity->GetEllapsedTime();
+			printf("Disc Shot @ %ffps!\nTime Delta:\t%f\n",velocity, time);
 			SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
+			SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
 		}	
 	}
 	bool IsFinished() {return false;}
