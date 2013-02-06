@@ -2,7 +2,6 @@
 #define DEFAULT_DISC_VELOCITY_COMMAND_H
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
 class DefaultDiscVelocityCommand : public Command{
 public:
 	DefaultDiscVelocityCommand() {Requires(Robot::discVelocity);}
@@ -15,7 +14,9 @@ public:
 		//printf("4:%d\t5:%d\n", RobotMap::velocity1->Get(), RobotMap::velocity2->Get());
 		Robot::discVelocity->ProcessInterrupt();
 		if(Robot::discVelocity->IsThereNewData()){
-			printf("Disc Shot @ %ffps!\n", Robot::discVelocity->GetVelocityFPS());
+			float velocity = Robot::discVelocity->GetVelocityFPS();
+			printf("Disc Shot @ %ffps!\n",velocity);
+			SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
 		}	
 	}
 	bool IsFinished() {return false;}

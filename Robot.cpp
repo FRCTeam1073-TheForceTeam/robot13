@@ -40,7 +40,7 @@ void Robot::RobotInit() {
 	SmartDashboard::PutNumber(AUTONOMOUS_WAIT_TIME, 3);
 
 	SmartDashboard::PutNumber(SHOOTER_P, 0.04 );
-	SmartDashboard::PutNumber(SHOOTER_I, 0.001);
+	SmartDashboard::PutNumber(SHOOTER_I, 0.003);
 	SmartDashboard::PutNumber(SHOOTER_D, 0);
 	SmartDashboard::PutNumber(SHOOTER_FRONT_SET_SPEED, 1500);
 	SmartDashboard::PutNumber(SHOOTER_BACK_SET_SPEED, 1500);

@@ -18,4 +18,6 @@
 
 #define SHOOTER_RPM_ENCODER "Shooter RPM Encoder"
 
+#define DISC_SHOT_SPEED_FPS "Disc Shot at Speed"
+
 #endif
