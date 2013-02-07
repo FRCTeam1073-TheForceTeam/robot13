@@ -83,5 +83,5 @@ void RobotMap::init() {
 	shooterElevationBottomSwitch = new LimitSwitch(1, 6);
 	lw->AddSensor("Shooter", "ElevationTopSwitch", shooterElevationTopSwitch);
 	lw->AddSensor("Shooter", "ElevationBottomSwitch", shooterElevationBottomSwitch);
-	
+
 }
