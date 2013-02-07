@@ -84,7 +84,7 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Back Shooter Jag Temperature", RobotMap::shooterBackJag->GetTemperature());
 	}
 	//Shooter Encoders
-	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetDistance());
+	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 	SmartDashboard::PutNumber("Shooter Speed", RobotMap::shooterWheelRPMEncoder->GetRate());
 	//Gyro
 	SmartDashboard::PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
