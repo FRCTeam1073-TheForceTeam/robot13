@@ -17,15 +17,14 @@ SetChainsawPosition2::SetChainsawPosition2() {
 }
 // Called just before this Command runs the first time
 void SetChainsawPosition2::Initialize() {
-	Robot::climber->ChainsawPosition2();
 }
 // Called repeatedly when this Command is scheduled to run
 void SetChainsawPosition2::Execute() {
-	
+	Robot::climber->ChainsawPosition2();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool SetChainsawPosition2::IsFinished() {
-	if(45==Robot::climber->GetDistance()){
+	if(45==Robot::climber->GetVoltageRight()|45==Robot::climber->GetVoltageLeft()){
 		return true;
 	}
 	return false;
