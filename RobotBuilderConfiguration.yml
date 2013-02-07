@@ -156,7 +156,7 @@ Children:
           default: '1'
           name: Input Channel (Digital)
           validators: [DigitalChannel]
-          value: '5'
+          value: '4'
         Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
@@ -178,7 +178,7 @@ Children:
           default: '1'
           name: Input Channel (Analog)
           validators: &id011 [AnalogInput]
-          value: '2'
+          value: '3'
     - Name: DiscUpsideDownSensor
       Base: Analog Input
       Children: []
@@ -194,7 +194,7 @@ Children:
           default: '1'
           name: Input Channel (Analog)
           validators: *id011
-          value: '3'
+          value: '4'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: CollectorSendDiscCount}

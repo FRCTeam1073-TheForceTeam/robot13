@@ -52,13 +52,13 @@ void RobotMap::init() {
 	collectorMotor = new Victor(1, 3);
 	lw->AddActuator("Collector", "Motor", (Victor*) collectorMotor);
 	
-	collectorDiscOnShooterBed = new DigitalInput(1, 5);
+	collectorDiscOnShooterBed = new DigitalInput(1, 4);
 	lw->AddSensor("Collector", "DiscOnShooterBed", collectorDiscOnShooterBed);
 	
-	collectorDiscCountSensor = new AnalogChannel(1, 2);
+	collectorDiscCountSensor = new AnalogChannel(1, 3);
 	lw->AddSensor("Collector", "DiscCountSensor", collectorDiscCountSensor);
 	
-	collectorDiscUpsideDownSensor = new AnalogChannel(1, 3);
+	collectorDiscUpsideDownSensor = new AnalogChannel(1, 4);
 	lw->AddSensor("Collector", "DiscUpsideDownSensor", collectorDiscUpsideDownSensor);
 	
 	shooterElevationJag = new CANJaguar(4);
