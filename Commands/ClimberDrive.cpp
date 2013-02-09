@@ -24,7 +24,7 @@ void ClimberDrive::Execute() {
 #warning "do we want the climber moving constantly...?"
 	//at the moment, yes ^
 	if(Robot::climber->getClimberOnOff()){
-		Robot::climber->Climb(Robot::oi->getOperatorStick()->GetY(GenericHID::kLeftHand));
+		Robot::climber->Climb(Robot::oi->getOperatorStick()->GetY());
 	}
 	else{
 		Robot::climber->Climb(0);
