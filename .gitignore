@@ -1,5 +1,7 @@
-<<<<<<< HEAD
-# Compiled Object files
+#Comma Separated Value Spreadsheets
+*.csv
+
+
 *.slo
 *.lo
 *.o
@@ -31,7 +33,6 @@ PPC603/
 PPC32/
 #makefile that we don't care about
 PPC32Diab/Makefile
-=======
 #################
 ## Eclipse
 #################
@@ -195,4 +196,3 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
->>>>>>> 894ce98f448eede99ae4e52fe3c3263be96a9f23
