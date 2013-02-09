@@ -1,6 +1,6 @@
 #ifndef CLIMBER_H
 #define CLIMBER_H
-#warning "Calibrate"
+//#warning "Calibrate" <-- still probably do that
 #define CHAINSAW_DOWN_SPEED -0.5
 #define CHAINSAW_UP_SPEED 0.5
 #include "Commands/Subsystem.h"
