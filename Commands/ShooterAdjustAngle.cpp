@@ -24,9 +24,10 @@ void ShooterAdjustAngle::Initialize() {
 void ShooterAdjustAngle::Execute() {
 	//float hatx = Robot::oi->getOperatorStick()->GetAxis(5)
 	//float left = Robot::oi->getLeftStick()->GetY(GenericHID::kLeftHand);
-	int hat = Robot::oi->getOperatorStick()->GetAxis(5);
+	//int hat = Robot::oi->getOperatorStick()->GetAxis(5);
 	//float hat = Robot::oi->getOperatorStick()->GetButton(Joystick::kTopButton);
 	//printf ("shooterAdjustAngle::Execute hat value is %f\n", hat);
+	float hat = 0.0f;
 	int adjustment = Robot::shooter->GetFineAdjustmentAngle();
 	if (hat > DEADZONE){
 		Robot::shooter->IncrementAngle(adjustment);
