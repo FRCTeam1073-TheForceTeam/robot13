@@ -51,19 +51,28 @@ void Climber::DisengageClimber(){
 	ClimberOnOff=false;
 }
 	
-#warning "we have two talons... look into this!""
+//#warning "we have two talons... look into this!""
+//Problem Solved
 void Climber::ChainsawMovementOff(){
-	//RobotMap::climberClimberTalon->Set(0);
+	RobotMap::climberLeftClimbWindowTalon->Set(0);
+	RobotMap::climberRightClimbWindowTalon->Set(0);
+	
 }
 void Climber::ChainsawPosition1(){
-	//RobotMap::climberClimberTalon->Set(CHAINSAW_UP_SPEED);
- }
+	RobotMap::climberLeftClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
+	RobotMap::climberRightClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
+}
 void Climber::ChainsawPosition2(){
-	//RobotMap::climberClimberTalon->Set(CHAINSAW_DOWN_SPEED);
+	RobotMap::climberLeftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
+	RobotMap::climberRightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 }
 void Climber::ChainsawPosition3(){
-	//RobotMap::climberClimberTalon->Set(CHAINSAW_DOWN_SPEED);
+	RobotMap::climberLeftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
+	RobotMap::climberRightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 }
-double Climber::GetDistance(){
-	return RobotMap::climberChainsawElevationMEncoder->GetDistance();
+double Climber::GetVoltageLeft(){
+	return RobotMap::climberLeftWindowEncoder->GetVoltage();
+}
+double Climber::GetVoltageRight(){
+	return RobotMap::climberRightWindowEncoder->GetVoltage();
 }

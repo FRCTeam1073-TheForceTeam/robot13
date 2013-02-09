@@ -22,7 +22,9 @@ void ShooterAdjustAngle::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterAdjustAngle::Execute() {
-	float hat = Robot::oi->getOperatorStick()->GetTop();
+	//float hatx = Robot::oi->getOperatorStick()->GetAxis(5)
+	//float left = Robot::oi->getLeftStick()->GetY(GenericHID::kLeftHand);
+	int hat = Robot::oi->getOperatorStick()->GetAxis(5);
 	//float hat = Robot::oi->getOperatorStick()->GetButton(Joystick::kTopButton);
 	//printf ("shooterAdjustAngle::Execute hat value is %f\n", hat);
 	int adjustment = Robot::shooter->GetFineAdjustmentAngle();
