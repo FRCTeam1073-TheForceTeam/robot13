@@ -27,7 +27,7 @@ void Collector::MotorOn(){motor->Set(1.0f);}
 void Collector::MotorOff() {motor->Set(0.0f);}
 int Collector::GetNumberOfDiscs(){
 	float voltage = discCountSensor->GetVoltage();
-	printf ("Get numeber of discs %f\n", voltage);
+//	printf ("Get numeber of discs %f\n", voltage);
 	if (voltage > FOURDISCS)
 		return FOURDISCS;
 	else if (voltage > THREEDISCS)
