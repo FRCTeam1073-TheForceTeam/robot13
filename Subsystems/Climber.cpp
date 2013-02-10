@@ -57,21 +57,16 @@ void Climber::ChainsawMovementOff(){
 	
 }
 //What does Position 1 Mean?
-void Climber::ChainsawPosition1(){
+void Climber::ChainsawUp(){
 	leftClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
 }
 //What Does Position 2  Mean?
-void Climber::ChainsawPosition2(){
+void Climber::ChainsawDown(){
 	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 }
-//What Does Position Three Mean
-//What is the diffrence between Position 2 and 3
-void Climber::ChainsawPosition3(){
-	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
-	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
-}
+
 bool Climber::ClimberIsDown(){
 	const float voltage = 45.0f;
 	return leftWindowEncoder->GetVoltage() == voltage || rightWindowEncoder->GetVoltage() == voltage;

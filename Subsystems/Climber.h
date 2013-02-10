@@ -25,9 +25,8 @@ public:
 	bool getClimberOnOff();
 	void EngageClimber();
 	void DisengageClimber();
-	void ChainsawPosition1();
-	void ChainsawPosition2();
-	void ChainsawPosition3();
+	void ChainsawUp();
+	void ChainsawDown();
 	void ChainsawMovementOff();
 	bool ClimberIsDown();
 	
