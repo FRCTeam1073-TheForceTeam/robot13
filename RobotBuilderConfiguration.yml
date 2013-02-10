@@ -211,52 +211,6 @@ Children:
           name: CAN ID
           validators: *id002
           value: '4'
-    - Name: WheelRPMEncoder
-      Base: Quadrature Encoder
-      Children: []
-      Properties:
-        Channel B Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2']
-          default: '1'
-          name: Channel B Module (Digital)
-          validators: [DigitalChannel]
-          value: '1'
-        Channel A Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2']
-          default: '1'
-          name: Channel A Module (Digital)
-          validators: [DigitalChannel]
-          value: '1'
-        PID Source: !!robotbuilder.data.properties.ChoicesProperty
-          choices: [kDistance, kRate]
-          default: kRate
-          name: PID Source
-          validators: null
-          value: kRate
-        Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 1.0}
-        Encoding Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: [k4X, k2X, k1X]
-          default: k4X
-          name: Encoding Type
-          validators: null
-          value: k4X
-        Channel B Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14']
-          default: '1'
-          name: Channel B Channel (Digital)
-          validators: [DigitalChannel]
-          value: '2'
-        Channel A Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14']
-          default: '1'
-          name: Channel A Channel (Digital)
-          validators: [DigitalChannel]
-          value: '1'
-        Reverse Direction: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Reverse Direction, validators: null, value: false}
     - Name: Front Jag
       Base: CAN Jaguar
       Children: []

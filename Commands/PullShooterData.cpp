@@ -15,7 +15,6 @@ void PullShooterData::Execute(){
 	printf("The speed we are getting from the dashboard is:\t1: %d and 2: %d!\n", speed, speed2);
 	Robot::shooter->SetRawSpeed(speed);
 	Robot::shooter->SetRawBackSpeed(speed2);
-	SmartDashboard::PutNumber(SHOOTER_RPM_ENCODER, RobotMap::shooterWheelRPMEncoder->Get());
 	SmartDashboard::PutNumber(SHOOTER_FRONT_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_CURRENT_SPEED, RobotMap::shooterBackJag->GetSpeed());
 }

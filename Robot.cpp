@@ -100,6 +100,5 @@ void Robot::TestPeriodic() {
 void Robot::SendNewDashboardData(){
 	SmartDashboard::PutNumber(SHOOTER_FRONT_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_CURRENT_SPEED, RobotMap::shooterBackJag->GetSpeed());
-	SmartDashboard::PutNumber(SHOOTER_RPM_ENCODER, RobotMap::shooterWheelRPMEncoder->Get());		
 }
 START_ROBOT_CLASS(Robot);
