@@ -28,8 +28,6 @@ public:
 	void ChainsawPosition2();
 	void ChainsawPosition3();
 	void ChainsawMovementOff();
-	double GetVoltageLeft();
-	double GetVoltageRight();
 	
 };
 #endif

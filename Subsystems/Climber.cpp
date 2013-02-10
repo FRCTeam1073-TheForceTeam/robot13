@@ -21,7 +21,6 @@ void Climber::InitDefaultCommand() {
 }
 void Climber::Climb(float yPosition){
 	if(ClimberOnOff){
-		
 		leftCIM->Set(yPosition);
 		rightCIM->Set(yPosition);
 	}
@@ -46,21 +45,19 @@ void Climber::ChainsawMovementOff(){
 	rightClimbWindowTalon->Set(0);
 	
 }
+//What does Position 1 Mean?
 void Climber::ChainsawPosition1(){
 	leftClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
 }
+//What Does Position 2  Mean?
 void Climber::ChainsawPosition2(){
 	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 }
+//What Does Position Three Mean
+//What is the diffrence between Position 2 and 3
 void Climber::ChainsawPosition3(){
 	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
-}
-double Climber::GetVoltageLeft(){
-	return leftWindowEncoder->GetVoltage();
-}
-double Climber::GetVoltageRight(){
-	return rightWindowEncoder->GetVoltage();
 }
