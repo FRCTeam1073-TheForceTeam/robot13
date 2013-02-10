@@ -28,7 +28,5 @@ public:
 	void ChainsawUp();
 	void ChainsawDown();
 	void ChainsawMovementOff();
-	bool ClimberIsDown();
-	
 };
 #endif
