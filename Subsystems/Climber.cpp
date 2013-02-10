@@ -56,12 +56,12 @@ void Climber::ChainsawMovementOff(){
 	rightClimbWindowTalon->Set(0);
 	
 }
-//What does Position 1 Mean?
+
 void Climber::ChainsawUp(){
 	leftClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
 }
-//What Does Position 2  Mean?
+
 void Climber::ChainsawDown(){
 	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
