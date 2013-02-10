@@ -11,7 +11,8 @@
 #define SHOOTER_BACK_DEFAULT_SPEED  2550 
 class Shooter: public Subsystem {
 private:
-	int speed, elevationAngle;
+	int speed; 
+	float elevationAngle;
 	int defaultSpeed, defaultElevationAngle;
 	bool isShooterMotorOn;
 	bool rawBackSpeedEnabled;	//hack for now...
@@ -29,7 +30,7 @@ public:
 	void InitDefaultCommand();
 	void SetToDefaults();
 	void IncrementSpeed(int speedIncrement);
-	void IncrementAngle(int angleIncrement);
+	void IncrementAngle(float angleIncrement);
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
 	void SetRawBackSpeed(int speed);
 	void SetRawElevationAngle(int elevationAngle);
@@ -45,8 +46,7 @@ public:
 	float GetCurrentAngle();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
-	int GetFineAdjustmentAngle();
-	int GetCoarseAdjustmentAngle();
+	float GetFineAdjustmentAngle();
 	void StopElevatorMotor();
 	void SetRawAngle(int elevationAngle);
 	void SetPID(double P, double I, double D);
