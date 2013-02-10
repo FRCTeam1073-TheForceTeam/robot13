@@ -4,7 +4,7 @@ void ChainsawMiddle::Initialize() {
 	Robot::climber->ResetWindowVoltageData();
 	Robot::climber->ChainsawDown();
 }
-void ChainsawMiddle::Execute() {Robot::climber->ProcessWindowVoltageDat)();}
+void ChainsawMiddle::Execute() {Robot::climber->ProcessWindowVoltageData();}
 bool ChainsawMiddle::IsFinished() {
 	//Position 2 will only be accessable from position 1, not position 3
 	return RobotMap::climberRightWindowEncoder->GetVoltage() > Robot::climber->EncoderMiddleVoltage()
