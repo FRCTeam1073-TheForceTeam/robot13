@@ -197,7 +197,7 @@ Children:
           value: '4'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: CollectorSendDiscCount}
+        name: Default Command, type: Command, validators: null, value: None}
   - Name: Shooter
     Base: Subsystem
     Children:
@@ -591,14 +591,6 @@ Children:
 - Name: Commands
   Base: Commands
   Children:
-  - Name: CollectorSendDiscCount
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Collector}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
   - Name: AutonomousForward
     Base: Command
     Children: []

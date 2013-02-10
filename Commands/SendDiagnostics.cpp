@@ -87,7 +87,9 @@ void SendDiagnostics::Execute() {
 	SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 	//Gyro
 	SmartDashboard::PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
-}
+	//Disc Count
+	SmartDashboard::PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+} 
 
 // Make this return true when this Command no longer needs to run execute()
 bool SendDiagnostics::IsFinished() {

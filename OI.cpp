@@ -7,7 +7,6 @@
 #include "Commands/ClimberDrive.h"
 #include "Commands/ClimberOff.h"
 #include "Commands/ClimberOn.h"
-#include "Commands/CollectorSendDiscCount.h"
 #include "Commands/DiscsReverse.h"
 #include "Commands/EngageClimber.h"
 #include "Commands/JoystickDrive.h"
@@ -60,7 +59,6 @@ OI::OI() {
 	leftTurboOn->WhileHeld(new TurboDriveOn());
      
         // SmartDashboard Buttons
-	SmartDashboard::PutData("CollectorSendDiscCount", new CollectorSendDiscCount());
 	SmartDashboard::PutData("Autonomous Turns", new AutonomousTurns());
 	SmartDashboard::PutData("ShooterOn", new ShooterOn());
 	SmartDashboard::PutData("ShooterOff", new ShooterOff());
