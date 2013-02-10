@@ -13,22 +13,26 @@ SendDiagnostics::SendDiagnostics() {
 
 bool SendDiagnostics::TestJags(CANJaguar* jag)
 {
+	printf("SendDiagnostics::TestJags CALLED !!!!!!!!!!!!!!!!!!!!");
 	bool exists = false;
 	jag->GetFirmwareVersion();
 	if(jag->GetError().GetCode() == CAN_TIMEOUT)
 	{
 		jag->ClearError();
 		exists = false;
+		printf("TestJags returns FALSE !!!!!!!!!!!!!!!!");
 	}
 	else
 	{
 		exists = true;
+		printf("TestJags returns TRUE !!!!!!!!!!!!!!!!!");
 	}
 	return exists;
 }
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
+	printf("SendDiagnostics::Initialize() CALLED !!!!!!!!!!!!!!!!");
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -40,22 +44,25 @@ void SendDiagnostics::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
-	printf("Execute has been called");
+	printf("Execute has been called\n");
 	count++;
 	if(count % 20 != 0)
 	{
 		return;
 	}
+	
+	return;
+	
 	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists == true)
 	{
-		printf("Sending left drive diagnostics");
+		printf("Sending left drive diagnostics\n");
 		SmartDashboard::PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftMotor->GetOutputCurrent());
 		SmartDashboard::PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftMotor->GetBusVoltage());
 		SmartDashboard::PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftMotor->GetOutputVoltage());
 		SmartDashboard::PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftMotor->GetTemperature());
 		SmartDashboard::PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
-		printf("SENT left drive diagnostics");
+		printf("SENT left drive diagnostics\n");
 	}
 	if(rightDriveExists == true){
 		SmartDashboard::PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightMotor->GetOutputCurrent());
