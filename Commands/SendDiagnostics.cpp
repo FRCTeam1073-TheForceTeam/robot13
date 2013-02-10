@@ -15,26 +15,23 @@ SendDiagnostics::SendDiagnostics() {
 
 bool SendDiagnostics::TestJags(CANJaguar* jag)
 {
-	printf("SendDiagnostics::TestJags CALLED !!!!!!!!!!!!!!!!!!!!");
+
 	bool exists = false;
 	jag->GetFirmwareVersion();
 	if(jag->GetError().GetCode() == CAN_TIMEOUT)
 	{
 		jag->ClearError();
 		exists = false;
-		printf("TestJags returns FALSE !!!!!!!!!!!!!!!!");
 	}
 	else
 	{
 		exists = true;
-		printf("TestJags returns TRUE !!!!!!!!!!!!!!!!!");
 	}
 	return exists;
 }
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
-	printf("SendDiagnostics::Initialize() CALLED !!!!!!!!!!!!!!!!");
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -46,25 +43,20 @@ void SendDiagnostics::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
-	printf("Execute has been called\n");
 	count++;
 	if(count % 20 != 0)
 	{
 		return;
 	}
-	
-	return;
-	
+		
 	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists == true)
 	{
-		printf("Sending left drive diagnostics\n");
 		diagnosticsTable->PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftMotor->GetOutputCurrent());
 		diagnosticsTable->PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftMotor->GetBusVoltage());
 		diagnosticsTable->PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftMotor->GetOutputVoltage());
 		diagnosticsTable->PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftMotor->GetTemperature());
 		diagnosticsTable->PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
-		printf("SENT left drive diagnostics\n");
 	}
 	if(rightDriveExists == true){
 		diagnosticsTable->PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightMotor->GetOutputCurrent());
@@ -98,6 +90,8 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+	
+	return;
 } 
 
 // Make this return true when this Command no longer needs to run execute()
