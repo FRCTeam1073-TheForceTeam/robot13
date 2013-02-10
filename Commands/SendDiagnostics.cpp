@@ -15,26 +15,26 @@ SendDiagnostics::SendDiagnostics() {
 
 bool SendDiagnostics::TestJags(CANJaguar* jag)
 {
-	printf("SendDiagnostics::TestJags CALLED !!!!!!!!!!!!!!!!!!!!");
+	printf("SendDiagnostics::TestJags CALLED !!!!!!!!!!!!!!!!!!!!\n");
 	bool exists = false;
 	jag->GetFirmwareVersion();
 	if(jag->GetError().GetCode() == CAN_TIMEOUT)
 	{
 		jag->ClearError();
 		exists = false;
-		printf("TestJags returns FALSE !!!!!!!!!!!!!!!!");
+		printf("TestJags returns FALSE !!!!!!!!!!!!!!!!\n");
 	}
 	else
 	{
 		exists = true;
-		printf("TestJags returns TRUE !!!!!!!!!!!!!!!!!");
+		printf("TestJags returns TRUE !!!!!!!!!!!!!!!!!\n");
 	}
 	return exists;
 }
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
-	printf("SendDiagnostics::Initialize() CALLED !!!!!!!!!!!!!!!!");
+	printf("SendDiagnostics::Initialize() CALLED !!!!!!!!!!!!!!!!\n");
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -46,14 +46,13 @@ void SendDiagnostics::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
-	printf("Execute has been called\n");
 	count++;
 	if(count % 20 != 0)
 	{
 		return;
 	}
 	
-	return;
+	printf("SendDiagnostics::Execute has been called\n");
 	
 	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists == true)
@@ -98,6 +97,8 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+	
+	return;
 } 
 
 // Make this return true when this Command no longer needs to run execute()
