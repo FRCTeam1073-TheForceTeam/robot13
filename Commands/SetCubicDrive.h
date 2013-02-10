@@ -1,18 +1,8 @@
-
-
-
 #ifndef SETCUBICDRIVE_H
 #define SETCUBICDRIVE_H
-
-
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
-/**
- *
- *
- * @author ExampleAuthor
- */
+#include "../WPILibExtensions/WPILibExtensions.h"
 class SetCubicDrive: public Command {
 public:
 	SetCubicDrive();
@@ -21,6 +11,8 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	void ChangeMode(SmartJoystick* smartJoystick);
 };
 
 #endif
