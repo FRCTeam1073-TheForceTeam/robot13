@@ -14,8 +14,8 @@ void SetChainsawPosition3::Execute() {}
  */ 
 bool SetChainsawPosition3::IsFinished() {
 #warning "DANGER WILL ROBINSON (2/2)"
-	if(RobotMap::climberLeftWindowEncoder->GetVoltage()<0.15625 || 
-			RobotMap::climberRightWindowEncoder->GetVoltage()<0.15625){
+	if(RobotMap::climberLeftWindowEncoder->GetVoltage()<2.34375 || 
+			RobotMap::climberRightWindowEncoder->GetVoltage()<2.34375){
 			return true;
 		}
 		return false;
