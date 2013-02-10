@@ -25,7 +25,9 @@ void SetChainsawPosition1::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool SetChainsawPosition1::IsFinished() {
-	if(RobotMap::climberChainsawTopSwitch->IsPressed()){
+#warning DANGER WILL ROBINSON (1/2)
+	if(RobotMap::climberLeftWindowEncoder->GetVoltage()<0.15625 || 
+			RobotMap::climberRightWindowEncoder->GetVoltage()<0.15625){
 		return true;
 		}
 		return false;

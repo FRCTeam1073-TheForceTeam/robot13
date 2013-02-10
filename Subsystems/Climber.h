@@ -4,7 +4,7 @@
 #define CHAINSAW_UP_SPEED 0.5
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "../WPILibExtensions/WPILibExtensions.h"
+#include "..\WPILibExtensions\StallableAnalogEncoder.h"
 class Climber: public Subsystem {
 private:
 	bool ClimberOnOff;
