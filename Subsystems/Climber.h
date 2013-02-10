@@ -28,6 +28,7 @@ public:
 	void ChainsawPosition2();
 	void ChainsawPosition3();
 	void ChainsawMovementOff();
+	bool ClimberIsDown();
 	
 };
 #endif

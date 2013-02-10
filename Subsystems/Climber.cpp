@@ -61,3 +61,7 @@ void Climber::ChainsawPosition3(){
 	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
 }
+bool Climber::ClimberIsDown(){
+	const float voltage = 45.0f;
+	return leftWindowEncoder->GetVoltage() == voltage || rightWindowEncoder->GetVoltage() == voltage;
+}
