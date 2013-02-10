@@ -19,6 +19,7 @@ public:
 	StallableAnalogEncoder* rightWindowEncoder;
 	
 	Climber();
+	void ClimberJagConfig();
 	void InitDefaultCommand();
 	void Climb(float yPosition);
 	bool getClimberOnOff();
