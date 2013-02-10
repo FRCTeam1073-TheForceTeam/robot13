@@ -1,5 +1,5 @@
 #include "ChainsawUp.h"
-
+#define TOP_BUFFER 0.15625
 ChainsawUp::ChainsawUp() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -18,8 +18,8 @@ void ChainsawUp::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool ChainsawUp::IsFinished() {
 #warning "DANGER WILL ROBINSON (1/2)"
-	if(RobotMap::climberLeftWindowEncoder->GetVoltage()<0.15625 || 
-			RobotMap::climberRightWindowEncoder->GetVoltage()<0.15625){
+	if(RobotMap::climberLeftWindowEncoder->GetVoltage()<TOP_BUFFER || 
+			RobotMap::climberRightWindowEncoder->GetVoltage()<TOP_BUFFER){
 		return true;
 		}
 		return false;
