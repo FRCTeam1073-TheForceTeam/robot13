@@ -15,7 +15,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-#include "../WPILibExtensions/LimitSwitch.h"
+#include "../WPILibExtensions/StallableAnalogEncoder.h"
 /**
  *
  *

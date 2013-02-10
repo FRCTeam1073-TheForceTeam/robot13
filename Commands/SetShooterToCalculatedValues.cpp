@@ -2,9 +2,13 @@
 SetShooterToCalculatedValues::SetShooterToCalculatedValues() {Requires(Robot::shooter);}
 void SetShooterToCalculatedValues::Initialize() 
 {
-	double calcAngle = Robot::allignmentData->GetCalculatedAngle();
-	double calcDistance = Robot::allignmentData->GetCalculatedDistance();
-	printf("SetShooterToCalculatedValues angle: %d   distance: %d", calcAngle, calcDistance);
+	if(Robot::allignmentData->IsTarget()){
+		double calcAngle = Robot::allignmentData->GetCalculatedAngle();
+		double calcDistance = Robot::allignmentData->GetCalculatedDistance();
+		printf("SetShooterToCalculatedValues angle: %d   distance: %d\n", calcAngle, calcDistance);
+	}
+	else
+		printf("Allignment data; invalid distance and angle\n");
 }
 void SetShooterToCalculatedValues::Execute() {}
 bool SetShooterToCalculatedValues::IsFinished() {return true;}

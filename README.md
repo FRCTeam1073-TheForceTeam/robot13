@@ -1,5 +1,4 @@
-2013 Ultimate Ascent Robot Code
-================================
+#2013 Ultimate Ascent Robot Code
 
 This is the code that runs on our robot for the 2013 FIRST Robotics Competition.
 

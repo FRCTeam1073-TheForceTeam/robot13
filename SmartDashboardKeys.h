@@ -21,4 +21,6 @@
 #define DISC_SHOT_SPEED_FPS "Disc Shot at Speed"
 #define DISC_ELLAPSED_TIME "Time Ellapsed In IR"
 
+#define COLLECTOR_DISC_COUNT "Disc Count"
+
 #endif
