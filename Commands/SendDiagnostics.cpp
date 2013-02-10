@@ -15,26 +15,23 @@ SendDiagnostics::SendDiagnostics() {
 
 bool SendDiagnostics::TestJags(CANJaguar* jag)
 {
-	printf("SendDiagnostics::TestJags CALLED !!!!!!!!!!!!!!!!!!!!\n");
+
 	bool exists = false;
 	jag->GetFirmwareVersion();
 	if(jag->GetError().GetCode() == CAN_TIMEOUT)
 	{
 		jag->ClearError();
 		exists = false;
-		printf("TestJags returns FALSE !!!!!!!!!!!!!!!!\n");
 	}
 	else
 	{
 		exists = true;
-		printf("TestJags returns TRUE !!!!!!!!!!!!!!!!!\n");
 	}
 	return exists;
 }
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
-	printf("SendDiagnostics::Initialize() CALLED !!!!!!!!!!!!!!!!\n");
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -51,19 +48,15 @@ void SendDiagnostics::Execute() {
 	{
 		return;
 	}
-	
-	printf("SendDiagnostics::Execute has been called\n");
-	
+		
 	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists == true)
 	{
-		printf("Sending left drive diagnostics\n");
 		diagnosticsTable->PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftMotor->GetOutputCurrent());
 		diagnosticsTable->PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftMotor->GetBusVoltage());
 		diagnosticsTable->PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftMotor->GetOutputVoltage());
 		diagnosticsTable->PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftMotor->GetTemperature());
 		diagnosticsTable->PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
-		printf("SENT left drive diagnostics\n");
 	}
 	if(rightDriveExists == true){
 		diagnosticsTable->PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightMotor->GetOutputCurrent());
