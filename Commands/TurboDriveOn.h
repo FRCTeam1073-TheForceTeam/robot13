@@ -10,6 +10,8 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	int old_left, old_right;
 };
 
 #endif
