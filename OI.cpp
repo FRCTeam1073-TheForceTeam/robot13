@@ -10,9 +10,9 @@
 #include "Commands/EngageClimber.h"
 #include "Commands/JoystickDrive.h"
 #include "Commands/PullShooterData.h"
-#include "Commands/SetChainsawPosition1.h"
-#include "Commands/SetChainsawPosition2.h"
-#include "Commands/SetChainsawPosition3.h"
+#include "Commands/ChainsawUp.h"
+#include "Commands/ChainsawMiddle.h"
+#include "Commands/ChainsawDown.h"
 #include "Commands/SetCubicDrive.h"
 #include "Commands/SetShooterToCalculatedValues.h"
 #include "Commands/Shoot.h"
@@ -28,12 +28,12 @@ OI::OI() {
 	
 	engageAutoAim = new JoystickButton(operatorStick, 2);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
-	chainsawPos3 = new JoystickButton(operatorStick, 7);
-	chainsawPos3->WhenPressed(new SetChainsawPosition3());
-	chainsawPos2 = new JoystickButton(operatorStick, 6);
-	chainsawPos2->WhenPressed(new SetChainsawPosition2());
-	chainsawPos1 = new JoystickButton(operatorStick, 5);
-	chainsawPos1->WhenPressed(new SetChainsawPosition1());
+	chainsawDown = new JoystickButton(operatorStick, 7);
+	chainsawDown->WhenPressed(new ChainsawDown());
+	chainsawMiddle = new JoystickButton(operatorStick, 6);
+	chainsawMiddle->WhenPressed(new ChainsawMiddle());
+	chainsawUp = new JoystickButton(operatorStick, 5);
+	chainsawUp->WhenPressed(new ChainsawUp());
 	climberDisengage = new JoystickButton(operatorStick, 12);
 	climberDisengage->WhenPressed(new ClimberOff());
 	climberEngage = new JoystickButton(operatorStick, 11);
@@ -64,9 +64,9 @@ OI::OI() {
 	SmartDashboard::PutData("ClimberOff", new ClimberOff());
 	SmartDashboard::PutData("TurboDriveOn", new TurboDriveOn());
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
-	SmartDashboard::PutData("SetChainsawPosition1", new SetChainsawPosition1());
-	SmartDashboard::PutData("SetChainsawPosition2", new SetChainsawPosition2());
-	SmartDashboard::PutData("SetChainsawPosition3", new SetChainsawPosition3());
+	SmartDashboard::PutData("SetChainsawPosition1", new ChainsawUp());
+	SmartDashboard::PutData("SetChainsawPosition2", new ChainsawMiddle());
+	SmartDashboard::PutData("SetChainsawPosition3", new ChainsawDown());
 	SmartDashboard::PutData("ClimberDrive", new ClimberDrive());
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
 	SmartDashboard::PutData("EngageClimber", new EngageClimber());

@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef SETCHAINSAWPOSITION2_H
-#define SETCHAINSAWPOSITION2_H
+#ifndef ChainsawUp_H
+#define ChainsawUp_H
 
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
+#include "../WPILibExtensions/StallableAnalogEncoder.h"
 /**
  *
  *
  * @author ExampleAuthor
  */
-class SetChainsawPosition2: public Command {
+class ChainsawUp: public Command {
 public:
-	SetChainsawPosition2();
+	ChainsawUp();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
