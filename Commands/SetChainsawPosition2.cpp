@@ -6,7 +6,17 @@ SetChainsawPosition2::SetChainsawPosition2() {
 }
 void SetChainsawPosition2::Initialize() {Robot::climber->ChainsawPosition2();}
 void SetChainsawPosition2::Execute() {}
-//will overshoot 99% of the time!
-bool SetChainsawPosition2::IsFinished() {return Robot::climber->ClimberIsDown();}
+bool SetChainsawPosition2::IsFinished() {
+	//Position 2 will only be accessable from position 1, not position 3
+	if(RobotMap::climberRightWindowEncoder->GetVoltage()>1.25 || 
+			RobotMap::climberRightWindowEncoder->GetVoltage()>1.25){
+		return true;
+	}
+	else{
+		return false;
+	}
+	
+	//return Robot::climber->ClimberIsDown();
+}
 void SetChainsawPosition2::End() {Robot::climber->ChainsawMovementOff();}
 void SetChainsawPosition2::Interrupted() {}

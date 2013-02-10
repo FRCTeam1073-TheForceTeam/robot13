@@ -30,6 +30,7 @@ void DriveTrain::Move(float left, float right){
 	printf("Left M: %f  Right M: %f\n", leftMotor->Get(), rightMotor->Get());
 #endif
 }
+void DriveTrain::Stop() {Move(0.0f, 0.0f);}
 void DriveTrain::GetPosition(float &left,float &right){
 	left=TicksToInches(leftMotor->Get());
 	right=TicksToInches(rightMotor->Get());

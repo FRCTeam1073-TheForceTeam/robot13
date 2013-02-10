@@ -84,7 +84,7 @@ bool Shooter::IsAtSetAngle(){
 }
 #warning "Whoever's area of expertise this is may want to look at the below method"
 float Shooter::GetCurrentAngle(){
-	float angle = shooterElevationEncoder->GetVoltage();
+	float angle = elevationJag->GetOutputVoltage();
 	printf ("Shooter::GetCurrentAngle angle is %f\n", angle);
 	return angle;
 }
