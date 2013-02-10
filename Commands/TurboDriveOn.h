@@ -2,6 +2,7 @@
 #define TURBODRIVEON_H
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
+#include "../WPILibExtensions/WPILibExtensions.h"
 class TurboDriveOn: public Command {
 public:
 	TurboDriveOn();
@@ -11,7 +12,7 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 private:
-	int old_left, old_right;
+	SmartJoystick::JoystickMode old_left, old_right;
 };
 
 #endif
