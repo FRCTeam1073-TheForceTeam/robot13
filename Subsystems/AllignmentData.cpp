@@ -13,10 +13,10 @@ void AllignmentData::InitDefaultCommand(){}
 double AllignmentData::GetCalculatedDistance() {return trackingDataTable->GetNumber("calculatedDistance", -1);}
 double AllignmentData::GetCalculatedAngle() {return trackingDataTable->GetNumber("calculatedAngle", -1);}
 bool AllignmentData::IsTarget(){return calculatedDistance != DEFAULT && calculatedAngle != DEFAULT;}
-void AllignmentData::SendCurrentAngle(int angle)
+void AllignmentData::SendCurrentAngle(float angle)
 {
 	trackingDataTable->PutNumber("currentAngle", angle);
-	printf("AllignmentData SendCurrentAngle angle: %d\n", angle);
+	printf("AllignmentData SendCurrentAngle angle: %f\n", angle);
 	printf("Network Table is Connected %d", trackingDataTable->IsConnected());
 }
 void AllignmentData::SendCurrentSpeed(int speed) {

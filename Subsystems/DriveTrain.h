@@ -12,6 +12,7 @@ public:
 	DriveTrain();
 	void InitDefaultCommand();
 	void Move(float left, float right);
+	void Stop();
 	void GetPosition (float &left,float &right);
 	float TicksToInches (float ticks);
 	float GetGyroAngle ();
