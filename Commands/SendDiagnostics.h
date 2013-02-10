@@ -19,6 +19,7 @@ public:
 	virtual void Interrupted();
 	virtual bool TestJags(CANJaguar* jag);
 private:
+	NetworkTable *diagnosticsTable;
 	int count;
 	bool leftDriveExists;
 	bool rightDriveExists;
