@@ -17,7 +17,7 @@ ChainsawUp::ChainsawUp() {
 }
 // Called just before this Command runs the first time
 void ChainsawUp::Initialize() {
-	Robot::climber->ChainsawPosition1();
+	Robot::climber->ChainsawUp();
 }
 // Called repeatedly when this Command is scheduled to run
 void ChainsawUp::Execute() {
@@ -25,7 +25,7 @@ void ChainsawUp::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ChainsawUp::IsFinished() {
-#warning DANGER WILL ROBINSON (1/2)
+#warning "DANGER WILL ROBINSON (1/2)"
 	if(RobotMap::climberLeftWindowEncoder->GetVoltage()<0.15625 || 
 			RobotMap::climberRightWindowEncoder->GetVoltage()<0.15625){
 		return true;
