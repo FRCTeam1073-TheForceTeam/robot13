@@ -11,6 +11,9 @@
 #define SHOOTER_BACK_DEFAULT_SPEED  2550 
 class Shooter: public Subsystem {
 private:
+	enum scaleTypeEnum{identical, additive, multiplicative};
+	float scaleFactor;
+	scaleTypeEnum scaleType;
 	int speed; 
 	float elevationAngle;
 	int defaultSpeed, defaultElevationAngle;
