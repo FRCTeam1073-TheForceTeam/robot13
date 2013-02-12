@@ -9,7 +9,7 @@
 //CAN Jaguar IDs
 #define JAGUAR_SHOOTER_BACK 7
 #define JAGUAR_SHOOTER_FRONT 5
-#define JAGUAR_SHOOTER_ANGLE 4	//this will go when electrical removes it from the bot
+#define JAGUAR_SHOOTER_ANGLE 4
 #define JAGUAR_DRIVE_LEFT 6
 #define JAGUAR_DRIVE_RIGHT 9
 #define JAGUAR_CLIMBER_CIM_LEFT 2

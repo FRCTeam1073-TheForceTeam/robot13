@@ -29,6 +29,8 @@ public:
 	CANJaguar* frontJag;
 	CANJaguar* backJag;
 	DigitalInput* elevationBottomSwitch;
+	SpeedController* elevationVictor;
+	StallableAnalogEncoder* elevationEncoder;
 	Shooter();
 	void InitDefaultCommand();
 	void SetToDefaults();

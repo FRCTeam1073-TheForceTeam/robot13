@@ -10,8 +10,8 @@ private:
 	bool ClimberOnOff;
 	int encoderFailCount;
 public:
-	SpeedController* leftClimbWindowTalon;
-	SpeedController* rightClimbWindowTalon;
+	SpeedController* leftClimbWindowVictor;
+	SpeedController* rightClimbWindowVictor;
 	CANJaguar* leftCIM;
 	CANJaguar* rightCIM;
     StallableAnalogEncoder* leftWindowEncoder;

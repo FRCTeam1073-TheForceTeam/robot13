@@ -1,11 +1,11 @@
-#include "Climber.h"4
+#include "Climber.h"
 #include "../RobotMap.h"
 #include "../Robot.h"
 #include "../Commands/ClimberDrive.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 Climber::Climber() : Subsystem("Climber") {
-	leftClimbWindowTalon = RobotMap::climberLeftClimbWindowTalon;
-	rightClimbWindowTalon = RobotMap::climberRightClimbWindowTalon;
+	leftClimbWindowVictor = RobotMap::climberLeftClimbWindowVictor;
+	rightClimbWindowVictor = RobotMap::climberRightClimbWindowVictor;
 	leftCIM = RobotMap::climberLeftCIM;
 	rightCIM = RobotMap::climberRightCIM;
 	leftWindowEncoder = RobotMap::climberLeftWindowEncoder;
@@ -67,16 +67,16 @@ void Climber::DisengageClimber(){
 	ClimberOnOff=false;
 }
 void Climber::ChainsawMovementOff(){
-	leftClimbWindowTalon->Set(0);
-	rightClimbWindowTalon->Set(0);	
+	leftClimbWindowVictor->Set(0);
+	rightClimbWindowVictor->Set(0);	
 }
 void Climber::ChainsawUp(){
-	leftClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
-	rightClimbWindowTalon->Set(CHAINSAW_UP_SPEED);
+	leftClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
+	rightClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
 }
 void Climber::ChainsawDown(){
-	leftClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
-	rightClimbWindowTalon->Set(CHAINSAW_DOWN_SPEED);
+	leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED);
+	rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED);
 }
 
 float Climber::EncoderUpVoltage(){return 0.15625f;}
