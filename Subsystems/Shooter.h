@@ -9,11 +9,13 @@
 #define SHOOTER_DEFAULT_D 0.000
 #define SHOOTER_FRONT_DEFAULT_SPEED 2550
 #define SHOOTER_BACK_DEFAULT_SPEED  2550 
+
+typedef	enum {identical, additive, multiplicative} scaleType_t;
+
 class Shooter: public Subsystem {
 private:
-	enum scaleTypeEnum{identical, additive, multiplicative};
 	float scaleFactor;
-	scaleTypeEnum scaleType;
+	scaleType_t scaleType;
 	int speed; 
 	float elevationAngle;
 	int defaultSpeed, defaultElevationAngle;
@@ -41,6 +43,7 @@ public:
 	bool IsShooterMotorOn();
 	int GetFrontSetSpeed();	//speed used for shooter wheel
 	int GetBackSetSpeed();	//returns manipulation of GetFrontSetSpeed() 
+	void SetBackMode(scaleType_t inScaleType, float inScaleFactor);		//sets scaling behavior of rear wheel speed relative to front
 	int GetElevationAngle();
 	int GetDefaultSpeed();
 	int GetDefaultElevationAngle();
