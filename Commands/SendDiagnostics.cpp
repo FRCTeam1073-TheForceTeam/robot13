@@ -90,6 +90,20 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber("Back Shooter Jag Voltage", RobotMap::shooterBackJag->GetOutputVoltage());
 		diagnosticsTable->PutNumber("Back Shooter Jag Temperature", RobotMap::shooterBackJag->GetTemperature());
 	}
+	if(leftClimberExists == true){
+		diagnosticsTable->PutNumber("Left Climb Jag Current", RobotMap::climberLeftCIM->GetOutputCurrent());
+		diagnosticsTable->PutNumber("Left Climb Jag Bus Voltage", RobotMap::climberLeftCIM->GetBusVoltage());
+		diagnosticsTable->PutNumber("Left Climb Jag Voltage", RobotMap::climberLeftCIM->GetOutputVoltage());
+		diagnosticsTable->PutNumber("Left Climb Jag Temperature", RobotMap::climberLeftCIM->GetTemperature());
+		diagnosticsTable->PutNumber("Left Climber Position", RobotMap::climberLeftCIM->GetPosition());
+	}
+	if(rightClimberExists == true){
+		diagnosticsTable->PutNumber("Right Climb Jag Current", RobotMap::climberRightCIM->GetOutputCurrent());
+		diagnosticsTable->PutNumber("Right Climb Jag Bus Voltage", RobotMap::climberRightCIM->GetBusVoltage());
+		diagnosticsTable->PutNumber("Right Climb Jag Voltage", RobotMap::climberRightCIM->GetOutputVoltage());
+		diagnosticsTable->PutNumber("Right Climb Jag Temperature", RobotMap::climberRightCIM->GetTemperature());
+		diagnosticsTable->PutNumber("Right Climber Position", RobotMap::climberRightCIM->GetPosition());
+	}
 	//Shooter Encoders
 	diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 	//Gyro

@@ -29,7 +29,7 @@ void Climber::ClimberJagConfig(){
 void Climber::Climb(float yPosition){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
-	if(encoderFailCount >= -fabs(yPosition) > 0.0f && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
+	if((true || encoderFailCount >= -fabs(yPosition) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
 		encoderFailCount++;
 	}
 	else if (encoderFailCount > 0){
@@ -44,11 +44,13 @@ void Climber::Climb(float yPosition){
 		rightCIM->Disable();
 		rightCIM->ChangeControlMode(CANJaguar::kVoltage);
 		rightCIM->EnableControl();
+		printf("\n\n ```````Voltage Mode````````\n\n");
 	}
 	
 	if(ClimberOnOff){
 		leftCIM->Set(yPosition);
 		rightCIM->Set(yPosition);
+		//printf("\n Climber RPM: %f\n", yPosition);
 	}
 	else{
 		leftCIM->Set(0);
@@ -59,11 +61,11 @@ bool Climber::getClimberOnOff(){
 	return ClimberOnOff;
 }	
 void Climber::EngageClimber(){
-	//printf("\n\n *****In engage *******\n\n");
+	printf("\n\n *****In engage *******\n\n");
 	ClimberOnOff=true;
 }	
 void Climber::DisengageClimber(){
-	//printf("\n\n *****In disengage *******\n\n");
+	printf("\n\n *****In disengage *******\n\n");
 	ClimberOnOff=false;
 }
 void Climber::ChainsawMovementOff(){
