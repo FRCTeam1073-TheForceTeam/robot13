@@ -14,6 +14,8 @@ DiscVelocity* Robot::discVelocity = NULL;
 DigitalInput* Robot::jumper13 = NULL;
 DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
+DigitalInput* Robot::jumper12 = NULL;
+Robot::WhichRobot_t Robot::whichRobot;
 Robot::Robot() {
 	//NetworkTable::SetTeam(1073);
 }
@@ -23,8 +25,10 @@ void Robot::RobotInit() {
 	RobotMap::init();
 	jumper13 = new DigitalInput(1, 13);
 	jumper14 = new DigitalInput(1, 14);	
-	if (jumper13->Get() == 1)	whichRobot = elot;
-	else if(jumper14->Get() == 1)	whichRobot = mobileBase;
+	jumper12 = new DigitalInput(1, 12);
+	if (jumper13->Get() == 0)	whichRobot = elot;
+	else if(jumper14->Get() == 0)	whichRobot = mobileBase;
+	else if(jumper12->Get() == 0) whichRobot = libra;
 	else	whichRobot = newRobot;
 
 	switch(whichRobot)
@@ -37,6 +41,9 @@ void Robot::RobotInit() {
 		break;
 	case newRobot:
 		printf("Robot is new robot\n");
+		break;
+	case libra:
+		printf("Robot is Libra\n");
 		break;
 	default:
 		printf("Robot is something else -- HELP!\n");
@@ -106,4 +113,9 @@ void Robot::SendNewDashboardData(){
 	SmartDashboard::PutNumber(SHOOTER_FRONT_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_CURRENT_SPEED, RobotMap::shooterBackJag->GetSpeed());
 }
+Robot::WhichRobot_t Robot::GetWhichRobot()
+{
+	return whichRobot;
+}
+
 START_ROBOT_CLASS(Robot);

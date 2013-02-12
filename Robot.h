@@ -38,10 +38,13 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
-	enum {newRobot, mobileBase, elot} whichRobot;
+	static enum WhichRobot_t {newRobot, mobileBase, elot, libra} whichRobot;
+	static WhichRobot_t GetWhichRobot();
+
 private:
 	void SendNewDashboardData();
 	static DigitalInput *jumper14;
 	static DigitalInput *jumper13;
+	static DigitalInput *jumper12;
 };
 #endif
