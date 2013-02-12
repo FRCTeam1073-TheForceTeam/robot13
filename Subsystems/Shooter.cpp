@@ -42,14 +42,37 @@ int Shooter::GetBackSetSpeed(){
 	//TODO: Update with better math. 
 	switch(scaleType){
 	case additive:
-		return speed + scaleFactor;
+		return (int) (speed + scaleFactor);
 		break;
 	case multiplicative:
-		return speed * scaleFactor;
+		return (int) (speed * scaleFactor);
 		break;
 	default:
 		return speed;
 	}
+}
+
+void Shooter::SetBackMode(scaleType_t inScaleType, float inScaleFactor)
+{
+	scaleType = inScaleType;
+	scaleFactor = inScaleFactor; 
+	char *scaleTypeWords;
+	
+	switch (scaleType) {
+		case identical:
+			scaleTypeWords = "identical";
+			break;
+		case additive:
+			scaleTypeWords = "additive";
+			break;
+		case multiplicative:
+			scaleTypeWords = "multiplicative";
+			break;
+		default:
+			scaleTypeWords = "unknown";
+	}
+	printf("Setting shooter to scaleType %s scaleFactor %f\n", 
+			scaleTypeWords, scaleFactor);
 }
 
 int Shooter::GetElevationAngle() {return elevationAngle;}
