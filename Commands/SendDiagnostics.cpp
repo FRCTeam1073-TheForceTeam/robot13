@@ -90,6 +90,10 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+	//Battery Voltage
+	diagnosticsTable->PutNumber("Battery Voltage", DriverStation::GetInstance()->GetBatteryVoltage());
+	//MatchTimer
+	diagnosticsTable->PutNumber("Match Timer", DriverStation::GetInstance()->GetMatchTime());
 	
 	return;
 } 
