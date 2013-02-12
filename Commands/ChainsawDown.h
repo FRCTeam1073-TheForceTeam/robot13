@@ -16,12 +16,15 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 #include "../WPILibExtensions/StallableAnalogEncoder.h"
+#include "../WPILibExtensions/Stallable.h"
 /**
  *
  *
  * @author ExampleAuthor
  */
 class ChainsawDown: public Command {
+private:
+	int manualPositionCounter;
 public:
 	ChainsawDown();
 	virtual void Initialize();

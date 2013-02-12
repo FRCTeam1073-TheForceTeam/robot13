@@ -11,6 +11,8 @@
  * @author ExampleAuthor
  */
 class ChainsawUp: public Command {
+private:
+	int manualPositionCounter;
 public:
 	ChainsawUp();
 	virtual void Initialize();

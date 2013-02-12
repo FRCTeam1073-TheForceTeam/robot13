@@ -1,4 +1,4 @@
-#include "Climber.h"
+#include "Climber.h"4
 #include "../RobotMap.h"
 #include "../Robot.h"
 #include "../Commands/ClimberDrive.h"
@@ -11,6 +11,7 @@ Climber::Climber() : Subsystem("Climber") {
 	leftWindowEncoder = RobotMap::climberLeftWindowEncoder;
 	rightWindowEncoder = RobotMap::climberRightWindowEncoder;
 	ClimberOnOff = false;
+	encoderFailCount = 0;
 }
 void Climber::InitDefaultCommand() {SetDefaultCommand(new ClimberDrive());}
 void Climber::ClimberJagConfig(){
@@ -18,6 +19,7 @@ void Climber::ClimberJagConfig(){
 	leftCIM->SetSpeedReference(CANJaguar::kSpeedRef_Encoder);
 	leftCIM->ConfigEncoderCodesPerRev(360);
 	leftCIM->EnableControl();
+	
 	rightCIM->ChangeControlMode(CANJaguar::kSpeed);
 	rightCIM->SetSpeedReference(CANJaguar::kSpeedRef_Encoder);
 	rightCIM->ConfigEncoderCodesPerRev(360);
@@ -25,6 +27,25 @@ void Climber::ClimberJagConfig(){
 	
 }
 void Climber::Climb(float yPosition){
+	const float MIN = 0.05f;
+	const int EPIC_FAIL = 100;
+	if(encoderFailCount >= -fabs(yPosition) > 0.0f && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
+		encoderFailCount++;
+	}
+	else if (encoderFailCount > 0){
+		encoderFailCount = 0;
+	}	
+	if(encoderFailCount > EPIC_FAIL){
+		encoderFailCount = -1;
+		leftCIM->Disable();
+		leftCIM->ChangeControlMode(CANJaguar::kVoltage);
+		leftCIM->EnableControl();
+
+		rightCIM->Disable();
+		rightCIM->ChangeControlMode(CANJaguar::kVoltage);
+		rightCIM->EnableControl();
+	}
+	
 	if(ClimberOnOff){
 		leftCIM->Set(yPosition);
 		rightCIM->Set(yPosition);

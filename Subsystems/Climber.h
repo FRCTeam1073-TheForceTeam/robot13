@@ -8,6 +8,7 @@
 class Climber: public Subsystem {
 private:
 	bool ClimberOnOff;
+	int encoderFailCount;
 public:
 	SpeedController* leftClimbWindowTalon;
 	SpeedController* rightClimbWindowTalon;
