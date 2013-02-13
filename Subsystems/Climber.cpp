@@ -78,6 +78,7 @@ void Climber::ChainsawMovementOff(){
 void Climber::ChainsawUp(){
 	leftClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
 	rightClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
+	
 }
 void Climber::ChainsawDown(){
 	leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED);

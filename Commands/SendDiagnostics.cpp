@@ -99,6 +99,10 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+	//climber encoder values
+	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climber->leftWindowEncoder->GetVoltage());
+	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climber->rightWindowEncoder->GetVoltage());
+		
 
 	return;
 } 
