@@ -2,6 +2,7 @@
 #define CLIMBER_H
 #define CHAINSAW_DOWN_SPEED -0.5
 #define CHAINSAW_UP_SPEED 0.5
+#define CLIMBER_OFF_SPEED 0.0f
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "..\WPILibExtensions\StallableAnalogEncoder.h"
@@ -24,8 +25,8 @@ public:
 	bool getClimberOnOff();
 	void EngageClimber();
 	void DisengageClimber();
-	void ChainsawUp();
-	void ChainsawDown();
+	void ChainsawUp(bool leftOff, bool rightOff);
+	void ChainsawDown(bool leftOff, bool rightOff);
 	void ChainsawMovementOff();
 	float EncoderUpVoltage();
 	float EncoderMiddleVoltage();
