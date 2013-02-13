@@ -29,8 +29,7 @@ void Climber::ClimberJagConfig(){
 void Climber::Climb(float yPosition){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
-#warning "Climber Always in EPIC_FAIL mode"
-	
+#warning "Climber Always in EPIC_FAIL mode"	
 	// Not the if true or ...
 	if((true || encoderFailCount >= -fabs(yPosition) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
 		encoderFailCount++;
@@ -49,7 +48,7 @@ void Climber::Climb(float yPosition){
 		rightCIM->EnableControl();
 		printf("\n\n ```````Voltage Mode````````\n\n");
 	}
-	
+	printf("Poorly named y variable: %f\n", yPosition);
 	if(ClimberOnOff){
 		leftCIM->Set(-1 * yPosition);
 		rightCIM->Set(yPosition);
@@ -80,8 +79,8 @@ void Climber::ChainsawUp(bool leftOff, bool rightOff){
 	if(rightOff)rightClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
 }
 void Climber::ChainsawDown(bool leftOff, bool rightOff){
-	if(leftOff)leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else leftClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
-	if(rightOff)rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else rightClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
+	if(!leftOff)leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else leftClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
+	if(!rightOff)rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else rightClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
 }
 
 float Climber::EncoderUpVoltage(){return 0.15625f;}
