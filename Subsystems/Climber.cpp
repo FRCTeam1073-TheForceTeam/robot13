@@ -29,6 +29,7 @@ void Climber::ClimberJagConfig(){
 void Climber::Climb(float yPosition){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
+	//TODO: this got screwed up
 	if((true || encoderFailCount >= -fabs(yPosition) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
 		encoderFailCount++;
 	}
@@ -72,13 +73,13 @@ void Climber::ChainsawMovementOff(){
 	leftClimbWindowVictor->Set(0);
 	rightClimbWindowVictor->Set(0);	
 }
-void Climber::ChainsawUp(){
-	leftClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
-	rightClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
+void Climber::ChainsawUp(bool leftOff, bool rightOff){
+	if(leftOff)leftClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
+	if(rightOff)rightClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
 }
-void Climber::ChainsawDown(){
-	leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED);
-	rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED);
+void Climber::ChainsawDown(bool leftOff, bool rightOff){
+	if(leftOff)leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else leftClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
+	if(rightOff)rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else rightClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
 }
 
 float Climber::EncoderUpVoltage(){return 0.15625f;}
