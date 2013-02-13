@@ -48,7 +48,7 @@ void Climber::Climb(float yPosition){
 	}
 	
 	if(ClimberOnOff){
-		leftCIM->Set(yPosition);
+		leftCIM->Set(-1 * yPosition);
 		rightCIM->Set(yPosition);
 		//printf("\n Climber RPM: %f\n", yPosition);
 	}
