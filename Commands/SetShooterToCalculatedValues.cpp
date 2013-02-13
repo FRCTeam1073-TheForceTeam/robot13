@@ -5,7 +5,7 @@ void SetShooterToCalculatedValues::Initialize()
 	if(Robot::allignmentData->IsTarget()){
 		float calcAngle = Robot::allignmentData->GetCalculatedAngle();
 		float calcDistance = Robot::allignmentData->GetCalculatedDistance();
-		Robot::shooter->SetRawAngle(calcAngle);
+		Robot::shooter->SetRawElevationAngle(calcAngle);
 #warning "Calculated speed / distance not set"
 		printf("SetShooterToCalculatedValues angle: %f   distance: %f\n", calcAngle, calcDistance);
 	}

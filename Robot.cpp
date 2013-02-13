@@ -30,6 +30,7 @@ void Robot::RobotInit() {
 	
 	scaleTypePref = (scaleType_t) prefs->GetInt("RearShooterScaleType", identical);
 	scaleFactorPref = prefs->GetFloat("RearShooterScaleValue", 1.0);
+	prefs->Save();
 	
 	jumper12 = new DigitalInput(DIGITAL_JUMPER_12);
 	jumper13 = new DigitalInput(DIGITAL_JUMPER_13);
