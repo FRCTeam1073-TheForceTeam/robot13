@@ -33,6 +33,7 @@ int Collector::GetNumberOfDiscs(){
 	return 0;
 }
 bool Collector::IsNextDiscUpsideDown(){
+#warning "IsNextDiskUpsideDown not implemented"
 	return false;	//TODO: look at Disc Collection Sensor
 }
 bool Collector::IsDiscOnShooterBed(){
