@@ -32,6 +32,7 @@ bool SendDiagnostics::TestJags(CANJaguar* jag)
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
+	return;
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -41,8 +42,21 @@ void SendDiagnostics::Initialize() {
 	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
 }
 
+// Common function for handling jag diagnostics
+void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPosition)
+{
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Current", thisJag->GetOutputCurrent());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Bus Voltage", thisJag->GetBusVoltage());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Voltage", thisJag->GetOutputVoltage());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Temperature", thisJag->GetTemperature());
+	if (printPosition)
+		diagnosticsTable->PutNumber(std::string(jagString) + "Train Position", thisJag->GetPosition());
+		
+	SmartDashboard::PutNumber(std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
+}
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
+	return;
 	count++;
 	if(count % 20 != 0)
 	{
@@ -56,53 +70,28 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Battery Voltage", DriverStation::GetInstance()->GetBatteryVoltage());
 		
 	//Drive Train Jaguar Diagnostics
-	if(leftDriveExists == true)
+	if(leftDriveExists)
 	{
-		diagnosticsTable->PutNumber("Left Drive Jag Current", RobotMap::driveTrainLeftMotor->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Left Drive Jag Bus Voltage", RobotMap::driveTrainLeftMotor->GetBusVoltage());
-		diagnosticsTable->PutNumber("Left Drive Jag Voltage", RobotMap::driveTrainLeftMotor->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Left Drive Jag Temperature", RobotMap::driveTrainLeftMotor->GetTemperature());
-		diagnosticsTable->PutNumber("Left Drive Train Position", RobotMap::driveTrainLeftMotor->GetPosition());
+		JagDiags("Left Drive", RobotMap::driveTrainLeftMotor, true);
 	}
-	if(rightDriveExists == true){
-		diagnosticsTable->PutNumber("Right Drive Jag Current", RobotMap::driveTrainRightMotor->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Right Drive Jag Bus Voltage", RobotMap::driveTrainRightMotor->GetBusVoltage());
-		diagnosticsTable->PutNumber("Right Drive Jag Voltage", RobotMap::driveTrainRightMotor->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Right Drive Jag Temperature", RobotMap::driveTrainRightMotor->GetTemperature());
-		diagnosticsTable->PutNumber("Right Drive Train Position", RobotMap::driveTrainRightMotor->GetPosition());
+	if(rightDriveExists){
+		JagDiags("Right Drive", RobotMap::driveTrainRightMotor, true);
 	}
 	//Shooter Jaguar Diagnostics
-	if(elevationShooterExists == true){
-		diagnosticsTable->PutNumber("Shooter Elevation Jag Current", RobotMap::shooterElevationJag->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Shooter Elevation Jag Bus Voltage", RobotMap::shooterElevationJag->GetBusVoltage());
-		diagnosticsTable->PutNumber("Shooter Elevation Jag Voltage", RobotMap::shooterElevationJag->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Shooter Elevation Jag Temperature", RobotMap::shooterElevationJag->GetTemperature());
+	if(elevationShooterExists){
+		JagDiags("Shooter Elevation", RobotMap::shooterElevationJag, false);
 	}
-	if(primaryShooterExists == true){
-		diagnosticsTable->PutNumber("Front Shooter Jag Current", RobotMap::shooterFrontJag->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Front Shooter Jag Bus Voltage", RobotMap::shooterFrontJag->GetBusVoltage());
-		diagnosticsTable->PutNumber("Front Shooter Jag Voltage", RobotMap::shooterFrontJag->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Front Shooter Jag Temperature", RobotMap::shooterFrontJag->GetTemperature());
+	if(primaryShooterExists){
+		JagDiags("Front Shooter", RobotMap::shooterFrontJag, false);
 	}
-	if(supportShooterExists == true){
-		diagnosticsTable->PutNumber("Back Shooter Jag Current", RobotMap::shooterBackJag->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Back Shooter Jag Bus Voltage", RobotMap::shooterBackJag->GetBusVoltage());
-		diagnosticsTable->PutNumber("Back Shooter Jag Voltage", RobotMap::shooterBackJag->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Back Shooter Jag Temperature", RobotMap::shooterBackJag->GetTemperature());
+	if(supportShooterExists){
+		JagDiags("Back Shooter", RobotMap::shooterBackJag, false);
 	}
-	if(leftClimberExists == true){
-		diagnosticsTable->PutNumber("Left Climb Jag Current", RobotMap::climberLeftCIM->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Left Climb Jag Bus Voltage", RobotMap::climberLeftCIM->GetBusVoltage());
-		diagnosticsTable->PutNumber("Left Climb Jag Voltage", RobotMap::climberLeftCIM->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Left Climb Jag Temperature", RobotMap::climberLeftCIM->GetTemperature());
-		diagnosticsTable->PutNumber("Left Climber Position", RobotMap::climberLeftCIM->GetPosition());
+	if(leftClimberExists){
+		JagDiags("Left Climb", RobotMap::climberLeftCIM, true);
 	}
-	if(rightClimberExists == true){
-		diagnosticsTable->PutNumber("Right Climb Jag Current", RobotMap::climberRightCIM->GetOutputCurrent());
-		diagnosticsTable->PutNumber("Right Climb Jag Bus Voltage", RobotMap::climberRightCIM->GetBusVoltage());
-		diagnosticsTable->PutNumber("Right Climb Jag Voltage", RobotMap::climberRightCIM->GetOutputVoltage());
-		diagnosticsTable->PutNumber("Right Climb Jag Temperature", RobotMap::climberRightCIM->GetTemperature());
-		diagnosticsTable->PutNumber("Right Climber Position", RobotMap::climberRightCIM->GetPosition());
+	if(rightClimberExists){
+		JagDiags("Right Climb", RobotMap::climberRightCIM, true);
 	}
 	//Shooter Encoders
 	diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
@@ -110,8 +99,11 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+	//climber encoder values
+	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climber->leftWindowEncoder->GetVoltage());
+	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climber->rightWindowEncoder->GetVoltage());
+		
 
-	
 	return;
 } 
 

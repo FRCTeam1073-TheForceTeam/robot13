@@ -29,7 +29,9 @@ void Climber::ClimberJagConfig(){
 void Climber::Climb(float yPosition){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
-	//TODO: this got screwed up
+#warning "Climber Always in EPIC_FAIL mode"
+	
+	// Not the if true or ...
 	if((true || encoderFailCount >= -fabs(yPosition) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
 		encoderFailCount++;
 	}
@@ -49,7 +51,7 @@ void Climber::Climb(float yPosition){
 	}
 	
 	if(ClimberOnOff){
-		leftCIM->Set(yPosition);
+		leftCIM->Set(-1 * yPosition);
 		rightCIM->Set(yPosition);
 		//printf("\n Climber RPM: %f\n", yPosition);
 	}

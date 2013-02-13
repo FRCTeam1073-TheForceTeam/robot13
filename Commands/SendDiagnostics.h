@@ -28,6 +28,7 @@ private:
 	bool primaryShooterExists;
 	bool supportShooterExists;
 	bool elevationShooterExists;
+	void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPosition);
 };
 
 #endif
