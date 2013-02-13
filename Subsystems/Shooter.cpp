@@ -73,7 +73,7 @@ void Shooter::SetBackMode(scaleType_t inScaleType, float inScaleFactor)
 			scaleTypeWords, scaleFactor);
 }
 
-int Shooter::GetElevationAngle() {return elevationAngle;}
+float Shooter::GetElevationAngle() {return elevationAngle;}
 int Shooter::GetDefaultSpeed() {return defaultSpeed;}
 int Shooter::GetDefaultElevationAngle() {return defaultElevationAngle;}
 void Shooter::SetToDefaults(){
@@ -104,7 +104,7 @@ void Shooter::SetRawBackSpeed(int speed){
 	rawBackSpeed = speed;
 	rawBackSpeedEnabled = true;
 }
-void Shooter::SetRawElevationAngle(int elevationAngle) {
+void Shooter::SetRawElevationAngle(float elevationAngle) {
 	this->elevationAngle = elevationAngle;
 	Robot::allignmentData->SendCurrentAngle(elevationAngle);
 }

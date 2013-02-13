@@ -38,14 +38,14 @@ public:
 	void IncrementAngle(float angleIncrement);
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
 	void SetRawBackSpeed(int speed);
-	void SetRawElevationAngle(int elevationAngle);
+	void SetRawElevationAngle(float elevationAngle);
 	void UpdateDefaults(double distanceToTarget, double robotAngleToTarget);
 	void ShooterOnOff(bool on);
 	bool IsShooterMotorOn();
 	int GetFrontSetSpeed();	//speed used for shooter wheel
 	int GetBackSetSpeed();	//returns manipulation of GetFrontSetSpeed() 
 	void SetBackMode(scaleType_t inScaleType, float inScaleFactor);		//sets scaling behavior of rear wheel speed relative to front
-	int GetElevationAngle();
+	float GetElevationAngle();
 	int GetDefaultSpeed();
 	int GetDefaultElevationAngle();
 	bool IsAtSetAngle();
@@ -54,7 +54,7 @@ public:
 	int GetCoarseAdjustmentSpeed();
 	float GetFineAdjustmentAngle();
 	void StopElevatorMotor();
-	void SetRawAngle(int elevationAngle);
+	void SetRawAngle(float elevationAngle);
 	void SetPID(double P, double I, double D);
 	void MoveElevatorMotor(float speed);
 };
