@@ -45,12 +45,12 @@ void SendDiagnostics::Initialize() {
 // Common function for handling jag diagnostics
 void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPosition)
 {
-	diagnosticsTable->PutNumber("%s Jag Current", thisJag->GetOutputCurrent());
-	diagnosticsTable->PutNumber("%s Jag Bus Voltage", thisJag->GetBusVoltage());
-	diagnosticsTable->PutNumber("%s Jag Voltage", thisJag->GetOutputVoltage());
-	diagnosticsTable->PutNumber("%s Jag Temperature", thisJag->GetTemperature());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Current", thisJag->GetOutputCurrent());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Bus Voltage", thisJag->GetBusVoltage());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Voltage", thisJag->GetOutputVoltage());
+	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Temperature", thisJag->GetTemperature());
 	if (printPosition)
-		diagnosticsTable->PutNumber("%s Train Position", thisJag->GetPosition());
+		diagnosticsTable->PutNumber(std::string(jagString) + "Train Position", thisJag->GetPosition());
 		
 	SmartDashboard::PutNumber(std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
 }
