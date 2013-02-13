@@ -38,6 +38,7 @@ int Shooter::GetFrontSetSpeed() {return speed;}
 int Shooter::GetBackSetSpeed(){
 	if(rawBackSpeedEnabled) return (int) rawBackSpeed;
 	//TODO: Update with better math. 
+	
 	switch(scaleType){
 	case additive:
 		return (int) (speed + scaleFactor);

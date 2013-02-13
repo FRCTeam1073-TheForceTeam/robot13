@@ -32,6 +32,7 @@ bool SendDiagnostics::TestJags(CANJaguar* jag)
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
+	return;
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -55,6 +56,7 @@ void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPo
 }
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
+	return;
 	count++;
 	if(count % 20 != 0)
 	{
