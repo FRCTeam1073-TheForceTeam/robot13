@@ -94,11 +94,11 @@ void SendDiagnostics::Execute() {
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
 	//climber encoder values
-	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climber->leftWindowEncoder->GetVoltage());
-	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climber->rightWindowEncoder->GetVoltage());
-		
-	SmartDashboard::PutNumber("Left Mag", RobotMap::climberLeftWindowEncoder->GetVoltage());
-	SmartDashboard::PutNumber("Right mag", RobotMap::climberRightWindowEncoder->GetVoltage());
+	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
+	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
+	
+	SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
+	SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
 
 	return;
 } 
