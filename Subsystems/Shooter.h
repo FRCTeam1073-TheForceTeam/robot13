@@ -22,6 +22,7 @@ private:
 	bool isShooterMotorOn;
 	bool rawBackSpeedEnabled;	//hack for now...
 	double rawBackSpeed;	//hack for now...
+	bool isElevatorEncoderFailed;
 	void ConfigureJaguarEncoder(CANJaguar* jaguar);
 public:
 	void TurnToSetAngle();
@@ -36,6 +37,8 @@ public:
 	void SetToDefaults();
 	void IncrementSpeed(int speedIncrement);
 	void IncrementAngle(float angleIncrement);
+	void SetElevatorEncoderFailed(bool isFailed);
+	bool Shooter::GetElevationEncoderFailed();
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
 	void SetRawBackSpeed(int speed);
 	void SetRawElevationAngle(float elevationAngle);
