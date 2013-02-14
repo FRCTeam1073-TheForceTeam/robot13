@@ -40,11 +40,10 @@ int Collector::GetNumberOfDiscs(){
 }
 bool Collector::IsNextDiscUpsideDown(){
 	return (discUpsideDownSensor->GetVoltage() < DISC_UPSIDE_DOWN_THRESHOLD);
-#warning "IsNextDiskUpsideDown not implemented"
 	return false;	//TODO: look at Disc Collection Sensor
 }
 bool Collector::IsDiscOnShooterBed(){
 	//TODO: look at proximity sensor on Shooter Bed (is a part of this class)
 	return false;
 }
-}
+
