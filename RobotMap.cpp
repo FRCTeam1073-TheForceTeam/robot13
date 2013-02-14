@@ -7,6 +7,10 @@ CANJaguar* RobotMap::climberLeftCIM = NULL;
 CANJaguar* RobotMap::climberRightCIM = NULL;
 CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 CANJaguar* RobotMap::driveTrainRightMotor = NULL;
+#ifdef ADD_SECONDARY_DRIVE
+CANJaguar* RobotMap::driveTrainLeftMotorSecondary = NULL;
+CANJaguar* RobotMap::driveTrainRightMotorSecondary = NULL;
+#endif
 Gyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
@@ -37,6 +41,10 @@ void RobotMap::init() {
 	climberRightCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
 	driveTrainLeftMotor = new CANJaguar(JAGUAR_DRIVE_LEFT);
 	driveTrainRightMotor = new CANJaguar(JAGUAR_DRIVE_RIGHT);
+#ifdef ADD_SECONDARY_DRIVE
+	driveTrainLeftMotorSecondary = new CANJaguar(JAGUAR_DRIVE_LEFT_SECONDARY);
+	driveTrainRightMotorSecondary = new CANJaguar(JAGUAR_DRIVE_RIGHT_SECONDARY);
+#endif
 	
 	driveTrainGyro = new Gyro(ANALOG_GYRO);
 	lw->AddSensor("DriveTrain", "Gyro", driveTrainGyro);
