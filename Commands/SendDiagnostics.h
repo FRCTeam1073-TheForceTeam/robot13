@@ -4,11 +4,6 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-/**
- *
- *
- * @author ExampleAuthor
- */
 class SendDiagnostics: public Command {
 public:
 	SendDiagnostics();
@@ -18,6 +13,7 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 	virtual bool TestJags(CANJaguar* jag);
+	
 private:
 	NetworkTable *diagnosticsTable;
 	int count;

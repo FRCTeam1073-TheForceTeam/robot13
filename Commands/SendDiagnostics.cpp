@@ -32,7 +32,6 @@ bool SendDiagnostics::TestJags(CANJaguar* jag)
 
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
-	return;
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
@@ -40,6 +39,7 @@ void SendDiagnostics::Initialize() {
 	primaryShooterExists = TestJags(RobotMap::shooterFrontJag);
 	supportShooterExists = TestJags(RobotMap::shooterBackJag);
 	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
+	return;
 }
 
 // Common function for handling jag diagnostics
@@ -69,7 +69,6 @@ void SendDiagnostics::Execute() {
 	//Battery Voltage
 	diagnosticsTable->PutNumber("Battery Voltage", DriverStation::GetInstance()->GetBatteryVoltage());
 		
-	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists)
 	{
 		JagDiags("Left Drive", RobotMap::driveTrainLeftMotor, true);
@@ -77,7 +76,6 @@ void SendDiagnostics::Execute() {
 	if(rightDriveExists){
 		JagDiags("Right Drive", RobotMap::driveTrainRightMotor, true);
 	}
-	//Shooter Jaguar Diagnostics
 	if(elevationShooterExists){
 		JagDiags("Shooter Elevation", RobotMap::shooterElevationJag, false);
 	}
@@ -104,8 +102,7 @@ void SendDiagnostics::Execute() {
 	//climber encoder values
 	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climber->leftWindowEncoder->GetVoltage());
 	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climber->rightWindowEncoder->GetVoltage());
-		
-
+	
 	return;
 } 
 
