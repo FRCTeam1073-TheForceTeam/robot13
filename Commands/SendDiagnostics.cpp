@@ -35,6 +35,7 @@ void SendDiagnostics::Initialize() {
 	primaryShooterExists = TestJags(RobotMap::shooterFrontJag);
 	supportShooterExists = TestJags(RobotMap::shooterBackJag);
 	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
+	return;
 }
 
 // Common function for handling jag diagnostics
@@ -63,7 +64,6 @@ void SendDiagnostics::Execute() {
 	//Battery Voltage
 	diagnosticsTable->PutNumber("Battery Voltage", DriverStation::GetInstance()->GetBatteryVoltage());
 		
-	//Drive Train Jaguar Diagnostics
 	if(leftDriveExists)
 	{
 		JagDiags("Left Drive", RobotMap::driveTrainLeftMotor, true);
@@ -71,7 +71,6 @@ void SendDiagnostics::Execute() {
 	if(rightDriveExists){
 		JagDiags("Right Drive", RobotMap::driveTrainRightMotor, true);
 	}
-	//Shooter Jaguar Diagnostics
 	if(elevationShooterExists){
 		JagDiags("Shooter Elevation", RobotMap::shooterElevationJag, false);
 	}
@@ -93,6 +92,8 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	//Disc Count
 	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+	//Disc Inverted?
+	diagnosticsTable->PutBoolean("Bottom Disc Reversed", Robot::collector->IsNextDiscUpsideDown());
 	//climber encoder values
 	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
 	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
