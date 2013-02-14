@@ -62,6 +62,7 @@ void Robot::RobotInit() {
 	}
 	printf("\n");
 	climber = new Climber();
+	climberArms = new ClimberArms();
 	driveTrain = new DriveTrain();
 	collector = new Collector();
 	shooter = new Shooter();
