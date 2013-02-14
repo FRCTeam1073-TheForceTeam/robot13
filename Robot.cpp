@@ -3,9 +3,10 @@
 #include "Commands/AutonomousSequence.h"
 #include <Preferences.h>
 
-OI* Robot::oi = NULL;
+OI* Robot::oi = NULL; 
 //Greg Generated Static Variables
 Climber* Robot::climber = NULL;
+ClimberArms* Robot::climberArms = NULL;
 DriveTrain* Robot::driveTrain = NULL;
 Collector* Robot::collector = NULL;
 Shooter* Robot::shooter = NULL;
