@@ -3,6 +3,11 @@
 #include "../Robot.h"
 #include "../Commands/ClimberDrive.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
+
+static const float encoderUpRange = 0.15625;
+static const float encoderMiddleRange = 1.25;
+static const float encoderDownRange = 2.34375;
+
 Climber::Climber() : Subsystem("Climber") {
 	leftClimbWindowVictor = RobotMap::climberLeftClimbWindowVictor;
 	rightClimbWindowVictor = RobotMap::climberRightClimbWindowVictor;
@@ -84,9 +89,9 @@ void Climber::ChainsawDown(bool leftOff, bool rightOff){
 	if(rightOff)rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else rightClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
 }
 
-float Climber::EncoderUpVoltage(){return 0.15625f;}
-float Climber::EncoderMiddleVoltage(){return 1.25f;}
-float Climber::EncoderDownVoltage(){return 2.34375f;}
+float Climber::EncoderUpVoltage(){return encoderUpRange;}
+float Climber::EncoderMiddleVoltage(){return encoderMiddleRange;}
+float Climber::EncoderDownVoltage(){return encoderDownRange;}
 void Climber::ProcessWindowVoltageData(){
 	leftWindowEncoder->ProcessVoltageData();
 	rightWindowEncoder->ProcessVoltageData();
