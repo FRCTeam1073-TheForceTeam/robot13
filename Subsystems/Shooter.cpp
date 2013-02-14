@@ -17,6 +17,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	rawBackSpeed = SHOOTER_BACK_DEFAULT_SPEED;
 	scaleFactor = 1;
 	scaleType = identical;
+	isElevatorEncoderFailed = false;
 }
 void Shooter::InitDefaultCommand() {SetDefaultCommand(new ShooterDefaultCommand());}
 void Shooter::ShooterOnOff(bool on){
@@ -49,6 +50,14 @@ int Shooter::GetBackSetSpeed(){
 	default:
 		return speed;
 	}
+}
+
+void Shooter::SetElevatorEncoderFailed(bool isFailed) {
+	isElevatorEncoderFailed = isFailed;
+}
+
+bool Shooter::GetElevationEncoderFailed() {
+	return isElevatorEncoderFailed;
 }
 
 void Shooter::SetBackMode(scaleType_t inScaleType, float inScaleFactor)

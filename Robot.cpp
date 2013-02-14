@@ -24,14 +24,20 @@ void Robot::RobotInit() {
 	Preferences *prefs = Preferences::GetInstance();
 	scaleType_t scaleTypePref;
 	float scaleFactorPref;
+	bool isElevatorEncoderFailed;
 	
 	printf("\n\nFRC2013 " __DATE__ " " __TIME__ "\n" __FILE__ "\n\n" );
 	
 	RobotMap::init();
 	
+	//shooter preferences
 	scaleTypePref = (scaleType_t) prefs->GetInt("RearShooterScaleType", identical);
 	scaleFactorPref = prefs->GetFloat("RearShooterScaleValue", 1.0);
+	isElevatorEncoderFailed = prefs->GetBoolean("isElevatorEncoderFailed", false);
 	prefs->Save();
+	
+	//is elevation encoder failed preference
+	
 	
 	jumper12 = new DigitalInput(DIGITAL_JUMPER_12);
 	jumper13 = new DigitalInput(DIGITAL_JUMPER_13);
@@ -73,6 +79,7 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 	
 	shooter->SetBackMode(scaleTypePref, scaleFactorPref);
+	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
 	
 	chooser = new SendableChooser();
 	chooser->AddDefault("Right Back", new AutonomousSequence(AutonomousSequence::rightBack));

@@ -48,6 +48,7 @@ void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPo
 	if (printPosition)
 		diagnosticsTable->PutNumber(std::string(jagString) + "Train Position", thisJag->GetPosition());
 		
+	printf("%s %f\n", std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
 	SmartDashboard::PutNumber(std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
 }
 // Called repeatedly when this Command is scheduled to run
