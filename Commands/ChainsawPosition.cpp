@@ -1,5 +1,6 @@
 #include "ChainsawPosition.h"
 //#define TIMEOUT
+//#define STALL_DETECTION_ON
 ChainsawPosition::ChainsawPosition(Destination destination){
 	Requires(Robot::climberArms);
 #ifdef TIMEOUT
@@ -9,6 +10,7 @@ ChainsawPosition::ChainsawPosition(Destination destination){
 	Reset();
 }
 void ChainsawPosition::Initialize(){
+	puts("init");
 	Reset();
 	switch(destination){
 	case up:
@@ -30,6 +32,7 @@ void ChainsawPosition::Execute(){
 	Robot::climberArms->ProcessWindowVoltageData();
 	float vleft = Robot::climberArms->GetVoltageLeft();
 	float vright = Robot::climberArms->GetVoltageRight();
+	printf("Voltage Left: %f Target Voltage Left: %f\n", vleft, voltageLeft);
 	switch(destination){
 	case up:
 		Robot::climberArms->WindowMotorsUp(left, right);
@@ -48,8 +51,16 @@ void ChainsawPosition::Execute(){
 		break;
 	default: break;
 	}
-	left = left || Robot::climberArms->leftWindowEncoder->IsStall();
-	right = right || Robot::climberArms->rightWindowEncoder->IsStall();
+	left = 
+#ifdef STALL_DETECTION_ON
+	Robot::climberArms->leftWindowEncoder->IsStall() ||
+#endif
+	left;
+	right = 
+#ifdef STALL_DETECTION_ON
+	Robot::climberArms->rightWindowEncoder->IsStall() ||
+#endif
+	right;
 }
 bool ChainsawPosition::IsFinished(){
 	return
@@ -58,7 +69,9 @@ bool ChainsawPosition::IsFinished(){
 #endif
     (left && right);
 }
-void ChainsawPosition::End(){Robot::climberArms->WindowMotorsOff();}
+void ChainsawPosition::End(){
+	puts("end");
+	Robot::climberArms->WindowMotorsOff();}
 void ChainsawPosition::Interrupted() {End();}
 void ChainsawPosition::Reset(){
 	left = false; right = false;

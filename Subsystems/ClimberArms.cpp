@@ -36,7 +36,7 @@ void ClimberArms::WindowMotorsDown(bool offLeft, bool offRight){
 	if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
 		else leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 	if(!offRight) rightClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
-		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);	
+		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);	
 }
 void ClimberArms::WindowMotorsOff(){
 	leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);

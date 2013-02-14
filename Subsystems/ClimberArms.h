@@ -5,8 +5,8 @@
 #include "../WPILibExtensions/WPILibExtensions.h"
 #include "../RobotMap.h"
 #define CHAINSAW_WINDOW_OFF_SPEED 0.0f
-#define CHAINSAW_WINDOW_DOWN_SPEED -0.5f
-#define CHAINSAW_WINDOW_UP_SPEED 0.5f
+#define CHAINSAW_WINDOW_UP_SPEED 0.3f
+#define CHAINSAW_WINDOW_DOWN_SPEED -0.03f
 class ClimberArms : public Subsystem{
 public:
 	ClimberArms();
