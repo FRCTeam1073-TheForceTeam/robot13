@@ -5,8 +5,8 @@
 #include "HardwarePortDefinitions.h"
 class RobotMap {
 public:
-	static SpeedController* climberLeftClimbWindowVictor;
-	static SpeedController* climberRightClimbWindowVictor;
+	static SpeedController* climberArmLeftClimbWindowVictor;
+	static SpeedController* climberArmRightClimbWindowVictor;
 	static SpeedController* shooterElevationVictor;
 	static CANJaguar* climberLeftCIM;
 	static CANJaguar* climberRightCIM;
@@ -23,8 +23,8 @@ public:
 	
 	//Mag Encoders
 	static StallableAnalogEncoder* shooterElevationEncoder;
-	static StallableAnalogEncoder* climberLeftWindowEncoder;
-	static StallableAnalogEncoder* climberRightWindowEncoder;
+	static StallableAnalogEncoder* climberArmLeftWindowEncoder;
+	static StallableAnalogEncoder* climberArmRightWindowEncoder;
 	//LS
 	static DigitalInput* shooterElevationBottomSwitch;
 	//Chainsaw Magnetic Encoder

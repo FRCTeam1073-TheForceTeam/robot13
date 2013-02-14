@@ -2,14 +2,9 @@
 #include "../RobotMap.h"
 #include "../Robot.h"
 #include "../Commands/ClimberDrive.h"
-#include "../WPILibExtensions/WPILibExtensions.h"
 Climber::Climber() : Subsystem("Climber") {
-	leftClimbWindowVictor = RobotMap::climberLeftClimbWindowVictor;
-	rightClimbWindowVictor = RobotMap::climberRightClimbWindowVictor;
 	leftCIM = RobotMap::climberLeftCIM;
 	rightCIM = RobotMap::climberRightCIM;
-	leftWindowEncoder = RobotMap::climberLeftWindowEncoder;
-	rightWindowEncoder = RobotMap::climberRightWindowEncoder;
 	ClimberOnOff = false;
 	encoderFailCount = 0;
 }
@@ -26,12 +21,12 @@ void Climber::ClimberJagConfig(){
 	rightCIM->EnableControl();
 	
 }
-void Climber::Climb(float yPosition){
+void Climber::Climb(float joyY){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
 #warning "Climber Always in EPIC_FAIL mode"	
 	// Not the if true or ...
-	if((true || encoderFailCount >= -fabs(yPosition) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
+	if((true || encoderFailCount >= -fabs(joyY) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
 		encoderFailCount++;
 	}
 	else if (encoderFailCount > 0){
@@ -48,15 +43,15 @@ void Climber::Climb(float yPosition){
 		rightCIM->EnableControl();
 		printf("\n\n ```````Voltage Mode````````\n\n");
 	}
-	printf("Poorly named y variable: %f\n", yPosition);
+//	printf("Poorly named y variable: %f\n", yPosition);
 	if(ClimberOnOff){
-		leftCIM->Set(-1 * yPosition);
-		rightCIM->Set(yPosition);
+		leftCIM->Set(-1 * joyY);
+		rightCIM->Set(joyY);
 		//printf("\n Climber RPM: %f\n", yPosition);
 	}
 	else{
-		leftCIM->Set(0);
-		rightCIM->Set(0);	
+		leftCIM->Set(CLIMBER_OFF_SPEED);
+		rightCIM->Set(CLIMBER_OFF_SPEED);	
 	}
 }
 bool Climber::getClimberOnOff(){
@@ -70,28 +65,3 @@ void Climber::DisengageClimber(){
 	printf("\n\n *****In disengage *******\n\n");
 	ClimberOnOff=false;
 }
-void Climber::ChainsawMovementOff(){
-	leftClimbWindowVictor->Set(0);
-	rightClimbWindowVictor->Set(0);	
-}
-void Climber::ChainsawUp(bool leftOff, bool rightOff){
-	if(leftOff)leftClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
-	if(rightOff)rightClimbWindowVictor->Set(CHAINSAW_UP_SPEED);
-}
-void Climber::ChainsawDown(bool leftOff, bool rightOff){
-	if(!leftOff)leftClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else leftClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
-	if(!rightOff)rightClimbWindowVictor->Set(CHAINSAW_DOWN_SPEED); else rightClimbWindowVictor->Set(CLIMBER_OFF_SPEED);
-}
-
-float Climber::EncoderUpVoltage(){return 0.15625f;}
-float Climber::EncoderMiddleVoltage(){return 1.25f;}
-float Climber::EncoderDownVoltage(){return 2.34375f;}
-void Climber::ProcessWindowVoltageData(){
-	leftWindowEncoder->ProcessVoltageData();
-	rightWindowEncoder->ProcessVoltageData();
-}
-void Climber::ResetWindowVoltageData(){
-	leftWindowEncoder->ResetData();
-	rightWindowEncoder->ResetData();
-}
-bool Climber::WindowMotorStall(){return leftWindowEncoder->IsStall() || rightWindowEncoder->IsStall();}

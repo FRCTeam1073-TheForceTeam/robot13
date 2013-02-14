@@ -1,8 +1,8 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 SpeedController* RobotMap::shooterElevationVictor = NULL;
-SpeedController* RobotMap::climberLeftClimbWindowVictor = NULL;
-SpeedController* RobotMap::climberRightClimbWindowVictor = NULL;
+SpeedController* RobotMap::climberArmLeftClimbWindowVictor = NULL;
+SpeedController* RobotMap::climberArmRightClimbWindowVictor = NULL;
 CANJaguar* RobotMap::climberLeftCIM = NULL;
 CANJaguar* RobotMap::climberRightCIM = NULL;
 CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
@@ -19,19 +19,19 @@ DigitalInput* RobotMap::shooterElevationBottomSwitch = NULL;
 DigitalInput* RobotMap::velocity1 = NULL;
 DigitalInput* RobotMap::velocity2 = NULL;
 StallableAnalogEncoder* RobotMap::shooterElevationEncoder = NULL;
-StallableAnalogEncoder* RobotMap::climberLeftWindowEncoder = NULL;
-StallableAnalogEncoder* RobotMap::climberRightWindowEncoder = NULL;
+StallableAnalogEncoder* RobotMap::climberArmLeftWindowEncoder = NULL;
+StallableAnalogEncoder* RobotMap::climberArmRightWindowEncoder = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 	
 	shooterElevationVictor = new Victor(PWM_SHOOTER_ELEVATION_MOTOR);
 	lw->AddActuator("Shooter", "ShooterElevationVictor", (Victor*) shooterElevationVictor);
 	
-	climberLeftClimbWindowVictor = new Victor(PWM_CLIMBER_LEFT_WINDOW_MOTOR);
-	lw->AddActuator("Climber", "LeftClimbWindowVictor", (Victor*) climberLeftClimbWindowVictor);
+	climberArmLeftClimbWindowVictor = new Victor(PWM_CLIMBER_LEFT_WINDOW_MOTOR);
+	lw->AddActuator("Climber", "LeftClimbWindowVictor", (Victor*) climberArmLeftClimbWindowVictor);
 	
-	climberRightClimbWindowVictor = new Victor(PWM_CLIMBER_RIGHT_WINDOW_MOTOR);
-	lw->AddActuator("Climber", "RightClimbWindowVictor", (Victor*) climberRightClimbWindowVictor);
+	climberArmRightClimbWindowVictor = new Victor(PWM_CLIMBER_RIGHT_WINDOW_MOTOR);
+	lw->AddActuator("Climber", "RightClimbWindowVictor", (Victor*) climberArmRightClimbWindowVictor);
 	
 	climberLeftCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_LEFT);
 	climberRightCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
@@ -58,8 +58,8 @@ void RobotMap::init() {
 	shooterBackJag = new CANJaguar(JAGUAR_SHOOTER_BACK);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
-	climberLeftWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_LEFT_ANGLE_MAG_ENCODER);
-	climberRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
+	climberArmLeftWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_LEFT_ANGLE_MAG_ENCODER);
+	climberArmRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
     velocity1 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_ONE);
     velocity2 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_TWO);
 	shooterElevationBottomSwitch = new DigitalInput(DIGITAL_SHOOTER_ELEVATION_BOTTOM_LIMIT);

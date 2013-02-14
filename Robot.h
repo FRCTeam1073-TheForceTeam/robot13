@@ -13,6 +13,7 @@
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Diagnostics.h"
 #include "Subsystems/DiscVelocity.h"
+#include "Subsystems/ClimberArms.h"
 #include "OI.h"
 #include "HardwarePortDefinitions.h"
 class Robot : public IterativeRobot {
@@ -28,6 +29,7 @@ public:
 	static AllignmentData* allignmentData;
 	static DiscVelocity* discVelocity;
 	static Diagnostics* diagnostics;
+	static ClimberArms* climberArms;
 	Robot();
 	virtual void RobotInit();
 	virtual void AutonomousInit();
