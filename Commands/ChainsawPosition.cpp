@@ -1,45 +1,67 @@
 #include "ChainsawPosition.h"
+//#define TIMEOUT
 ChainsawPosition::ChainsawPosition(Destination destination){
-	//Requires(Robot::climber);	//not sure about this...
+	Requires(Robot::climberArms);
+#ifdef TIMEOUT
+	SetTimeout(3.0);
+#endif
 	this->destination = destination;
 	Reset();
 }
-void ChainsawPosition::Initialize(){Reset();}
-void ChainsawPosition::Execute(){
-	Robot::climber->ProcessWindowVoltageData();
-	float voltage = 0.0f;
+void ChainsawPosition::Initialize(){
+	Reset();
 	switch(destination){
 	case up:
-		lessThan = true;
-		voltage = Robot::climber->EncoderUpVoltage();
-		Robot::climber->ChainsawUp(left, right);
+		voltageLeft = Robot::climberArms->LeftEncoderUpVoltage();
+		voltageRight = Robot::climberArms->RightEncoderUpVoltage();
 		break;
 	case middle:
-		Robot::climber->ChainsawDown(left, right);
-		voltage = Robot::climber->EncoderMiddleVoltage();
-		break;
+		voltageLeft = Robot::climberArms->LeftEncoderMiddleVoltage();
+		voltageRight = Robot::climberArms->RightEncoderMiddleVoltage();
+	    break;
 	case down:
-		Robot::climber->ChainsawDown(left, right);
-		voltage = Robot::climber->EncoderDownVoltage();
+		voltageLeft = Robot::climberArms->LeftEncoderDownVoltage();
+		voltageRight = Robot::climberArms->RightEncoderDownVoltage();
 		break;
 	default: break;
-	if(lessThan){
-		left = Robot::climber->leftWindowEncoder->GetVoltage() < voltage;
-		right = Robot::climber->rightWindowEncoder->GetVoltage() < voltage;
-	}
-	else{
-		left = Robot::climber->leftWindowEncoder->GetVoltage() > voltage;
-		right = Robot::climber->rightWindowEncoder->GetVoltage() > voltage;
-	}
-	left = left || Robot::climber->leftWindowEncoder->IsStall();
-	right = right || Robot::climber->rightWindowEncoder->IsStall();
 	}
 }
-bool ChainsawPosition::IsFinished(){return left && right;}
-void ChainsawPosition::End(){Robot::climber->ChainsawMovementOff();}
+void ChainsawPosition::Execute(){
+	Robot::climberArms->ProcessWindowVoltageData();
+	float vleft = Robot::climberArms->GetVoltageLeft();
+	float vright = Robot::climberArms->GetVoltageRight();
+	switch(destination){
+	case up:
+		Robot::climberArms->WindowMotorsUp(left, right);
+		if(!left)left = vleft >= voltageLeft;
+		if(!right)right = vright <= voltageRight;
+		break;
+	case middle:
+		Robot::climberArms->WindowMotorsDown(left, right);
+		if(!left)left = fabs(vleft - voltageLeft) <= Robot::climberArms->EncoderVoltageTolerance();
+		if(!right)right = fabs(vright - voltageRight) <= Robot::climberArms->EncoderVoltageTolerance();
+		break;
+	case down:
+		Robot::climberArms->WindowMotorsDown(left, right);
+		if(!left)left = vleft <= voltageLeft;
+		if(!right) right = vright >= voltageRight;
+		break;
+	default: break;
+	}
+	left = left || Robot::climberArms->leftWindowEncoder->IsStall();
+	right = right || Robot::climberArms->rightWindowEncoder->IsStall();
+}
+bool ChainsawPosition::IsFinished(){
+	return
+#ifdef TIMEOUT
+	IsTimedOut() ||
+#endif
+    (left && right);
+}
+void ChainsawPosition::End(){Robot::climberArms->WindowMotorsOff();}
 void ChainsawPosition::Interrupted() {End();}
 void ChainsawPosition::Reset(){
-	lessThan = false;
-	left = true; right = true;
-	Robot::climber->ResetWindowVoltageData();
+	left = false; right = false;
+	voltageLeft = 0.0f; voltageRight = 0.0f;
+	Robot::climberArms->ResetWindowVoltageData();
 }

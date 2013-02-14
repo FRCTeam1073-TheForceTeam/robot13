@@ -25,8 +25,11 @@ public:
 	void ProcessWindowVoltageData();
 	void ResetWindowVoltageData();
 	bool WindowMotorStall();
-	void WindowMotorsUp(bool moveLeft, bool moveRight);
-	void WindowMotorsDown(bool moveLeft, bool moveRight);
+	//up and down methods are the devel's spawn. pass in true for off.
+	void WindowMotorsUp(bool offLeft, bool offRight);
+	void WindowMotorsDown(bool offLeft, bool offRight);
 	void WindowMotorsOff();
+	float GetVoltageLeft();
+	float GetVoltageRight();
 };
 #endif

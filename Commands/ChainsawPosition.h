@@ -13,8 +13,8 @@ public:
 	virtual void Interrupted();
 	virtual void End();
 private:
-	bool lessThan;
 	bool left, right;
+	float voltageLeft, voltageRight;
 	Destination destination;
 	void Reset();
 };
