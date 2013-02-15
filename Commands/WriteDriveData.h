@@ -14,7 +14,6 @@ public:
 private:
 	char fname[81];
 	FILE* file;
-	Timer* timer;
 	void Finished();	//not sure if the Cancel method calls Interrupt or End so I'll just implement both...
 };
 #endif
