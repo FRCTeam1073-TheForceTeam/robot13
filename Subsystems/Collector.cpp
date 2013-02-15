@@ -16,8 +16,8 @@ Collector::Collector() : Subsystem("Collector") {
 }
     
 void Collector::InitDefaultCommand() {}
-void Collector::MotorOn(){motor->Set(1.0f);}
-void Collector::MotorOff() {motor->Set(0.0f);}
+void Collector::MotorOn(){motor->Set(COLLECTOR_SPEED_ON);}
+void Collector::MotorOff() {motor->Set(COLLECTOR_SPEED_OFF);}
 int Collector::GetNumberOfDiscs(){
 	float voltage = discCountSensor->GetVoltage();
 //	printf ("Get numeber of discs %f\n", voltage);

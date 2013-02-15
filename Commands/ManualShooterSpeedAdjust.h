@@ -1,6 +1,3 @@
-/* Another command that sits out of Robot Builder's stone cold, orphan slaying grasp.
- * I decided to apply some simple OO and use a Command with a constructor but Robot Builder does not support that.
- */
 #ifndef MANUAL_SHOOTER_SPEED_ADJUST_H
 #define MANUAL_SHOOTER_SPEED_ADJUST_H
 #include "Commands/Subsystem.h"

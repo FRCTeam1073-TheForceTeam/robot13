@@ -1,15 +1,7 @@
 #ifndef AUTONOMOUSFORWARD_H
 #define AUTONOMOUSFORWARD_H
-
-
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-
-/**
- *
- *
- * @author ExampleAuthor
- */
 class AutonomousForward: public Command {
 public:
 	AutonomousForward(float distance);
@@ -24,7 +16,5 @@ private:
 	float targetAngle;
 	float startingAngle;
 	float distanceToDrive;
-	
 };
-
 #endif

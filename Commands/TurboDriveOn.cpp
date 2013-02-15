@@ -13,7 +13,7 @@ void TurboDriveOn::Initialize(){
 }
 void TurboDriveOn::Execute(){}
 bool TurboDriveOn::IsFinished(){return false;}
-void TurboDriveOn::End(){Interrupted();}	//shouldn't 
+void TurboDriveOn::End(){Interrupted();}	//the command should never actually End, but good practice just in case
 void TurboDriveOn::Interrupted() {
 	stick->SetJoystickMode(old);
 #ifdef PRINT_TURBO
