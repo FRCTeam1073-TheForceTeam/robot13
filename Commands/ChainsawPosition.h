@@ -14,6 +14,7 @@ public:
 	virtual void End();
 private:
 	bool left, right;
+	bool goUpInMiddle;
 	float voltageLeft, voltageRight;
 	Destination destination;
 	void Reset();

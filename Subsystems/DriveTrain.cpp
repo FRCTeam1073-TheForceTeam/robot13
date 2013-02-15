@@ -20,12 +20,13 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 }   
 void DriveTrain::InitDefaultCommand() {
 	//if (Robot::GetWhichRobot() != Robot::libra)
-	//	SetDefaultCommand(/*new JoystickDrive()*/);//cant drive mecanum with this code!
+	SetDefaultCommand(new JoystickDrive());//cant drive mecanum with this code!
 }
 void DriveTrain::Move(float left, float right){ 
 #ifdef DEBUGDRIVETRAIN
 	printf("calling move\n");
 #endif
+	//printf("Left: %f Right: %f\n", left, right);
 	leftMotor->Set(left);
 	rightMotor->Set(right);
 #ifdef ADD_SECONDARY_DRIVE

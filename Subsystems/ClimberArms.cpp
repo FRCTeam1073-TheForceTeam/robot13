@@ -6,7 +6,7 @@ ClimberArms::ClimberArms() : Subsystem("Climber Arms"){
 	rightClimbWindowVictor = RobotMap::climberArmRightClimbWindowVictor;
 }
 void ClimberArms::InitDefaultCommand() {}
-float ClimberArms::EncoderVoltageTolerance(){return 1.25f;}
+float ClimberArms::EncoderVoltageTolerance(){return 0.15f;}
 
 float ClimberArms::LeftEncoderUpVoltage(){return 3.3f;}
 float ClimberArms::LeftEncoderMiddleVoltage(){return 2.6f;}
