@@ -69,14 +69,20 @@ void Robot::RobotInit() {
 		printf("something else -- HELP!");
 	}
 	printf("\n");
-	climber = new Climber();
-	climberArms = new ClimberArms();
+	if(whichRobot == newRobot) {
+		climber = new Climber();
+		climberArms = new ClimberArms();
+	}
+	if(whichRobot == mobileBase || whichRobot == newRobot) {
+		collector = new Collector();
+		shooter = new Shooter();
+		allignmentData = new AllignmentData();
+		discVelocity = new DiscVelocity(RobotMap::velocity1);
+	}
+	
 	driveTrain = new DriveTrain();
-	collector = new Collector();
-	shooter = new Shooter();
-	allignmentData = new AllignmentData();
 	diagnostics = new Diagnostics();
-	discVelocity = new DiscVelocity(RobotMap::velocity1);
+	
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	

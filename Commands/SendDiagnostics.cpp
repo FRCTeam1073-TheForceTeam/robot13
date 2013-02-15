@@ -29,12 +29,20 @@ bool SendDiagnostics::TestJags(CANJaguar* jag)
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
 	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
+	printf("leftDriveExists %d\n", leftDriveExists);
 	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
+	printf("rightDriveExists %d\n", rightDriveExists);
 	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
+	printf("leftClimberExists %d\n", leftClimberExists);
 	rightClimberExists = TestJags(RobotMap::climberRightCIM);
+	printf("rightClimberExists %d\n", rightClimberExists);
 	primaryShooterExists = TestJags(RobotMap::shooterFrontJag);
+	printf("primaryShooterExists %d\n", primaryShooterExists);
 	supportShooterExists = TestJags(RobotMap::shooterBackJag);
-	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);
+	printf("supportShooterExists %d\n", supportShooterExists);
+	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);	
+	printf("elevationShooterExists %d\n", elevationShooterExists);
+	
 	return;
 }
 
@@ -47,9 +55,11 @@ void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPo
 	diagnosticsTable->PutNumber(std::string(jagString) + "Jag Temperature", thisJag->GetTemperature());
 	if (printPosition)
 		diagnosticsTable->PutNumber(std::string(jagString) + "Train Position", thisJag->GetPosition());
-		
-	printf("%s %f\n", std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
+	
+//	string foo = std::string(jagString) + "Encoder Value";
+//	printf("%s %f\n", foo.c_str(), thisJag->GetSpeed());
 	SmartDashboard::PutNumber(std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
+//	printf("sent jagSpeed to smartDashboard\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void SendDiagnostics::Execute() {
@@ -87,21 +97,27 @@ void SendDiagnostics::Execute() {
 	if(rightClimberExists){
 		JagDiags("Right Climb", RobotMap::climberRightCIM, true);
 	}
-	//Shooter Encoders
-	diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
+	
+	if (Robot::whichRobot == Robot::newRobot){
+		//climber encoder values
+		diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
+		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());		
+		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
+		SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
+	}
+
+	if (Robot::whichRobot == Robot::newRobot || Robot::whichRobot == Robot::mobileBase) {
+		//Shooter Encoders
+		diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
+		//Disc Count
+		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+		//Disc Inverted?
+		diagnosticsTable->PutBoolean("Bottom Disc Reversed", Robot::collector->IsNextDiscUpsideDown());		
+	}
+	
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
-	//Disc Count
-	diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
-	//Disc Inverted?
-	diagnosticsTable->PutBoolean("Bottom Disc Reversed", Robot::collector->IsNextDiscUpsideDown());
-	//climber encoder values
-	diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
-	diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
 	
-	SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
-	SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
-
 	return;
 } 
 
