@@ -12,7 +12,7 @@ float ClimberArms::LeftEncoderUpVoltage(){return 3.3f;}
 float ClimberArms::LeftEncoderMiddleVoltage(){return 2.6f;}
 float ClimberArms::LeftEncoderDownVoltage(){return 1.9f;}
 
-float ClimberArms::RightEncoderUpVoltage(){return 0.8f;}
+float ClimberArms::RightEncoderUpVoltage(){return 0.82f;}
 float ClimberArms::RightEncoderMiddleVoltage(){return 1.4f;}
 float ClimberArms::RightEncoderDownVoltage(){return 2.15f;}
 
@@ -30,7 +30,7 @@ void ClimberArms::WindowMotorsUp(bool offLeft, bool offRight){
 	if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);
 		else leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 	if(!offRight) rightClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);
-		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);
+		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 }
 void ClimberArms::WindowMotorsDown(bool offLeft, bool offRight){
 	if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
