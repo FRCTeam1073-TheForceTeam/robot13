@@ -18,6 +18,6 @@ void TurboDriveOn::Initialize(){
 	}
 }
 void TurboDriveOn::Execute(){}
-bool TurboDriveOn::IsFinished(){return true;}
+bool TurboDriveOn::IsFinished(){return false;}
 void TurboDriveOn::End(){}
 void TurboDriveOn::Interrupted() {}
