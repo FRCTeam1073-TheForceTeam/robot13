@@ -12,6 +12,7 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 private:
+	bool on;
 	SmartJoystick::JoystickMode old_left, old_right;
 };
 
