@@ -10,12 +10,11 @@ private:
 public:
 	CANJaguar* leftCIM;
 	CANJaguar* rightCIM;
-	
 	Climber();
 	void ClimberJagConfig();
 	void InitDefaultCommand();
 	void Climb(float joyY);
-	bool getClimberOnOff();
+	bool GetClimberOnOff();
 	void EngageClimber();
 	void DisengageClimber();
 	};

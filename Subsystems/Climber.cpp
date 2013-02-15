@@ -41,9 +41,8 @@ void Climber::Climb(float joyY){
 		rightCIM->Disable();
 		rightCIM->ChangeControlMode(CANJaguar::kVoltage);
 		rightCIM->EnableControl();
-		printf("\n\n ```````Voltage Mode````````\n\n");
+		puts("Now in Voltage Mode");
 	}
-//	printf("Poorly named y variable: %f\n", yPosition);
 	if(ClimberOnOff){
 		leftCIM->Set(-1 * joyY);
 		rightCIM->Set(joyY);
@@ -54,14 +53,6 @@ void Climber::Climb(float joyY){
 		rightCIM->Set(CLIMBER_OFF_SPEED);	
 	}
 }
-bool Climber::getClimberOnOff(){
-	return ClimberOnOff;
-}	
-void Climber::EngageClimber(){
-	printf("\n\n *****In engage *******\n\n");
-	ClimberOnOff=true;
-}	
-void Climber::DisengageClimber(){
-	printf("\n\n *****In disengage *******\n\n");
-	ClimberOnOff=false;
-}
+bool Climber::GetClimberOnOff(){return ClimberOnOff;}	
+void Climber::EngageClimber(){ClimberOnOff = true;}	
+void Climber::DisengageClimber(){ClimberOnOff = false;}

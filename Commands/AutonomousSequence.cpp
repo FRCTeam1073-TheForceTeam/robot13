@@ -2,10 +2,10 @@
 #include "AutonomousForward.h"
 #include "AutonomousTurnToAngle.h"
 #include "Commands/WaitCommand.h"
-#include "ShooterOn.h"
+#include "ShooterOnOff.h"
 #include "Shoot.h"
 #include "MoveShooterToSetElevationAngle.h"
-#include "ShooterOff.h"
+#include "ShooterOnOff.h"
 #include "../Subsystems/Shooter.h"
 AutonomousSequence::AutonomousSequence(){
 	startPosition = leftBack;
@@ -31,14 +31,14 @@ void AutonomousSequence::DoSequence(){
 	if(!Robot::shooter->GetElevationEncoderFailed()) {
 		AddSequential(new MoveShooterToSetElevationAngle());
 	}
-	AddSequential(new ShooterOn());
+	AddSequential(new ShooterOnOff(on));
 	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
 	AddSequential(new Shoot());
 	AddSequential(new WaitCommand(shotWaitTime));
 	AddSequential(new Shoot());
 	AddSequential(new WaitCommand(shotWaitTime));
 	AddSequential(new Shoot());
-	AddSequential(new ShooterOff());
+	AddSequential(new ShooterOnOff(off));
 }
 double AutonomousSequence::GetAutonomousWaitTime(){
 	double waitTime = 3;
