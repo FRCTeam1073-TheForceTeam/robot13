@@ -4,6 +4,9 @@
 #include "WPILibExtensions/WPILibExtensions.h"
 class OI {
 private:
+	void ConstructJoysticks();
+	void ConstructJoystickButtons();
+	void ConstructSmartDashCommands();
 	SmartJoystick* operatorStick;
 	JoystickButton* engageAutoAim;
 	JoystickButton* chainsawDown;

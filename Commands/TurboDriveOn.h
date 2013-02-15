@@ -5,14 +5,14 @@
 #include "../WPILibExtensions/WPILibExtensions.h"
 class TurboDriveOn: public Command {
 public:
-	TurboDriveOn();
+	TurboDriveOn(SmartJoystick* stick);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
 private:
-	static bool on;
-	SmartJoystick::JoystickMode old_left, old_right;
+	SmartJoystick* stick;
+	SmartJoystick::JoystickMode old;
 };
 #endif

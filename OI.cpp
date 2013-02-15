@@ -20,8 +20,18 @@
 #include "Commands/TurboDriveOn.h"
 #include "Commands/WriteDriveData.h"
 OI::OI() {
+	//organized such that null pointers do not occur
+	ConstructJoysticks();
+	ConstructJoystickButtons();
+	ConstructSmartDashCommands();
+}
+void OI::ConstructJoysticks(){
 	operatorStick = new SmartJoystick(JOY_OPERATOR);
-	
+	leftStick = new SmartJoystick(JOY_LEFT);
+	rightStick = new SmartJoystick(JOY_RIGHT);
+	rightStick->ToggleInvertYAxis();	
+}
+void OI::ConstructJoystickButtons(){
 	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
 	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
@@ -40,24 +50,21 @@ OI::OI() {
 	shooterOnButton->WhenPressed(new ShooterOn());
 	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
-	rightStick = new SmartJoystick(JOY_RIGHT);
-	
-	rightTurboOn = new JoystickButton(rightStick, RIGHT_DRIVE_TRAIN_TURBO_ON_BTN);
-	rightTurboOn->WhileHeld(new TurboDriveOn());
-	leftStick = new SmartJoystick(JOY_LEFT);
-	
+	rightTurboOn->WhileHeld(new TurboDriveOn(rightStick));
 	pullShooterDashData = new JoystickButton(leftStick, LEFT_DASHBOARD_PULL_SHOOTER_DATA_BTN);
 	pullShooterDashData->WhenPressed(new PullShooterData());
 	switchDrive = new JoystickButton(leftStick, LEFT_DRIVE_TRAIN_CHANGE_DRIVE_BTN);
 	switchDrive->WhenPressed(new SetCubicDrive());
 	leftTurboOn = new JoystickButton(leftStick, LEFT_DRIVE_TRAIN_TURBO_ON_BTN);
-	leftTurboOn->WhileHeld(new TurboDriveOn());
-     
+	leftTurboOn->WhileHeld(new TurboDriveOn(leftStick));	    
+	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
+	writeDriveDataButton->WhileHeld(new WriteDriveData());
+}
+void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ShooterOn", new ShooterOn());
 	SmartDashboard::PutData("ShooterOff", new ShooterOff());
 	SmartDashboard::PutData("ClimberOn", new ClimberOn());
 	SmartDashboard::PutData("ClimberOff", new ClimberOff());
-	SmartDashboard::PutData("TurboDriveOn", new TurboDriveOn());
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
 	SmartDashboard::PutData("SetChainsawPositionUp", new ChainsawPosition(ChainsawPosition::up));
 	SmartDashboard::PutData("SetChainsawPositionMiddle", new ChainsawPosition(ChainsawPosition::middle));
@@ -65,9 +72,6 @@ OI::OI() {
 	SmartDashboard::PutData("ClimberDrive", new ClimberDrive());
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
 	SmartDashboard::PutData("EngageClimber", new EngageClimber());
-	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
-	writeDriveDataButton->WhileHeld(new WriteDriveData());
-	rightStick->ToggleInvertYAxis();
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}
 SmartJoystick* OI::getRightStick(){return rightStick;}
