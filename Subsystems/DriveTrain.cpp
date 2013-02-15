@@ -20,7 +20,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 }   
 void DriveTrain::InitDefaultCommand() {
 	//if (Robot::GetWhichRobot() != Robot::libra)
-	//	SetDefaultCommand(/*new JoystickDrive()*/);//cant drive mecanum with this code!
+	SetDefaultCommand(new JoystickDrive());//cant drive mecanum with this code!
 }
 void DriveTrain::Move(float left, float right){ 
 #ifdef DEBUGDRIVETRAIN
