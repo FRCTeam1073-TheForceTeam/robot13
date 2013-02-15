@@ -1,5 +1,6 @@
 #include "AutonomousSequence.h"
 #include "AutonomousForward.h"
+#include "AutonomousTurnToAngle.h"
 #include "Commands/WaitCommand.h"
 #include "ShooterOn.h"
 #include "Shoot.h"
@@ -27,7 +28,9 @@ void AutonomousSequence::DoSequence(){
 	}
 	Robot::shooter->SetRawElevationAngle(elevationAngle);
 	Robot::shooter->SetRawSpeed(shooterSpeed);
-	AddSequential(new MoveShooterToSetElevationAngle());
+	if(!Robot::shooter->GetElevationEncoderFailed()) {
+		AddSequential(new MoveShooterToSetElevationAngle());
+	}
 	AddSequential(new ShooterOn());
 	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
 	AddSequential(new Shoot());

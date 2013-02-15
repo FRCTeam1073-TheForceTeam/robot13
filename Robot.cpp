@@ -36,6 +36,8 @@ void Robot::RobotInit() {
 	isElevatorEncoderFailed = prefs->GetBoolean("isElevatorEncoderFailed", false);
 	prefs->Save();
 	
+	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
+	
 	//is elevation encoder failed preference
 	
 	
