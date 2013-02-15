@@ -18,8 +18,11 @@ void ChainsawPosition::Initialize(){
 		voltageRight = Robot::climberArms->RightEncoderUpVoltage();
 		break;
 	case middle:
+		float left = Robot::climberArms->leftWindowEncoder->GetVoltage();
+		float right = Robot::climberArms->rightWindowEncoder->GetVoltage();
 		voltageLeft = Robot::climberArms->LeftEncoderMiddleVoltage();
 		voltageRight = Robot::climberArms->RightEncoderMiddleVoltage();
+		goUpInMiddle = left < voltageLeft || right < voltageRight;
 	    break;
 	case down:
 		voltageLeft = Robot::climberArms->LeftEncoderDownVoltage();
@@ -29,18 +32,24 @@ void ChainsawPosition::Initialize(){
 	}
 }
 void ChainsawPosition::Execute(){
+	SmartDashboard::PutNumber("Left Mag", Robot::climberArms->leftWindowEncoder->GetVoltage());
+	SmartDashboard::PutNumber("Right Mag", Robot::climberArms->rightWindowEncoder->GetVoltage());
 	Robot::climberArms->ProcessWindowVoltageData();
 	float vleft = Robot::climberArms->GetVoltageLeft();
 	float vright = Robot::climberArms->GetVoltageRight();
-	printf("Voltage Left: %f Target Voltage Left: %f\n", vleft, voltageLeft);
+	printf("Voltage Right: %f Target Voltage Right: %f\n", vright, voltageRight);
 	switch(destination){
 	case up:
 		Robot::climberArms->WindowMotorsUp(left, right);
 		if(!left)left = vleft >= voltageLeft;
 		if(!right)right = vright <= voltageRight;
+		printf("Right %s\n", right ? "true" : "false");
 		break;
 	case middle:
-		Robot::climberArms->WindowMotorsDown(left, right);
+		if(goUpInMiddle)
+			Robot::climberArms->WindowMotorsUp(left, right);
+		else
+			Robot::climberArms->WindowMotorsDown(left, right);	
 		if(!left)left = fabs(vleft - voltageLeft) <= Robot::climberArms->EncoderVoltageTolerance();
 		if(!right)right = fabs(vright - voltageRight) <= Robot::climberArms->EncoderVoltageTolerance();
 		break;
@@ -71,9 +80,11 @@ bool ChainsawPosition::IsFinished(){
 }
 void ChainsawPosition::End(){
 	puts("end");
-	Robot::climberArms->WindowMotorsOff();}
+	Robot::climberArms->WindowMotorsOff();
+}
 void ChainsawPosition::Interrupted() {End();}
 void ChainsawPosition::Reset(){
+	goUpInMiddle = true;
 	left = false; right = false;
 	voltageLeft = 0.0f; voltageRight = 0.0f;
 	Robot::climberArms->ResetWindowVoltageData();
