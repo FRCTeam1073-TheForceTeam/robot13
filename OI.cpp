@@ -1,5 +1,6 @@
 #include "OI.h"
 #include "HardwarePortDefinitions.h"
+#include "JoystickButtonSheet.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousForward.h"
 #include "Commands/AutonomousSequence.h"
@@ -21,35 +22,35 @@
 OI::OI() {
 	operatorStick = new SmartJoystick(JOY_OPERATOR);
 	
-	engageAutoAim = new JoystickButton(operatorStick, 2);
+	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
-	chainsawDown = new JoystickButton(operatorStick, 7);
+	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
 	chainsawDown->WhenPressed(new ChainsawPosition(ChainsawPosition::down));
-	chainsawMiddle = new JoystickButton(operatorStick, 6);
+	chainsawMiddle = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN);
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
-	chainsawUp = new JoystickButton(operatorStick, 5);
+	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
-	climberDisengage = new JoystickButton(operatorStick, 12);
+	climberDisengage = new JoystickButton(operatorStick, OPERATOR_CLIMBER_DISENGAGE_BTN);
 	climberDisengage->WhenPressed(new ClimberOff());
-	climberEngage = new JoystickButton(operatorStick, 11);
+	climberEngage = new JoystickButton(operatorStick, OPERATOR_CLIMBER_ENGAGE_BTN);
 	climberEngage->WhenPressed(new ClimberOn());
-	shooterOffButton = new JoystickButton(operatorStick, 10);
+	shooterOffButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_OFF_BTN);
 	shooterOffButton->WhenPressed(new ShooterOff());
-	shooterOnButton = new JoystickButton(operatorStick, 9);
+	shooterOnButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_ON_BTN);
 	shooterOnButton->WhenPressed(new ShooterOn());
-	shootButton = new JoystickButton(operatorStick, 1);
+	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
 	rightStick = new SmartJoystick(JOY_RIGHT);
 	
-	rightTurboOn = new JoystickButton(rightStick, 1);
+	rightTurboOn = new JoystickButton(rightStick, RIGHT_DRIVE_TRAIN_TURBO_ON_BTN);
 	rightTurboOn->WhileHeld(new TurboDriveOn());
 	leftStick = new SmartJoystick(JOY_LEFT);
 	
-	pullShooterDashData = new JoystickButton(leftStick, 6);
+	pullShooterDashData = new JoystickButton(leftStick, LEFT_DASHBOARD_PULL_SHOOTER_DATA_BTN);
 	pullShooterDashData->WhenPressed(new PullShooterData());
-	switchDrive = new JoystickButton(leftStick, 10);
+	switchDrive = new JoystickButton(leftStick, LEFT_DRIVE_TRAIN_CHANGE_DRIVE_BTN);
 	switchDrive->WhenPressed(new SetCubicDrive());
-	leftTurboOn = new JoystickButton(leftStick, 1);
+	leftTurboOn = new JoystickButton(leftStick, LEFT_DRIVE_TRAIN_TURBO_ON_BTN);
 	leftTurboOn->WhileHeld(new TurboDriveOn());
      
 	SmartDashboard::PutData("ShooterOn", new ShooterOn());
@@ -64,7 +65,7 @@ OI::OI() {
 	SmartDashboard::PutData("ClimberDrive", new ClimberDrive());
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
 	SmartDashboard::PutData("EngageClimber", new EngageClimber());
-	writeDriveDataButton = new JoystickButton(leftStick, 11);
+	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
 	rightStick->ToggleInvertYAxis();
 }
