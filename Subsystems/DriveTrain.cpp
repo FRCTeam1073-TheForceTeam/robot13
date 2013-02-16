@@ -12,6 +12,8 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 	leftMotor = RobotMap::driveTrainLeftMotor;
 	rightMotor = RobotMap::driveTrainRightMotor;
 	gyro = RobotMap::driveTrainGyro;
+	//ConfigureJaguarEncoder(leftMotor);
+	//ConfigureJaguarEncoder(rightMotor);
 #ifdef ADD_SECONDARY_DRIVE 
 	leftMotorSecondary = RobotMap::driveTrainLeftMotorSecondary;
 	rightMotorSecondary = RobotMap::driveTrainRightMotorSecondary;
@@ -36,6 +38,12 @@ void DriveTrain::Move(float left, float right){
 	printf("Left Y: %f  Right Y: %f\n", left, right);
 	printf("Left M: %f  Right M: %f\n", leftMotor->Get(), rightMotor->Get());
 #endif
+	SmartDashboard::PutNumber("Right Drive Encoder", rightMotor->GetSpeed());
+	//printf("Right Motor Speed %f\n", rightMotor->GetSpeed());
+	SmartDashboard::PutNumber("Left Drive Encoder", leftMotor->GetSpeed());
+	//printf("Left Motor Speed %f\n", leftMotor->GetSpeed());
+	SmartDashboard::PutNumber("Gyro Angle", GetGyroAngleDegrees());
+	//printf("Gyro Angle %f\n", GetGyroAngleDegrees());
 }
 void DriveTrain::Stop() {Move(0.0f, 0.0f);}
 void DriveTrain::GetPosition(float &left,float &right){
@@ -47,4 +55,8 @@ float DriveTrain::TicksToInches (float ticks){
 	return ticks*INCHES_PER_TICK;
 }
 
-float DriveTrain::GetGyroAngle() {return gyro->GetAngle();}
+
+float DriveTrain::GetGyroAngleDegrees() {
+	return gyro->GetAngle() * 180.0;
+	
+}
