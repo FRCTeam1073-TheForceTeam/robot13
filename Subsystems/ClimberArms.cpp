@@ -46,6 +46,3 @@ void ClimberArms::WindowMotorsOff(){
 	leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 	rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 }
-
-float ClimberArms::GetVoltageLeft(){return leftWindowEncoder->GetVoltage();}
-float ClimberArms::GetVoltageRight(){return rightWindowEncoder->GetVoltage();}

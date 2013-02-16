@@ -38,8 +38,8 @@ void ChainsawPosition::Execute(){
 	SmartDashboard::PutNumber("Left Mag", Robot::climberArms->leftWindowEncoder->GetVoltage());
 	SmartDashboard::PutNumber("Right Mag", Robot::climberArms->rightWindowEncoder->GetVoltage());
 	Robot::climberArms->ProcessWindowVoltageData();
-	float vleft = Robot::climberArms->GetVoltageLeft();
-	float vright = Robot::climberArms->GetVoltageRight();
+	float vleft = Robot::climberArms->leftWindowEncoder->GetVoltage();
+	float vright = Robot::climberArms->rightWindowEncoder->GetVoltage();
 	printf("Voltage Right: %f Target Voltage Right: %f\n", vright, voltageRight);
 	switch(destination){
 	case up:
