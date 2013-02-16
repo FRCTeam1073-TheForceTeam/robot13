@@ -11,7 +11,7 @@ SmartCANJaguar* RobotMap::driveTrainRightMotor = NULL;
 CANJaguar* RobotMap::driveTrainLeftMotorSecondary = NULL;
 CANJaguar* RobotMap::driveTrainRightMotorSecondary = NULL;
 #endif
-Gyro* RobotMap::driveTrainGyro = NULL;
+SmartGyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
 AnalogChannel* RobotMap::collectorDiscCountSensor = NULL;
@@ -46,8 +46,9 @@ void RobotMap::init() {
 	driveTrainRightMotorSecondary = new CANJaguar(JAGUAR_DRIVE_RIGHT_SECONDARY);
 #endif
 	
-	driveTrainGyro = new Gyro(ANALOG_GYRO);
+	driveTrainGyro = new SmartGyro(ANALOG_GYRO);
 	lw->AddSensor("DriveTrain", "Gyro", driveTrainGyro);
+	driveTrainGyro->SetGyroMode(SmartGyro::degrees);
 	driveTrainGyro->SetSensitivity(1.25);
 	collectorMotor = new Victor(PWM_FEEDER_MOTOR);
 	lw->AddActuator("Collector", "Motor", (Victor*) collectorMotor);

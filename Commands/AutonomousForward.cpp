@@ -9,12 +9,12 @@ AutonomousForward::AutonomousForward(float distance) {
 void AutonomousForward::Initialize() {
 	Robot::driveTrain->GetPosition(startingLeft, startingRight);
 //	Robot::driveTrain->Move(FORWARD_SPEED, FORWARD_SPEED);
-	startingAngle = Robot::driveTrain->GetGyroAngleDegrees();
+	startingAngle = Robot::driveTrain->gyro->GetAngle();
 	
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonomousForward::Execute() {
-	float errorAngle = startingAngle - Robot::driveTrain->GetGyroAngleDegrees();
+	float errorAngle = startingAngle - Robot::driveTrain->gyro->GetAngle();
 	float speedAdjuster = errorAngle * P;
 	float leftSpeed = DriveSpeed * (1 - speedAdjuster);
 	float rightSpeed = DriveSpeed * (1 + speedAdjuster);

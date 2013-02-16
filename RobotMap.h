@@ -16,7 +16,7 @@ public:
 	static CANJaguar* driveTrainRightMotorSecondary;
 	static CANJaguar* driveTrainLeftMotorSecondary;
 #endif
-	static Gyro* driveTrainGyro;
+	static SmartGyro* driveTrainGyro;
 	static SpeedController* collectorMotor;
 	static DigitalInput* collectorDiscOnShooterBed;
 	static AnalogChannel* collectorDiscCountSensor;
