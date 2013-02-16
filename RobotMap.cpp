@@ -31,14 +31,16 @@ void RobotMap::init() {
 	lw->AddActuator("Shooter", "ShooterElevationVictor", (Victor*) shooterElevationVictor);
 	
 	climberArmLeftClimbWindowVictor = new Victor(PWM_CLIMBER_LEFT_WINDOW_MOTOR);
-	lw->AddActuator("Climber", "LeftClimbWindowVictor", (Victor*) climberArmLeftClimbWindowVictor);
+	lw->AddActuator("Climber Arms", "LeftClimbWindowVictor", (Victor*) climberArmLeftClimbWindowVictor);
 	
 	climberArmRightClimbWindowVictor = new Victor(PWM_CLIMBER_RIGHT_WINDOW_MOTOR);
-	lw->AddActuator("Climber", "RightClimbWindowVictor", (Victor*) climberArmRightClimbWindowVictor);
+	lw->AddActuator("Climber Arms", "RightClimbWindowVictor", (Victor*) climberArmRightClimbWindowVictor);
 	
 	climberLeftCIM = new SmartCANJaguar(JAGUAR_CLIMBER_CIM_LEFT);
 	climberLeftCIM->Invert();
+	lw->AddActuator("Climber", "Left CIM", climberLeftCIM);
 	climberRightCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
+	lw->AddActuator("Climber", "Right CIM", climberRightCIM);
 	driveTrainLeftMotor = new CANJaguar(JAGUAR_DRIVE_LEFT);
 	driveTrainRightMotor = new SmartCANJaguar(JAGUAR_DRIVE_RIGHT);
 	driveTrainRightMotor->Invert();
@@ -64,13 +66,19 @@ void RobotMap::init() {
 	lw->AddSensor("Collector", "DiscUpsideDownSensor", collectorDiscUpsideDownSensor);
 	
 	shooterElevationJag = new CANJaguar(JAGUAR_SHOOTER_ANGLE);
+	lw->AddActuator("Shooter", "Elevator Jag", shooterElevationJag);
 	shooterFrontJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
 	shooterFrontJag->Invert();
+	lw->AddActuator("Shooter", "Primary Jag", shooterFrontJag);
 	shooterBackJag = new CANJaguar(JAGUAR_SHOOTER_BACK);
+	lw->AddActuator("Shooter", "Secondary Jag", shooterBackJag);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
+    lw->AddSensor("Shooter", "Elevation Encoder", shooterElevationEncoder);
 	climberArmLeftWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_LEFT_ANGLE_MAG_ENCODER);
+	lw->AddSensor("Climber Arms", "Left Arm Encoder", climberArmLeftWindowEncoder);
 	climberArmRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
+	lw->AddSensor("Climber Arms", "Right Arm Encoder", climberArmRightWindowEncoder);
     velocity1 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_ONE);
     velocity2 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_TWO);
 	driveTrainGyro->Reset();
