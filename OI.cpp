@@ -47,6 +47,7 @@ void OI::ConstructJoystickButtons(){
 	shooterOnButton->WhenPressed(new ShooterOnOff(on));
 	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
+	rightTurboOn = new JoystickButton(rightStick, RIGHT_DRIVE_TRAIN_TURBO_ON_BTN);
 	rightTurboOn->WhileHeld(new TurboDriveOn(rightStick));
 	pullShooterDashData = new JoystickButton(leftStick, LEFT_DASHBOARD_PULL_SHOOTER_DATA_BTN);
 	pullShooterDashData->WhenPressed(new PullShooterData());
