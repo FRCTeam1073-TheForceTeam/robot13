@@ -26,8 +26,10 @@ void ChainsawPosition::Initialize(){
 		goUpInMiddle = left < voltageLeft || right < voltageRight;
 	    break;
 	case down:
-
-		if(!Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFETY_BTN)) Cancel();
+		if(!Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFETY_BTN)) {
+			puts("Safety not pressed, cancelling!!!!!!!!!");
+			Cancel();
+		}
 		voltageLeft = Robot::climberArms->LeftEncoderDownVoltage();
 		voltageRight = Robot::climberArms->RightEncoderDownVoltage();
 		break;
@@ -40,6 +42,7 @@ void ChainsawPosition::Execute(){
 	Robot::climberArms->ProcessWindowVoltageData();
 	float vleft = Robot::climberArms->leftWindowEncoder->GetVoltage();
 	float vright = Robot::climberArms->rightWindowEncoder->GetVoltage();
+	printf("Voltage Left: %f Target Voltage Left: %f\n", vleft, voltageLeft);
 	printf("Voltage Right: %f Target Voltage Right: %f\n", vright, voltageRight);
 	switch(destination){
 	case up:
@@ -58,8 +61,8 @@ void ChainsawPosition::Execute(){
 		break;
 	case down:
 			Robot::climberArms->WindowMotorsDown(left, right);
-			if(!left)left = vleft <= voltageLeft;
-			if(!right) right = vright >= voltageRight;
+			if(!left)left = (vleft <= voltageLeft);
+			if(!right) right = (vright >= voltageRight);
 		
 		break;
 	default: break;
@@ -76,6 +79,7 @@ void ChainsawPosition::Execute(){
 	right;
 }
 bool ChainsawPosition::IsFinished(){
+	printf("Left: %s Right: %s\n", left ? "true" : "false", right ? "true" : "false");
 	return
 #ifdef TIMEOUT
 	IsTimedOut() ||
