@@ -12,7 +12,6 @@ public:
 	SmartCANJaguar* leftCIM;
 	CANJaguar* rightCIM;
 	Climber();
-	void ClimberJagConfig();
 	void ConfigureJaguarForSpeedMode(CANJaguar* jaguar);
 	void ConfigureJaguarForVoltageMode(CANJaguar* jaguar);
 	void InitDefaultCommand();
