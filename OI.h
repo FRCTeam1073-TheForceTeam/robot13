@@ -8,22 +8,26 @@ private:
 	void ConstructJoystickButtons();
 	void ConstructSmartDashCommands();
 	SmartJoystick* operatorStick;
+	SmartJoystick* leftStick;
+	SmartJoystick* rightStick;
 	JoystickButton* engageAutoAim;
 	JoystickButton* chainsawDown;
 	JoystickButton* chainsawMiddle;
 	JoystickButton* chainsawUp;
 	JoystickButton* climberDisengage;
 	JoystickButton* climberEngage;
-	JoystickButton* shooterOffButton;
-	JoystickButton* shooterOnButton;
+	JoystickButton* shooterOnOffButton;
 	JoystickButton* shootButton;
-	SmartJoystick* rightStick;
 	JoystickButton* rightTurboOn;
-	SmartJoystick* leftStick;
 	JoystickButton* pullShooterDashData;
 	JoystickButton* switchDrive;
 	JoystickButton* leftTurboOn;
     JoystickButton* writeDriveDataButton;
+    JoystickButton* shooterSpeedUp;
+    JoystickButton* shooterSpeedDown;
+    JoystickButton* shooterElevationUp;
+    JoystickButton* shooterElevationDown;
+    
 public:
 	OI();
 	SmartJoystick* getLeftStick();

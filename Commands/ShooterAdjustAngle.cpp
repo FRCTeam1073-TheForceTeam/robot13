@@ -1,13 +1,11 @@
 #include "shooterAdjustAngle.h"
-ShooterAdjustAngle::ShooterAdjustAngle() {
+ShooterAdjustAngle::ShooterAdjustAngle(bool positive) {
 	Requires(Robot::shooter);
+	this->positive = positive;
 }
-void ShooterAdjustAngle::Initialize() {}
-void ShooterAdjustAngle::Execute() {
-	float hat = Robot::oi->getOperatorStick()->GetHatY(); //-1 if down, 0 if neutral, 1 if up
-	if (hat != 0)	Robot::shooter->IncrementAngle(hat * Robot::shooter->GetFineAdjustmentAngle());
-	//printf ("adjustment angle is %d\n", hat);
+void ShooterAdjustAngle::Initialize() {Robot::shooter->ElevatorUpDown(positive);}
+void ShooterAdjustAngle::Execute() {	
 }
-bool ShooterAdjustAngle::IsFinished() {return false;}
-void ShooterAdjustAngle::End() {}
+bool ShooterAdjustAngle::IsFinished() {return true;}
+void ShooterAdjustAngle::End() {Robot::shooter->ElevatorOff();}
 void ShooterAdjustAngle::Interrupted() {}

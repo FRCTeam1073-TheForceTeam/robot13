@@ -1,4 +1,5 @@
 #include "ElevationPID.h"
+
 const float DriveSpeed = .400;
 const float P = .02; // Proportional correction factor. .02 = 20 degrees
 const float acceptableAngleError = 5.0;
@@ -8,7 +9,7 @@ void ElevationPID::Initialize() {
 	startingAngle = Robot::shooter->GetCurrentAngle();
 }
 void ElevationPID::Execute() {
-	currentAngle = startingAngle - Robot::shooter->GetCurrentAngle(); 
+	currentAngle = Robot::shooter->GetCurrentAngle(); 
 	float targetAngle = Robot::shooter->GetElevationAngle();
 	float errorAngle = targetAngle - currentAngle;
 	float motorOutput = errorAngle * P;
@@ -16,7 +17,7 @@ void ElevationPID::Execute() {
 		motorOutput = DriveSpeed;
 	else if (motorOutput < -DriveSpeed)
 		motorOutput = -DriveSpeed;
-	Robot::driveTrain->Move(motorOutput, -motorOutput);		
+	Robot::driveTrain->Move(motorOutput, -motorOutput);
 }
 bool ElevationPID::IsFinished() {
 	
