@@ -20,7 +20,6 @@ public:
 	static SpeedController* collectorMotor;
 	static DigitalInput* collectorDiscOnShooterBed;
 	static AnalogChannel* collectorDiscCountSensor;
-	static AnalogChannel* collectorDiscUpsideDownSensor;
 	static CANJaguar* shooterElevationJag;
 	static CANJaguar* shooterFrontJag;
 	static CANJaguar* shooterBackJag;
