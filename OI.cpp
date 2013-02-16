@@ -41,7 +41,7 @@ void OI::ConstructJoystickButtons(){
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
 	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
-	climberSafe = new JoystickButton(operatorStick, RIGHT_CLIMBER_SAFETY);
+	climberSafe = new JoystickButton(operatorStick, RIGHT_CLIMBER_SAFETY_BTN);
 	climberSafe->WhenPressed(new ClimberSafe());
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);

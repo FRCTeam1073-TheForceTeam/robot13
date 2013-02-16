@@ -27,7 +27,7 @@ void ChainsawPosition::Initialize(){
 	    break;
 	case down:
 
-		if(!Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFTEY)) Cancel();
+		if(!Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFETY_BTN)) Cancel();
 		voltageLeft = Robot::climberArms->LeftEncoderDownVoltage();
 		voltageRight = Robot::climberArms->RightEncoderDownVoltage();
 		break;
