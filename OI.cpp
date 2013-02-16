@@ -25,8 +25,7 @@ OI::OI() {
 void OI::ConstructJoysticks(){
 	operatorStick = new SmartJoystick(JOY_OPERATOR);
 	leftStick = new SmartJoystick(JOY_LEFT);
-	rightStick = new SmartJoystick(JOY_RIGHT);
-	rightStick->ToggleInvertYAxis();	
+	rightStick = new SmartJoystick(JOY_RIGHT);	
 }
 void OI::ConstructJoystickButtons(){
 	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);

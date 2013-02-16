@@ -11,7 +11,7 @@ public:
 	static CANJaguar* climberLeftCIM;
 	static CANJaguar* climberRightCIM;
 	static CANJaguar* driveTrainLeftMotor;
-	static CANJaguar* driveTrainRightMotor;
+	static SmartCANJaguar* driveTrainRightMotor;
 #ifdef ADD_SECONDARY_DRIVE
 	static CANJaguar* driveTrainRightMotorSecondary;
 	static CANJaguar* driveTrainLeftMotorSecondary;
