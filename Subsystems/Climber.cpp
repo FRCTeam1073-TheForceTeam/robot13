@@ -24,14 +24,12 @@ void Climber::ClimberJagConfig(){
 void Climber::Climb(float joyY){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
-#warning "Climber Always in EPIC_FAIL mode"	
-	// Not the if true or ...
-	if((true || encoderFailCount >= -fabs(joyY) > 0.0f) && (leftCIM->GetSpeed() < MIN || rightCIM->GetSpeed() < MIN)){		
-		encoderFailCount++;
+	if(fabs(joyY) > 0.0f && (fabs(rightCIM->GetSpeed()) < MIN || fabs(leftCIM->GetSpeed()) < MIN)){
+		if(encoderFailCount >= 0){
+			encoderFailCount++;
+		}
 	}
-	else if (encoderFailCount > 0){
-		encoderFailCount = 0;
-	}	
+	else if(encoderFailCount > 0) encoderFailCount = 0;
 	if(encoderFailCount > EPIC_FAIL){
 		encoderFailCount = -1;
 		leftCIM->Disable();
