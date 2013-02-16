@@ -1,4 +1,5 @@
 #include "ChainsawPosition.h"
+#include "../JoystickButtonSheet.h"
 //#define TIMEOUT
 //#define STALL_DETECTION_ON
 ChainsawPosition::ChainsawPosition(Destination destination){
@@ -54,7 +55,7 @@ void ChainsawPosition::Execute(){
 		if(!right)right = fabs(vright - voltageRight) <= Robot::climberArms->EncoderVoltageTolerance();
 		break;
 	case down:
-		if(Robot::oi->getRightStick()->GetRawButton(2) == true)
+		if(Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFTEY) == true)
 		{
 			Robot::climberArms->WindowMotorsDown(left, right);
 			if(!left)left = vleft <= voltageLeft;
