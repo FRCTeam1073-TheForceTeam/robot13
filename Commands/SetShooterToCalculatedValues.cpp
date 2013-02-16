@@ -7,7 +7,7 @@ void SetShooterToCalculatedValues::Initialize()
 		float calcVelocityFPS = Robot::allignmentData->GetCalculatedVelocityFPS();
 		Robot::shooter->SetRawElevationAngle(calcAngle);
 		Robot::shooter->SetRawSpeed(Robot::shooter->VelocityFPSToRPM(calcVelocityFPS));
-		printf("SetShooterToCalculatedValues angle: %f   distance: %f\n", calcAngle, calcDistance);
+		printf("SetShooterToCalculatedValues angle: %f   distance: %f\n", calcAngle, calcVelocityFPS);
 	}
 	else
 		printf("Allignment data; invalid distance and angle\n");
