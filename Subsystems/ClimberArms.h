@@ -29,8 +29,6 @@ public:
 	void WindowMotorsUp(bool offLeft, bool offRight);
 	void WindowMotorsDown(bool offLeft, bool offRight);
 	void WindowMotorsOff();
-	float GetVoltageLeft();
-	float GetVoltageRight();
 	bool climberIsSafe;
 };
 #endif

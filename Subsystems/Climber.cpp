@@ -28,7 +28,7 @@ void Climber::Climb(float joyY){
 		puts("Now in Voltage Mode");
 	}
 	if(ClimberOnOff){
-		leftCIM->Set(-1 * joyY);
+		leftCIM->Set(joyY);
 		rightCIM->Set(joyY);
 		//printf("\n Climber RPM: %f\n", yPosition);
 	}

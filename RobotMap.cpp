@@ -3,7 +3,7 @@
 SpeedController* RobotMap::shooterElevationVictor = NULL;
 SpeedController* RobotMap::climberArmLeftClimbWindowVictor = NULL;
 SpeedController* RobotMap::climberArmRightClimbWindowVictor = NULL;
-CANJaguar* RobotMap::climberLeftCIM = NULL;
+SmartCANJaguar* RobotMap::climberLeftCIM = NULL;
 CANJaguar* RobotMap::climberRightCIM = NULL;
 CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 SmartCANJaguar* RobotMap::driveTrainRightMotor = NULL;
@@ -36,7 +36,8 @@ void RobotMap::init() {
 	climberArmRightClimbWindowVictor = new Victor(PWM_CLIMBER_RIGHT_WINDOW_MOTOR);
 	lw->AddActuator("Climber", "RightClimbWindowVictor", (Victor*) climberArmRightClimbWindowVictor);
 	
-	climberLeftCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_LEFT);
+	climberLeftCIM = new SmartCANJaguar(JAGUAR_CLIMBER_CIM_LEFT);
+	climberLeftCIM->Invert();
 	climberRightCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
 	driveTrainLeftMotor = new CANJaguar(JAGUAR_DRIVE_LEFT);
 	driveTrainRightMotor = new SmartCANJaguar(JAGUAR_DRIVE_RIGHT);

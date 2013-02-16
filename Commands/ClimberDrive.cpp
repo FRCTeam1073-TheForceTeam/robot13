@@ -2,7 +2,7 @@
 //#define CLIMBER_MOTOR_RPM (39.0)
 const float MaxClimberRPM = 39.0f;
 ClimberDrive::ClimberDrive() {Requires(Robot::climber);}
-void ClimberDrive::Initialize() {Robot::climber->ClimberJagConfig();}
+void ClimberDrive::Initialize() {}
 void ClimberDrive::Execute() {
 	float y = Robot::oi->getOperatorStick()->GetY();
 	//if (y > 0) y = 0;
