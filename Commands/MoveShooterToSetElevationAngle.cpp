@@ -11,5 +11,5 @@ bool MoveShooterToSetElevationAngle::IsFinished(){
 	return Robot::shooter->IsAtSetAngle()
 			|| ShooterBottomSwitch;
 }
-void MoveShooterToSetElevationAngle::End() {Robot::shooter->StopElevatorMotor();}
+void MoveShooterToSetElevationAngle::End() {Robot::shooter->ElevatorOff();}
 void MoveShooterToSetElevationAngle::Interrupted(){End();}

@@ -4,6 +4,7 @@ ClimberArms::ClimberArms() : Subsystem("Climber Arms"){
 	rightWindowEncoder = RobotMap::climberArmRightWindowEncoder;
 	leftClimbWindowVictor = RobotMap::climberArmLeftClimbWindowVictor;
 	rightClimbWindowVictor = RobotMap::climberArmRightClimbWindowVictor;
+	climberIsSafe = true;
 }
 void ClimberArms::InitDefaultCommand() {}
 float ClimberArms::EncoderVoltageTolerance(){return 0.15f;}
@@ -33,10 +34,13 @@ void ClimberArms::WindowMotorsUp(bool offLeft, bool offRight){
 		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 }
 void ClimberArms::WindowMotorsDown(bool offLeft, bool offRight){
-	if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
-		else leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
-	if(!offRight) rightClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
-		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);	
+	if(!climberIsSafe)
+	{
+		if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
+			else leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
+		if(!offRight) rightClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
+			else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
+	}
 }
 void ClimberArms::WindowMotorsOff(){
 	leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);

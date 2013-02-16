@@ -26,5 +26,4 @@ bool ElevationPID::IsFinished() {
 	float errorAngle = targetAngle - currentAngle;
 	return (fabs(errorAngle)< acceptableAngleError);
 }
-void ElevationPID::End() {Robot::shooter->StopElevatorMotor();}
 void ElevationPID::Interrupted() {End();}

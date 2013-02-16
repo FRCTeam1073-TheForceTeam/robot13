@@ -6,7 +6,6 @@
 #include "Commands/AutonomousSequence.h"
 #include "Commands/AutonomousTurnToAngle.h"
 #include "Commands/ClimberDrive.h"
-#include "Commands/ClimberOnOff.h"
 #include "Commands/JoystickDrive.h"
 #include "Commands/PullShooterData.h"
 #include "Commands/ChainsawPosition.h"
@@ -18,6 +17,7 @@
 #include "Commands/WriteDriveData.h"
 #include "Commands/ShooterAdjustAngle.h"
 #include "Commands/ManualShooterSpeedAdjust.h"
+#include "Commands/ClimberSafe.h"
 
 OI::OI() {
 	//organized such that null pointers do not occur
@@ -34,13 +34,15 @@ void OI::ConstructJoystickButtons(){
 	//use auto aim (calculated) variables
 	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
-	//chainsaw control commands
+	//chainsaw control commands & safety
 	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
 	chainsawDown->WhenPressed(new ChainsawPosition(ChainsawPosition::down));
 	chainsawMiddle = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN);
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
 	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
+	climberSafe = new JoystickButton(operatorStick, RIGHT_CLIMBER_SAFETY);
+	climberSafe->WhenPressed(new ClimberSafe());
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
@@ -73,8 +75,6 @@ void OI::ConstructJoystickButtons(){
 void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ShooterOn", new ShooterToggleOnOff());
 	SmartDashboard::PutData("ShooterOff", new ShooterToggleOnOff());
-	SmartDashboard::PutData("ClimberOn", new ClimberOnOff(on));
-	SmartDashboard::PutData("ClimberOff", new ClimberOnOff(off));
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
 	SmartDashboard::PutData("SetChainsawPositionUp", new ChainsawPosition(ChainsawPosition::up));
 	SmartDashboard::PutData("SetChainsawPositionMiddle", new ChainsawPosition(ChainsawPosition::middle));

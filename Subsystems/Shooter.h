@@ -59,8 +59,6 @@ public:
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
 	float GetFineAdjustmentAngle();
-	void StopElevatorMotor();
 	void SetPID(double P, double I, double D);
-	void MoveElevatorMotor(float speed);
 };
 #endif

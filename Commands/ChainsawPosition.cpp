@@ -55,7 +55,7 @@ void ChainsawPosition::Execute(){
 		if(!right)right = fabs(vright - voltageRight) <= Robot::climberArms->EncoderVoltageTolerance();
 		break;
 	case down:
-		if(Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFTEY) == true)
+		if(Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFETY) == true)
 		{
 			Robot::climberArms->WindowMotorsDown(left, right);
 			if(!left)left = vleft <= voltageLeft;
