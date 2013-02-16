@@ -26,4 +26,5 @@ bool ElevationPID::IsFinished() {
 	float errorAngle = targetAngle - currentAngle;
 	return (fabs(errorAngle)< acceptableAngleError);
 }
+void ElevationPID::End(){}
 void ElevationPID::Interrupted() {End();}
