@@ -3,14 +3,14 @@
 #include "../Commands/DefaultDiscVelocityCommand.h"
 
 //C style function forinterrupt...
-int DiscInterrupt(uint32_t mask, DiscVelocity* discVelocity)
+void DiscInterrupt(uint32_t mask, void *param)
 {
+	DiscVelocity * discVelocity = (DiscVelocity *)param;
 	discVelocity->ProcessInterrupt();
-	return 1;
 }
 DiscVelocity::DiscVelocity(DigitalInput* input) : Subsystem("Disc Velocity"){
 		this->input = input;
-		input->RequestInterrupts((tInterruptHandler)DiscInterrupt, this);
+		input->RequestInterrupts(DiscInterrupt, this);
 		input->SetUpSourceEdge(true, true);
 		input->EnableInterrupts();
 		Reset();
