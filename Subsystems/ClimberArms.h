@@ -31,5 +31,6 @@ public:
 	void WindowMotorsOff();
 	float GetVoltageLeft();
 	float GetVoltageRight();
+	bool climberIsSafe;
 };
 #endif

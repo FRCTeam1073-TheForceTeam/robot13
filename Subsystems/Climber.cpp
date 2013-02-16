@@ -37,7 +37,6 @@ void Climber::Climb(float joyY){
 		rightCIM->Set(CLIMBER_OFF_SPEED);	
 	}
 }
-bool Climber::GetClimberOnOff(){return ClimberOnOff;}	
 void Climber::EngageClimber(){ClimberOnOff = true;}	
 void Climber::DisengageClimber(){ClimberOnOff = false;}
 void Climber::ConfigureJaguarForSpeedMode(CANJaguar* jaguar){

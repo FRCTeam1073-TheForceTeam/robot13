@@ -137,8 +137,6 @@ float Shooter::GetFineAdjustmentAngle() {return .1;}
 void Shooter::TurnToSetAngle(){
 	//TODO: Phase out this function
 }
-void Shooter::StopElevatorMotor(){elevationJag->Set(SHOOTER_OFF);}
-void Shooter::MoveElevatorMotor(float speed){elevationJag->Set(speed);}
 void Shooter::SetPID(double P, double I, double D){
 	printf("Setting P:\t%f\nI:\t%f\nD:\t%f\n", P, I, D);
 	frontJag->SetPID(P, I, D);

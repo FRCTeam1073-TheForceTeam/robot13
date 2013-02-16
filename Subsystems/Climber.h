@@ -16,7 +16,6 @@ public:
 	void ConfigureJaguarForVoltageMode(CANJaguar* jaguar);
 	void InitDefaultCommand();
 	void Climb(float joyY);
-	bool GetClimberOnOff();
 	void EngageClimber();
 	void DisengageClimber();
 };

@@ -27,6 +27,7 @@ private:
     JoystickButton* shooterSpeedDown;
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
+    JoystickButton* climberSafe;
     
 public:
 	OI();
