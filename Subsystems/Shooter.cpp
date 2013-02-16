@@ -5,10 +5,8 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	elevationJag = RobotMap::shooterElevationJag;
 	frontJag = RobotMap::shooterFrontJag;
 	backJag = RobotMap::shooterBackJag;
-	elevationBottomSwitch = RobotMap::shooterElevationBottomSwitch;
 	elevationEncoder = RobotMap::shooterElevationEncoder;
 	elevationVictor = RobotMap::shooterElevationVictor;
-	printf("Limit Test = %s\n", LimitPressed(elevationBottomSwitch) ? "true" : "false");
     isShooterMotorOn = false;
 	ConfigureJaguarEncoder(frontJag);
 	ConfigureJaguarEncoder(backJag);
