@@ -3,7 +3,6 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 class MoveShooterToSetElevationAngle : public Command{
-private: void Done();
 public:
 	MoveShooterToSetElevationAngle();
 	void Initialize();
