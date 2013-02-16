@@ -7,12 +7,9 @@ void MoveShooterToSetElevationAngle::Initialize(){
 }
 void MoveShooterToSetElevationAngle::Execute(){}
 bool MoveShooterToSetElevationAngle::IsFinished(){
-	//TODO: not sure if polarity means == 0
-#warning "RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER RED FLAG DANGER "
-	bool ShooterBottomSwitch = RobotMap::shooterElevationJag->Get() == 1;
+	bool ShooterBottomSwitch = RobotMap::shooterElevationJag->Get() == 0;
 	return Robot::shooter->IsAtSetAngle()
 			|| ShooterBottomSwitch;
 }
-void MoveShooterToSetElevationAngle::End() {Done();}
-void MoveShooterToSetElevationAngle::Interrupted(){Done();}
-void MoveShooterToSetElevationAngle::Done() {Robot::shooter->StopElevatorMotor();}
+void MoveShooterToSetElevationAngle::End() {Robot::shooter->StopElevatorMotor();}
+void MoveShooterToSetElevationAngle::Interrupted(){End();}

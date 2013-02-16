@@ -119,10 +119,8 @@ void Shooter::SetRawElevationAngle(float elevationAngle) {
 	Robot::allignmentData->SendCurrentAngle(elevationAngle);
 }
 bool Shooter::IsAtSetAngle(){
-	if (elevationAngle == GetCurrentAngle()){
-		return true;
-	}
-	return false;
+	const float elevationThreshold = 0.15f;
+	return (fabs(elevationAngle - GetCurrentAngle()) < elevationThreshold);
 }
 #warning "Whoever's area of expertise this is may want to look at the below method"
 float Shooter::GetCurrentAngle(){
