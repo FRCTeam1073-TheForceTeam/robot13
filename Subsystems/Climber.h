@@ -12,10 +12,12 @@ public:
 	CANJaguar* rightCIM;
 	Climber();
 	void ClimberJagConfig();
+	void ConfigureJaguarForSpeedMode(CANJaguar* jaguar);
+	void ConfigureJaguarForVoltageMode(CANJaguar* jaguar);
 	void InitDefaultCommand();
 	void Climb(float joyY);
 	bool GetClimberOnOff();
 	void EngageClimber();
 	void DisengageClimber();
-	};
+};
 #endif
