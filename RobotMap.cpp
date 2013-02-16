@@ -17,7 +17,7 @@ DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
 AnalogChannel* RobotMap::collectorDiscCountSensor = NULL;
 AnalogChannel* RobotMap::collectorDiscUpsideDownSensor = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
-CANJaguar* RobotMap::shooterFrontJag = NULL;
+SmartCANJaguar* RobotMap::shooterFrontJag = NULL;
 CANJaguar* RobotMap::shooterBackJag = NULL;
 DigitalInput* RobotMap::velocity1 = NULL;
 DigitalInput* RobotMap::velocity2 = NULL;
@@ -63,7 +63,8 @@ void RobotMap::init() {
 	lw->AddSensor("Collector", "DiscUpsideDownSensor", collectorDiscUpsideDownSensor);
 	
 	shooterElevationJag = new CANJaguar(JAGUAR_SHOOTER_ANGLE);
-	shooterFrontJag = new CANJaguar(JAGUAR_SHOOTER_FRONT);
+	shooterFrontJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
+	shooterFrontJag->Invert();
 	shooterBackJag = new CANJaguar(JAGUAR_SHOOTER_BACK);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
