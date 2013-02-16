@@ -16,6 +16,9 @@
 #include "Commands/ShooterToggleOnOff.h"
 #include "Commands/TurboDriveOn.h"
 #include "Commands/WriteDriveData.h"
+#include "Commands/ShooterAdjustAngle.h"
+#include "Commands/ManualShooterSpeedAdjust.h"
+
 OI::OI() {
 	//organized such that null pointers do not occur
 	ConstructJoysticks();

@@ -4,7 +4,7 @@
 #include "../Robot.h"
 class ShooterAdjustAngle: public Command {
 public:
-	ShooterAdjustAngle();
+	ShooterAdjustAngle(bool positive);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
