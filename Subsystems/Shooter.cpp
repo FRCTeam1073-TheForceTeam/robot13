@@ -1,6 +1,10 @@
 #include "Shooter.h"
 #include "../Robot.h"
 #include "../Commands/ShooterDefaultCommand.h"
+
+#define ELEVATION_INCREMENT_ANGLE_SPEED_UP 0.2
+#define ELEVATION_INCREMENT_ANGLE_SPEED_DOWN -0.2
+
 Shooter::Shooter() : Subsystem("Shooter") {
 	elevationJag = RobotMap::shooterElevationJag;
 	frontJag = RobotMap::shooterFrontJag;
@@ -131,7 +135,7 @@ int Shooter::GetFineAdjustmentSpeed() {return 20;}
 int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
 float Shooter::GetFineAdjustmentAngle() {return .1;}
 void Shooter::TurnToSetAngle(){
-	//TODO: Hardware calls to adjust angle to angle variable
+	//TODO: Phase out this function
 }
 void Shooter::StopElevatorMotor(){elevationJag->Set(SHOOTER_OFF);}
 void Shooter::MoveElevatorMotor(float speed){elevationJag->Set(speed);}
@@ -145,4 +149,17 @@ void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->SetSpeedReference(CANJaguar::kSpeedRef_Encoder);
 	jaguar->ConfigEncoderCodesPerRev(360);	//maybe 360
 	jaguar->EnableControl();			
+}
+
+void Shooter::ElevatorUpDown(bool up)
+{
+	if(up)
+		elevationVictor->Set(ELEVATION_INCREMENT_ANGLE_SPEED_UP);
+	else
+		elevationVictor->Set(ELEVATION_INCREMENT_ANGLE_SPEED_DOWN);
+}
+
+void Shooter::ElevatorOff()
+{
+	elevationVictor->Set(0.0); //turn off, this is a useless comment... -_-
 }

@@ -12,6 +12,6 @@ public:
 	void End();
 	void Interrupted();
 private:
-	static OnOff previousOnOff;
+	OnOff previousOnOff;
 };
 #endif

@@ -38,6 +38,8 @@ public:
 	void SetToDefaults();
 	void IncrementSpeed(int speedIncrement);
 	void IncrementAngle(float angleIncrement);
+	void ElevatorUpDown(bool up);
+	void ElevatorOff();
 	void SetElevatorEncoderFailed(bool isFailed);
 	bool Shooter::GetElevationEncoderFailed();
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
