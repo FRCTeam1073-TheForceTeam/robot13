@@ -12,7 +12,6 @@ Collector::Collector() : Subsystem("Collector") {
 	motor = RobotMap::collectorMotor;
 	discOnShooterBed = RobotMap::collectorDiscOnShooterBed;
 	discCountSensor = RobotMap::collectorDiscCountSensor;
-	discUpsideDownSensor = RobotMap::collectorDiscUpsideDownSensor;
 }
     
 void Collector::InitDefaultCommand() {}
@@ -32,10 +31,7 @@ int Collector::GetNumberOfDiscs(){
 		return ONEDISC; 
 	return 0;
 }
-bool Collector::IsNextDiscUpsideDown(){
-	return (discUpsideDownSensor->GetVoltage() < DISC_UPSIDE_DOWN_THRESHOLD);
-	return false;	//TODO: look at Disc Collection Sensor
-}
+
 bool Collector::IsDiscOnShooterBed(){
 	//TODO: look at proximity sensor on Shooter Bed (is a part of this class)
 	return true;//hack!

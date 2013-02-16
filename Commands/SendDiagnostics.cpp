@@ -111,8 +111,6 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		//Disc Count
 		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
-		//Disc Inverted?
-		diagnosticsTable->PutBoolean("Bottom Disc Reversed", Robot::collector->IsNextDiscUpsideDown());		
 	}
 	
 	//Gyro

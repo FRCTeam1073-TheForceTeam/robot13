@@ -13,7 +13,6 @@ public:
 	Collector();
 	void InitDefaultCommand();
 	int  GetNumberOfDiscs();
-	bool IsNextDiscUpsideDown();
 	bool IsDiscOnShooterBed();
 	void MotorOn();
 	void MotorOff();
