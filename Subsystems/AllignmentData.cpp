@@ -8,7 +8,7 @@ AllignmentData::AllignmentData() : Subsystem("AllignmentData") {
 	trackingDataTable = NetworkTable::GetTable("tracking");
 }
 void AllignmentData::InitDefaultCommand(){}
-double AllignmentData::GetCalculatedVelocityFPS() {return trackingDataTable->GetNumber("calculatedVelocityFPS", -1);}
+double AllignmentData::GetCalculatedVelocityRPM() {return trackingDataTable->GetNumber("calculatedVelocityRPM", -1);}
 double AllignmentData::GetCalculatedAngle() {return trackingDataTable->GetNumber("calculatedAngle", -1);}
 bool AllignmentData::IsTarget(){return calculatedDistance != DEFAULT && calculatedAngle != DEFAULT;}
 void AllignmentData::SendCurrentAngle(float angle)
@@ -22,3 +22,4 @@ void AllignmentData::SendCurrentSpeed(int speed) {
 	printf("AllignmentData SendCurrentSpeed speed: %d\n", speed);
 	printf("Network Table is Connected %d", trackingDataTable->IsConnected());
 }
+ 	

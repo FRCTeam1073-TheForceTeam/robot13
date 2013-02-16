@@ -148,4 +148,3 @@ void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ConfigEncoderCodesPerRev(360);	//maybe 360
 	jaguar->EnableControl();			
 }
-float Shooter::VelocityFPSToRPM(float vfps){return (120 * vfps) / (NEW_PI * SHOOTER_WHEEL_DIAMETER_FEET);}
