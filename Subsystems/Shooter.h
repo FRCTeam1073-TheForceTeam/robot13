@@ -31,7 +31,6 @@ public:
 	CANJaguar* elevationJag;
 	CANJaguar* frontJag;
 	CANJaguar* backJag;
-	DigitalInput* elevationBottomSwitch;
 	SpeedController* elevationVictor;
 	StallableAnalogEncoder* elevationEncoder;
 	Shooter();
@@ -61,6 +60,5 @@ public:
 	void StopElevatorMotor();
 	void SetPID(double P, double I, double D);
 	void MoveElevatorMotor(float speed);
-	float VelocityFPSToRPM(float vfps);
 };
 #endif

@@ -5,10 +5,8 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	elevationJag = RobotMap::shooterElevationJag;
 	frontJag = RobotMap::shooterFrontJag;
 	backJag = RobotMap::shooterBackJag;
-	elevationBottomSwitch = RobotMap::shooterElevationBottomSwitch;
 	elevationEncoder = RobotMap::shooterElevationEncoder;
 	elevationVictor = RobotMap::shooterElevationVictor;
-	printf("Limit Test = %s\n", LimitPressed(elevationBottomSwitch) ? "true" : "false");
     isShooterMotorOn = false;
 	ConfigureJaguarEncoder(frontJag);
 	ConfigureJaguarEncoder(backJag);
@@ -148,4 +146,3 @@ void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ConfigEncoderCodesPerRev(360);	//maybe 360
 	jaguar->EnableControl();			
 }
-float Shooter::VelocityFPSToRPM(float vfps){return (120 * vfps) / (NEW_PI * SHOOTER_WHEEL_DIAMETER_FEET);}

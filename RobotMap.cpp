@@ -19,7 +19,6 @@ AnalogChannel* RobotMap::collectorDiscUpsideDownSensor = NULL;
 CANJaguar* RobotMap::shooterElevationJag = NULL;
 CANJaguar* RobotMap::shooterFrontJag = NULL;
 CANJaguar* RobotMap::shooterBackJag = NULL;
-DigitalInput* RobotMap::shooterElevationBottomSwitch = NULL;
 DigitalInput* RobotMap::velocity1 = NULL;
 DigitalInput* RobotMap::velocity2 = NULL;
 StallableAnalogEncoder* RobotMap::shooterElevationEncoder = NULL;
@@ -70,7 +69,5 @@ void RobotMap::init() {
 	climberArmRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
     velocity1 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_ONE);
     velocity2 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_TWO);
-	shooterElevationBottomSwitch = new DigitalInput(DIGITAL_SHOOTER_ELEVATION_BOTTOM_LIMIT);
-	lw->AddSensor("Shooter", "ElevationBottomSwitch", shooterElevationBottomSwitch);
 	driveTrainGyro->Reset();
 }
