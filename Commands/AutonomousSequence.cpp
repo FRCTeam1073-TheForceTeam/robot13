@@ -39,6 +39,8 @@ void AutonomousSequence::DoSequence(){
 	AddSequential(new WaitCommand(shotWaitTime));
 	AddSequential(new Shoot());
 	AddSequential(new ShooterOnOff(off));
+	
+	//AddSequential(new AutonomousTurnToAngle(45.0));	//this was to test autonomous turning
 }
 double AutonomousSequence::GetAutonomousWaitTime(){
 	double waitTime = 3;

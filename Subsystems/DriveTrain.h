@@ -18,6 +18,8 @@ public:
 	void Stop();
 	void GetPosition (float &left,float &right);
 	float TicksToInches (float ticks);
-	float GetGyroAngle ();
+	float GetGyroAngleDegrees();
+private:
+	void ConfigureJaguarEncoder(CANJaguar* jaguar);
 };
 #endif
