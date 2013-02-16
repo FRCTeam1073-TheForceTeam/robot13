@@ -19,6 +19,7 @@ void Collector::InitDefaultCommand() {}
 void Collector::MotorOn(){motor->Set(COLLECTOR_SPEED_ON);}
 void Collector::MotorOff() {motor->Set(COLLECTOR_SPEED_OFF);}
 int Collector::GetNumberOfDiscs(){
+	return 1;
 	float voltage = discCountSensor->GetVoltage();
 //	printf ("Get numeber of discs %f\n", voltage);
 	if (voltage > FOURDISCS)
@@ -37,6 +38,6 @@ bool Collector::IsNextDiscUpsideDown(){
 }
 bool Collector::IsDiscOnShooterBed(){
 	//TODO: look at proximity sensor on Shooter Bed (is a part of this class)
-	return false;
+	return true;//hack!
 }
 

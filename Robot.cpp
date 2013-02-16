@@ -71,7 +71,7 @@ void Robot::RobotInit() {
 		climber = new Climber();
 		climberArms = new ClimberArms();
 	}
-	if(whichRobot == mobileBase || whichRobot == newRobot) {
+	if(whichRobot == mobileBase || whichRobot == newRobot || whichRobot == elot) {
 		collector = new Collector();
 		shooter = new Shooter();
 		allignmentData = new AllignmentData();
