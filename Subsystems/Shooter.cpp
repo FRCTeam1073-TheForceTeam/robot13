@@ -119,10 +119,8 @@ void Shooter::SetRawElevationAngle(float elevationAngle) {
 	Robot::allignmentData->SendCurrentAngle(elevationAngle);
 }
 bool Shooter::IsAtSetAngle(){
-	if (elevationAngle == GetCurrentAngle()){
-		return true;
-	}
-	return false;
+	const float elevationThreshold = 0.15f;
+	return (fabs(elevationAngle - GetCurrentAngle()) < elevationThreshold);
 }
 #warning "Whoever's area of expertise this is may want to look at the below method"
 float Shooter::GetCurrentAngle(){
@@ -150,3 +148,4 @@ void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ConfigEncoderCodesPerRev(360);	//maybe 360
 	jaguar->EnableControl();			
 }
+float Shooter::VelocityFPSToRPM(float vfps){return (120 * vfps) / (NEW_PI * SHOOTER_WHEEL_DIAMETER_FEET);}

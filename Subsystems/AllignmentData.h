@@ -11,7 +11,7 @@ private:
 public:
 	AllignmentData();
 	void InitDefaultCommand();
-	double GetCalculatedDistance();
+	double GetCalculatedVelocityFPS();
 	double GetCalculatedAngle();
 	void SendCurrentAngle(float angle);
 	void SendCurrentSpeed(int speed);
