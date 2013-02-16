@@ -2,13 +2,14 @@
 #define CLIMBER_H
 #define CLIMBER_OFF_SPEED 0.0f
 #include "Commands/Subsystem.h"
+#include "../WPILibExtensions/WPILibExtensions.h"
 #include "WPILib.h"
 class Climber: public Subsystem {
 private:
 	bool ClimberOnOff;
 	int encoderFailCount;
 public:
-	CANJaguar* leftCIM;
+	SmartCANJaguar* leftCIM;
 	CANJaguar* rightCIM;
 	Climber();
 	void ClimberJagConfig();

@@ -8,7 +8,7 @@ public:
 	static SpeedController* climberArmLeftClimbWindowVictor;
 	static SpeedController* climberArmRightClimbWindowVictor;
 	static SpeedController* shooterElevationVictor;
-	static CANJaguar* climberLeftCIM;
+	static SmartCANJaguar* climberLeftCIM;
 	static CANJaguar* climberRightCIM;
 	static CANJaguar* driveTrainLeftMotor;
 	static SmartCANJaguar* driveTrainRightMotor;
