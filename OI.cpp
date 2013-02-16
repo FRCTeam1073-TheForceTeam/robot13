@@ -13,7 +13,7 @@
 #include "Commands/SetCubicDrive.h"
 #include "Commands/SetShooterToCalculatedValues.h"
 #include "Commands/Shoot.h"
-#include "Commands/ShooterOnOff.h"
+#include "Commands/ShooterToggleOnOff.h"
 #include "Commands/TurboDriveOn.h"
 #include "Commands/WriteDriveData.h"
 OI::OI() {
@@ -41,17 +41,15 @@ void OI::ConstructJoystickButtons(){
 	climberDisengage->WhenPressed(new ClimberOnOff(off));
 	climberEngage = new JoystickButton(operatorStick, OPERATOR_CLIMBER_ENGAGE_BTN);
 	climberEngage->WhenPressed(new ClimberOnOff(on));
-	shooterOffButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_OFF_BTN);
-	shooterOffButton->WhenPressed(new ShooterOnOff(off));
-	shooterOnButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_ON_BTN);
-	shooterOnButton->WhenPressed(new ShooterOnOff(on));
+	shooterOffButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_TOGGLE_ON_OFF_BTN);
+	shooterOffButton->WhenPressed(new ShooterToggleOnOff());
 	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
 	rightTurboOn = new JoystickButton(rightStick, RIGHT_DRIVE_TRAIN_TURBO_ON_BTN);
 	rightTurboOn->WhileHeld(new TurboDriveOn(rightStick));
 	pullShooterDashData = new JoystickButton(leftStick, LEFT_DASHBOARD_PULL_SHOOTER_DATA_BTN);
 	pullShooterDashData->WhenPressed(new PullShooterData());
-	switchDrive = new JoystickButton(leftStick, LEFT_DRIVE_TRAIN_CHANGE_DRIVE_BTN);
+	switchDrive = new JoystickButton(rightStick, RIGHT_DRIVE_TRAIN_CHANGE_DRIVE_BTN);
 	switchDrive->WhenPressed(new SetCubicDrive());
 	leftTurboOn = new JoystickButton(leftStick, LEFT_DRIVE_TRAIN_TURBO_ON_BTN);
 	leftTurboOn->WhileHeld(new TurboDriveOn(leftStick));	    
@@ -59,8 +57,8 @@ void OI::ConstructJoystickButtons(){
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
 }
 void OI::ConstructSmartDashCommands(){
-	SmartDashboard::PutData("ShooterOn", new ShooterOnOff(on));
-	SmartDashboard::PutData("ShooterOff", new ShooterOnOff(off));
+	SmartDashboard::PutData("ShooterOn", new ShooterToggleOnOff());
+	SmartDashboard::PutData("ShooterOff", new ShooterToggleOnOff());
 	SmartDashboard::PutData("ClimberOn", new ClimberOnOff(on));
 	SmartDashboard::PutData("ClimberOff", new ClimberOnOff(off));
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
