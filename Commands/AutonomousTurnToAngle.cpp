@@ -4,12 +4,12 @@
 #define ACCEPTABLE_ANGLE_ERROR_DEGREES 5.0
 AutonomousTurnToAngle::AutonomousTurnToAngle(float targetAngle) {
 	Requires(Robot::driveTrain);
-	this->targetAngle = CalculateCoterminalAngle(targetAngle) + Robot::driveTrain->GetGyroAngleDegrees();
-	currentAngle = Robot::driveTrain->GetGyroAngleDegrees();
+	this->targetAngle = CalculateCoterminalAngle(targetAngle) + Robot::driveTrain->gyro->GetAngle();
+	currentAngle = Robot::driveTrain->gyro->GetAngle();
 	leftIsBest = true;
 }
 void AutonomousTurnToAngle::Initialize() {
-	float startingAngle = Robot::driveTrain->GetGyroAngleDegrees();
+	float startingAngle = Robot::driveTrain->gyro->GetAngle();
 	float distanceOne = fabs(startingAngle - targetAngle);
 	float distanceTwo = fabs((360 - startingAngle) + targetAngle);
 	if(startingAngle >= targetAngle) leftIsBest = distanceOne < distanceTwo;
@@ -29,7 +29,7 @@ void AutonomousTurnToAngle::Execute() {
 }
 bool AutonomousTurnToAngle::IsFinished() {
 	UpdateCurrentAngle();
-	return fabs(targetAngle - Robot::driveTrain->GetGyroAngleDegrees()) < ACCEPTABLE_ANGLE_ERROR_DEGREES;
+	return fabs(targetAngle - Robot::driveTrain->gyro->GetAngle()) < ACCEPTABLE_ANGLE_ERROR_DEGREES;
 }
 void AutonomousTurnToAngle::End(){Robot::driveTrain->Stop();}
 void AutonomousTurnToAngle::Interrupted(){End();}
@@ -39,4 +39,4 @@ float AutonomousTurnToAngle::CalculateCoterminalAngle(float targetAngle){
 	while(targetAngle > inc) targetAngle -= inc;
 	return targetAngle;
 }
-void AutonomousTurnToAngle::UpdateCurrentAngle(){currentAngle = Robot::driveTrain->GetGyroAngleDegrees();}
+void AutonomousTurnToAngle::UpdateCurrentAngle(){currentAngle = Robot::driveTrain->gyro->GetAngle();}

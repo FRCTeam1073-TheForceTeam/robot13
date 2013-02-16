@@ -6,7 +6,6 @@
 //#define  DEBUGDRIVETRAIN 
 #define WHEEL_SIZE 7
 #define TICKS_PER_REV 1440
-#define PI 3.14159
 #define INCHES_PER_TICK 0.022
 DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 	leftMotor = RobotMap::driveTrainLeftMotor;
@@ -42,21 +41,15 @@ void DriveTrain::Move(float left, float right){
 	//printf("Right Motor Speed %f\n", rightMotor->GetSpeed());
 	SmartDashboard::PutNumber("Left Drive Encoder", leftMotor->GetSpeed());
 	//printf("Left Motor Speed %f\n", leftMotor->GetSpeed());
-	SmartDashboard::PutNumber("Gyro Angle", GetGyroAngleDegrees());
-	//printf("Gyro Angle %f\n", GetGyroAngleDegrees());
+	SmartDashboard::PutNumber("Gyro Angle", gyro->GetAngle());
+	//printf("Gyro Angle %f\n", gyro->GetAngle());
 }
 void DriveTrain::Stop() {Move(0.0f, 0.0f);}
 void DriveTrain::GetPosition(float &left,float &right){
-	left=TicksToInches(leftMotor->Get());
-	right=TicksToInches(rightMotor->Get());
+	left = TicksToInches(leftMotor->GetSpeed());
+	right = TicksToInches(rightMotor->GetSpeed());
 }
 float DriveTrain::TicksToInches (float ticks){
 //	return 2*PI*(WHEEL_SIZE/2)*ticks;
 	return ticks*INCHES_PER_TICK;
-}
-
-
-float DriveTrain::GetGyroAngleDegrees() {
-	return gyro->GetAngle() * 180.0;
-	
 }
