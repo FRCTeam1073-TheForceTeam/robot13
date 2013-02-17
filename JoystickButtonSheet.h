@@ -1,8 +1,6 @@
 #ifndef JOYSTICK_BUTTON_SHEET_H
 #define JOYSTICK_BUTTON_SHEET_H
 
-//for now our priority is getting things done, not mapping incomplete things or someone else's things to arbitrary buttons
-
 //left drive stick
 #define LEFT_DASHBOARD_PULL_SHOOTER_DATA_BTN 6
 #define LEFT_DRIVE_TRAIN_TURBO_ON_BTN 1
@@ -12,7 +10,7 @@
 #define RIGHT_CLIMBER_SAFETY_BTN 2
 #define RIGHT_DRIVE_TRAIN_CHANGE_DRIVE_BTN 10
 //operator stick
-#define OPERATOR_SHOOTER_AUTOAIM_BTN 13
+#define OPERATOR_SHOOTER_AUTOAIM_BTN 12
 #define OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN 7
 #define OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN 9
 #define OPERATOR_CLIMBER_CHAINSAW_UP_BTN 8

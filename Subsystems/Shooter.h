@@ -30,9 +30,8 @@ private:
 	void ConfigureJaguarEncoder(CANJaguar* jaguar);
 public:
 	void TurnToSetAngle();
-	CANJaguar* elevationJag;
 	SmartCANJaguar* frontJag;
-	CANJaguar* backJag;
+	SmartCANJaguar* backJag;
 	SpeedController* elevationVictor;
 	StallableAnalogEncoder* elevationEncoder;
 	Shooter();
@@ -63,5 +62,11 @@ public:
 	float GetFineAdjustmentAngle();
 	void SetPID(double P, double I, double D);
 	void SetToFeederPresetAngle();
+	float GetMinAngle();
+	float GetMaxAngle();
+	bool IsElevatorStalled();
+	void ProcessVoltageData();
+private:
+	float ConvertVoltToAngle(float volts);
 };
 #endif

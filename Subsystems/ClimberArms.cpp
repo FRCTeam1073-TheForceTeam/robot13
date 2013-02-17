@@ -4,12 +4,12 @@ ClimberArms::ClimberArms() : Subsystem("Climber Arms"){
 	rightWindowEncoder = RobotMap::climberArmRightWindowEncoder;
 	leftClimbWindowVictor = RobotMap::climberArmLeftClimbWindowVictor;
 	rightClimbWindowVictor = RobotMap::climberArmRightClimbWindowVictor;
-	 leftArmUpEncVal = 3.3f;
-		 leftArmMiddleEncVal = 2.6f;
-		 leftArmDownEncVal = 1.9f;
-		 rightArmUpEncVal = 0.82f;
-		 rightArmMiddleEncVal = 1.4f;
-		 rightArmDownEncVal = 2.15f;
+	leftArmUpEncVal = 3.17f;
+	leftArmDownEncVal = 2.1f;
+	leftArmMiddleEncVal = (leftArmUpEncVal + leftArmDownEncVal)/2;
+	rightArmUpEncVal = 0.75;
+	rightArmDownEncVal = 2.1f;
+	rightArmMiddleEncVal = (rightArmUpEncVal + rightArmDownEncVal)/2;
 }
 void ClimberArms::InitDefaultCommand() {}
 float ClimberArms::EncoderVoltageTolerance(){return 0.15f;}

@@ -1,17 +1,23 @@
-#ifndef SHOOTERADJUSTANGLE_H
-#define SHOOTERADJUSTANGLE_H
+#ifndef DISCONBEDSENSOROVERRIDE_H
+#define DISCONBEDSENSOROVERRIDE_H
+
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-class ShooterAdjustAngle: public Command {
+
+/**
+ *
+ *
+ * @author Greg
+ */
+class DiscOnBedSensorOverride: public Command {
 public:
-	ShooterAdjustAngle(bool positive);
+	DiscOnBedSensorOverride();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	bool IsAtEitherLimit();
-private:
-	bool positive;
+
 };
+
 #endif

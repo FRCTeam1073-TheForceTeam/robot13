@@ -40,8 +40,6 @@ void SendDiagnostics::Initialize() {
 	printf("primaryShooterExists %d\n", primaryShooterExists);
 	supportShooterExists = TestJags(RobotMap::shooterBackJag);
 	printf("supportShooterExists %d\n", supportShooterExists);
-	elevationShooterExists = TestJags(RobotMap::shooterElevationJag);	
-	printf("elevationShooterExists %d\n", elevationShooterExists);
 	
 	return;
 }
@@ -71,6 +69,8 @@ void SendDiagnostics::Execute() {
 
 	//MatchTimer
 	diagnosticsTable->PutNumber("Match Timer", DriverStation::GetInstance()->GetMatchTime());
+	
+	diagnosticsTable->PutNumber("High Speed Timer", Timer::GetFPGATimestamp());
 	//printf("Sending up Match Time");
 	//Battery Voltage
 	diagnosticsTable->PutNumber("Battery Voltage", DriverStation::GetInstance()->GetBatteryVoltage());
@@ -81,9 +81,6 @@ void SendDiagnostics::Execute() {
 	}
 	if(rightDriveExists){
 		JagDiags("Right Drive", RobotMap::driveTrainRightMotor, true);
-	}
-	if(elevationShooterExists){
-		JagDiags("Shooter Elevation", RobotMap::shooterElevationJag, false);
 	}
 	if(primaryShooterExists){
 		JagDiags("Front Shooter", RobotMap::shooterFrontJag, false);

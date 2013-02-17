@@ -194,6 +194,5 @@ void Shooter::ProcessVoltageData()
 {
 	elevationEncoder->ProcessVoltageData();
 }
-void Shooter::SetToFeederPresetAngle() {
-	SetRawElevationAngle(PRESET_FEEDER_STATION_ANGLE);
-}
+
+

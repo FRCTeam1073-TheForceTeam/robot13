@@ -27,9 +27,7 @@ private:
     JoystickButton* shooterSpeedDown;
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
-#if 0
-    JoystickButton* climberSafe;
-#endif
+
     
 public:
 	OI();

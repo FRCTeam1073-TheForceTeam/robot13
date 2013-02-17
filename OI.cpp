@@ -18,9 +18,9 @@
 #include "Commands/WriteDriveData.h"
 #include "Commands/ShooterAdjustAngle.h"
 #include "Commands/ManualShooterSpeedAdjust.h"
-#if 0
-#include "Commands/ClimberSafe.h"
-#endif
+
+#include "Commands/DiscOnBedSensorOverride.h"
+
 OI::OI() {
 	//organized such that null pointers do not occur
 	ConstructJoysticks();
@@ -90,6 +90,8 @@ void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
 	SmartDashboard::PutData("ClimberOn", new ClimberOnOff(on));
 	SmartDashboard::PutData("ClimberOff", new ClimberOnOff(off));
+	SmartDashboard::PutData("Override DiscOnBed sensor", new DiscOnBedSensorOverride());
+
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}
 SmartJoystick* OI::getRightStick(){return rightStick;}

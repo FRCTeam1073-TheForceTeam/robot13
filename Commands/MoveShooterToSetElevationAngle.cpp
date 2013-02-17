@@ -7,9 +7,7 @@ void MoveShooterToSetElevationAngle::Initialize(){
 }
 void MoveShooterToSetElevationAngle::Execute(){}
 bool MoveShooterToSetElevationAngle::IsFinished(){
-	bool ShooterBottomSwitch = RobotMap::shooterElevationJag->Get() == 0;
-	return Robot::shooter->IsAtSetAngle()
-			|| ShooterBottomSwitch;
+	return Robot::shooter->IsAtSetAngle();
 }
 void MoveShooterToSetElevationAngle::End() {Robot::shooter->ElevatorOff();}
 void MoveShooterToSetElevationAngle::Interrupted(){End();}

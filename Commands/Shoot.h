@@ -5,7 +5,7 @@
 class Shoot: public Command {
 private:
 	bool abort;
-	enum DiscState{enteringShooter, inShooter, leftShooter};
+	enum DiscState{enteringShooter, inShooter, leftCollector};
 	DiscState discState;
 public:
 	Shoot();
