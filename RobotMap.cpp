@@ -78,14 +78,11 @@ void RobotMap::init() {
 	lw->AddActuator("Shooter", "Back Jag", shooterBackJag);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
-    lw->AddSensor("Shooter", "Elevation Encoder", (AnalogChannel*) shooterElevationEncoder);
-    
+    lw->AddSensor("Shooter", "Elevation Encoder", (AnalogChannel*)shooterElevationEncoder);
 	climberArmLeftWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_LEFT_ANGLE_MAG_ENCODER);
-	lw->AddSensor("Climber Arms", "Left Arm Encoder", (AnalogChannel*) climberArmLeftWindowEncoder);
-	
+	lw->AddSensor("Climber Arms", "Left Arm Encoder", (AnalogChannel*)climberArmLeftWindowEncoder);
 	climberArmRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
-	lw->AddSensor("Climber Arms", "Right Arm Encoder", (AnalogChannel*) climberArmRightWindowEncoder);
-	
+	lw->AddSensor("Climber Arms", "Right Arm Encoder", (AnalogChannel*)climberArmRightWindowEncoder);
     velocity1 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_ONE);
     velocity2 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_TWO);
 	driveTrainGyro->Reset();

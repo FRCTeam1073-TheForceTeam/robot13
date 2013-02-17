@@ -33,13 +33,13 @@ void ClimberArms::ResetWindowVoltageData(){
 bool ClimberArms::WindowMotorStall(){return leftWindowEncoder->IsStall() || rightWindowEncoder->IsStall();}
 //the most backwards logic ever.
 void ClimberArms::WindowMotorsUp(bool offLeft, bool offRight){
-	if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);
+	if(!offLeft) leftClimbWindowVictor->Set(-1 * CHAINSAW_WINDOW_UP_SPEED);
 		else leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 	if(!offRight) rightClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);
 		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 }
 void ClimberArms::WindowMotorsDown(bool offLeft, bool offRight){
-	if(!offLeft) leftClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
+	if(!offLeft) leftClimbWindowVictor->Set(-1 * CHAINSAW_WINDOW_DOWN_SPEED);
 		else leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 	if(!offRight) rightClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
 		else rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
