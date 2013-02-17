@@ -6,6 +6,7 @@
 #include "Commands/AutonomousSequence.h"
 #include "Commands/AutonomousTurnToAngle.h"
 #include "Commands/ClimberDrive.h"
+#include "Commands/ClimberOnOff.h"
 #include "Commands/JoystickDrive.h"
 #include "Commands/PullShooterData.h"
 #include "Commands/ChainsawPosition.h"
@@ -17,8 +18,9 @@
 #include "Commands/WriteDriveData.h"
 #include "Commands/ShooterAdjustAngle.h"
 #include "Commands/ManualShooterSpeedAdjust.h"
+#if 0
 #include "Commands/ClimberSafe.h"
-
+#endif
 OI::OI() {
 	//organized such that null pointers do not occur
 	ConstructJoysticks();
@@ -35,14 +37,20 @@ void OI::ConstructJoystickButtons(){
 	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
 	//chainsaw control commands & safety
+	climberDisengage = new JoystickButton(operatorStick, OPERATOR_CLIMBER_DISENGAGE_BTN);
+	climberDisengage->WhenPressed(new ClimberOnOff(off));
+	climberEngage = new JoystickButton(operatorStick, OPERATOR_CLIMBER_ENGAGE_BTN);
+	climberEngage->WhenPressed(new ClimberOnOff(on));
 	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
 	chainsawDown->WhenPressed(new ChainsawPosition(ChainsawPosition::down));
 	chainsawMiddle = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN);
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
 	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
+#if 0
 	climberSafe = new JoystickButton(operatorStick, RIGHT_CLIMBER_SAFETY_BTN);
 	climberSafe->WhenPressed(new ClimberSafe());
+#endif
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
@@ -70,7 +78,6 @@ void OI::ConstructJoystickButtons(){
 	shooterOnOffButton->WhenPressed(new ShooterToggleOnOff());
 	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
-	
 }
 void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ShooterOn", new ShooterToggleOnOff());
@@ -81,6 +88,8 @@ void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("SetChainsawPositionDown", new ChainsawPosition(ChainsawPosition::down));
 	SmartDashboard::PutData("ClimberDrive", new ClimberDrive());
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
+	SmartDashboard::PutData("ClimberOn", new ClimberOnOff(on));
+	SmartDashboard::PutData("ClimberOff", new ClimberOnOff(off));
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}
 SmartJoystick* OI::getRightStick(){return rightStick;}

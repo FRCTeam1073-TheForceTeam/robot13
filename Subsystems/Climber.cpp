@@ -51,3 +51,4 @@ void Climber::ConfigureJaguarForVoltageMode(CANJaguar* jaguar){
 	jaguar->ChangeControlMode(CANJaguar::kVoltage);
 	jaguar->EnableControl();
 }
+bool Climber::GetClimberOnOff(){return ClimberOnOff;}	

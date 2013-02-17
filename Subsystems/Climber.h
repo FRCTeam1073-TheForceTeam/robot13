@@ -18,5 +18,6 @@ public:
 	void Climb(float joyY);
 	void EngageClimber();
 	void DisengageClimber();
+	bool GetClimberOnOff();
 };
 #endif
