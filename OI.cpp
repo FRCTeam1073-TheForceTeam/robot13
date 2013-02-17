@@ -43,7 +43,7 @@ void OI::ConstructJoystickButtons(){
 	climberEngage->WhenPressed(new ClimberOnOff(on));
 	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
 	chainsawDown->WhenPressed(new ChainsawPosition(ChainsawPosition::down));
-	chainsawMiddle = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN);
+	chainsawMiddle = new JoystickButton(rightStick, RIGHT_CLIMBER_CHAINSAW_MIDDLE_BTN);
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
 	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
