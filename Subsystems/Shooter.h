@@ -29,7 +29,7 @@ private:
 public:
 	void TurnToSetAngle();
 	CANJaguar* elevationJag;
-	CANJaguar* frontJag;
+	SmartCANJaguar* frontJag;
 	CANJaguar* backJag;
 	SpeedController* elevationVictor;
 	StallableAnalogEncoder* elevationEncoder;
