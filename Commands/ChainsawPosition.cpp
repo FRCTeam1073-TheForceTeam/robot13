@@ -26,7 +26,7 @@ void ChainsawPosition::Initialize(){
 		goUpInMiddle = left < voltageLeft || right < voltageRight;
 	    break;
 	case down:
-		if(!Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFETY_BTN)) {
+		if(false && !Robot::oi->getRightStick()->GetRawButton(RIGHT_CLIMBER_SAFETY_BTN)) {
 			puts("Safety not pressed, cancelling!!!!!!!!!");
 			Cancel();
 		}
@@ -42,8 +42,7 @@ void ChainsawPosition::Execute(){
 	Robot::climberArms->ProcessWindowVoltageData();
 	float vleft = Robot::climberArms->leftWindowEncoder->GetVoltage();
 	float vright = Robot::climberArms->rightWindowEncoder->GetVoltage();
-	printf("Voltage Left: %f Target Voltage Left: %f\n", vleft, voltageLeft);
-	printf("Voltage Right: %f Target Voltage Right: %f\n", vright, voltageRight);
+	printf("Voltage Right: %f Target Voltage Right: %f State: %s\n", vright, voltageRight, right ? "true" : "false");
 	switch(destination){
 	case up:
 		Robot::climberArms->WindowMotorsUp(left, right);
