@@ -1,7 +1,7 @@
 #include "Shoot.h"
 Shoot::Shoot() {Requires(Robot::collector);}
 void Shoot::Initialize() {
-	abort = false && (!Robot::shooter->IsShooterMotorOn() || Robot::collector->GetNumberOfDiscs() == 0);
+	abort = !Robot::shooter->IsShooterMotorOn() || Robot::collector->GetNumberOfDiscs() == 0;
 	if(abort){
 		printf("ERROR! You either have no discs or the shooter is not running!\n");
 		return;
