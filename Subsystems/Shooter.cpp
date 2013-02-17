@@ -161,3 +161,7 @@ void Shooter::ElevatorOff()
 {
 	elevationVictor->Set(0.0); //turn off, this is a useless comment... -_-
 }
+
+void Shooter::SetToFeederPresetAngle() {
+	this->SetRawElevationAngle(PRESET_FEEDER_STATION_ANGLE);
+}

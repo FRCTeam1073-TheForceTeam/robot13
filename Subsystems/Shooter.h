@@ -10,6 +10,8 @@
 #define SHOOTER_FRONT_DEFAULT_SPEED 2550
 #define SHOOTER_BACK_DEFAULT_SPEED  2550 
 #define SHOOTER_WHEEL_DIAMETER_FEET 0.5f
+#define PRESET_FEEDER_STATION_ANGLE 45
+
 //Are you hungry? I sure would hope so. we have like thirty defined PIs. I forget what they're called.
 //WindRiver won't tell me the name of the one we defined and I don't want to hunt. Here's another
 #define NEW_PI 3.14159f
@@ -60,5 +62,6 @@ public:
 	int GetCoarseAdjustmentSpeed();
 	float GetFineAdjustmentAngle();
 	void SetPID(double P, double I, double D);
+	void SetToFeederPresetAngle();
 };
 #endif
