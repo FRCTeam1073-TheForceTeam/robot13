@@ -8,6 +8,13 @@
 #define CHAINSAW_WINDOW_UP_SPEED 0.3f
 #define CHAINSAW_WINDOW_DOWN_SPEED -0.3f
 class ClimberArms : public Subsystem{
+private:
+	float leftArmUpEncVal;
+	float leftArmMiddleEncVal;
+	float leftArmDownEncVal;
+	float rightArmUpEncVal;
+	float rightArmMiddleEncVal;
+	float rightArmDownEncVal;
 public:
 	ClimberArms();
 	StallableAnalogEncoder* leftWindowEncoder;
@@ -30,5 +37,7 @@ public:
 	void WindowMotorsDown(bool offLeft, bool offRight);
 	void WindowMotorsOff();
 	bool climberIsSafe;
+	void setArmEncVal(float leftUp, float leftMiddle, float leftDown, 
+			          float rightUp, float rightMiddle,float rightDown);
 };
 #endif

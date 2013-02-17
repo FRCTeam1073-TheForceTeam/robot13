@@ -4,17 +4,23 @@ ClimberArms::ClimberArms() : Subsystem("Climber Arms"){
 	rightWindowEncoder = RobotMap::climberArmRightWindowEncoder;
 	leftClimbWindowVictor = RobotMap::climberArmLeftClimbWindowVictor;
 	rightClimbWindowVictor = RobotMap::climberArmRightClimbWindowVictor;
+	 leftArmUpEncVal = 3.3f;
+		 leftArmMiddleEncVal = 2.6f;
+		 leftArmDownEncVal = 1.9f;
+		 rightArmUpEncVal = 0.82f;
+		 rightArmMiddleEncVal = 1.4f;
+		 rightArmDownEncVal = 2.15f;
 }
 void ClimberArms::InitDefaultCommand() {}
 float ClimberArms::EncoderVoltageTolerance(){return 0.15f;}
 
-float ClimberArms::LeftEncoderUpVoltage(){return 3.3f;}
-float ClimberArms::LeftEncoderMiddleVoltage(){return 2.6f;}
-float ClimberArms::LeftEncoderDownVoltage(){return 1.9f;}
+float ClimberArms::LeftEncoderUpVoltage(){return leftArmUpEncVal;}
+float ClimberArms::LeftEncoderMiddleVoltage(){return leftArmMiddleEncVal;}
+float ClimberArms::LeftEncoderDownVoltage(){return leftArmDownEncVal;}
 
-float ClimberArms::RightEncoderUpVoltage(){return 0.82f;}
-float ClimberArms::RightEncoderMiddleVoltage(){return 1.4f;}
-float ClimberArms::RightEncoderDownVoltage(){return 2.15f;}
+float ClimberArms::RightEncoderUpVoltage(){return rightArmUpEncVal;}
+float ClimberArms::RightEncoderMiddleVoltage(){return rightArmMiddleEncVal;}
+float ClimberArms::RightEncoderDownVoltage(){return rightArmDownEncVal;}
 
 void ClimberArms::ProcessWindowVoltageData(){
 	leftWindowEncoder->ProcessVoltageData();
@@ -42,3 +48,19 @@ void ClimberArms::WindowMotorsOff(){
 	leftClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 	rightClimbWindowVictor->Set(CHAINSAW_WINDOW_OFF_SPEED);
 }
+
+
+void ClimberArms::setArmEncVal(float leftUp, float leftMiddle, float leftDown, 
+			          float rightUp, float rightMiddle,float rightDown){
+leftArmUpEncVal = leftUp;
+leftArmMiddleEncVal = leftMiddle;
+leftArmDownEncVal = leftDown;
+rightArmUpEncVal = rightUp;
+rightArmMiddleEncVal = rightMiddle;
+rightArmDownEncVal = rightDown;
+printf("Setting leftUpEncVal %f, leftMidEncVal %f , leftDownEncVal %f \n", leftArmUpEncVal,
+		leftArmMiddleEncVal, leftArmDownEncVal);
+printf("Setting rightUpEncVal %f, rightMidEncVal %f , rightDownEncVal %f \n", rightArmUpEncVal,
+		rightArmMiddleEncVal, rightArmDownEncVal);
+}
+

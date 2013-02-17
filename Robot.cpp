@@ -23,6 +23,12 @@ void Robot::RobotInit() {
 	scaleType_t scaleTypePref;
 	float scaleFactorPref;
 	bool isElevatorEncoderFailed;
+	float leftArmUpEncValPref;
+	float leftArmMiddleEncValPref;
+	float leftArmDownEncValPref;
+	float rightArmUpEncValPref;
+	float rightArmMiddleEncValPref;
+	float rightArmDownEncValPref;
 	
 	printf("\n\nFRC2013 " __DATE__ " " __TIME__ "\n" __FILE__ "\n\n" );
 	
@@ -32,6 +38,12 @@ void Robot::RobotInit() {
 	scaleTypePref = (scaleType_t) prefs->GetInt("RearShooterScaleType", identical);
 	scaleFactorPref = prefs->GetFloat("RearShooterScaleValue", 1.0);
 	isElevatorEncoderFailed = prefs->GetBoolean("isElevatorEncoderFailed", false);
+	leftArmUpEncValPref  = prefs->GetFloat("leftArmUpEncVal", 3.3f);
+	leftArmMiddleEncValPref = prefs->GetFloat("leftArmMiddleEncVal", 2.6f);
+	leftArmDownEncValPref = prefs->GetFloat("leftArmDownEncVal", 1.9f);
+	rightArmUpEncValPref = prefs->GetFloat("rightArmUpEncVal", 0.82f);
+	rightArmMiddleEncValPref = prefs->GetFloat("rightArmMiddleEncVal", 1.4f);
+	rightArmDownEncValPref  = prefs->GetFloat("rightArmDownEncVal", 2.15f);
 	prefs->Save();
 	
 	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
@@ -86,6 +98,9 @@ void Robot::RobotInit() {
 	
 	shooter->SetBackMode(scaleTypePref, scaleFactorPref);
 	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
+	
+	climberArms->setArmEncVal( leftArmUpEncValPref,leftArmMiddleEncValPref, leftArmDownEncValPref,
+						   rightArmUpEncValPref,rightArmMiddleEncValPref,rightArmDownEncValPref);
 	
 	chooser = new SendableChooser();
 	chooser->AddDefault("Right Back", new AutonomousSequence(AutonomousSequence::rightBack));
