@@ -36,6 +36,7 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
+	virtual void DisabledInit();
 	static enum WhichRobot_t {newRobot, mobileBase, elot, libra} whichRobot;
 	static WhichRobot_t GetWhichRobot();
 

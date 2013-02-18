@@ -1,6 +1,7 @@
 #include "Robot.h"
 #include "RobotMap.h"
 #include "Commands/AutonomousSequence.h"
+#include "Commands/SendDiagnostics.h"
 #include <Preferences.h>
 OI* Robot::oi = NULL; 
 Climber* Robot::climber = NULL;
@@ -139,6 +140,10 @@ void Robot::TeleopPeriodic() {
 }
 void Robot::TestPeriodic() {
 	lw->Run();
+}
+void Robot::DisabledInit(){
+	SendDiagnostics* SmoothDiags = new SendDiagnostics();
+	SmoothDiags->Start();
 }
 Robot::WhichRobot_t Robot::GetWhichRobot(){return whichRobot;}
 START_ROBOT_CLASS(Robot);
