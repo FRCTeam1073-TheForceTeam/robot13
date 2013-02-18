@@ -1,7 +1,4 @@
 #include "DiscVelocity.h"
-//#include "../Robot.h"
-#include "../Commands/DefaultDiscVelocityCommand.h"
-
 //C style function forinterrupt...
 void DiscInterrupt(uint32_t mask, void *param)
 {
@@ -16,9 +13,7 @@ DiscVelocity::DiscVelocity(DigitalInput* input) : Subsystem("Disc Velocity"){
 		Reset();
 		newData = false;
 }
-void DiscVelocity::InitDefaultCommand(){
-	SetDefaultCommand(new DefaultDiscVelocityCommand());
-}
+
 float DiscVelocity::GetStartTime(){return startTime;}
 float DiscVelocity::GetStopTime() {return stopTime;}
 float DiscVelocity::GetEllapsedTime() {return ellapsedTime;}

@@ -114,7 +114,6 @@ void Robot::RobotInit() {
 	SmartDashboard::PutNumber(SHOOTER_D, RobotMap::shooterFrontJag->GetD());
 	SmartDashboard::PutNumber(SHOOTER_FRONT_SET_SPEED, shooter->GetFrontSetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_SET_SPEED, shooter->GetBackSetSpeed());
-	SendNewDashboardData();
 	autonomousCommand = new AutonomousSequence();
   }
 	
@@ -137,14 +136,9 @@ void Robot::TeleopInit() {
 	
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)	Scheduler::GetInstance()->Run();
-	SendNewDashboardData();
 }
 void Robot::TestPeriodic() {
 	lw->Run();
-}
-void Robot::SendNewDashboardData(){
-	SmartDashboard::PutNumber(SHOOTER_FRONT_CURRENT_SPEED, RobotMap::shooterFrontJag->GetSpeed());
-	SmartDashboard::PutNumber(SHOOTER_BACK_CURRENT_SPEED, RobotMap::shooterBackJag->GetSpeed());
 }
 Robot::WhichRobot_t Robot::GetWhichRobot(){return whichRobot;}
 START_ROBOT_CLASS(Robot);

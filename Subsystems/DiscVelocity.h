@@ -20,7 +20,6 @@ private:
 	void Reset();
 public:
 	DiscVelocity(DigitalInput* input);
-	void InitDefaultCommand();
 	float GetStartTime();
 	float GetStopTime();
 	float GetEllapsedTime();
