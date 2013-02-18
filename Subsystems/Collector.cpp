@@ -21,8 +21,10 @@ void Collector::MotorOff() {motor->Set(COLLECTOR_SPEED_OFF);}
 int Collector::GetNumberOfDiscs(){
 	int numberOfDiscs;
 	float voltage = discCountSensor->GetVoltage();
+#if 0 //in send diagnostics this method gets spammed a ton.
 	printf("Number of Disc sensor voltage: %f", voltage);
 	printf ("Get number of discs %f\n", voltage);
+#endif
 	if (voltage > FOURDISCS)
 		numberOfDiscs = 4;
 	else if (voltage > THREEDISCS)
