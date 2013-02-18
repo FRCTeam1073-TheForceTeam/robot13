@@ -22,6 +22,7 @@ DigitalInput* RobotMap::velocity2 = NULL;
 StallableAnalogEncoder* RobotMap::shooterElevationEncoder = NULL;
 StallableAnalogEncoder* RobotMap::climberArmLeftWindowEncoder = NULL;
 StallableAnalogEncoder* RobotMap::climberArmRightWindowEncoder = NULL;
+Servo* RobotMap::rollerMotor = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 	
@@ -87,4 +88,6 @@ void RobotMap::init() {
 	driveTrainGyro->Reset();
 	lw->AddSensor("Digital Inputs", "MuzzleVelocity1", velocity1);
 	lw->AddSensor("Digital Inputs", "MuzzleVelocity2", velocity2);
+	rollerMotor = new Servo(PWM_ROLLER_SPIKE_MOTOR);
+	lw->AddActuator("Roller", "Spike", rollerMotor);
 }

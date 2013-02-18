@@ -18,9 +18,8 @@
 #include "Commands/WriteDriveData.h"
 #include "Commands/ShooterAdjustAngle.h"
 #include "Commands/ManualShooterSpeedAdjust.h"
-
+#include "Commands/RollerOnOff.h"
 #include "Commands/DiscOnBedSensorOverride.h"
-
 OI::OI() {
 	//organized such that null pointers do not occur
 	ConstructJoysticks();
@@ -78,6 +77,10 @@ void OI::ConstructJoystickButtons(){
 	shooterOnOffButton->WhenPressed(new ShooterToggleOnOff());
 	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
+	rollerOn = new JoystickButton(rightStick, RIGHT_ROLLER_ON_BTN);
+	rollerOn->WhenPressed(new RollerOnOff(on));
+	rollerOff = new JoystickButton(rightStick, RIGHT_ROLLER_OFF_BTN);
+	rollerOff->WhenPressed(new RollerOnOff(off));
 }
 void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ShooterOn", new ShooterToggleOnOff());
@@ -91,7 +94,8 @@ void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ClimberOn", new ClimberOnOff(on));
 	SmartDashboard::PutData("ClimberOff", new ClimberOnOff(off));
 	SmartDashboard::PutData("Override DiscOnBed sensor", new DiscOnBedSensorOverride());
-
+	SmartDashboard::PutData("Roller On", new RollerOnOff(on));
+	SmartDashboard::PutData("Roller Off", new RollerOnOff(off));
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}
 SmartJoystick* OI::getRightStick(){return rightStick;}

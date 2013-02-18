@@ -11,6 +11,7 @@ Collector* Robot::collector = NULL;
 Shooter* Robot::shooter = NULL;
 AllignmentData* Robot::allignmentData = NULL;
 DiscVelocity* Robot::discVelocity = NULL;
+Roller* Robot::roller = NULL;
 DigitalInput* Robot::jumper13 = NULL;
 DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
@@ -83,6 +84,7 @@ void Robot::RobotInit() {
 	if(whichRobot == newRobot) {
 		climber = new Climber();
 		climberArms = new ClimberArms();
+		roller = new Roller();
 	}
 	if(whichRobot == mobileBase || whichRobot == newRobot || whichRobot == elot) {
 		collector = new Collector();

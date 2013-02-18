@@ -8,6 +8,8 @@
 //right drive stick
 #define RIGHT_DRIVE_TRAIN_TURBO_ON_BTN 1
 #define RIGHT_CLIMBER_SAFETY_BTN 2
+#define RIGHT_ROLLER_ON_BTN 6
+#define RIGHT_ROLLER_OFF_BTN 7
 	//we ran out of  buttons
 #define RIGHT_CLIMBER_CHAINSAW_MIDDLE_BTN 9
 #define RIGHT_DRIVE_TRAIN_CHANGE_DRIVE_BTN 10

@@ -27,8 +27,8 @@ private:
     JoystickButton* shooterSpeedDown;
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
-
-    
+    JoystickButton* rollerOn;
+    JoystickButton* rollerOff;
 public:
 	OI();
 	SmartJoystick* getLeftStick();
