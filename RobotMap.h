@@ -10,11 +10,11 @@ public:
 	static SpeedController* shooterElevationVictor;
 	static SmartCANJaguar* climberLeftCIM;
 	static CANJaguar* climberRightCIM;
-	static CANJaguar* driveTrainLeftMotor;
+	static SmartCANJaguar* driveTrainLeftMotor;
 	static SmartCANJaguar* driveTrainRightMotor;
 #ifdef ADD_SECONDARY_DRIVE
-	static CANJaguar* driveTrainRightMotorSecondary;
-	static CANJaguar* driveTrainLeftMotorSecondary;
+	static SmartCANJaguar* driveTrainSecondaryRightMotor;
+	static SmartCANJaguar* driveTrainSecondaryLeftMotor;
 #endif
 	static SmartGyro* driveTrainGyro;
 	static SpeedController* collectorMotor;

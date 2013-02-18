@@ -3,13 +3,16 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
+#include "../HardwarePortDefinitions.h"
 class DriveTrain: public Subsystem {
 public:
-	CANJaguar* leftMotor;
+	SmartCANJaguar* leftMotor;
 	SmartCANJaguar* rightMotor;
 	SmartGyro* gyro;
-	CANJaguar* leftMotorSecondary;
-	CANJaguar* rightMotorSecondary;
+#ifdef ADD_SECONDARY_DRIVE
+	SmartCANJaguar* secondaryLeftMotor;
+	SmartCANJaguar* secondaryRightMotor;
+#endif
 	DriveTrain();
 	void InitDefaultCommand();
 	void Move(float left, float right);
