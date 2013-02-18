@@ -4,7 +4,7 @@ SpeedController* RobotMap::shooterElevationVictor = NULL;
 SpeedController* RobotMap::climberArmLeftClimbWindowVictor = NULL;
 SpeedController* RobotMap::climberArmRightClimbWindowVictor = NULL;
 SmartCANJaguar* RobotMap::climberLeftCIM = NULL;
-CANJaguar* RobotMap::climberRightCIM = NULL;
+SmartCANJaguar* RobotMap::climberRightCIM = NULL;
 SmartCANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 SmartCANJaguar* RobotMap::driveTrainRightMotor = NULL;
 #ifdef ADD_SECONDARY_DRIVE
@@ -38,7 +38,7 @@ void RobotMap::init() {
 	climberLeftCIM->Invert();
 	lw->AddActuator("Climber", "Left CIM", climberLeftCIM);
 	
-	climberRightCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
+	climberRightCIM = new SmartCANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
 	lw->AddActuator("Climber", "Right CIM", climberRightCIM);
 	
 	driveTrainLeftMotor = new SmartCANJaguar(JAGUAR_DRIVE_LEFT);

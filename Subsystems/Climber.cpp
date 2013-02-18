@@ -7,8 +7,8 @@ Climber::Climber() : Subsystem("Climber") {
 	rightCIM = RobotMap::climberRightCIM;
 	ClimberOnOff = false;
 	encoderFailCount = 0;
-	ConfigureJaguarForSpeedMode(leftCIM);
-	ConfigureJaguarForSpeedMode(rightCIM);
+	leftCIM->ConfigureSpeedMode();
+	rightCIM->ConfigureSpeedMode();
 }
 void Climber::InitDefaultCommand() {SetDefaultCommand(new ClimberDrive());}
 void Climber::Climb(float joyY){
@@ -22,8 +22,8 @@ void Climber::Climb(float joyY){
 	else if(encoderFailCount > 0) encoderFailCount = 0;
 	if(encoderFailCount > EPIC_FAIL){
 		encoderFailCount = -1;
-		ConfigureJaguarForVoltageMode(leftCIM);
-		ConfigureJaguarForVoltageMode(rightCIM);
+		leftCIM->ConfigureVoltageMode();
+		rightCIM->ConfigureVoltageMode();
 		puts("Now in Voltage Mode");
 	}
 	if(ClimberOnOff){
@@ -37,16 +37,4 @@ void Climber::Climb(float joyY){
 }
 void Climber::EngageClimber(){ClimberOnOff = true;}	
 void Climber::DisengageClimber(){ClimberOnOff = false;}
-void Climber::ConfigureJaguarForSpeedMode(CANJaguar* jaguar){
-	jaguar->DisableControl();
-	jaguar->ChangeControlMode(CANJaguar::kSpeed);
-	jaguar->SetSpeedReference(CANJaguar::kSpeedRef_Encoder);
-	jaguar->ConfigEncoderCodesPerRev(360);
-	jaguar->EnableControl();
-}
-void Climber::ConfigureJaguarForVoltageMode(CANJaguar* jaguar){
-	jaguar->Disable();
-	jaguar->ChangeControlMode(CANJaguar::kVoltage);
-	jaguar->EnableControl();
-}
 bool Climber::GetClimberOnOff(){return ClimberOnOff;}	

@@ -9,7 +9,7 @@ public:
 	static SpeedController* climberArmRightClimbWindowVictor;
 	static SpeedController* shooterElevationVictor;
 	static SmartCANJaguar* climberLeftCIM;
-	static CANJaguar* climberRightCIM;
+	static SmartCANJaguar* climberRightCIM;
 	static SmartCANJaguar* driveTrainLeftMotor;
 	static SmartCANJaguar* driveTrainRightMotor;
 #ifdef ADD_SECONDARY_DRIVE

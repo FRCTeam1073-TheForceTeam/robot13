@@ -10,10 +10,8 @@ private:
 	int encoderFailCount;
 public:
 	SmartCANJaguar* leftCIM;
-	CANJaguar* rightCIM;
+	SmartCANJaguar* rightCIM;
 	Climber();
-	void ConfigureJaguarForSpeedMode(CANJaguar* jaguar);
-	void ConfigureJaguarForVoltageMode(CANJaguar* jaguar);
 	void InitDefaultCommand();
 	void Climb(float joyY);
 	void EngageClimber();
