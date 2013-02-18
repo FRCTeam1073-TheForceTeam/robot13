@@ -4,10 +4,10 @@
 
 #define ELEVATION_INCREMENT_ANGLE_SPEED_UP 0.4
 #define ELEVATION_INCREMENT_ANGLE_SPEED_DOWN -0.3
-#define ELEVATION_MIN_VOLTAGE 0.0
-#define ELEVATION_MAX_VOLTAGE 0.732
-#define ELEVATION_MIN_ANGLE 9.4
-#define ELEVATION_MAX_ANGLE 48
+#define ELEVATION_MIN_VOLTAGE 0.079
+#define ELEVATION_MAX_VOLTAGE 0.604
+#define ELEVATION_MIN_ANGLE 12.6
+#define ELEVATION_MAX_ANGLE 53.2
 
 Shooter::Shooter() : Subsystem("Shooter") {
 	frontJag = RobotMap::shooterFrontJag;
@@ -138,7 +138,8 @@ int Shooter::GetFineAdjustmentSpeed() {return 20;}
 int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
 float Shooter::GetFineAdjustmentAngle() {return .1;}
 void Shooter::TurnToSetAngle(){
-	//TODO: Phase out this function
+	//TODO:bamn!
+	
 }
 void Shooter::SetPID(double P, double I, double D){
 	printf("Setting P:\t%f\nI:\t%f\nD:\t%f\n", P, I, D);
