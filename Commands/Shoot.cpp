@@ -17,6 +17,7 @@ void Shoot::Initialize() {
 }
 void Shoot::Execute() {
 	if(abort) return;
+	Robot::discVelocity->ProcessInterrupt();
 	switch(discState){
 	case (enteringShooter):
 		if(Robot::collector->IsDiscOnShooterBed()) discState = inShooter;
