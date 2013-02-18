@@ -11,8 +11,6 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 	leftMotor = RobotMap::driveTrainLeftMotor;
 	rightMotor = RobotMap::driveTrainRightMotor;
 	gyro = RobotMap::driveTrainGyro;
-	//ConfigureJaguarEncoder(leftMotor);
-	//ConfigureJaguarEncoder(rightMotor);
 #ifdef ADD_SECONDARY_DRIVE 
 	secondaryLeftMotor = RobotMap::driveTrainSecondaryLeftMotor;
 	secondaryRightMotor = RobotMap::driveTrainSecondaryRightMotor;
