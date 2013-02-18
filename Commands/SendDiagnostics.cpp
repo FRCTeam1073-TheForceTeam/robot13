@@ -76,15 +76,14 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
 		//Disc Present
 		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
-		SmartDashboard::PutNumber("Shooter Front Jag Speeed", RobotMap::shooterFrontJag->GetSpeed());
-		SmartDashboard::PutNumber("Shooter Back Jag Speeed", RobotMap::shooterBackJag->GetSpeed());
+		SmartDashboard::PutNumber("Shooter Front Current Speeed", RobotMap::shooterFrontJag->GetSpeed());
+		SmartDashboard::PutNumber("Shooter Back Current Speeed", RobotMap::shooterBackJag->GetSpeed());
 	}
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	if(Robot::discVelocity->IsThereNewData()){
 		float velocity = Robot::discVelocity->GetVelocityFPS();
 		float time = Robot::discVelocity->GetEllapsedTime();
-		printf("Disc Shot @ %ffps!\nTime Delta:\t%f\n",velocity, time);
 		SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
 		SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
 	}	
