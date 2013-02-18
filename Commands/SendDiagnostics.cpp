@@ -76,8 +76,8 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
 		//Disc Present
 		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
-		SmartDashboard::PutNumber("Shooter Front Current Speeed", RobotMap::shooterFrontJag->GetSpeed());
-		SmartDashboard::PutNumber("Shooter Back Current Speeed", RobotMap::shooterBackJag->GetSpeed());
+		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed());
+		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed());
 	}
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
