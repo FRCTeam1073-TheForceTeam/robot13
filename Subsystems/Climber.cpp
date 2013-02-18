@@ -11,7 +11,6 @@ Climber::Climber() : Subsystem("Climber") {
 	ConfigureJaguarForSpeedMode(rightCIM);
 }
 void Climber::InitDefaultCommand() {SetDefaultCommand(new ClimberDrive());}
-
 void Climber::Climb(float joyY){
 	const float MIN = 0.05f;
 	const int EPIC_FAIL = 100;
@@ -30,7 +29,6 @@ void Climber::Climb(float joyY){
 	if(ClimberOnOff){
 		leftCIM->Set(joyY);
 		rightCIM->Set(joyY);
-		//printf("\n Climber RPM: %f\n", yPosition);
 	}
 	else{
 		leftCIM->Set(CLIMBER_OFF_SPEED);

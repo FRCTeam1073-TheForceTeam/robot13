@@ -4,9 +4,13 @@
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 #include "../RobotMap.h"
+/* A note about voltages on the ClimberArms Victor and Window Motors
+ * A Positive Voltage on the Left Victor makes the left Window Motor go down
+ * A Negative Voltage on the Right Victor makes the right Window Motor go up
+ */ 
 #define CHAINSAW_WINDOW_OFF_SPEED 0.0f
-#define CHAINSAW_WINDOW_UP_SPEED 0.45f
-#define CHAINSAW_WINDOW_DOWN_SPEED -0.1f
+#define CHAINSAW_WINDOW_UP_SPEED 0.55f
+#define CHAINSAW_WINDOW_DOWN_SPEED -0.45f
 class ClimberArms : public Subsystem{
 private:
 	float leftArmUpEncVal;
@@ -36,7 +40,6 @@ public:
 	void WindowMotorsUp(bool offLeft, bool offRight);
 	void WindowMotorsDown(bool offLeft, bool offRight);
 	void WindowMotorsOff();
-	bool climberIsSafe;
 	void setArmEncVal(float leftUp, float leftMiddle, float leftDown, 
 			          float rightUp, float rightMiddle,float rightDown);
 };

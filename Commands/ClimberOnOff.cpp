@@ -1,5 +1,5 @@
 #include "ClimberOnOff.h"
-ClimberOnOff::ClimberOnOff(OnOff offOff){
+ClimberOnOff::ClimberOnOff(OnOff onOff){
 	Requires(Robot::climber);
 	this->onOff = onOff;
 }
