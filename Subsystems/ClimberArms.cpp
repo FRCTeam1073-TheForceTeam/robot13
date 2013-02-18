@@ -4,7 +4,7 @@ ClimberArms::ClimberArms() : Subsystem("Climber Arms"){
 	rightWindowEncoder = RobotMap::climberArmRightWindowEncoder;
 	leftClimbWindowVictor = RobotMap::climberArmLeftClimbWindowVictor;
 	rightClimbWindowVictor = RobotMap::climberArmRightClimbWindowVictor;
-	leftArmUpEncVal = 3.17f;
+	leftArmUpEncVal = 3.16f;
 	leftArmDownEncVal = 2.1f;
 	leftArmMiddleEncVal = (leftArmUpEncVal + leftArmDownEncVal)/2;
 	rightArmUpEncVal = 0.75;
