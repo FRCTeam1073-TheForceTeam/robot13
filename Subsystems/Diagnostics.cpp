@@ -7,5 +7,5 @@
 Diagnostics::Diagnostics() : Subsystem("Diagnostics") {puts("Diagnostic Subsystems Constructed");}
 void Diagnostics::InitDefaultCommand() {
 	puts("Diagnostic Init Default Command Method");
-//	SetDefaultCommand(new SendDiagnostics());
+	SetDefaultCommand(new SendDiagnostics());
 }

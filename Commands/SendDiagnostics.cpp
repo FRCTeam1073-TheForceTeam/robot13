@@ -7,6 +7,7 @@ SendDiagnostics::SendDiagnostics() {
 	diagnosticsTable = NetworkTable::GetTable("diagnosticsTable");
 	count = 0;
 	Requires(Robot::diagnostics);
+	Requires(Robot::discVelocity);
 }
 
 bool SendDiagnostics::TestJags(CANJaguar* jag)
@@ -108,10 +109,20 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		//Disc Count
 		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
+		//Disc Present
+		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
 	}
 	
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
+	Robot::discVelocity->ProcessInterrupt();
+	if(Robot::discVelocity->IsThereNewData()){
+		float velocity = Robot::discVelocity->GetVelocityFPS();
+		float time = Robot::discVelocity->GetEllapsedTime();
+		printf("Disc Shot @ %ffps!\nTime Delta:\t%f\n",velocity, time);
+		SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
+		SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
+	}	
 	
 	return;
 } 

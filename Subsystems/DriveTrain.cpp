@@ -14,8 +14,8 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 	//ConfigureJaguarEncoder(leftMotor);
 	//ConfigureJaguarEncoder(rightMotor);
 #ifdef ADD_SECONDARY_DRIVE 
-	leftMotorSecondary = RobotMap::driveTrainLeftMotorSecondary;
-	rightMotorSecondary = RobotMap::driveTrainRightMotorSecondary;
+	secondaryLeftMotor = RobotMap::driveTrainSecondaryLeftMotor;
+	secondaryRightMotor = RobotMap::driveTrainSecondaryRightMotor;
 #endif
 }   
 void DriveTrain::InitDefaultCommand() {
@@ -30,8 +30,8 @@ void DriveTrain::Move(float left, float right){
 	leftMotor->Set(left);
 	rightMotor->Set(right);
 #ifdef ADD_SECONDARY_DRIVE
-	leftMotorSecondary->Set(left);
-	rightMotorSecondary->Set(right);
+	secondaryLeftMotor->Set(left);
+	secondaryRightMotor->Set(right);
 #endif 
 #ifdef DEBUGDRIVETRAIN	
 	printf("Left Y: %f  Right Y: %f\n", left, right);

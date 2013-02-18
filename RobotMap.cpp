@@ -5,11 +5,11 @@ SpeedController* RobotMap::climberArmLeftClimbWindowVictor = NULL;
 SpeedController* RobotMap::climberArmRightClimbWindowVictor = NULL;
 SmartCANJaguar* RobotMap::climberLeftCIM = NULL;
 CANJaguar* RobotMap::climberRightCIM = NULL;
-CANJaguar* RobotMap::driveTrainLeftMotor = NULL;
+SmartCANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 SmartCANJaguar* RobotMap::driveTrainRightMotor = NULL;
 #ifdef ADD_SECONDARY_DRIVE
-CANJaguar* RobotMap::driveTrainLeftMotorSecondary = NULL;
-CANJaguar* RobotMap::driveTrainRightMotorSecondary = NULL;
+SmartCANJaguar* RobotMap::driveTrainSecondaryLeftMotor = NULL;
+SmartCANJaguar* RobotMap::driveTrainSecondaryRightMotor = NULL;
 #endif
 SmartGyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectorMotor = NULL;
@@ -41,15 +41,20 @@ void RobotMap::init() {
 	climberRightCIM = new CANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
 	lw->AddActuator("Climber", "Right CIM", climberRightCIM);
 	
-	driveTrainLeftMotor = new CANJaguar(JAGUAR_DRIVE_LEFT);
+	driveTrainLeftMotor = new SmartCANJaguar(JAGUAR_DRIVE_LEFT);
+	lw->AddActuator("DriveTrain","leftdrivemotor", driveTrainLeftMotor);
 	
 	driveTrainRightMotor = new SmartCANJaguar(JAGUAR_DRIVE_RIGHT);
 	driveTrainRightMotor->Invert();
+	lw->AddActuator("DriveTrain", "rightdrivemotor", driveTrainRightMotor);
 	
 	
 #ifdef ADD_SECONDARY_DRIVE
-	driveTrainLeftMotorSecondary = new CANJaguar(JAGUAR_DRIVE_LEFT_SECONDARY);
-	driveTrainRightMotorSecondary = new CANJaguar(JAGUAR_DRIVE_RIGHT_SECONDARY);
+	driveTrainSecondaryLeftMotor = new SmartCANJaguar(JAGUAR_DRIVE_SECONDARY_LEFT);
+	lw->AddActuator("DriveTrain", "leftdrivesecondarymotor", driveTrainSecondaryLeftMotor);
+	driveTrainSecondaryRightMotor = new SmartCANJaguar(JAGUAR_DRIVE_SECONDARY_RIGHT);
+	driveTrainSecondaryRightMotor->Invert();
+	lw->AddActuator("DriveTrain", "rightdrivesecondarymotor", driveTrainSecondaryRightMotor);
 #endif
 	
 	driveTrainGyro = new SmartGyro(ANALOG_GYRO);
@@ -80,4 +85,6 @@ void RobotMap::init() {
     velocity1 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_ONE);
     velocity2 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_TWO);
 	driveTrainGyro->Reset();
+	lw->AddSensor("Digital Inputs", "MuzzleVelocity1", velocity1);
+	lw->AddSensor("Digital Inputs", "MuzzleVelocity2", velocity2);
 }

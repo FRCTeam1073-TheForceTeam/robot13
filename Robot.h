@@ -40,7 +40,6 @@ public:
 	static WhichRobot_t GetWhichRobot();
 
 private:
-	void SendNewDashboardData();
 	static DigitalInput *jumper14;
 	static DigitalInput *jumper13;
 	static DigitalInput *jumper12;
