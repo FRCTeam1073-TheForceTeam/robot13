@@ -20,6 +20,7 @@
 #include "Commands/ManualShooterSpeedAdjust.h"
 #include "Commands/RollerOnOff.h"
 #include "Commands/DiscOnBedSensorOverride.h"
+#include "Commands/SetToFeederAngle.h"
 OI::OI() {
 	//organized such that null pointers do not occur
 	ConstructJoysticks();
@@ -46,6 +47,8 @@ void OI::ConstructJoystickButtons(){
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
 	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
+	goToFeederAngle = new JoystickButton(operatorStick, OPERATOR_FEEDER_ANGLE_BTN);
+	goToFeederAngle->WhenPressed(new SetToFeederAngle());
 #if 0
 	climberSafe = new JoystickButton(operatorStick, RIGHT_CLIMBER_SAFETY_BTN);
 	climberSafe->WhenPressed(new ClimberSafe());
