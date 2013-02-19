@@ -29,6 +29,7 @@ private:
     JoystickButton* shooterElevationDown;
     JoystickButton* rollerOn;
     JoystickButton* rollerOff;
+    JoystickButton* goToFeederAngle;
 public:
 	OI();
 	SmartJoystick* getLeftStick();

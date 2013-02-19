@@ -5,7 +5,10 @@ MoveShooterToSetElevationAngle::MoveShooterToSetElevationAngle() {
 void MoveShooterToSetElevationAngle::Initialize(){
 	Robot::shooter->TurnToSetAngle();
 }
-void MoveShooterToSetElevationAngle::Execute(){}
+void MoveShooterToSetElevationAngle::Execute(){
+	//to keep motors driving at speed proportional to error
+	Robot::shooter->TurnToSetAngle();
+}
 bool MoveShooterToSetElevationAngle::IsFinished(){
 	return Robot::shooter->IsAtSetAngle();
 }
