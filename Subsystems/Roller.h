@@ -12,6 +12,6 @@ public:
 	void MotorForward();
 	void MotorReverse();
 	void MotorOff();
-	Servo* motor;
+	Relay* motor;
 };
 #endif

@@ -1,5 +1,5 @@
 #include "Roller.h"
 Roller::Roller() : Subsystem("Roller"){motor = RobotMap::rollerMotor;}
-void Roller::MotorForward(){motor->Set(SPEED_FORWARD);}
-void Roller::MotorReverse(){motor->Set(SPEED_REVERSE);}
-void Roller::MotorOff(){motor->Set(SPEED_OFF);}
+void Roller::MotorForward(){motor->Set(Relay::kForward);}
+void Roller::MotorReverse(){motor->Set(Relay::kReverse);}
+void Roller::MotorOff(){motor->Set(Relay::kOff);}
