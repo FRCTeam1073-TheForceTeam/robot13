@@ -88,6 +88,6 @@ void RobotMap::init() {
 	driveTrainGyro->Reset();
 	lw->AddSensor("Digital Inputs", "MuzzleVelocity1", velocity1);
 	lw->AddSensor("Digital Inputs", "MuzzleVelocity2", velocity2);
-	rollerMotor = new Relay(PWM_ROLLER_SPIKE_MOTOR);
+	rollerMotor = new Relay(PWM_ROLLER_SPIKE_MOTOR, Relay::kForwardOnly);
 	lw->AddActuator("Roller", "Spike", rollerMotor);
 }
