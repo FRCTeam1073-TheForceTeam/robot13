@@ -6,6 +6,9 @@
 #define WHEEL_SIZE 7
 #define TICKS_PER_REV 1440
 #define INCHES_PER_TICK 0.022
+
+//#define DEBUG_DATA
+
 DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 	leftMotor = RobotMap::driveTrainLeftMotor;
 	rightMotor = RobotMap::driveTrainRightMotor;
@@ -27,10 +30,13 @@ void DriveTrain::Move(float left, float right){
 	secondaryLeftMotor->Set(left);
 	secondaryRightMotor->Set(right);
 #endif
+	
+#ifdef DEBUG_DATA
 	SmartDashboard::PutNumber("Right Drive Encoder", rightMotor->GetSpeed());
 	SmartDashboard::PutNumber("Left Drive Encoder", leftMotor->GetSpeed());
 	SmartDashboard::PutNumber("Gyro Angle", gyro->GetAngle());
-	//printf("Gyro Angle %f\n", gyro->GetAngle());
+	printf("Gyro Angle %f\n", gyro->GetAngle());
+#endif 
 }
 void DriveTrain::Stop() {Move(0.0f, 0.0f);}
 void DriveTrain::GetPosition(float &left,float &right){

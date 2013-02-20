@@ -3,6 +3,9 @@
 #include "Commands/AutonomousSequence.h"
 #include "Commands/SendDiagnostics.h"
 #include <Preferences.h>
+
+//#define DEBUG_DATA
+
 OI* Robot::oi = NULL; 
 Climber* Robot::climber = NULL;
 ClimberArms* Robot::climberArms = NULL;
@@ -17,6 +20,7 @@ DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
 DigitalInput* Robot::jumper12 = NULL;
 Robot::WhichRobot_t Robot::whichRobot;
+
 Robot::Robot() {
 	//NetworkTable::SetTeam(1073);
 }
@@ -111,10 +115,14 @@ void Robot::RobotInit() {
 	chooser->AddObject("Middle Back", new AutonomousSequence(AutonomousSequence::middleBack));
 			
 	SmartDashboard::PutData(AUTONOMOUS_CHOOSER_KEY, chooser);
+	
+#ifdef DEBUG_DATA
 	SmartDashboard::PutNumber(AUTONOMOUS_WAIT_TIME, 3);
 	SmartDashboard::PutNumber(SHOOTER_P, RobotMap::shooterFrontJag->GetP());
 	SmartDashboard::PutNumber(SHOOTER_I, RobotMap::shooterFrontJag->GetI());
 	SmartDashboard::PutNumber(SHOOTER_D, RobotMap::shooterFrontJag->GetD());
+#endif
+	
 	SmartDashboard::PutNumber(SHOOTER_FRONT_SET_SPEED, shooter->GetFrontSetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_SET_SPEED, shooter->GetBackSetSpeed());
 	autonomousCommand = new AutonomousSequence();

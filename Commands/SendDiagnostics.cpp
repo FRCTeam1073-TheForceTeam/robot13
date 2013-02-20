@@ -1,5 +1,7 @@
 #include "SendDiagnostics.h"
 #include "../Robot.h"
+
+//#define DEBUG_DATA
 #define CAN_TIMEOUT -44087
 SendDiagnostics::SendDiagnostics() {
 	diagnosticsTable = NetworkTable::GetTable("diagnosticsTable");
@@ -42,7 +44,9 @@ void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPo
 	
 //	string foo = std::string(jagString) + "Encoder Value";
 //	printf("%s %f\n", foo.c_str(), thisJag->GetSpeed());
+#ifdef DEBUG_DATA
 	SmartDashboard::PutNumber(std::string(jagString) + "Encoder Value", thisJag->GetSpeed());
+#endif
 //	printf("sent jagSpeed to smartDashboard\n");
 }
 // Called repeatedly when this Command is scheduled to run
@@ -65,9 +69,11 @@ void SendDiagnostics::Execute() {
 	if (Robot::whichRobot == Robot::newRobot){
 		//climber encoder values
 		diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
-		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());		
+		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());	
+#ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
 		SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
+#endif
 	}
 	if (Robot::whichRobot == Robot::newRobot || Robot::whichRobot == Robot::mobileBase) {
 		//Shooter Encoders
@@ -76,17 +82,22 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
 		//Disc Present
 		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
+		
+#ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed());
 		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed());
+#endif
 	}
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 	if(Robot::discVelocity->IsThereNewData()){
 		float velocity = Robot::discVelocity->GetVelocityFPS();
 		float time = Robot::discVelocity->GetEllapsedTime();
+#ifdef DEBUG_DATA
 		SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
 		SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
-	}	
+#endif
+	}
 } 
 bool SendDiagnostics::IsFinished() {return false;}
 void SendDiagnostics::End() {}

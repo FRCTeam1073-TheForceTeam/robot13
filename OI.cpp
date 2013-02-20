@@ -21,6 +21,9 @@
 #include "Commands/RollerOnOff.h"
 #include "Commands/DiscOnBedSensorOverride.h"
 #include "Commands/SetToFeederAngle.h"
+
+//#define DEBUG_DATA
+
 OI::OI() {
 	//organized such that null pointers do not occur
 	ConstructJoysticks();
@@ -86,6 +89,7 @@ void OI::ConstructJoystickButtons(){
 	rollerOff->WhenPressed(new RollerOnOff(off));
 }
 void OI::ConstructSmartDashCommands(){
+#ifdef DEBUG_DATA
 	SmartDashboard::PutData("ShooterOn", new ShooterToggleOnOff());
 	SmartDashboard::PutData("ShooterOff", new ShooterToggleOnOff());
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
@@ -99,6 +103,7 @@ void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("Override DiscOnBed sensor", new DiscOnBedSensorOverride());
 	SmartDashboard::PutData("Roller On", new RollerOnOff(on));
 	SmartDashboard::PutData("Roller Off", new RollerOnOff(off));
+#endif
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}
 SmartJoystick* OI::getRightStick(){return rightStick;}
