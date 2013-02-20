@@ -9,16 +9,14 @@
 #include "../Subsystems/Shooter.h"
 AutonomousSequence::AutonomousSequence(){
 	startPosition = leftBack;
-	DoSequence();
 }
-AutonomousSequence::AutonomousSequence(StartPosition startPosition) {
+AutonomousSequence::AutonomousSequence(StartPosition startPosition){
 	this->startPosition = startPosition;
-	DoSequence();
 }
-void AutonomousSequence::DoSequence(){
+void AutonomousSequence::Initialize(){
+	SetTimeout(14);
 	int elevationAngle = 30;
 	int shooterSpeed = 2550;
-	double shotWaitTime = 1;
 	switch(startPosition){
 	case middleBack:
 		//In Autonomous Middle back we moved forward 0units, we should update this.
@@ -32,19 +30,23 @@ void AutonomousSequence::DoSequence(){
 		AddSequential(new MoveShooterToSetElevationAngle());
 	}
 	AddSequential(new ShooterToggleOnOff());
-	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
-	AddSequential(new Shoot());
-	AddSequential(new WaitCommand(shotWaitTime));
-	AddSequential(new Shoot());
-	AddSequential(new WaitCommand(shotWaitTime));
-	AddSequential(new Shoot());
-	AddSequential(new ShooterToggleOnOff());
-
-	
 	//AddSequential(new AutonomousTurnToAngle(45.0));	//this was to test autonomous turning
 }
+
+void AutonomousSequence::Execute(){
+	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
+	AddSequential(new Shoot());
+}
+bool AutonomousSequence::IsFinished(){
+	return (Robot::collector->GetNumberOfDiscs() == 0) || IsTimedOut();
+}
+
+void AutonomousSequence::End(){
+	AddSequential(new ShooterToggleOnOff());
+}
+void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
-	double waitTime = 3;
+	double waitTime = 2;
 	try{
 		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
 	}
