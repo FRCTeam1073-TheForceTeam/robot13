@@ -10,7 +10,6 @@ class Roller : public Subsystem{
 public:
 	Roller();
 	void MotorForward();
-	void MotorReverse();
 	void MotorOff();
 	Relay* motor;
 };
