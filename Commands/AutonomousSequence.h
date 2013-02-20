@@ -6,10 +6,14 @@ public:
 	enum StartPosition{leftBack, middleBack, rightBack};
 	AutonomousSequence();	//defaults to left
 	AutonomousSequence(StartPosition startPosition);
+	virtual void Initialize();
+	virtual void Execute();
+	virtual bool IsFinished();
+	virtual void End();
+	virtual void Interrupted();
 private:
 	double GetAutonomousWaitTime();
 	StartPosition startPosition;
-	void DoSequence();
 };
 
 #endif
