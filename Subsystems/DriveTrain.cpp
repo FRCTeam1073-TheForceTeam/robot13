@@ -7,7 +7,7 @@
 #define TICKS_PER_REV 1440
 #define INCHES_PER_TICK 0.022
 
-//#define DEBUG_DATA
+#define DEBUG_DATA
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain"){
 	leftMotor = RobotMap::driveTrainLeftMotor;

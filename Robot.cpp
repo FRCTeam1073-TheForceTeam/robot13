@@ -4,7 +4,7 @@
 #include "Commands/SendDiagnostics.h"
 #include <Preferences.h>
 
-//#define DEBUG_DATA
+#define DEBUG_DATA
 
 OI* Robot::oi = NULL; 
 Climber* Robot::climber = NULL;

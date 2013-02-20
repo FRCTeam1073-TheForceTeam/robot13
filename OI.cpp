@@ -22,7 +22,7 @@
 #include "Commands/DiscOnBedSensorOverride.h"
 #include "Commands/SetToFeederAngle.h"
 
-//#define DEBUG_DATA
+#define DEBUG_DATA
 
 OI::OI() {
 	//organized such that null pointers do not occur

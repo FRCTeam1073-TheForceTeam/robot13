@@ -1,6 +1,6 @@
 #include "PullShooterData.h"
 
-//#define DEBUG_DATA
+#define DEBUG_DATA
 
 PullShooterData::PullShooterData() {Requires(Robot::shooter);}
 void PullShooterData::Initialize() {

@@ -1,7 +1,7 @@
 #include "SendDiagnostics.h"
 #include "../Robot.h"
 
-//#define DEBUG_DATA
+#define DEBUG_DATA
 #define CAN_TIMEOUT -44087
 SendDiagnostics::SendDiagnostics() {
 	diagnosticsTable = NetworkTable::GetTable("diagnosticsTable");
