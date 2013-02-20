@@ -5,6 +5,7 @@
 #include "RobotMap.h"
 #include "SmartDashboardKeys.h"
 #include "Commands/AutonomousSequence.h"
+#include "Commands/SendDiagnostics.h"
 #include "Subsystems/AllignmentData.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/Collector.h"
@@ -19,6 +20,7 @@
 class Robot : public IterativeRobot {
 public:
 	Command *autonomousCommand;
+	Command* smoothDiags;
 	static OI *oi;
 	LiveWindow *lw;
 	SendableChooser *chooser;

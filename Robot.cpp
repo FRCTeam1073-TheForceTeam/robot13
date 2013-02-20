@@ -1,7 +1,6 @@
 #include "Robot.h"
 #include "RobotMap.h"
 #include "Commands/AutonomousSequence.h"
-#include "Commands/SendDiagnostics.h"
 #include <Preferences.h>
 
 #define DEBUG_DATA
@@ -126,6 +125,7 @@ void Robot::RobotInit() {
 	SmartDashboard::PutNumber(SHOOTER_FRONT_SET_SPEED, shooter->GetFrontSetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_SET_SPEED, shooter->GetBackSetSpeed());
 	autonomousCommand = new AutonomousSequence();
+	smoothDiags = new SendDiagnostics();
   }
 	
 void Robot::AutonomousInit() {	
@@ -152,8 +152,7 @@ void Robot::TestPeriodic() {
 	lw->Run();
 }
 void Robot::DisabledInit(){
-	SendDiagnostics* SmoothDiags = new SendDiagnostics();
-	SmoothDiags->Start();
+	smoothDiags->Start();
 }
 Robot::WhichRobot_t Robot::GetWhichRobot(){return whichRobot;}
 START_ROBOT_CLASS(Robot);
