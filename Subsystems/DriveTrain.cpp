@@ -35,7 +35,7 @@ void DriveTrain::Move(float left, float right){
 	SmartDashboard::PutNumber("Right Drive Encoder", rightMotor->GetSpeed());
 	SmartDashboard::PutNumber("Left Drive Encoder", leftMotor->GetSpeed());
 	SmartDashboard::PutNumber("Gyro Angle", gyro->GetAngle());
-	printf("Gyro Angle %f\n", gyro->GetAngle());
+	//printf("Gyro Angle %f\n", gyro->GetAngle());
 #endif 
 }
 void DriveTrain::Stop() {Move(0.0f, 0.0f);}
