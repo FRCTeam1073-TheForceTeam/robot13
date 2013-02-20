@@ -41,6 +41,7 @@ void ChainsawPosition::Execute(){
 	Robot::climberArms->ProcessWindowVoltageData();
 	float vleft = Robot::climberArms->leftWindowEncoder->GetVoltage();
 	float vright = Robot::climberArms->rightWindowEncoder->GetVoltage();
+	printf("Voltage Left: %f Target Voltage Left: %f State: %s\n", vleft, voltageLeft, left ? "true" : "false");
 	printf("Voltage Right: %f Target Voltage Right: %f State: %s\n", vright, voltageRight, right ? "true" : "false");
 	switch(destination){
 	case up:
