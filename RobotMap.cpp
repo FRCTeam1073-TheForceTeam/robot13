@@ -89,5 +89,5 @@ void RobotMap::init() {
 	lw->AddSensor("Digital Inputs", "MuzzleVelocity1", velocity1);
 	lw->AddSensor("Digital Inputs", "MuzzleVelocity2", velocity2);
 	rollerMotor = new Relay(PWM_ROLLER_SPIKE_MOTOR);
-	lw->AddActuator("Roller", "Spike", rollerMotor);
+	//lw->AddActuator("Roller", "Spike", rollerMotor);
 }
