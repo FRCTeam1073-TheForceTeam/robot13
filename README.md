@@ -1,18 +1,19 @@
 #2013 Ultimate Ascent Robot Code
 
-This is the code that runs on our robot for the 2013 FIRST Robotics Competition.
+This is the code that runs on FIRST Team 1073's Ultimate Ascent --- **Ursa Minor!!!**
 
-Currently we will strictly enforce that all code changes be administered through robot builder!
-To avoid conflict in Robot Builder's poorly constructed configuration file please store code under
-	C:\Windriver\workspace by going into tools on the homepage of the github app and changing the default directory
-to C:\WindRiver\workspace.
+It uses an external repository that we wrote to provide for better global control of our hardware called `WPILibExtensions`.
 
-In order to run the Robot Code you need our Smart Dashboard Running, to configure this:
+To make sure that all submodules are obtained, and that fun stuff - run the following:
 
-	REM Windows Code
-	START GetDashboard.bat
+	#first time
+	git submodule init
+	#other times
+	git submodule update
+	#pulling latest branch, not always advised - generally the commit in .gitmodules is what you want
+	cd WPILibExtensions
+	git checkout master
+	git pull
 
-	#UNIX Code
-	bash GetDashboard.sh
-
-From there you need Java to run the program.
+##GSR
+We'll be playing at the Granite State Regional in Manchester New Hampshire pretty soon - come check us out! And of course, best of luck to everyone out there in your competitions.
