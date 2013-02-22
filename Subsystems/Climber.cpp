@@ -30,11 +30,11 @@ void Climber::Climb(float joyY){
 		leftCIM->Set(joyY);
 		rightCIM->Set(joyY);
 	}
-	else{
-		leftCIM->Set(CLIMBER_OFF_SPEED);
-		rightCIM->Set(CLIMBER_OFF_SPEED);	
-	}
 }
 void Climber::EngageClimber(){ClimberOnOff = true;}	
-void Climber::DisengageClimber(){ClimberOnOff = false;}
+void Climber::DisengageClimber(){
+	ClimberOnOff = false;
+	leftCIM->Set(CLIMBER_OFF_SPEED);
+	rightCIM->Set(CLIMBER_OFF_SPEED);	
+}
 bool Climber::GetClimberOnOff(){return ClimberOnOff;}	
