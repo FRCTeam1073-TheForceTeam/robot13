@@ -88,6 +88,8 @@ void Robot::RobotInit() {
 	if(whichRobot == newRobot) {
 		climber = new Climber();
 		climberArms = new ClimberArms();
+	}
+	if(whichRobot == mobileBase || whichRobot == newRobot){
 		roller = new Roller();
 	}
 	if(whichRobot == mobileBase || whichRobot == newRobot || whichRobot == elot) {
