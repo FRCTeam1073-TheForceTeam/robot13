@@ -6,11 +6,9 @@ RollerOnOff::RollerOnOff(OnOff onOff){
 void RollerOnOff::Initialize(){
 	switch(onOff){
 	case on:
-		puts("roller on");
 		Robot::roller->MotorForward();
 		break;
 	case off:
-		puts("roller off");
 		Robot::roller->MotorOff();
 		break;
 	default: break;
