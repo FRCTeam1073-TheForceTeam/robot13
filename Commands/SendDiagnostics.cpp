@@ -67,6 +67,19 @@ void SendDiagnostics::Execute() {
 	if(leftClimberExists){JagDiags("Left Climb", RobotMap::climberLeftCIM, true);}
 	if(rightClimberExists){JagDiags("Right Climb", RobotMap::climberRightCIM, true);}
 	if (Robot::whichRobot == Robot::newRobot){
+		//logic for locked on (DOESN'T INCLUDE LATERAL MOTION
+		bool isLockedOn = false;
+		float calcAng = Robot::allignmentData->GetCalculatedAngle();
+		float calcRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
+		float curAng = RobotMap::shooterElevationEncoder->GetVoltage();
+		float curRPM = RobotMap::shooterFrontJag->GetSpeed();
+		//code to compare current values to calculated values GOES HERE
+		//complex voltage to degrees logic and all that
+		SmartDashboard::PutBoolean("Is Locked On", isLockedOn);
+		
+		//climber engaged
+		SmartDashboard::PutBoolean("Is Climber Engaged", Robot::climber->GetClimberOnOff());
+		
 		//climber encoder values
 		diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
 		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
@@ -85,6 +98,9 @@ void SendDiagnostics::Execute() {
 		//Disc Present
 		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
 		
+		SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
+		
+		//SPEEDS NEED TO BE SCALED TO A PERCENTAGE FOR DASH TO WORK WELL
 		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed());
 		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed());
 	}
@@ -99,14 +115,18 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
 		SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
 #endif
-	
-		//calculated values from extension onto dash
-		float calcAngle = Robot::allignmentData->GetCalculatedAngle();
-		float calcVelocityRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
-		SmartDashboard::PutNumber("Calculated Angle", calcAngle);
-		SmartDashboard::PutNumber("Calculated Velocity RPM", calcVelocityRPM);
-		
 	}
+	
+	if(Robot::whichRobot == Robot::mobileBase || Robot::whichRobot == Robot::elot) {
+		SmartDashboard::PutNumber("Number of Discs", 2);
+		SmartDashboard::PutBoolean("Is Locked On", false);
+		SmartDashboard::PutBoolean("Is Climber Engaged", false);
+	}
+	//calculated values from extension onto dash
+	float calcAngle = Robot::allignmentData->GetCalculatedAngle();
+	float calcVelocityRPM = Robot::allignmentData->GetCalculatedVelocityRPM();		
+	SmartDashboard::PutNumber("Calculated Angle", calcAngle);
+	SmartDashboard::PutNumber("Calculated Velocity RPM", calcVelocityRPM);
 } 
 bool SendDiagnostics::IsFinished() {return false;}
 void SendDiagnostics::End() {}
