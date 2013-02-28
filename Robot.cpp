@@ -4,7 +4,7 @@
 #include "Commands/SendDiagnostics.h"
 #include <Preferences.h>
 
-#define DEBUG_DATA
+//#define DEBUG_DATA
 
 OI* Robot::oi = NULL; 
 Climber* Robot::climber = NULL;
@@ -123,10 +123,9 @@ void Robot::RobotInit() {
 	SmartDashboard::PutNumber(SHOOTER_P, RobotMap::shooterFrontJag->GetP());
 	SmartDashboard::PutNumber(SHOOTER_I, RobotMap::shooterFrontJag->GetI());
 	SmartDashboard::PutNumber(SHOOTER_D, RobotMap::shooterFrontJag->GetD());
-#endif
-	
 	SmartDashboard::PutNumber(SHOOTER_FRONT_SET_SPEED, shooter->GetFrontSetSpeed());
 	SmartDashboard::PutNumber(SHOOTER_BACK_SET_SPEED, shooter->GetBackSetSpeed());
+#endif
 	autonomousCommand = new AutonomousSequence();
   }
 	

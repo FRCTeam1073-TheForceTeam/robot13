@@ -43,7 +43,9 @@ void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
 	double waitTime = 2;
 	try{
+#ifdef DEBUG_DATA
 		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
+#endif
 	}
 	catch(exception e){
 		const char* text = e.what();

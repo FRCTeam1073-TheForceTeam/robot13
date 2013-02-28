@@ -1,7 +1,7 @@
 #include "SendDiagnostics.h"
 #include "../Robot.h"
 
-#define DEBUG_DATA
+//#define DEBUG_DATA
 #define CAN_TIMEOUT -44087
 SendDiagnostics::SendDiagnostics() {
 	diagnosticsTable = NetworkTable::GetTable("diagnosticsTable");
@@ -69,7 +69,9 @@ void SendDiagnostics::Execute() {
 	if (Robot::whichRobot == Robot::newRobot){
 		//climber encoder values
 		diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
-		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());	
+		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
+		
+		SmartDashboard::PutNumber("Number of Discs", Robot::collector->GetNumberOfDiscs());
 #ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
 		SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
@@ -83,13 +85,13 @@ void SendDiagnostics::Execute() {
 		//Disc Present
 		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
 		
-#ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed());
 		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed());
-#endif
 	}
+#ifdef DEBUG_DATA
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
+#endif
 	if(Robot::discVelocity->IsThereNewData()){
 		float velocity = Robot::discVelocity->GetVelocityFPS();
 		float time = Robot::discVelocity->GetEllapsedTime();
