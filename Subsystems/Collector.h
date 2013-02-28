@@ -2,7 +2,7 @@
 #define COLLECTOR_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#define COLLECTOR_SPEED_ON -0.2
+#define COLLECTOR_SPEED_ON -0.4
 #define COLLECTOR_SPEED_OFF 0.0
 class Collector: public Subsystem {
 public:
