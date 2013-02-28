@@ -15,8 +15,8 @@ AutonomousSequence::AutonomousSequence(StartPosition startPosition){
 }
 void AutonomousSequence::Initialize(){
 	SetTimeout(14);
-	int elevationAngle = 30;
-	int shooterSpeed = 2550;
+	int elevationAngle = 44;
+	int shooterSpeed = 3000;
 	switch(startPosition){
 	case middleBack:
 		//In Autonomous Middle back we moved forward 0units, we should update this.
@@ -29,18 +29,13 @@ void AutonomousSequence::Initialize(){
 	if(!Robot::shooter->GetElevationEncoderFailed()) {
 		AddSequential(new MoveShooterToSetElevationAngle());
 	}
-	AddSequential(new ShooterToggleOnOff());
+	//seems legit.
+	for(int i = 0; i < 10; i++){
+		AddSequential(new WaitCommand(GetAutonomousWaitTime()));
+		AddSequential(new Shoot());
+	}
 	//AddSequential(new AutonomousTurnToAngle(45.0));	//this was to test autonomous turning
 }
-
-void AutonomousSequence::Execute(){
-	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
-	AddSequential(new Shoot());
-}
-bool AutonomousSequence::IsFinished(){
-	return (Robot::collector->GetNumberOfDiscs() == 0) || IsTimedOut();
-}
-
 void AutonomousSequence::End(){
 	AddSequential(new ShooterToggleOnOff());
 }
