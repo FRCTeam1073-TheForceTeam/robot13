@@ -4,8 +4,8 @@ ShooterToggleOnOff::ShooterToggleOnOff(){
 	previousOnOff = off;
 }
 void ShooterToggleOnOff::Initialize(){
-	Robot::shooter->ShooterOnOff((previousOnOff == on ? off: on));
-	previousOnOff = (previousOnOff == on ? off: on);
+	previousOnOff = (previousOnOff == on ? off : on);
+	Robot::shooter->ShooterOnOff((previousOnOff == on ? true : false));
 }
 void ShooterToggleOnOff::Execute(){}
 bool ShooterToggleOnOff::IsFinished(){return true;}
