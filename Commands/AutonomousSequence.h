@@ -7,7 +7,6 @@ public:
 	AutonomousSequence();	//defaults to left
 	AutonomousSequence(StartPosition startPosition);
 	virtual void Initialize();
-	virtual void Execute();
 	virtual void End();
 	virtual void Interrupted();
 private:
