@@ -10,6 +10,7 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 private:
+	void DoSequence();
 	double GetAutonomousWaitTime();
 	StartPosition startPosition;
 };

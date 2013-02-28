@@ -5,10 +5,13 @@
 class MoveShooterToSetElevationAngle : public Command{
 public:
 	MoveShooterToSetElevationAngle();
+	MoveShooterToSetElevationAngle(bool encoderCheck);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	bool encoderCheck;
 };
 #endif
