@@ -36,6 +36,10 @@ void Robot::RobotInit() {
 	float rightArmMiddleEncValPref;
 	float rightArmDownEncValPref;
 	
+	float elevatorEncoderMinVoltage = 1.26f;
+	float elevatorEncoderMaxVoltage = 1.78f;
+	 
+	
 	printf("\n\nFRC2013 " __DATE__ " " __TIME__ "\n" __FILE__ "\n\n" );
 	
 	RobotMap::init();
@@ -44,12 +48,18 @@ void Robot::RobotInit() {
 	scaleTypePref = (scaleType_t) prefs->GetInt("RearShooterScaleType", identical);
 	scaleFactorPref = prefs->GetFloat("RearShooterScaleValue", 1.0);
 	isElevatorEncoderFailed = prefs->GetBoolean("isElevatorEncoderFailed", false);
+	//shooter elevating preferences
+	elevatorEncoderMinVoltage = prefs->GetFloat("elevatorEncoderMinVoltage", elevatorEncoderMinVoltage);
+	elevatorEncoderMaxVoltage = prefs->GetFloat("elevatorEncoderMaxVoltage", elevatorEncoderMaxVoltage);
+	Robot::shooter->UpdateElevatorAngleConstants(elevatorEncoderMinVoltage, elevatorEncoderMaxVoltage);
+	//chainsaw preferences
 	leftArmUpEncValPref  = prefs->GetFloat("leftArmUpEncVal", 3.3f);
 	leftArmMiddleEncValPref = prefs->GetFloat("leftArmMiddleEncVal", 2.6f);
 	leftArmDownEncValPref = prefs->GetFloat("leftArmDownEncVal", 1.9f);
 	rightArmUpEncValPref = prefs->GetFloat("rightArmUpEncVal", 0.82f);
 	rightArmMiddleEncValPref = prefs->GetFloat("rightArmMiddleEncVal", 1.4f);
 	rightArmDownEncValPref  = prefs->GetFloat("rightArmDownEncVal", 2.15f);
+	
 	prefs->Save();
 	
 	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);

@@ -23,6 +23,10 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	scaleFactor = 1;
 	scaleType = identical;
 	isElevatorEncoderFailed = false;
+	//we update these values with preferences after the shooter gets constructed
+	//these two assignments ar emerely to ensure that these vars get some value in the realm of reality during construction
+	elevatorMinVoltage = ELEVATION_MIN_VOLTAGE;
+	elevatorMaxVoltage = ELEVATION_MAX_VOLTAGE;
 }
 void Shooter::InitDefaultCommand() {}
 void Shooter::ShooterOnOff(bool on){
@@ -204,4 +208,8 @@ void Shooter::ProcessVoltageData()
 }
 void Shooter::SetToFeederPresetAngle() {
 	SetRawElevationAngle(PRESET_FEEDER_STATION_ANGLE);
+}
+void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
+	elevatorMinVoltage = vmin;
+	elevatorMaxVoltage = vmax;
 }

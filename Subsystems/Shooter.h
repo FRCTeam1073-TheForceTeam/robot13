@@ -66,7 +66,9 @@ public:
 	float GetMaxAngle();
 	bool IsElevatorStalled();
 	void ProcessVoltageData();
+	void UpdateElevatorAngleConstants(float vmin, float vmax);
 private:
 	float ConvertVoltToAngle(float volts);
+	float elevatorMinVoltage, elevatorMaxVoltage;	//constants for eleaator encoder positions...
 };
 #endif
