@@ -14,5 +14,7 @@ public:
 	virtual bool IsFinished();
 	virtual void Interrupted() {}
 	virtual void End();
+private:
+	void RestartShooter();
 };
 #endif
