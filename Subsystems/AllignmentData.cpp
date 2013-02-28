@@ -1,17 +1,15 @@
 #include "AllignmentData.h"
 #include "../Robotmap.h"
 #include "../Robot.h"
-int AllignmentData::DEFAULT = -1;
+
 AllignmentData::AllignmentData() : Subsystem("AllignmentData") {
-	calculatedDistance = DEFAULT;
-	calculatedAngle = DEFAULT;
+
 	trackingDataTable = NetworkTable::GetTable("tracking");
 }
 void AllignmentData::InitDefaultCommand(){}
 
 double AllignmentData::GetCalculatedVelocityRPM() {return trackingDataTable->GetNumber("calculatedVelocityRPM", -1);}
 double AllignmentData::GetCalculatedAngle() {return trackingDataTable->GetNumber("calculatedAngle", -1);}
-bool AllignmentData::IsTarget(){return calculatedDistance != DEFAULT && calculatedAngle != DEFAULT;}
 void AllignmentData::SendCurrentAngle(float angle)
 {
 	trackingDataTable->PutNumber("currentAngle", angle);

@@ -97,6 +97,13 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
 		SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
 #endif
+	
+		//calculated values from extension onto dash
+		float calcAngle = Robot::allignmentData->GetCalculatedAngle();
+		float calcVelocityRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
+		SmartDashboard::PutNumber("Calculated Angle", calcAngle);
+		SmartDashboard::PutNumber("Calculated Velocity RPM", calcVelocityRPM);
+		
 	}
 } 
 bool SendDiagnostics::IsFinished() {return false;}

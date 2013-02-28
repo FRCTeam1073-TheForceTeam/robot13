@@ -4,9 +4,6 @@
 #include "WPILib.h"
 class AllignmentData: public Subsystem {
 private:
-	static int DEFAULT;
-	double calculatedDistance;
-	double calculatedAngle;
 	NetworkTable* trackingDataTable;
 public:
 	AllignmentData();
@@ -15,6 +12,5 @@ public:
 	double GetCalculatedAngle();
 	void SendCurrentAngle(float angle);
 	void SendCurrentSpeed(int speed);
-	bool IsTarget();
 };
 #endif
