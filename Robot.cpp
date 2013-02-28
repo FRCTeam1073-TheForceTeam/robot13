@@ -36,8 +36,8 @@ void Robot::RobotInit() {
 	float rightArmMiddleEncValPref;
 	float rightArmDownEncValPref;
 	
-	float elevatorEncoderMinVoltage = 1.26f;
-	float elevatorEncoderMaxVoltage = 1.78f;
+	float elevatorEncoderMinVoltage = 1.71f;
+	float elevatorEncoderMaxVoltage = 2.34f;
 	 
 	
 	printf("\n\nFRC2013 " __DATE__ " " __TIME__ "\n" __FILE__ "\n\n" );
@@ -51,7 +51,12 @@ void Robot::RobotInit() {
 	//shooter elevating preferences
 	elevatorEncoderMinVoltage = prefs->GetFloat("elevatorEncoderMinVoltage", elevatorEncoderMinVoltage);
 	elevatorEncoderMaxVoltage = prefs->GetFloat("elevatorEncoderMaxVoltage", elevatorEncoderMaxVoltage);
-	Robot::shooter->UpdateElevatorAngleConstants(elevatorEncoderMinVoltage, elevatorEncoderMaxVoltage);
+
+	
+	//turns out this isn;t quite done - i used the pound defines in shooter.cpp
+	//Robot::shooter->UpdateElevatorAngleConstants(elevatorEncoderMinVoltage, elevatorEncoderMaxVoltage);
+
+	
 	//chainsaw preferences
 	leftArmUpEncValPref  = prefs->GetFloat("leftArmUpEncVal", 3.3f);
 	leftArmMiddleEncValPref = prefs->GetFloat("leftArmMiddleEncVal", 2.6f);

@@ -3,10 +3,10 @@
 
 #define ELEVATION_INCREMENT_ANGLE_SPEED_UP 0.4
 #define ELEVATION_INCREMENT_ANGLE_SPEED_DOWN -0.3
-#define ELEVATION_MIN_VOLTAGE 1.26
-#define ELEVATION_MAX_VOLTAGE 1.78
-#define ELEVATION_MIN_ANGLE 11.1
-#define ELEVATION_MAX_ANGLE 51.5
+#define ELEVATION_MIN_VOLTAGE 1.71
+#define ELEVATION_MAX_VOLTAGE 2.34
+#define ELEVATION_MIN_ANGLE 10.5
+#define ELEVATION_MAX_ANGLE 52.2
 	const float elevationThreshold = 2.0f;
 	const float P = 0.4f;
 Shooter::Shooter() : Subsystem("Shooter") {
