@@ -1,6 +1,6 @@
 #include "ShooterToggleOnOff.h"
 ShooterToggleOnOff::ShooterToggleOnOff(){
-	Requires(Robot::climber);
+	Requires(Robot::shooter);
 	previousOnOff = off;
 }
 void ShooterToggleOnOff::Initialize(){
