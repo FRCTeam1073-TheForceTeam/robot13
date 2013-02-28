@@ -10,10 +10,11 @@
 #include "../Subsystems/Shooter.h"
 AutonomousSequence::AutonomousSequence(){
 	startPosition = leftBack;
-	
+	DoSequence();
 }
 AutonomousSequence::AutonomousSequence(StartPosition startPosition){
 	this->startPosition = startPosition;
+	DoSequence();
 }
 void AutonomousSequence::Initialize(){}
 void AutonomousSequence::End(){
