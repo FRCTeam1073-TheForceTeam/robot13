@@ -84,6 +84,10 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
 		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
 		
+		//drive encoders 
+		SmartDashboard::PutNumber("Left Drive Encoder", Robot::driveTrain->leftMotor->GetSpeed());
+		SmartDashboard::PutNumber("Right Drive Encoder", Robot::driveTrain->rightMotor->GetSpeed());
+		
 		SmartDashboard::PutNumber("Number of Discs", Robot::collector->GetNumberOfDiscs());
 #ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
