@@ -22,6 +22,7 @@
 #include "Commands/DiscOnBedSensorOverride.h"
 #include "Commands/SetToFeederAngle.h"
 #include "Commands/ManualClimberArmControl.h"
+#include "Commands/KillFeeder.h"
 //#define DEBUG_DATA
 
 OI::OI() {
@@ -98,6 +99,13 @@ void OI::ConstructJoystickButtons(){
 	rollerOn->WhenPressed(new RollerOnOff(on));
 	rollerOff = new JoystickButton(rightStick, RIGHT_ROLLER_OFF_BTN);
 	rollerOff->WhenPressed(new RollerOnOff(off));
+	
+	
+	//command added at GSR to quicky and dirty-ly kill the feeder motor
+	//put on left joystick because buttons aren't free...
+	killFeeder = new JoystickButton(leftStick, LEFT_KILL_FEEDER_BTN);
+	killFeeder->WhenPressed(new KillFeeder());
+	
 }
 void OI::ConstructSmartDashCommands(){
 #ifdef DEBUG_DATA

@@ -34,6 +34,8 @@ private:
     JoystickButton* manualClimberArmsUp;
     JoystickButton* manualClimberArmsDown;
     
+    JoystickButton *killFeeder;
+    
 public:
 	OI();
 	SmartJoystick* getLeftStick();

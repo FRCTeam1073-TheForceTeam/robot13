@@ -3,6 +3,7 @@
 
 //left drive stick
 #define LEFT_DASHBOARD_PULL_SHOOTER_DATA_BTN 6
+#define LEFT_KILL_FEEDER_BTN 7
 #define LEFT_DRIVE_TRAIN_TURBO_ON_BTN 1
 #define LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN 11
 //right drive stick-
