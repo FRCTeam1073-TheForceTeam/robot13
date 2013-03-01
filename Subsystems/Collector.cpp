@@ -17,7 +17,10 @@ Collector::Collector() : Subsystem("Collector") {
     
 void Collector::InitDefaultCommand() {}
 void Collector::MotorOn(){motor->Set(-1 * COLLECTOR_SPEED_ON);}
-void Collector::MotorOff() {motor->Set(COLLECTOR_SPEED_OFF);}
+void Collector::MotorOff() {
+	puts("you are in the collector subsystem, turning off the motors. this should be happening irl");
+	motor->Set(COLLECTOR_SPEED_OFF);
+}
 int Collector::GetNumberOfDiscs(){
 	int numberOfDiscs;
 	float voltage = discCountSensor->GetVoltage();
