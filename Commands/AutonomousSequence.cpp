@@ -10,17 +10,28 @@
 #include "../Subsystems/Shooter.h"
 AutonomousSequence::AutonomousSequence(){
 	startPosition = leftBack;
+	puts("constructed without parameter");
 	DoSequence();
 }
 AutonomousSequence::AutonomousSequence(StartPosition startPosition){
 	this->startPosition = startPosition;
-	puts("constructedf auto with config");
+	puts("constructed auto with config");
 	DoSequence();
 }
-void AutonomousSequence::Initialize(){}
+void AutonomousSequence::Initialize(){
+	printf("in init: ");
+	switch(startPosition){
+		case leftBack: printf("left"); break;
+		case rightBack: printf("right"); break;
+		case middleBack: printf("middle"); break;
+		default: printf("invalid"); break;
+	}
+	printf("\n");
+	 	 
+}
 void AutonomousSequence::End(){
-	Robot::shooter->ShooterOnOff(false);
 	Robot::shooter->ElevatorOff();
+	Robot::collector->MotorOff();
 }
 void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
@@ -43,8 +54,10 @@ void AutonomousSequence::DoSequence(){
 	case leftBack: puts("got left"); break;
 	case rightBack: puts("got right"); break;
 	case middleBack:
+		puts("got middle");
 		//In Autonomous Middle back we moved forward 0units, we should update this.
 		AddSequential(new AutonomousForward(0.0));
+		puts("Added AutonomousForward(0.0)");
 		break;
 	default: puts("hell broke loose"); break;	//to my understanding, left and right don't do anything prior to this sequence...
 	}

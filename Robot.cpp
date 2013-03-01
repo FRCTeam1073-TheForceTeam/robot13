@@ -159,6 +159,8 @@ void Robot::AutonomousPeriodic() {
 	
 void Robot::TeleopInit() {
 	autonomousCommand->Cancel();
+	Robot::shooter->ElevatorOff();
+	Robot::collector->MotorOff();
 }
 	
 void Robot::TeleopPeriodic() {
