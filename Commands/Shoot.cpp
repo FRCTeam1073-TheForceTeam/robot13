@@ -8,7 +8,6 @@ Shoot::Shoot() {
 		SetTimeout(2);
 }
 void Shoot::Initialize() {
-	RestartShooter();
 	abort = (!Robot::shooter->IsShooterMotorOn() || Robot::collector->GetNumberOfDiscs() == 0);
 	if(abort){
 		printf("ERROR! You either have no discs or the shooter is not running!\n");
@@ -18,7 +17,6 @@ void Shoot::Initialize() {
 	Robot::collector->MotorOn();
 }
 void Shoot::Execute() {
-	RestartShooter();
 	if(abort) return;
 	Robot::discVelocity->ProcessInterrupt();
 	switch(discState){
@@ -41,7 +39,4 @@ bool Shoot::IsFinished() {
 void Shoot::End() {
 	if(abort) return;
 	Robot::collector->MotorOff();
-}
-void Shoot::RestartShooter(){
-	Robot::shooter->ShooterOnOff(Robot::shooter->IsShooterMotorOn());
 }

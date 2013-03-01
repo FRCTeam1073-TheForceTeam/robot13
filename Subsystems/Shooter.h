@@ -48,6 +48,7 @@ public:
 	void SetRawElevationAngle(float elevationAngle);
 	void UpdateDefaults(double distanceToTarget, double robotAngleToTarget);
 	void ShooterOnOff(bool on);
+	void ShooterRamp(double rampPercent);
 	bool IsShooterMotorOn();
 	int GetFrontSetSpeed();	//speed used for shooter wheel
 	int GetBackSetSpeed();	//returns manipulation of GetFrontSetSpeed() 

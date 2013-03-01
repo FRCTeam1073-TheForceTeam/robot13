@@ -13,5 +13,7 @@ public:
 	void Interrupted();
 private:
 	OnOff previousOnOff;
+	int iterationCount;
+	double rampTimeSeconds;
 };
 #endif

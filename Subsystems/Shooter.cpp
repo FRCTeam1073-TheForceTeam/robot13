@@ -33,8 +33,10 @@ void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
 	if(on){
 		printf("Front Jag:\t%d\tBack Jag:%d\tFrontCurrentSpeed:%lf\n", speed, GetBackSetSpeed(), frontJag->GetSpeed());
-		frontJag->Set(speed);
-		backJag->Set(GetBackSetSpeed());
+		
+		//no longer want to set to full speed in ShooterOn
+		//frontJag->Set(speed);
+		//backJag->Set(GetBackSetSpeed());
 	}
 	else {
 		printf("Shooter Off\n");
@@ -42,6 +44,10 @@ void Shooter::ShooterOnOff(bool on){
 		backJag->Set(SHOOTER_OFF);
 		isShooterMotorOn = false;
 	}
+}
+void Shooter::ShooterRamp(double rampPercent){
+	frontJag->Set(speed * rampPercent);
+	backJag->Set(GetBackSetSpeed() * rampPercent);
 }
 bool Shooter::IsShooterMotorOn() {return isShooterMotorOn;}
 int Shooter::GetFrontSetSpeed() {return speed;}
