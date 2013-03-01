@@ -3,7 +3,7 @@ Shoot::Shoot() {
 	Requires(Robot::collector);
 	Requires(Robot::shooter);
 	if (Robot::collector->overrided)
-		SetTimeout(0.75);
+		SetTimeout(0.4);
 	else
 		SetTimeout(2);
 }
