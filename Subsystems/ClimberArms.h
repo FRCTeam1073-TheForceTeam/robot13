@@ -9,8 +9,8 @@
  * A Negative Voltage on the Right Victor makes the right Window Motor go up
  */ 
 #define CHAINSAW_WINDOW_OFF_SPEED 0.0f
-#define CHAINSAW_WINDOW_UP_SPEED 0.55f
-#define CHAINSAW_WINDOW_DOWN_SPEED -0.45f
+#define CHAINSAW_WINDOW_UP_SPEED 0.6f
+#define CHAINSAW_WINDOW_DOWN_SPEED 0.4f
 class ClimberArms : public Subsystem{
 private:
 	float leftArmUpEncVal;
@@ -42,5 +42,7 @@ public:
 	void WindowMotorsOff();
 	void setArmEncVal(float leftUp, float leftMiddle, float leftDown, 
 			          float rightUp, float rightMiddle,float rightDown);
+	void ManualUp();
+	void ManualDown();
 };
 #endif

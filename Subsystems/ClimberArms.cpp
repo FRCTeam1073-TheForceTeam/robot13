@@ -64,3 +64,12 @@ printf("Setting rightUpEncVal %f, rightMidEncVal %f , rightDownEncVal %f \n", ri
 		rightArmMiddleEncVal, rightArmDownEncVal);
 }
 
+void ClimberArms::ManualUp(){
+	leftClimbWindowVictor->Set(-1 * CHAINSAW_WINDOW_UP_SPEED);
+	rightClimbWindowVictor->Set(CHAINSAW_WINDOW_UP_SPEED);
+}
+
+void ClimberArms::ManualDown(){
+	leftClimbWindowVictor->Set(-1 * CHAINSAW_WINDOW_DOWN_SPEED);
+	rightClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
+}

@@ -30,6 +30,10 @@ private:
     JoystickButton* rollerOn;
     JoystickButton* rollerOff;
     JoystickButton* goToFeederAngle;
+    
+    JoystickButton* manualClimberArmsUp;
+    JoystickButton* manualClimberArmsDown;
+    
 public:
 	OI();
 	SmartJoystick* getLeftStick();

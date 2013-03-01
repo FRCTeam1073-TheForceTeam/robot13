@@ -21,7 +21,7 @@
 #include "Commands/RollerOnOff.h"
 #include "Commands/DiscOnBedSensorOverride.h"
 #include "Commands/SetToFeederAngle.h"
-
+#include "Commands/ManualClimberArmControl.h"
 //#define DEBUG_DATA
 
 OI::OI() {
@@ -44,12 +44,23 @@ void OI::ConstructJoystickButtons(){
 	climberDisengage->WhenPressed(new ClimberOnOff(off));
 	climberEngage = new JoystickButton(rightStick, RIGHT_CLIMBER_ENGAGE_BTN);
 	climberEngage->WhenPressed(new ClimberOnOff(on));
+	
+// we are opting for manual control of the arms - these presets are here in the event that we want to go back...
+#if 0
 	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
 	chainsawDown->WhenPressed(new ChainsawPosition(ChainsawPosition::down));
 	chainsawMiddle = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN);
 	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
 	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
 	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
+#endif
+	
+	manualClimberArmsUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
+	manualClimberArmsUp->WhileHeld(new ManualClimberArmControl(true));
+	
+	manualClimberArmsDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
+	manualClimberArmsDown->WhileHeld(new ManualClimberArmControl(false));
+	
 	goToFeederAngle = new JoystickButton(operatorStick, OPERATOR_FEEDER_ANGLE_BTN);
 	goToFeederAngle->WhenPressed(new SetToFeederAngle());
 #if 0
