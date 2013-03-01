@@ -48,7 +48,7 @@ double AutonomousSequence::GetAutonomousWaitTime(){
 	return waitTime;
 }
 void AutonomousSequence::DoSequence(){
-	float elevationAngle = 30;
+	float elevationAngle = 28;
 	float shooterSpeed = 2750;
 	switch(startPosition){
 	case leftBack: puts("got left"); break;
