@@ -37,6 +37,5 @@ bool Shoot::IsFinished() {
 		
 }
 void Shoot::End() {
-	if(abort) return;
 	Robot::collector->MotorOff();
 }
