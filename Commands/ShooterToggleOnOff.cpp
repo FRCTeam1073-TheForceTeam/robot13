@@ -7,15 +7,23 @@ ShooterToggleOnOff::ShooterToggleOnOff(){
 	rampTimeSeconds = 1.0;	
 }
 void ShooterToggleOnOff::Initialize(){
+	iterationCount = 0;
 	previousOnOff = (previousOnOff == on ? off : on);
 	Robot::shooter->ShooterOnOff(previousOnOff == on);
 }
 void ShooterToggleOnOff::Execute(){
-	Robot::shooter->ShooterRamp(iterationCount* TIMES_PER_SECOND /rampTimeSeconds);
-	iterationCount++;
+	if(Robot::shooter->IsShooterMotorOn() == true)
+	{
+		Robot::shooter->ShooterRamp(iterationCount* TIMES_PER_SECOND /rampTimeSeconds);
+		iterationCount++;
+	}
+
 }
-bool ShooterToggleOnOff::IsFinished(){
-	return (iterationCount * TIMES_PER_SECOND) >= rampTimeSeconds;
+bool ShooterToggleOnOff::IsFinished()
+{
+	return !Robot::shooter->IsShooterMotorOn() || (iterationCount * TIMES_PER_SECOND) >= rampTimeSeconds;
 }
-void ShooterToggleOnOff::End(){}
-void ShooterToggleOnOff::Interrupted(){}
+void ShooterToggleOnOff::End(){
+	
+}
+void ShooterToggleOnOff::Interrupted(){End();}

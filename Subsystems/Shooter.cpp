@@ -110,7 +110,11 @@ void Shooter::UpdateDefaults(double distanceToTarget, double robotAngleToTarget)
 }
 void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
-	if(isShooterMotorOn) ShooterOnOff(true);
+	if(isShooterMotorOn) 
+	{
+		frontJag->Set(speed);
+		backJag->Set(GetBackSetSpeed());
+	}
 	Robot::allignmentData->SendCurrentSpeed(speed);
 }
 void Shooter::IncrementAngle(float angleIncrement){
