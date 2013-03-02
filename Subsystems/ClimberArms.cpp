@@ -70,6 +70,6 @@ void ClimberArms::ManualUp(){
 }
 
 void ClimberArms::ManualDown(){
-	leftClimbWindowVictor->Set(-1 * CHAINSAW_WINDOW_DOWN_SPEED);
-	rightClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
+	leftClimbWindowVictor->Set(CHAINSAW_WINDOW_DOWN_SPEED);
+	rightClimbWindowVictor->Set(-1 * CHAINSAW_WINDOW_DOWN_SPEED);
 }
