@@ -62,7 +62,7 @@ void AutonomousSequence::DoSequence(){
 	default: puts("hell broke loose"); break;	//to my understanding, left and right don't do anything prior to this sequence...
 	}
 	AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle));
-	AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
+	//AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
 	AddSequential(new ShooterToggleOnOff());
 	for(int i = 0; i < 10; i++){
 		AddSequential(new WaitCommand(GetAutonomousWaitTime()));
