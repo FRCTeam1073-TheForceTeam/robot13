@@ -3,6 +3,7 @@
 
 //#define DEBUG_DATA
 #define CAN_TIMEOUT -44087
+#define DEGREES_PER_VOLT 66.19
 SendDiagnostics::SendDiagnostics() {
 	diagnosticsTable = NetworkTable::GetTable("diagnosticsTable");
 	count = 0;
@@ -67,14 +68,21 @@ void SendDiagnostics::Execute() {
 	if(leftClimberExists){JagDiags("Left Climb", RobotMap::climberLeftCIM, true);}
 	if(rightClimberExists){JagDiags("Right Climb", RobotMap::climberRightCIM, true);}
 	if (Robot::whichRobot == Robot::newRobot){
-		//logic for locked on (DOESN'T INCLUDE LATERAL MOTION
+		
+		//logic for locked on (DOESN'T INCLUDE LATERAL MOTION)
+		//basically checked if calc angles and rpms agree
 		bool isLockedOn = false;
-		float calcAng = Robot::allignmentData->GetCalculatedAngle();
+		float calcAng = Robot::allignmentData->GetCalculatedAngle(); //degrees
 		float calcRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
-		float curAng = RobotMap::shooterElevationEncoder->GetVoltage();
+		float curAng = RobotMap::shooterElevationEncoder->GetVoltage(); //currently a voltage
+		curAng = ((curAng - 1.71) * DEGREES_PER_VOLT) + 10.5;
 		float curRPM = RobotMap::shooterFrontJag->GetSpeed();
-		//code to compare current values to calculated values GOES HERE
-		//complex voltage to degrees logic and all that
+		bool doAngsMatch = (curAng <= calcAng + 5) && (curAng >= calcAng - 5);
+		bool doRPMsMatch = (curRPM <= calcRPM + 200) && (curRPM >= calcRPM - 200);
+		if(doAngsMatch && doRPMsMatch) {
+			isLockedOn = true;
+		}
+		else isLockedOn = false;
 		SmartDashboard::PutBoolean("Is Locked On", isLockedOn);
 		
 		//climber engaged
@@ -89,7 +97,7 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Right Drive Encoder", Robot::driveTrain->rightMotor->GetSpeed());
 		
 		SmartDashboard::PutNumber("Number of Discs", Robot::collector->GetNumberOfDiscs());
-#ifdef DEBUG_DATA
+#ifdef DEBUG_DATA```
 		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
 		SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
 #endif
@@ -104,9 +112,9 @@ void SendDiagnostics::Execute() {
 		
 		SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		
-		//SPEEDS NEED TO BE SCALED TO A PERCENTAGE FOR DASH TO WORK WELL
-		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed());
-		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed());
+		//scaled to 0-100 percentage
+		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed() / 37.5);
+		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed() / 37.5);
 	}
 #ifdef DEBUG_DATA
 	//Gyro
