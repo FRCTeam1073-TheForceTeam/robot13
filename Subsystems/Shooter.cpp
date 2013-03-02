@@ -1,13 +1,14 @@
 #include "Shooter.h"
 #include "../Robot.h"
-
-#define ELEVATION_INCREMENT_ANGLE_SPEED_UP 0.4
-#define ELEVATION_INCREMENT_ANGLE_SPEED_DOWN -0.3
+//this will require optimization
+#define ELEVATION_INCREMENT_SCALE_FACTOR 0.8f	//was 1.0
+#define ELEVATION_INCREMENT_ANGLE_SPEED_UP 0.4 * ELEVATION_INCREMENT_SCALE_FACTOR
+#define ELEVATION_INCREMENT_ANGLE_SPEED_DOWN -0.3 * ELEVATION_INCREMENT_SCALE_FACTOR
 #define ELEVATION_MIN_VOLTAGE 1.71
 #define ELEVATION_MAX_VOLTAGE 2.34
 #define ELEVATION_MIN_ANGLE 10.5
 #define ELEVATION_MAX_ANGLE 52.2
-	const float elevationThreshold = 2.0f;
+	const float elevationThreshold = 0.5f;
 	const float P = 0.4f;
 Shooter::Shooter() : Subsystem("Shooter") {
 	frontJag = RobotMap::shooterFrontJag;
