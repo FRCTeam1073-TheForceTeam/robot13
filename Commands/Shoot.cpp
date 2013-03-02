@@ -39,3 +39,4 @@ bool Shoot::IsFinished() {
 void Shoot::End() {
 	Robot::collector->MotorOff();
 }
+void Shoot::Interrupted(){End();}
