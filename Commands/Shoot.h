@@ -12,7 +12,7 @@ public:
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
-	virtual void Interrupted() {}
+	virtual void Interrupted();
 	virtual void End();
 };
 #endif

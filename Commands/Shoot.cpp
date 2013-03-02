@@ -1,7 +1,7 @@
 #include "Shoot.h"
 Shoot::Shoot() {
 	Requires(Robot::collector);
-	Requires(Robot::shooter);
+	//Requires(Robot::shooter); not needed
 	if (Robot::collector->overrided)
 		SetTimeout(0.4);
 	else
