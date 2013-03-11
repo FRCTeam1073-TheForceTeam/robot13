@@ -97,7 +97,7 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Right Drive Encoder", Robot::driveTrain->rightMotor->GetSpeed());
 		
 		SmartDashboard::PutNumber("Number of Discs", Robot::collector->GetNumberOfDiscs());
-#ifdef DEBUG_DATA```
+#ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
 		SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
 #endif
