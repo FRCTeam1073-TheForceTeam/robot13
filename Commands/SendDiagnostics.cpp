@@ -9,28 +9,20 @@ SendDiagnostics::SendDiagnostics() {
 	count = 0;
 	Requires(Robot::diagnostics);
 }
-bool SendDiagnostics::TestJags(CANJaguar* jag){
-	jag->GetFirmwareVersion();
-	if(jag->GetError().GetCode() == CAN_TIMEOUT)
-	{
-		jag->ClearError();
-		return false;
-	}
-	return true;
-}
+
 // Called just before this Command runs the first time
 void SendDiagnostics::Initialize() {
-	leftDriveExists = TestJags(RobotMap::driveTrainLeftMotor);
+	leftDriveExists = RobotMap::driveTrainLeftMotor->ExistsOnBus();
 	printf("leftDriveExists %d\n", leftDriveExists);
-	rightDriveExists = TestJags(RobotMap::driveTrainRightMotor);
+	rightDriveExists = RobotMap::driveTrainRightMotor->ExistsOnBus();
 	printf("rightDriveExists %d\n", rightDriveExists);
-	leftClimberExists = TestJags(RobotMap::climberLeftCIM);
+	leftClimberExists = RobotMap::climberLeftCIM->ExistsOnBus();
 	printf("leftClimberExists %d\n", leftClimberExists);
-	rightClimberExists = TestJags(RobotMap::climberRightCIM);
+	rightClimberExists = RobotMap::climberRightCIM->ExistsOnBus();
 	printf("rightClimberExists %d\n", rightClimberExists);
-	primaryShooterExists = TestJags(RobotMap::shooterFrontJag);
+	primaryShooterExists = RobotMap::shooterFrontJag->ExistsOnBus();
 	printf("primaryShooterExists %d\n", primaryShooterExists);
-	supportShooterExists = TestJags(RobotMap::shooterBackJag);
+	supportShooterExists = RobotMap::shooterBackJag->ExistsOnBus();
 	printf("supportShooterExists %d\n", supportShooterExists);
 }
 // Common function for handling jag diagnostics
