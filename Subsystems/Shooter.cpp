@@ -11,16 +11,13 @@
 	const float elevationThreshold = 0.5f;
 	const float P = 0.4f;
 Shooter::Shooter() : Subsystem("Shooter") {
-	frontJag = RobotMap::shooterFrontJag;
-	backJag = RobotMap::shooterBackJag;
+	shooterJag = RobotMap::shooterJag;
 	elevationEncoder = RobotMap::shooterElevationEncoder;
 	elevationVictor = RobotMap::shooterElevationVictor;
     isShooterMotorOn = false;
-	ConfigureJaguarEncoder(frontJag);
-	ConfigureJaguarEncoder(backJag);
+	ConfigureJaguarEncoder(shooterJag);
 	SetPID(SHOOTER_DEFAULT_P, SHOOTER_DEFAULT_I, SHOOTER_DEFAULT_D);
-	speed = SHOOTER_FRONT_DEFAULT_SPEED;
-	rawBackSpeed = SHOOTER_BACK_DEFAULT_SPEED;
+	speed = SHOOTER_DEFAULT_SPEED;
 	scaleFactor = 1;
 	scaleType = identical;
 	isElevatorEncoderFailed = false;
@@ -33,70 +30,25 @@ void Shooter::InitDefaultCommand() {}
 void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
 	if(on){
-		printf("Front Jag:\t%d\tBack Jag:%d\tFrontCurrentSpeed:%lf\n", speed, GetBackSetSpeed(), frontJag->GetSpeed());
-		
-		//no longer want to set to full speed in ShooterOn
-		//frontJag->Set(speed);
-		//backJag->Set(GetBackSetSpeed());
+		printf("Front Jag:\t%d\tFrontCurrentSpeed:%lf\n", speed, shooterJag->GetSpeed());
 	}
 	else {
 		printf("Shooter Off\n");
-		frontJag->Set(SHOOTER_OFF);
-		backJag->Set(SHOOTER_OFF);
+		shooterJag->Set(SHOOTER_OFF);
 		isShooterMotorOn = false;
 	}
 }
 void Shooter::ShooterRamp(double rampPercent){
-	frontJag->Set(speed * rampPercent);
-	backJag->Set(GetBackSetSpeed() * rampPercent);
+	shooterJag->Set(speed * rampPercent);
 }
 bool Shooter::IsShooterMotorOn() {return isShooterMotorOn;}
 int Shooter::GetFrontSetSpeed() {return speed;}
-int Shooter::GetBackSetSpeed(){
-	//if(rawBackSpeedEnabled) return (int) rawBackSpeed;
-	//TODO: Update with better math. 
-	
-	switch(scaleType){
-	case additive:
-		return (int) (speed + scaleFactor);
-		break;
-	case multiplicative:
-		return (int) (speed * scaleFactor);
-		break;
-	default:
-		return speed;
-	}
-}
-
 void Shooter::SetElevatorEncoderFailed(bool isFailed) {
 	isElevatorEncoderFailed = isFailed;
 }
 
 bool Shooter::GetElevationEncoderFailed() {
 	return isElevatorEncoderFailed;
-}
-
-void Shooter::SetBackMode(scaleType_t inScaleType, float inScaleFactor)
-{
-	scaleType = inScaleType;
-	scaleFactor = inScaleFactor; 
-	char *scaleTypeWords;
-	
-	switch (scaleType) {
-		case identical:
-			scaleTypeWords = "identical";
-			break;
-		case additive:
-			scaleTypeWords = "additive";
-			break;
-		case multiplicative:
-			scaleTypeWords = "multiplicative";
-			break;
-		default:
-			scaleTypeWords = "unknown";
-	}
-	printf("Setting shooter to scaleType %s scaleFactor %f\n", 
-			scaleTypeWords, scaleFactor);
 }
 
 float Shooter::GetElevationAngle() {return elevationAngle;}
@@ -113,8 +65,7 @@ void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
 	if(isShooterMotorOn) 
 	{
-		frontJag->Set(speed);
-		backJag->Set(GetBackSetSpeed());
+		shooterJag->Set(speed);
 	}
 	Robot::allignmentData->SendCurrentSpeed(speed);
 }
@@ -129,10 +80,6 @@ void Shooter::IncrementAngle(float angleIncrement){
 void Shooter::SetRawSpeed(int speed) {
 	if(speed < 0 ) return;
 	IncrementSpeed(speed - this->speed);
-}
-void Shooter::SetRawBackSpeed(int speed){
-	rawBackSpeed = speed;
-	rawBackSpeedEnabled = true;
 }
 void Shooter::SetRawElevationAngle(float elevationAngle) {
 	this->elevationAngle = elevationAngle;
@@ -165,8 +112,7 @@ void Shooter::TurnToSetAngle(){
 }
 void Shooter::SetPID(double P, double I, double D){
 	printf("Setting P:\t%f\nI:\t%f\nD:\t%f\n", P, I, D);
-	frontJag->SetPID(P, I, D);
-	backJag->SetPID(P, I, D);
+	shooterJag->SetPID(P, I, D);
 }
 void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ChangeControlMode(CANJaguar::kSpeed);

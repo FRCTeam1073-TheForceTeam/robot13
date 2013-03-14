@@ -20,10 +20,8 @@ void SendDiagnostics::Initialize() {
 	printf("leftClimberExists %d\n", leftClimberExists);
 	rightClimberExists = RobotMap::climberRightCIM->ExistsOnBus();
 	printf("rightClimberExists %d\n", rightClimberExists);
-	primaryShooterExists = RobotMap::shooterFrontJag->ExistsOnBus();
+	primaryShooterExists = RobotMap::shooterJag->ExistsOnBus();
 	printf("primaryShooterExists %d\n", primaryShooterExists);
-	supportShooterExists = RobotMap::shooterBackJag->ExistsOnBus();
-	printf("supportShooterExists %d\n", supportShooterExists);
 }
 // Common function for handling jag diagnostics
 void SendDiagnostics::JagDiags(char *jagString, CANJaguar *thisJag, bool printPosition)
@@ -55,8 +53,7 @@ void SendDiagnostics::Execute() {
 	diagnosticsTable->PutNumber("Battery Voltage", DriverStation::GetInstance()->GetBatteryVoltage());
 	if(leftDriveExists){JagDiags("Left Drive", RobotMap::driveTrainLeftMotor, true);}
 	if(rightDriveExists){JagDiags("Right Drive", RobotMap::driveTrainRightMotor, true);}
-	if(primaryShooterExists){JagDiags("Front Shooter", RobotMap::shooterFrontJag, false);}
-	if(supportShooterExists){JagDiags("Back Shooter", RobotMap::shooterBackJag, false);}
+	if(primaryShooterExists){JagDiags("Front Shooter", RobotMap::shooterJag, false);}
 	if(leftClimberExists){JagDiags("Left Climb", RobotMap::climberLeftCIM, true);}
 	if(rightClimberExists){JagDiags("Right Climb", RobotMap::climberRightCIM, true);}
 	if (Robot::whichRobot == Robot::newRobot){
@@ -68,7 +65,7 @@ void SendDiagnostics::Execute() {
 		float calcRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
 		float curAng = RobotMap::shooterElevationEncoder->GetVoltage(); //currently a voltage
 		curAng = ((curAng - 1.71) * DEGREES_PER_VOLT) + 10.5;
-		float curRPM = RobotMap::shooterFrontJag->GetSpeed();
+		float curRPM = RobotMap::shooterJag->GetSpeed();
 		bool doAngsMatch = (curAng <= calcAng + 5) && (curAng >= calcAng - 5);
 		bool doRPMsMatch = (curRPM <= calcRPM + 200) && (curRPM >= calcRPM - 200);
 		if(doAngsMatch && doRPMsMatch) {
@@ -105,8 +102,7 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		
 		//scaled to 0-100 percentage
-		SmartDashboard::PutNumber("Shooter Front Current Speed", RobotMap::shooterFrontJag->GetSpeed() / 37.5);
-		SmartDashboard::PutNumber("Shooter Back Current Speed", RobotMap::shooterBackJag->GetSpeed() / 37.5);
+		SmartDashboard::PutNumber("Shooter Current Speed", RobotMap::shooterJag->GetSpeed() / 37.5);
 	}
 #ifdef DEBUG_DATA
 	//Gyro
