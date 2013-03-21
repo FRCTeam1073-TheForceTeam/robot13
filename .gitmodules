@@ -6,3 +6,6 @@
 [submodule "WPILibExtensions"]
 	path = WPILibExtensions
 	url = https://github.com/FRCTeam1073-TheForceTeam/WPILibExtensions.git
+[submodule "Documentation"]
+	path = Documentation
+	url = https://github.com/FRCTeam1073-TheForceTeam/robot13.git
