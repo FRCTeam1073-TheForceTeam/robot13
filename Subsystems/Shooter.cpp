@@ -1,5 +1,6 @@
 #include "Shooter.h"
 #include "../Robot.h"
+
 //this will require optimization
 #define ELEVATION_INCREMENT_SCALE_FACTOR 0.8f	//was 1.0
 #define ELEVATION_INCREMENT_ANGLE_SPEED_UP 0.4 * ELEVATION_INCREMENT_SCALE_FACTOR
@@ -170,3 +171,4 @@ void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
 	elevatorMinVoltage = vmin;
 	elevatorMaxVoltage = vmax;
 }
+
