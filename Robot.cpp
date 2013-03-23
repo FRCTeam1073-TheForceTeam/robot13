@@ -11,7 +11,6 @@ DriveTrain* Robot::driveTrain = NULL;
 Collector* Robot::collector = NULL;
 Shooter* Robot::shooter = NULL;
 AllignmentData* Robot::allignmentData = NULL;
-DiscVelocity* Robot::discVelocity = NULL;
 DigitalInput* Robot::jumper13 = NULL;
 DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
@@ -103,7 +102,6 @@ void Robot::RobotInit() {
 		collector = new Collector();
 		shooter = new Shooter();
 		allignmentData = new AllignmentData();
-		discVelocity = new DiscVelocity(RobotMap::velocity1);
 	}
 	
 	driveTrain = new DriveTrain();

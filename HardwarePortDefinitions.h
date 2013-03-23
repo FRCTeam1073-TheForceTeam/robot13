@@ -13,7 +13,7 @@
 #define JAGUAR_SHOOTER_FRONT 5
 #define JAGUAR_DRIVE_LEFT 6
 #define JAGUAR_DRIVE_RIGHT 9
-#ifdef ADD_SECONDARY_DRIVE 
+#ifdef ADD_SECONDARY_DRIVE //as if...
 	#define JAGUAR_DRIVE_SECONDARY_LEFT 4
 	#define JAGUAR_DRIVE_SECONDARY_RIGHT 8
 #endif
@@ -27,9 +27,6 @@
 #define ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER 6
 
 //Digital Input Channels
-#define DIGITAL_MUZZLE_VELOCITY_ONE 1
-#define DIGITAL_MUZZLE_VELOCITY_TWO 2
-#define DIGITAL_MUZZLE_VELOCITY_EMITTER_POWER 3 //Obviously we won't construct anything with this, just to show that it exists
 #define DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR 4
 #define DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR_EMITTER_POWER 5 //Obviously we won't construct anything with this, just to show that it exists
 #define DIGITAL_JUMPER_12 12

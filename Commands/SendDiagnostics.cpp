@@ -103,15 +103,8 @@ void SendDiagnostics::Execute() {
 	//Gyro
 	diagnosticsTable->PutNumber("Drive Train Gyro Angle", RobotMap::driveTrainGyro->GetAngle());
 #endif
-	if(Robot::discVelocity->IsThereNewData()){
-		float velocity = Robot::discVelocity->GetVelocityFPS();
-		float time = Robot::discVelocity->GetEllapsedTime();
-#ifdef DEBUG_DATA
-		SmartDashboard::PutNumber(DISC_SHOT_SPEED_FPS, velocity);
-		SmartDashboard::PutNumber(DISC_ELLAPSED_TIME, time);
-#endif
-	}
-	
+
+
 	if(Robot::whichRobot == Robot::mobileBase || Robot::whichRobot == Robot::elot) {
 		SmartDashboard::PutNumber("Number of Discs", 2);
 		SmartDashboard::PutBoolean("Is Locked On", false);

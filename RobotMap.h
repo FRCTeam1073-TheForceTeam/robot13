@@ -27,9 +27,7 @@ public:
 	static StallableAnalogEncoder* shooterElevationEncoder;
 	static StallableAnalogEncoder* climberArmLeftWindowEncoder;
 	static StallableAnalogEncoder* climberArmRightWindowEncoder;
-	//Chainsaw Magnetic Encoder
-	static DigitalInput* velocity1;
-	static DigitalInput* velocity2;
+
 	static void init();
 };
 #endif

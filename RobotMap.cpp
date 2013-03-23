@@ -16,8 +16,6 @@ SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
 SmartCANJaguar* RobotMap::shooterFrontJag = NULL;
 SmartCANJaguar* RobotMap::shooterBackJag = NULL;
-DigitalInput* RobotMap::velocity1 = NULL;
-DigitalInput* RobotMap::velocity2 = NULL;
 StallableAnalogEncoder* RobotMap::shooterElevationEncoder = NULL;
 StallableAnalogEncoder* RobotMap::climberArmLeftWindowEncoder = NULL;
 StallableAnalogEncoder* RobotMap::climberArmRightWindowEncoder = NULL;
@@ -80,11 +78,7 @@ void RobotMap::init() {
 	lw->AddSensor("Climber Arms", "Left Arm Encoder", (AnalogChannel*)climberArmLeftWindowEncoder);
 	climberArmRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
 	lw->AddSensor("Climber Arms", "Right Arm Encoder", (AnalogChannel*)climberArmRightWindowEncoder);
-    velocity1 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_ONE);
-    velocity2 = new DigitalInput(DIGITAL_MUZZLE_VELOCITY_TWO);
 	driveTrainGyro->Reset();
-	lw->AddSensor("Digital Inputs", "MuzzleVelocity1", velocity1);
-	lw->AddSensor("Digital Inputs", "MuzzleVelocity2", velocity2);
 	rollerMotor = new Relay(PWM_ROLLER_SPIKE_MOTOR, Relay::kForwardOnly);
 	//lw->AddActuator("Roller", "Spike", rollerMotor);
 }
