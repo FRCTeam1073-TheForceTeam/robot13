@@ -16,10 +16,6 @@ void SendDiagnostics::Initialize() {
 	printf("leftDriveExists %d\n", leftDriveExists);
 	rightDriveExists = RobotMap::driveTrainRightMotor->ExistsOnBus();
 	printf("rightDriveExists %d\n", rightDriveExists);
-	leftClimberExists = RobotMap::climberLeftCIM->ExistsOnBus();
-	printf("leftClimberExists %d\n", leftClimberExists);
-	rightClimberExists = RobotMap::climberRightCIM->ExistsOnBus();
-	printf("rightClimberExists %d\n", rightClimberExists);
 	primaryShooterExists = RobotMap::shooterFrontJag->ExistsOnBus();
 	printf("primaryShooterExists %d\n", primaryShooterExists);
 	supportShooterExists = RobotMap::shooterBackJag->ExistsOnBus();
@@ -57,8 +53,6 @@ void SendDiagnostics::Execute() {
 	if(rightDriveExists){JagDiags("Right Drive", RobotMap::driveTrainRightMotor, true);}
 	if(primaryShooterExists){JagDiags("Front Shooter", RobotMap::shooterFrontJag, false);}
 	if(supportShooterExists){JagDiags("Back Shooter", RobotMap::shooterBackJag, false);}
-	if(leftClimberExists){JagDiags("Left Climb", RobotMap::climberLeftCIM, true);}
-	if(rightClimberExists){JagDiags("Right Climb", RobotMap::climberRightCIM, true);}
 	if (Robot::whichRobot == Robot::newRobot){
 		
 		//logic for locked on (DOESN'T INCLUDE LATERAL MOTION)

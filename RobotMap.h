@@ -5,14 +5,9 @@
 #include "HardwarePortDefinitions.h"
 class RobotMap {
 public:
-	static SpeedController* climberArmLeftClimbWindowVictor;
-	static SpeedController* climberArmRightClimbWindowVictor;
 	static SpeedController* shooterElevationVictor;
-	static SmartCANJaguar* climberLeftCIM;
-	static SmartCANJaguar* climberRightCIM;
 	static SmartCANJaguar* driveTrainLeftMotor;
 	static SmartCANJaguar* driveTrainRightMotor;
-	static Relay* rollerMotor;
 #ifdef ADD_SECONDARY_DRIVE
 	static SmartCANJaguar* driveTrainSecondaryRightMotor;
 	static SmartCANJaguar* driveTrainSecondaryLeftMotor;
@@ -25,8 +20,6 @@ public:
 	
 	//Mag Encoders
 	static StallableAnalogEncoder* shooterElevationEncoder;
-	static StallableAnalogEncoder* climberArmLeftWindowEncoder;
-	static StallableAnalogEncoder* climberArmRightWindowEncoder;
 
 	static void init();
 };

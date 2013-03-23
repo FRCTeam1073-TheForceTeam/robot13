@@ -1,10 +1,7 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 SpeedController* RobotMap::shooterElevationVictor = NULL;
-SpeedController* RobotMap::climberArmLeftClimbWindowVictor = NULL;
-SpeedController* RobotMap::climberArmRightClimbWindowVictor = NULL;
-SmartCANJaguar* RobotMap::climberLeftCIM = NULL;
-SmartCANJaguar* RobotMap::climberRightCIM = NULL;
+
 SmartCANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 SmartCANJaguar* RobotMap::driveTrainRightMotor = NULL;
 #ifdef ADD_SECONDARY_DRIVE
@@ -16,29 +13,12 @@ SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
 SmartCANJaguar* RobotMap::shooterFrontJag = NULL;
 SmartCANJaguar* RobotMap::shooterBackJag = NULL;
-StallableAnalogEncoder* RobotMap::shooterElevationEncoder = NULL;
-StallableAnalogEncoder* RobotMap::climberArmLeftWindowEncoder = NULL;
-StallableAnalogEncoder* RobotMap::climberArmRightWindowEncoder = NULL;
-Relay* RobotMap::rollerMotor = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 	
 	shooterElevationVictor = new Victor(PWM_SHOOTER_ELEVATION_MOTOR);
 	lw->AddActuator("Shooter", "ShooterElevationVictor", (Victor*) shooterElevationVictor);
-	
-	climberArmLeftClimbWindowVictor = new Victor(PWM_CLIMBER_LEFT_WINDOW_MOTOR);
-	lw->AddActuator("Climber Arms", "LeftClimbWindowVictor", (Victor*) climberArmLeftClimbWindowVictor);
-	
-	climberArmRightClimbWindowVictor = new Victor(PWM_CLIMBER_RIGHT_WINDOW_MOTOR);
-	lw->AddActuator("Climber Arms", "RightClimbWindowVictor", (Victor*) climberArmRightClimbWindowVictor);
-	
-	climberLeftCIM = new SmartCANJaguar(JAGUAR_CLIMBER_CIM_LEFT);
-	climberLeftCIM->Invert();
-	lw->AddActuator("Climber", "Left CIM", climberLeftCIM);
-	
-	climberRightCIM = new SmartCANJaguar(JAGUAR_CLIMBER_CIM_RIGHT);
-	lw->AddActuator("Climber", "Right CIM", climberRightCIM);
-	
+
 	driveTrainLeftMotor = new SmartCANJaguar(JAGUAR_DRIVE_LEFT);
 	lw->AddActuator("DriveTrain","leftdrivemotor", driveTrainLeftMotor);
 	
@@ -74,11 +54,7 @@ void RobotMap::init() {
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
     lw->AddSensor("Shooter", "Elevation Encoder", (AnalogChannel*)shooterElevationEncoder);
-	climberArmLeftWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_LEFT_ANGLE_MAG_ENCODER);
-	lw->AddSensor("Climber Arms", "Left Arm Encoder", (AnalogChannel*)climberArmLeftWindowEncoder);
-	climberArmRightWindowEncoder = new StallableAnalogEncoder(ANALOG_CLIMBER_RIGHT_ANGLE_MAG_ENCODER);
-	lw->AddSensor("Climber Arms", "Right Arm Encoder", (AnalogChannel*)climberArmRightWindowEncoder);
+
 	driveTrainGyro->Reset();
-	rollerMotor = new Relay(PWM_ROLLER_SPIKE_MOTOR, Relay::kForwardOnly);
 	//lw->AddActuator("Roller", "Spike", rollerMotor);
 }
