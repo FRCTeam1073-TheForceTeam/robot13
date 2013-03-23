@@ -7,14 +7,11 @@
 //#define DEBUG_DATA
 
 OI* Robot::oi = NULL; 
-Climber* Robot::climber = NULL;
-ClimberArms* Robot::climberArms = NULL;
 DriveTrain* Robot::driveTrain = NULL;
 Collector* Robot::collector = NULL;
 Shooter* Robot::shooter = NULL;
 AllignmentData* Robot::allignmentData = NULL;
 DiscVelocity* Robot::discVelocity = NULL;
-Roller* Robot::roller = NULL;
 DigitalInput* Robot::jumper13 = NULL;
 DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
@@ -100,13 +97,8 @@ void Robot::RobotInit() {
 		printf("something else -- HELP!");
 	}
 	printf("\n");
-	if(whichRobot == newRobot) {
-		climber = new Climber();
-		climberArms = new ClimberArms();
-	}
-	if(whichRobot == mobileBase || whichRobot == newRobot){
-		roller = new Roller();
-	}
+	if(whichRobot == newRobot) {}
+	if(whichRobot == mobileBase || whichRobot == newRobot){}
 	if(whichRobot == mobileBase || whichRobot == newRobot || whichRobot == elot) {
 		collector = new Collector();
 		shooter = new Shooter();
@@ -122,9 +114,6 @@ void Robot::RobotInit() {
 	
 	shooter->SetBackMode(scaleTypePref, scaleFactorPref);
 	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
-	
-	climberArms->setArmEncVal( leftArmUpEncValPref,leftArmMiddleEncValPref, leftArmDownEncValPref,
-						   rightArmUpEncValPref,rightArmMiddleEncValPref,rightArmDownEncValPref);
 	
 	chooser = new SendableChooser();
 	chooser->AddDefault("Right Back", new AutonomousSequence(AutonomousSequence::rightBack));

@@ -77,12 +77,6 @@ void SendDiagnostics::Execute() {
 		else isLockedOn = false;
 		SmartDashboard::PutBoolean("Is Locked On", isLockedOn);
 		
-		//climber engaged
-		SmartDashboard::PutBoolean("Is Climber Engaged", Robot::climber->GetClimberOnOff());
-		
-		//climber encoder values
-		diagnosticsTable->PutNumber("Left Climber Encoder", Robot::climberArms->leftWindowEncoder->GetVoltage());
-		diagnosticsTable->PutNumber("Right Climber Encoder", Robot::climberArms->rightWindowEncoder->GetVoltage());
 		
 		//drive encoders 
 		SmartDashboard::PutNumber("Left Drive Encoder", Robot::driveTrain->leftMotor->GetSpeed());

@@ -6,14 +6,11 @@
 #include "SmartDashboardKeys.h"
 #include "Commands/AutonomousSequence.h"
 #include "Subsystems/AllignmentData.h"
-#include "Subsystems/Climber.h"
 #include "Subsystems/Collector.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Diagnostics.h"
 #include "Subsystems/DiscVelocity.h"
-#include "Subsystems/ClimberArms.h"
-#include "Subsystems/Roller.h"
 #include "OI.h"
 #include "HardwarePortDefinitions.h"
 class Robot : public IterativeRobot {
@@ -22,15 +19,12 @@ public:
 	static OI *oi;
 	LiveWindow *lw;
 	SendableChooser *chooser;
-	static Climber* climber;
 	static DriveTrain* driveTrain;
 	static Collector* collector;
 	static Shooter* shooter;
 	static AllignmentData* allignmentData;
 	static DiscVelocity* discVelocity;
 	static Diagnostics* diagnostics;
-	static ClimberArms* climberArms;
-	static Roller* roller;
 	Robot();
 	virtual void RobotInit();
 	virtual void AutonomousInit();

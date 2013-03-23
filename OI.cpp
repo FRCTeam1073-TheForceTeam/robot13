@@ -5,11 +5,8 @@
 #include "Commands/AutonomousForward.h"
 #include "Commands/AutonomousSequence.h"
 #include "Commands/AutonomousTurnToAngle.h"
-#include "Commands/ClimberDrive.h"
-#include "Commands/ClimberOnOff.h"
 #include "Commands/JoystickDrive.h"
 #include "Commands/PullShooterData.h"
-#include "Commands/ChainsawPosition.h"
 #include "Commands/SetCubicDrive.h"
 #include "Commands/SetShooterToCalculatedValues.h"
 #include "Commands/Shoot.h"
@@ -18,10 +15,8 @@
 #include "Commands/WriteDriveData.h"
 #include "Commands/ShooterAdjustAngle.h"
 #include "Commands/ManualShooterSpeedAdjust.h"
-#include "Commands/RollerOnOff.h"
 #include "Commands/DiscOnBedSensorOverride.h"
 #include "Commands/SetToFeederAngle.h"
-#include "Commands/ManualClimberArmControl.h"
 #include "Commands/KillFeeder.h"
 //#define DEBUG_DATA
 
@@ -40,34 +35,10 @@ void OI::ConstructJoystickButtons(){
 	//use auto aim (calculated) variables
 	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
-	//chainsaw control commands & safety
-	climberDisengage = new JoystickButton(rightStick, RIGHT_CLIMBER_DISENGAGE_BTN);
-	climberDisengage->WhenPressed(new ClimberOnOff(off));
-	climberEngage = new JoystickButton(rightStick, RIGHT_CLIMBER_ENGAGE_BTN);
-	climberEngage->WhenPressed(new ClimberOnOff(on));
-	
-// we are opting for manual control of the arms - these presets are here in the event that we want to go back...
-#if 0
-	chainsawDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
-	chainsawDown->WhenPressed(new ChainsawPosition(ChainsawPosition::down));
-	chainsawMiddle = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_MIDDLE_BTN);
-	chainsawMiddle->WhenPressed(new ChainsawPosition(ChainsawPosition::middle));
-	chainsawUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
-	chainsawUp->WhenPressed(new ChainsawPosition(ChainsawPosition::up));
-#endif
-	
-	manualClimberArmsUp = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_UP_BTN);
-	manualClimberArmsUp->WhileHeld(new ManualClimberArmControl(true));
-	
-	manualClimberArmsDown = new JoystickButton(operatorStick, OPERATOR_CLIMBER_CHAINSAW_DOWN_BTN);
-	manualClimberArmsDown->WhileHeld(new ManualClimberArmControl(false));
 	
 	goToFeederAngle = new JoystickButton(operatorStick, OPERATOR_FEEDER_ANGLE_BTN);
 	goToFeederAngle->WhenPressed(new SetToFeederAngle());
-#if 0
-	climberSafe = new JoystickButton(operatorStick, RIGHT_CLIMBER_SAFETY_BTN);
-	climberSafe->WhenPressed(new ClimberSafe());
-#endif
+
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
@@ -95,11 +66,6 @@ void OI::ConstructJoystickButtons(){
 	shooterOnOffButton->WhenPressed(new ShooterToggleOnOff());
 	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	shootButton->WhenPressed(new Shoot());
-	rollerOn = new JoystickButton(rightStick, RIGHT_ROLLER_ON_BTN);
-	rollerOn->WhenPressed(new RollerOnOff(on));
-	rollerOff = new JoystickButton(rightStick, RIGHT_ROLLER_OFF_BTN);
-	rollerOff->WhenPressed(new RollerOnOff(off));
-	
 	
 	//command added at GSR to quicky and dirty-ly kill the feeder motor
 	//put on left joystick because buttons aren't free...
@@ -112,16 +78,8 @@ void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ShooterOn", new ShooterToggleOnOff());
 	SmartDashboard::PutData("ShooterOff", new ShooterToggleOnOff());
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
-	SmartDashboard::PutData("SetChainsawPositionUp", new ChainsawPosition(ChainsawPosition::up));
-	SmartDashboard::PutData("SetChainsawPositionMiddle", new ChainsawPosition(ChainsawPosition::middle));
-	SmartDashboard::PutData("SetChainsawPositionDown", new ChainsawPosition(ChainsawPosition::down));
-	SmartDashboard::PutData("ClimberDrive", new ClimberDrive());
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
-	SmartDashboard::PutData("ClimberOn", new ClimberOnOff(on));
-	SmartDashboard::PutData("ClimberOff", new ClimberOnOff(off));
 	SmartDashboard::PutData("Override DiscOnBed sensor", new DiscOnBedSensorOverride());
-	SmartDashboard::PutData("Roller On", new RollerOnOff(on));
-	SmartDashboard::PutData("Roller Off", new RollerOnOff(off));
 #endif
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}

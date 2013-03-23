@@ -11,11 +11,6 @@ private:
 	SmartJoystick* leftStick;
 	SmartJoystick* rightStick;
 	JoystickButton* engageAutoAim;
-	JoystickButton* chainsawDown;
-	JoystickButton* chainsawMiddle;
-	JoystickButton* chainsawUp;
-	JoystickButton* climberDisengage;
-	JoystickButton* climberEngage;
 	JoystickButton* shooterOnOffButton;
 	JoystickButton* shootButton;
 	JoystickButton* rightTurboOn;
@@ -27,12 +22,7 @@ private:
     JoystickButton* shooterSpeedDown;
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
-    JoystickButton* rollerOn;
-    JoystickButton* rollerOff;
     JoystickButton* goToFeederAngle;
-    
-    JoystickButton* manualClimberArmsUp;
-    JoystickButton* manualClimberArmsDown;
     
     JoystickButton *killFeeder;
     
