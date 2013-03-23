@@ -20,7 +20,6 @@ public:
 	static SmartGyro* driveTrainGyro;
 	static SpeedController* collectorMotor;
 	static DigitalInput* collectorDiscOnShooterBed;
-	static AnalogChannel* collectorDiscCountSensor;
 	static SmartCANJaguar* shooterFrontJag;
 	static SmartCANJaguar* shooterBackJag;
 	

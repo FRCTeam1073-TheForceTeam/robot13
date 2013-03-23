@@ -82,7 +82,6 @@ void SendDiagnostics::Execute() {
 		SmartDashboard::PutNumber("Left Drive Encoder", Robot::driveTrain->leftMotor->GetSpeed());
 		SmartDashboard::PutNumber("Right Drive Encoder", Robot::driveTrain->rightMotor->GetSpeed());
 		
-		SmartDashboard::PutNumber("Number of Discs", Robot::collector->GetNumberOfDiscs());
 #ifdef DEBUG_DATA
 		SmartDashboard::PutNumber("Left Mag", RobotMap::climberArmLeftWindowEncoder->GetVoltage());
 		SmartDashboard::PutNumber("Right mag", RobotMap::climberArmRightWindowEncoder->GetVoltage());
@@ -91,8 +90,6 @@ void SendDiagnostics::Execute() {
 	if (Robot::whichRobot == Robot::newRobot || Robot::whichRobot == Robot::mobileBase) {
 		//Shooter Encoders
 		diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
-		//Disc Count
-		diagnosticsTable->PutNumber(COLLECTOR_DISC_COUNT, Robot::collector->GetNumberOfDiscs());
 		//Disc Present
 		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
 		

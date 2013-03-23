@@ -14,7 +14,6 @@ SmartCANJaguar* RobotMap::driveTrainSecondaryRightMotor = NULL;
 SmartGyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
-AnalogChannel* RobotMap::collectorDiscCountSensor = NULL;
 SmartCANJaguar* RobotMap::shooterFrontJag = NULL;
 SmartCANJaguar* RobotMap::shooterBackJag = NULL;
 DigitalInput* RobotMap::velocity1 = NULL;
@@ -67,9 +66,6 @@ void RobotMap::init() {
 	
 	collectorDiscOnShooterBed = new DigitalInput(DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR);
 	lw->AddSensor("Collector", "DiscOnShooterBed", collectorDiscOnShooterBed);
-	
-	collectorDiscCountSensor = new AnalogChannel(ANALOG_COLLECTOR_DISC_PROXIMITY);
-	lw->AddSensor("Collector", "DiscCountSensor", collectorDiscCountSensor);
 	
 	shooterFrontJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
 	shooterFrontJag->Invert();

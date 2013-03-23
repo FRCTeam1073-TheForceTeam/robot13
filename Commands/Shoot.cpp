@@ -8,7 +8,7 @@ Shoot::Shoot() {
 		SetTimeout(2);
 }
 void Shoot::Initialize() {
-	abort = (!Robot::shooter->IsShooterMotorOn() || Robot::collector->GetNumberOfDiscs() == 0);
+	abort = (!Robot::shooter->IsShooterMotorOn());
 	if(abort){
 		printf("ERROR! You either have no discs or the shooter is not running!\n");
 		return;

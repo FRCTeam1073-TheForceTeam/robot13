@@ -8,11 +8,9 @@ class Collector: public Subsystem {
 public:
 	SpeedController* motor;
 	DigitalInput* discOnShooterBed;
-	AnalogChannel* discCountSensor;
 	AnalogChannel* discUpsideDownSensor;
 	Collector();
 	void InitDefaultCommand();
-	int  GetNumberOfDiscs();
 	bool IsDiscOnShooterBed();
 	void MotorOn();
 	void MotorOff();
