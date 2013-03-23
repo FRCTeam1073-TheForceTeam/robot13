@@ -13,6 +13,7 @@ SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
 SmartCANJaguar* RobotMap::shooterFrontJag = NULL;
 SmartCANJaguar* RobotMap::shooterBackJag = NULL;
+DigitalInput* RobotMap::shooterIREncoder = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 	
@@ -55,6 +56,8 @@ void RobotMap::init() {
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
     lw->AddSensor("Shooter", "Elevation Encoder", (AnalogChannel*)shooterElevationEncoder);
 
+    shooterIREncoder = new DigitalInput(DIGITAL_SHOOTER_IR_ENCODER);
+    
 	driveTrainGyro->Reset();
 	//lw->AddActuator("Roller", "Spike", rollerMotor);
 }

@@ -15,6 +15,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	backJag = RobotMap::shooterBackJag;
 	elevationEncoder = RobotMap::shooterElevationEncoder;
 	elevationVictor = RobotMap::shooterElevationVictor;
+	IREncoder = RobotMap::shooterIREncoder;
     isShooterMotorOn = false;
 	ConfigureJaguarEncoder(frontJag);
 	ConfigureJaguarEncoder(backJag);

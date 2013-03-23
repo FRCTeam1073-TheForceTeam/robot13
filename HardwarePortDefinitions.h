@@ -25,6 +25,8 @@
 //Digital Input Channels
 #define DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR 4
 #define DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR_EMITTER_POWER 5 //Obviously we won't construct anything with this, just to show that it exists
+#define DIGITAL_SHOOTER_IR_ENCODER 6
+#define DIGITAL_SHOOTER_IR_ENCODER_EMITTER_POWER 7
 #define DIGITAL_JUMPER_12 12
 #define DIGITAL_JUMPER_13 13
 #define DIGITAL_JUMPER_14 14

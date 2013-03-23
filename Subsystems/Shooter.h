@@ -34,6 +34,7 @@ public:
 	SmartCANJaguar* backJag;
 	SpeedController* elevationVictor;
 	StallableAnalogEncoder* elevationEncoder;
+	DigitalInput* IREncoder;
 	Shooter();
 	void InitDefaultCommand();
 	void SetToDefaults();
