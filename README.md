@@ -6,14 +6,9 @@ It uses an external repository that we wrote to provide for better global contro
 
 To make sure that all submodules are obtained, and that fun stuff - run the following:
 
-	#first time
+	#only need to do this on your first time
 	git submodule init
-	#other times
 	git submodule update
-	#pulling latest branch, not always advised - generally the commit in .gitmodules is what you want
-	cd WPILibExtensions
-	git checkout master
-	git pull
 
-##GSR
-We'll be playing at the Granite State Regional in Manchester New Hampshire pretty soon - come check us out! And of course, best of luck to everyone out there in your competitions.
+##Documentation
+Documentation for all of the code in this repository can be found [here](http://frcteam1073-theforceteam.github.com/robot13/annotated.html)
