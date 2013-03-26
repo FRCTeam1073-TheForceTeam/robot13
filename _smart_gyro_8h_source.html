@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>robot 13 -- Ultimate Ascent Robot Code: WPILibExtensions/SmartGyro.h Source File</title>
+<title>robot 13 -- Ultimate Ascent Robot Code: C:/WindRiver/workspace/robot13/WPILibExtensions/SmartGyro.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_19b07f5f60cc2ae9db003bb8d40155a7.html">WPILibExtensions</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_e253ff1ef78ab47b7573bd33dbc16de6.html">WPILibExtensions</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,20 +94,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;CommonFunctions.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno"><a class="code" href="class_smart_gyro.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_smart_gyro.html">SmartGyro</a> : <span class="keyword">public</span> Gyro{</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="class_smart_gyro.html">SmartGyro</a>(UINT32 channel);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment">//radians OverPi is the default that Gyro.h returns.</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">enum</span> {radiansOverPi, radians, degrees} GyroMode;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> SetGyroMode(GyroMode gyroMode);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    GyroMode GetGyroMode();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">float</span> GetAngle();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    GyroMode gyroMode;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="class_smart_gyro.html#a0a8f6d01095dba275b3420f8b5bce0fa">SmartGyro</a>(UINT32 channel);</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">   17</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48ca15e0e44ff647a61322c424565b085e53">   18</a></span>&#160;        <a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48ca15e0e44ff647a61322c424565b085e53">radiansOverPi</a>, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48ca20a9e435726ac199bece94bc9869c8d6">   19</a></span>&#160;        <a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48ca20a9e435726ac199bece94bc9869c8d6">radians</a>,       </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48cad0ffd6c76f79f129cb58f41ecd8a0f1a">   20</a></span>&#160;        <a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48cad0ffd6c76f79f129cb58f41ecd8a0f1a">degrees</a>        </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }      </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_smart_gyro.html#af6491c4e6572e74216ee9f220c56ec9f">SetGyroMode</a>(<a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a> gyroMode);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a> <a class="code" href="class_smart_gyro.html#a3c92e1e4cfe4b4b516588221b61151dc">GetGyroMode</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_smart_gyro.html#a1de735ccda9598be11608ee0e42b99ae">GetAngle</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a> gyroMode;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 18:27:57 for robot 13 -- Ultimate Ascent Robot Code by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 19:29:27 for robot 13 -- Ultimate Ascent Robot Code by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

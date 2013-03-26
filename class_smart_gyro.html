@@ -64,6 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,35 +102,136 @@ Inheritance diagram for SmartGyro:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1048575920a0264cc901b85d640aa48c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GyroMode</b> { <b>radiansOverPi</b>, 
-<b>radians</b>, 
-<b>degrees</b>
+<tr class="memitem:a1048575920a0264cc901b85d640aa48c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a> { <a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48ca15e0e44ff647a61322c424565b085e53">radiansOverPi</a>, 
+<a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48ca20a9e435726ac199bece94bc9869c8d6">radians</a>, 
+<a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48cad0ffd6c76f79f129cb58f41ecd8a0f1a">degrees</a>
  }</td></tr>
 <tr class="separator:a1048575920a0264cc901b85d640aa48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0a8f6d01095dba275b3420f8b5bce0fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a8f6d01095dba275b3420f8b5bce0fa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SmartGyro</b> (UINT32 channel)</td></tr>
+<tr class="memitem:a0a8f6d01095dba275b3420f8b5bce0fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_smart_gyro.html#a0a8f6d01095dba275b3420f8b5bce0fa">SmartGyro</a> (UINT32 channel)</td></tr>
 <tr class="separator:a0a8f6d01095dba275b3420f8b5bce0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6491c4e6572e74216ee9f220c56ec9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6491c4e6572e74216ee9f220c56ec9f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetGyroMode</b> (GyroMode gyroMode)</td></tr>
+<tr class="memitem:af6491c4e6572e74216ee9f220c56ec9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_smart_gyro.html#af6491c4e6572e74216ee9f220c56ec9f">SetGyroMode</a> (<a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a> gyroMode)</td></tr>
 <tr class="separator:af6491c4e6572e74216ee9f220c56ec9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c92e1e4cfe4b4b516588221b61151dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c92e1e4cfe4b4b516588221b61151dc"></a>
-GyroMode&#160;</td><td class="memItemRight" valign="bottom"><b>GetGyroMode</b> ()</td></tr>
+<tr class="memitem:a3c92e1e4cfe4b4b516588221b61151dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_smart_gyro.html#a3c92e1e4cfe4b4b516588221b61151dc">GetGyroMode</a> ()</td></tr>
 <tr class="separator:a3c92e1e4cfe4b4b516588221b61151dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1de735ccda9598be11608ee0e42b99ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1de735ccda9598be11608ee0e42b99ae"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>GetAngle</b> ()</td></tr>
+<tr class="memitem:a1de735ccda9598be11608ee0e42b99ae"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_smart_gyro.html#a1de735ccda9598be11608ee0e42b99ae">GetAngle</a> ()</td></tr>
 <tr class="separator:a1de735ccda9598be11608ee0e42b99ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a1048575920a0264cc901b85d640aa48c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">SmartGyro::GyroMode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Different options to represent how your angle will be returned when <a class="el" href="class_smart_gyro.html#a1de735ccda9598be11608ee0e42b99ae">SmartGyro::GetAngle()</a> is called. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a1048575920a0264cc901b85d640aa48ca15e0e44ff647a61322c424565b085e53"></a>radiansOverPi</em>&nbsp;</td><td class="fielddoc">
+<p>Angles are represented by radians divided by pi this is how the WPILib Gyro class returns angles </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1048575920a0264cc901b85d640aa48ca20a9e435726ac199bece94bc9869c8d6"></a>radians</em>&nbsp;</td><td class="fielddoc">
+<p>Angles are represented by radians </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a1048575920a0264cc901b85d640aa48cad0ffd6c76f79f129cb58f41ecd8a0f1a"></a>degrees</em>&nbsp;</td><td class="fielddoc">
+<p>Angles are represented by degrees </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a0a8f6d01095dba275b3420f8b5bce0fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SmartGyro::SmartGyro </td>
+          <td>(</td>
+          <td class="paramtype">UINT32&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructs a <a class="el" href="class_smart_gyro.html">SmartGyro</a> at a specified port. By default, objects of <a class="el" href="class_smart_gyro.html">SmartGyro</a> will behave exactly like the WPI Gyro meaning that SmartGyro::gyroMode will equal radiansOverPi. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>The Analog Channel port on your robot where the <a class="el" href="class_smart_gyro.html">SmartGyro</a> is plugged into. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a1de735ccda9598be11608ee0e42b99ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SmartGyro::GetAngle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the angle that the Gyro is set at. Overrides Gyro::GetAngle() to convert the returned float into Degrees, Radians, or Radians divided by pi depending on GyroMode. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3c92e1e4cfe4b4b516588221b61151dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">SmartGyro::GyroMode</a> SmartGyro::GetGyroMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the GyroMode that the <a class="el" href="class_smart_gyro.html">SmartGyro</a> is configured to use </p>
+
+</div>
+</div>
+<a class="anchor" id="af6491c4e6572e74216ee9f220c56ec9f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartGyro::SetGyroMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_smart_gyro.html#a1048575920a0264cc901b85d640aa48c">GyroMode</a>&#160;</td>
+          <td class="paramname"><em>gyroMode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the GyroMode for use in <a class="el" href="class_smart_gyro.html#a1de735ccda9598be11608ee0e42b99ae">SmartGyro::GetAngle()</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gyroMode</td><td>the new GyroMode </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>WPILibExtensions/<a class="el" href="_smart_gyro_8h_source.html">SmartGyro.h</a></li>
-<li>WPILibExtensions/SmartGyro.cpp</li>
+<li>C:/WindRiver/workspace/robot13/WPILibExtensions/<a class="el" href="_smart_gyro_8h_source.html">SmartGyro.h</a></li>
+<li>C:/WindRiver/workspace/robot13/WPILibExtensions/SmartGyro.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 18:27:57 for robot 13 -- Ultimate Ascent Robot Code by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 19:29:28 for robot 13 -- Ultimate Ascent Robot Code by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -170,7 +170,7 @@ else{
 }
 </pre><p><a class="anchor" id="SmartGyro"></a> </p>
 <h3><a class="el" href="class_smart_gyro.html">SmartGyro</a></h3>
-<p>The <code>WPILib Gyro</code> class returns angle measurements in Radians/pi. This is useful for counting how many pis you have, but we don't like this form of measuring angles. When constructing a <code><a class="el" href="class_smart_gyro.html">SmartGyro</a></code> it will behave just like a <code>Gyro</code> but the data it returns can be manipulated to return degrees or radians, as well. By having an extension class to manipulate these values, you are warranted security, as every call to <code>SmartGyro::GetAngle</code> will return the same value, as opposed to manipulating what <code>Gyro::GetAngle</code> returns throughout your code.</p>
+<p>The <code>WPILib Gyro</code> class returns angle measurements in Radians/pi. This is useful for counting how many pis you have, but we don't like this form of measuring angles. When constructing a <code><a class="el" href="class_smart_gyro.html">SmartGyro</a></code> it will behave just like a <code>Gyro</code> but the data it returns can be manipulated to return degrees or radians, as well. By having an extension class to manipulate these values, you are warranted security, as every call to <code><a class="el" href="class_smart_gyro.html#a1de735ccda9598be11608ee0e42b99ae">SmartGyro::GetAngle</a></code> will return the same value, as opposed to manipulating what <code>Gyro::GetAngle</code> returns throughout your code.</p>
 <h4>Changing Gyro Mode</h4>
 <p>SmartGyro* gyro = new SmartGyro(1); float angle = gyro-&gt;GetAngle(); //default gyro-&gt;SetGyroMode(radians); angle = gyro-&gt;GetAngle(); //now in radians gyro-&gt;SetGyroMode(degrees); gyro-&gt;GetAngle(); //now in degrees gyro-&gt;SetGyroMode(radiansOverPi); //back to default</p>
 <p><a class="anchor" id="SmartJoystick"></a> </p>
@@ -231,7 +231,7 @@ PrintStallData* command = new PrintStallData(leftMotor); //make command
 command-&gt;Start(); //Starts command, data will be printed.</pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 18:27:57 for robot 13 -- Ultimate Ascent Robot Code by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 19:29:27 for robot 13 -- Ultimate Ascent Robot Code by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
