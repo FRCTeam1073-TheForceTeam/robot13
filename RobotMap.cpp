@@ -1,7 +1,7 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 SpeedController* RobotMap::shooterElevationVictor = NULL;
-
+StallableAnalogEncoder* RobotMap::shooterElevationEncoder;
 SmartCANJaguar* RobotMap::driveTrainLeftMotor = NULL;
 SmartCANJaguar* RobotMap::driveTrainRightMotor = NULL;
 #ifdef ADD_SECONDARY_DRIVE
