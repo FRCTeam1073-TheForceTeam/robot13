@@ -33,6 +33,8 @@
 #define DIGITAL_MUZZLE_VELOCITY_EMITTER_POWER 3 //Obviously we won't construct anything with this, just to show that it exists
 #define DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR 4
 #define DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR_EMITTER_POWER 5 //Obviously we won't construct anything with this, just to show that it exists
+#define DIGITAL_SHOOTER_IR_ENCODER 6
+#define DIGITAL_SHOOTER_IR_EMITTER 7 //not actually used, just so you dont try and use this port
 #define DIGITAL_JUMPER_12 12
 #define DIGITAL_JUMPER_13 13
 #define DIGITAL_JUMPER_14 14

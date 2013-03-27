@@ -1,5 +1,6 @@
 #include "Shooter.h"
 #include "../Robot.h"
+#include "../Commands/ShooterPID.h"
 
 //this will require optimization
 #define ELEVATION_INCREMENT_SCALE_FACTOR 0.8f	//was 1.0
@@ -17,7 +18,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	elevationVictor = RobotMap::shooterElevationVictor;
     isShooterMotorOn = false;
 	ConfigureJaguarEncoder(shooterJag);
-	SetPID(SHOOTER_DEFAULT_P, SHOOTER_DEFAULT_I, SHOOTER_DEFAULT_D);
+	//SetPID(SHOOTER_DEFAULT_P, SHOOTER_DEFAULT_I, SHOOTER_DEFAULT_D);
 	speed = SHOOTER_DEFAULT_SPEED;
 	scaleFactor = 1;
 	scaleType = identical;
@@ -27,7 +28,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	elevatorMinVoltage = ELEVATION_MIN_VOLTAGE;
 	elevatorMaxVoltage = ELEVATION_MAX_VOLTAGE;
 }
-void Shooter::InitDefaultCommand() {}
+void Shooter::InitDefaultCommand() {SetDefaultCommand(new ShooterPID());}
 void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
 	if(on){
@@ -35,12 +36,12 @@ void Shooter::ShooterOnOff(bool on){
 	}
 	else {
 		printf("Shooter Off\n");
-		shooterJag->Set(SHOOTER_OFF);
+		//shooterJag->Set(SHOOTER_OFF);
 		isShooterMotorOn = false;
 	}
 }
 void Shooter::ShooterRamp(double rampPercent){
-	shooterJag->Set(speed * rampPercent);
+	//shooterJag->Set(speed * rampPercent);
 }
 bool Shooter::IsShooterMotorOn() {return isShooterMotorOn;}
 int Shooter::GetFrontSetSpeed() {return speed;}
@@ -66,7 +67,7 @@ void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
 	if(isShooterMotorOn) 
 	{
-		shooterJag->Set(speed);
+		//shooterJag->Set(speed);
 	}
 	Robot::allignmentData->SendCurrentSpeed(speed);
 }
@@ -113,12 +114,10 @@ void Shooter::TurnToSetAngle(){
 }
 void Shooter::SetPID(double P, double I, double D){
 	printf("Setting P:\t%f\nI:\t%f\nD:\t%f\n", P, I, D);
-	shooterJag->SetPID(P, I, D);
+	//shooterJag->SetPID(P, I, D);
 }
 void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
-	jaguar->ChangeControlMode(CANJaguar::kSpeed);
-	jaguar->SetSpeedReference(CANJaguar::kSpeedRef_Encoder);
-	jaguar->ConfigEncoderCodesPerRev(360);	//maybe 360
+	jaguar->ChangeControlMode(CANJaguar::kVoltage);
 	jaguar->EnableControl();			
 }
 
@@ -170,5 +169,9 @@ void Shooter::SetToFeederPresetAngle() {
 void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
 	elevatorMinVoltage = vmin;
 	elevatorMaxVoltage = vmax;
+}
+void Shooter::SetJagVoltageRampRate(float rampRate)
+{
+	shooterJag->Set(1.0);
 }
 

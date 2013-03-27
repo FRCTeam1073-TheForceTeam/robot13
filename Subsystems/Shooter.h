@@ -30,6 +30,7 @@ private:
 	float ConvertVoltToAngle(float volts);
 	float elevatorMinVoltage, elevatorMaxVoltage;	//constants for eleaator encoder positions...
 public:
+	void SetJagVoltageRampRate(float rampRate);
 	void TurnToSetAngle();
 	SmartCANJaguar* shooterJag;
 	SpeedController* elevationVictor;

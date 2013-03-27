@@ -3,6 +3,7 @@
 #include "WPILib.h"
 #include "WPILibExtensions/WPILibExtensions.h"
 #include "HardwarePortDefinitions.h"
+#include "WPILibExtensions/IREncoder.h"
 class RobotMap {
 public:
 	static SpeedController* climberArmLeftClimbWindowVictor;
@@ -13,6 +14,7 @@ public:
 	static SmartCANJaguar* driveTrainLeftMotor;
 	static SmartCANJaguar* driveTrainRightMotor;
 	static Relay* rollerMotor;
+	static IREncoder* newShooterIREncoder;
 #ifdef ADD_SECONDARY_DRIVE
 	static SmartCANJaguar* driveTrainSecondaryRightMotor;
 	static SmartCANJaguar* driveTrainSecondaryLeftMotor;

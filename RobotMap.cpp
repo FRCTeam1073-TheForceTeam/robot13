@@ -22,8 +22,11 @@ StallableAnalogEncoder* RobotMap::shooterElevationEncoder = NULL;
 StallableAnalogEncoder* RobotMap::climberArmLeftWindowEncoder = NULL;
 StallableAnalogEncoder* RobotMap::climberArmRightWindowEncoder = NULL;
 Relay* RobotMap::rollerMotor = NULL;
+IREncoder* RobotMap::newShooterIREncoder = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
+	
+	newShooterIREncoder = new IREncoder(DIGITAL_SHOOTER_IR_ENCODER);
 	
 	shooterElevationVictor = new Victor(PWM_SHOOTER_ELEVATION_MOTOR);
 	lw->AddActuator("Shooter", "ShooterElevationVictor", (Victor*) shooterElevationVictor);
@@ -71,7 +74,6 @@ void RobotMap::init() {
 	lw->AddSensor("Collector", "DiscCountSensor", collectorDiscCountSensor);
 	
 	shooterJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
-	shooterJag->Invert();
 	lw->AddActuator("Shooter", "Front Jag", shooterJag);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
