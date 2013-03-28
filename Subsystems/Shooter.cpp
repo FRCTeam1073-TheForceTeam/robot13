@@ -36,7 +36,7 @@ void Shooter::ShooterOnOff(bool on){
 	}
 	else {
 		printf("Shooter Off\n");
-		//shooterJag->Set(SHOOTER_OFF);
+		shooterJag->Set(SHOOTER_OFF);
 		isShooterMotorOn = false;
 	}
 }
@@ -117,7 +117,7 @@ void Shooter::SetPID(double P, double I, double D){
 	//shooterJag->SetPID(P, I, D);
 }
 void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
-	jaguar->ChangeControlMode(CANJaguar::kVoltage);
+	jaguar->ChangeControlMode(CANJaguar::kPercentVbus);
 	jaguar->EnableControl();			
 }
 
@@ -172,6 +172,7 @@ void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
 }
 void Shooter::SetJagVoltageRampRate(float rampRate)
 {
-	shooterJag->Set(1.0);
+	
+	shooterJag->Set(rampRate);
 }
 
