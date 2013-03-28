@@ -14,9 +14,8 @@ void WriteDriveData::Initialize() {
 void WriteDriveData::Execute() {
 	float dethklok = (float)Timer::GetFPGATimestamp();
 	fprintf(file, "%f, %f, %f, %f, %f, %f, %f\n", dethklok,
-			RobotMap::shooterFrontJag->GetSpeed(), RobotMap::shooterFrontJag->GetOutputCurrent(),
-			RobotMap::shooterFrontJag->GetOutputVoltage(), RobotMap::shooterBackJag->GetSpeed(),
-			RobotMap::shooterBackJag->GetOutputCurrent(), RobotMap::shooterBackJag->GetOutputVoltage());
+			RobotMap::shooterJag->GetSpeed(), RobotMap::shooterJag->GetOutputCurrent(),
+			RobotMap::shooterJag->GetOutputVoltage());
 			//RobotMap::shooterBackJag->GetSpeed(), RobotMap::shooterBackJag->GetOutputCurrent());
 }
 bool WriteDriveData::IsFinished() {return false;}

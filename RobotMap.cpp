@@ -11,11 +11,12 @@ SmartCANJaguar* RobotMap::driveTrainSecondaryRightMotor = NULL;
 SmartGyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectorMotor = NULL;
 DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
-SmartCANJaguar* RobotMap::shooterFrontJag = NULL;
-SmartCANJaguar* RobotMap::shooterBackJag = NULL;
-DigitalInput* RobotMap::shooterIREncoder = NULL;
+SmartCANJaguar* RobotMap::shooterJag = NULL;
+IREncoder* RobotMap::newShooterIREncoder = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
+	
+	newShooterIREncoder = new IREncoder(DIGITAL_SHOOTER_IR_ENCODER);
 	
 	shooterElevationVictor = new Victor(PWM_SHOOTER_ELEVATION_MOTOR);
 	lw->AddActuator("Shooter", "ShooterElevationVictor", (Victor*) shooterElevationVictor);
@@ -46,17 +47,12 @@ void RobotMap::init() {
 	collectorDiscOnShooterBed = new DigitalInput(DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR);
 	lw->AddSensor("Collector", "DiscOnShooterBed", collectorDiscOnShooterBed);
 	
-	shooterFrontJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
-	shooterFrontJag->Invert();
-	lw->AddActuator("Shooter", "Front Jag", shooterFrontJag);
-	shooterBackJag = new SmartCANJaguar(JAGUAR_SHOOTER_BACK);
-	shooterBackJag->Invert();
-	lw->AddActuator("Shooter", "Back Jag", shooterBackJag);
+	shooterJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
+	lw->AddActuator("Shooter", "Front Jag", shooterJag);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
     lw->AddSensor("Shooter", "Elevation Encoder", (AnalogChannel*)shooterElevationEncoder);
 
-    shooterIREncoder = new DigitalInput(DIGITAL_SHOOTER_IR_ENCODER);
     
 	driveTrainGyro->Reset();
 	//lw->AddActuator("Roller", "Spike", rollerMotor);

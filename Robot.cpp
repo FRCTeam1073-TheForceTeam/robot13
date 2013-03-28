@@ -110,7 +110,6 @@ void Robot::RobotInit() {
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	
-	shooter->SetBackMode(scaleTypePref, scaleFactorPref);
 	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
 	
 	chooser = new SendableChooser();

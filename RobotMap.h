@@ -3,11 +3,13 @@
 #include "WPILib.h"
 #include "WPILibExtensions/WPILibExtensions.h"
 #include "HardwarePortDefinitions.h"
+#include "WPILibExtensions/IREncoder.h"
 class RobotMap {
 public:
 	static SpeedController* shooterElevationVictor;
 	static SmartCANJaguar* driveTrainLeftMotor;
 	static SmartCANJaguar* driveTrainRightMotor;
+	static IREncoder* newShooterIREncoder;
 #ifdef ADD_SECONDARY_DRIVE
 	static SmartCANJaguar* driveTrainSecondaryRightMotor;
 	static SmartCANJaguar* driveTrainSecondaryLeftMotor;
@@ -15,9 +17,7 @@ public:
 	static SmartGyro* driveTrainGyro;
 	static SpeedController* collectorMotor;
 	static DigitalInput* collectorDiscOnShooterBed;
-	static SmartCANJaguar* shooterFrontJag;
-	static SmartCANJaguar* shooterBackJag;
-	static DigitalInput* shooterIREncoder;
+	static SmartCANJaguar* shooterJag;
 	
 	//Mag Encoders
 	static StallableAnalogEncoder* shooterElevationEncoder;
