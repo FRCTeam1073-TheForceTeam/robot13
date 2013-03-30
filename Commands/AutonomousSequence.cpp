@@ -35,7 +35,7 @@ void AutonomousSequence::End(){
 }
 void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
-	double waitTime = 2;
+	double waitTime = 4;
 #if 0
 	try{
 		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
@@ -61,9 +61,11 @@ void AutonomousSequence::DoSequence(){
 		break;
 	default: puts("hell broke loose"); break;	//to my understanding, left and right don't do anything prior to this sequence...
 	}
-	AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle));
+	
+	//AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle)); //don't need
 	//AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
-	AddSequential(new ShooterToggleOnOff());
-	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
-	AddSequential(new SpinFeeder());
+	
+	AddSequential(new ShooterToggleOnOff()); // turns shooter on at default speed
+	AddSequential(new WaitCommand(GetAutonomousWaitTime())); // waits for full speed
+	AddSequential(new SpinFeeder()); //shoots all discs
 }
