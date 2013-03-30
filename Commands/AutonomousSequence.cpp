@@ -64,8 +64,11 @@ void AutonomousSequence::DoSequence(){
 	
 	//AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle)); //don't need
 	//AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
-	
+	AddSequential(new PrintCommand("turning shooter on\n"));
 	AddSequential(new ShooterToggleOnOff()); // turns shooter on at default speed
+	AddSequential(new PrintCommand("Turned Shooter On!!!!!!!!!!!!!!!!!!!!!!!\n"));
 	AddSequential(new WaitCommand(GetAutonomousWaitTime())); // waits for full speed
+	AddSequential(new PrintCommand("Waited 4 Seconds\n"));
 	AddSequential(new SpinFeeder()); //shoots all discs
+	AddSequential(new PrintCommand("Spun the feeder...\n"));
 }
