@@ -86,8 +86,7 @@ void SendDiagnostics::Execute() {
 		
 		SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		
-		//scaled to 0-100 percentage
-		SmartDashboard::PutNumber("Shooter Current Speed", RobotMap::shooterJag->GetSpeed() / 37.5);
+		SmartDashboard::PutNumber("Shooter Current Speed", RobotMap::newShooterIREncoder->GetRPM());
 	}
 #ifdef DEBUG_DATA
 	//Gyro
