@@ -1,6 +1,6 @@
 #include "ShooterPID.h"
 
-#define P 0.01
+const float P = 0.01;
 static int counter = 0;
 
 ShooterPID::ShooterPID(){
@@ -15,16 +15,16 @@ void ShooterPID::Execute(){
 	float actualRPM = RobotMap::newShooterIREncoder->GetRPM();
 	float targetRPM = Robot::shooter->GetFrontSetSpeed();
 	float errorRPM = targetRPM - actualRPM;
-	float rampRate = errorRPM * P;
+	float percentVoltage = errorRPM * P;
 
 	if (counter % 50 == 0)
 	{
 		printf("Encoder RPM:%f\n", actualRPM);
-		printf("ShooterJag Ramp Rate:%f\n", rampRate);
+		printf("ShooterJag Percent Voltage:%f\n", percentVoltage);
 		printf("Shooter Target Speed: %f\n", targetRPM);
 	}
 	
-	Robot::shooter->SetJagVoltageRampRate(rampRate);
+	Robot::shooter->SetJagPercentVoltage(percentVoltage);
 	
 	return;
 }

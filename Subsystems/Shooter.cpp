@@ -34,7 +34,7 @@ void Shooter::InitDefaultCommand() {SetDefaultCommand(new ShooterPID());}
 void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
 	if(on){
-		printf("Shooter ON with Speed:%f", speed);
+		printf("Shooter ON with Speed:%f", (float)speed);
 	}
 	else {
 		printf("Shooter Off\n");
@@ -122,6 +122,7 @@ void Shooter::SetPID(double P, double I, double D){
 }
 void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ChangeControlMode(CANJaguar::kPercentVbus);
+	jaguar->SetVoltageRampRate(1.0);
 	jaguar->EnableControl();			
 }
 
@@ -174,10 +175,10 @@ void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
 	elevatorMinVoltage = vmin;
 	elevatorMaxVoltage = vmax;
 }
-void Shooter::SetJagVoltageRampRate(float rampRate)
+void Shooter::SetJagPercentVoltage(float percentVoltage)
 {
 	if (isShooterMotorOn)
-		shooterJag->Set(rampRate);
+		shooterJag->Set(percentVoltage);
 	else
 		shooterJag->Set(0);
 }
