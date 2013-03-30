@@ -122,7 +122,7 @@ void Shooter::SetPID(double P, double I, double D){
 }
 void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ChangeControlMode(CANJaguar::kPercentVbus);
-	jaguar->SetVoltageRampRate(1.0);
+	//jaguar->SetVoltageRampRate(1.0);
 	jaguar->EnableControl();			
 }
 
@@ -181,5 +181,7 @@ void Shooter::SetJagPercentVoltage(float percentVoltage)
 		shooterJag->Set(percentVoltage);
 	else
 		shooterJag->Set(0);
+	
+	//shooterJag->Set(0.6);
 }
 

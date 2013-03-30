@@ -44,6 +44,7 @@ void RobotMap::init() {
 	lw->AddActuator("Collector", "Motor", (Victor*) collectorMotor);
 	
 	shooterJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
+	shooterJag->Invert();
 	lw->AddActuator("Shooter", "Front Jag", shooterJag);
 	
     shooterElevationEncoder = new StallableAnalogEncoder(ANALOG_SHOOTER_ANGLE_MAG_ENCODER);
