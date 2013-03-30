@@ -21,6 +21,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	ConfigureJaguarEncoder(shooterJag);
 	//SetPID(SHOOTER_DEFAULT_P, SHOOTER_DEFAULT_I, SHOOTER_DEFAULT_D);
 	speed = SHOOTER_DEFAULT_SPEED;
+	previousSpeed = SHOOTER_DEFAULT_SPEED;
 	scaleFactor = 1;
 	scaleType = identical;
 	isElevatorEncoderFailed = false;
@@ -33,12 +34,14 @@ void Shooter::InitDefaultCommand() {SetDefaultCommand(new ShooterPID());}
 void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
 	if(on){
-		printf("Front Jag:\t%d\tFrontCurrentSpeed:%lf\n", speed, shooterJag->GetSpeed());
+		printf("Shooter ON with Speed:%f", speed);
 	}
 	else {
 		printf("Shooter Off\n");
-		shooterJag->Set(SHOOTER_OFF);
-		isShooterMotorOn = false;
+		//previousSpeed = speed;
+		//speed = 0.0;
+		shooterJag->Set(SHOOTER_OFF);//redundant
+		isShooterMotorOn = false;//redundant too
 	}
 }
 void Shooter::ShooterRamp(double rampPercent){
@@ -173,7 +176,9 @@ void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
 }
 void Shooter::SetJagVoltageRampRate(float rampRate)
 {
-	
-	shooterJag->Set(rampRate);
+	if (isShooterMotorOn)
+		shooterJag->Set(rampRate);
+	else
+		shooterJag->Set(0);
 }
 
