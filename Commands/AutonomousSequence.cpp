@@ -3,10 +3,10 @@
 #include "AutonomousTurnToAngle.h"
 #include "Commands/WaitCommand.h"
 #include "ShooterToggleOnOff.h"
-#include "Shoot.h"
 #include "SetRawShooterStuffDontUse.h"
 #include "MoveShooterToSetElevationAngle.h"
 #include "ShooterToggleOnOff.h"
+#include "SpinFeeder.h"
 #include "../Subsystems/Shooter.h"
 AutonomousSequence::AutonomousSequence(){
 	startPosition = leftBack;
@@ -36,7 +36,7 @@ void AutonomousSequence::End(){
 void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
 	double waitTime = 2;
-#ifdef DEBUG_DATA
+#if 0
 	try{
 		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
 	}
@@ -64,8 +64,6 @@ void AutonomousSequence::DoSequence(){
 	AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle));
 	//AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
 	AddSequential(new ShooterToggleOnOff());
-	for(int i = 0; i < 10; i++){
-		AddSequential(new WaitCommand(GetAutonomousWaitTime()));
-		AddSequential(new Shoot());
-	}
+	AddSequential(new WaitCommand(GetAutonomousWaitTime()));
+	AddSequential(new SpinFeeder());
 }

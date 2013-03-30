@@ -7,13 +7,9 @@
 class Collector: public Subsystem {
 public:
 	SpeedController* motor;
-	DigitalInput* discOnShooterBed;
-	AnalogChannel* discUpsideDownSensor;
 	Collector();
 	void InitDefaultCommand();
-	bool IsDiscOnShooterBed();
 	void MotorOn();
 	void MotorOff();
-	bool overrided;
 };
 #endif

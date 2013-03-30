@@ -12,7 +12,7 @@ private:
 	SmartJoystick* rightStick;
 	JoystickButton* engageAutoAim;
 	JoystickButton* shooterOnOffButton;
-	JoystickButton* shootButton;
+	JoystickButton* feedButton;
 	JoystickButton* rightTurboOn;
 	JoystickButton* pullShooterDashData;
 	JoystickButton* switchDrive;
@@ -23,9 +23,6 @@ private:
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
     JoystickButton* goToFeederAngle;
-    
-    JoystickButton *killFeeder;
-    
 public:
 	OI();
 	SmartJoystick* getLeftStick();

@@ -44,9 +44,6 @@ void RobotMap::init() {
 	collectorMotor = new Victor(PWM_FEEDER_MOTOR);
 	lw->AddActuator("Collector", "Motor", (Victor*) collectorMotor);
 	
-	collectorDiscOnShooterBed = new DigitalInput(DIGITAL_COLLECTOR_OPTICAL_SHOT_SENSOR);
-	lw->AddSensor("Collector", "DiscOnShooterBed", collectorDiscOnShooterBed);
-	
 	shooterJag = new SmartCANJaguar(JAGUAR_SHOOTER_FRONT);
 	lw->AddActuator("Shooter", "Front Jag", shooterJag);
 	

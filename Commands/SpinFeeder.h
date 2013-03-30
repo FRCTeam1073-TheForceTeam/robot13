@@ -1,10 +1,10 @@
-#ifndef KILL_FEEDER_H
-#define KILL_FEEDER_H
-#include "Commands/Subsystem.h"
+#ifndef SPIN_FEEDER_H
+#define SPIN_FEEDER_H
 #include "../Robot.h"
-class KillFeeder : public Command{
+#include "Commands/Subsystem.h"
+class SpinFeeder : public Command{
 public:
-	KillFeeder();
+	SpinFeeder();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

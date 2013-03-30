@@ -9,15 +9,13 @@
 #include "Commands/PullShooterData.h"
 #include "Commands/SetCubicDrive.h"
 #include "Commands/SetShooterToCalculatedValues.h"
-#include "Commands/Shoot.h"
 #include "Commands/ShooterToggleOnOff.h"
 #include "Commands/TurboDriveOn.h"
 #include "Commands/WriteDriveData.h"
 #include "Commands/ShooterAdjustAngle.h"
 #include "Commands/ManualShooterSpeedAdjust.h"
-#include "Commands/DiscOnBedSensorOverride.h"
 #include "Commands/SetToFeederAngle.h"
-#include "Commands/KillFeeder.h"
+#include "Commands/SpinFeeder.h"
 //#define DEBUG_DATA
 
 OI::OI() {
@@ -64,14 +62,8 @@ void OI::ConstructJoystickButtons(){
 	//shooter misc commands, on/off & shoot
 	shooterOnOffButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_TOGGLE_ON_OFF_BTN);
 	shooterOnOffButton->WhenPressed(new ShooterToggleOnOff());
-	shootButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
-	shootButton->WhenPressed(new Shoot());
-	
-	//command added at GSR to quicky and dirty-ly kill the feeder motor
-	//put on left joystick because buttons aren't free...
-	killFeeder = new JoystickButton(leftStick, LEFT_KILL_FEEDER_BTN);
-	killFeeder->WhenPressed(new KillFeeder());
-	
+	feedButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
+	feedButton->WhileHeld(new SpinFeeder());	
 }
 void OI::ConstructSmartDashCommands(){
 #ifdef DEBUG_DATA
@@ -79,7 +71,6 @@ void OI::ConstructSmartDashCommands(){
 	SmartDashboard::PutData("ShooterOff", new ShooterToggleOnOff());
 	SmartDashboard::PutData("SetCubicDrive", new SetCubicDrive());
 	SmartDashboard::PutData("PullShooterData", new PullShooterData());
-	SmartDashboard::PutData("Override DiscOnBed sensor", new DiscOnBedSensorOverride());
 #endif
 }
 SmartJoystick* OI::getOperatorStick(){return operatorStick;}
