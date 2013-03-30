@@ -13,6 +13,7 @@ private:
 	JoystickButton* engageAutoAim;
 	JoystickButton* shooterOnOffButton;
 	JoystickButton* feedButton;
+	JoystickButton* feedButtonReverse;
 	JoystickButton* rightTurboOn;
 	JoystickButton* pullShooterDashData;
 	JoystickButton* switchDrive;

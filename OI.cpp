@@ -64,6 +64,9 @@ void OI::ConstructJoystickButtons(){
 	shooterOnOffButton->WhenPressed(new ShooterToggleOnOff());
 	feedButton = new JoystickButton(operatorStick, OPERATOR_SHOOTER_SHOOT_BTN);
 	feedButton->WhileHeld(new SpinFeeder());	
+	feedButtonReverse = new JoystickButton(operatorStick, OPERATOR_FEEDER_REVERSE_BTN);
+	feedButtonReverse->WhileHeld(new SpinFeeder(false));	//reverses feeder while held
+	
 }
 void OI::ConstructSmartDashCommands(){
 #ifdef DEBUG_DATA
