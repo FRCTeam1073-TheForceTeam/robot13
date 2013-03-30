@@ -21,15 +21,10 @@ private:
 	scaleType_t scaleType;
 	int speed; 
 	float elevationAngle;
-	int defaultSpeed, defaultElevationAngle;
 	bool isShooterMotorOn;
-	bool rawBackSpeedEnabled;	//hack for now...
-	double rawBackSpeed;	//hack for now...
 	bool isElevatorEncoderFailed;
 	void ConfigureJaguarEncoder(CANJaguar* jaguar);
 	float ConvertVoltToAngle(float volts);
-	float elevatorMinVoltage, elevatorMaxVoltage;	//constants for eleaator encoder positions...
-	float previousSpeed;
 public:
 	void SetJagPercentVoltage(float percentVoltage);
 	void TurnToSetAngle();
@@ -39,7 +34,6 @@ public:
 	IREncoder* encoder;
 	Shooter();
 	void InitDefaultCommand();
-	void SetToDefaults();
 	void IncrementSpeed(int speedIncrement);
 	void IncrementAngle(float angleIncrement);
 	void ElevatorUpDown(bool up);
@@ -48,25 +42,20 @@ public:
 	bool Shooter::GetElevationEncoderFailed();
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
 	void SetRawElevationAngle(float elevationAngle);
-	void UpdateDefaults(double distanceToTarget, double robotAngleToTarget);
 	void ShooterOnOff(bool on);
 	void ShooterRamp(double rampPercent);
 	bool IsShooterMotorOn();
 	int GetFrontSetSpeed();	//speed used for shooter wheel
 	float GetElevationAngle();
-	int GetDefaultSpeed();
-	int GetDefaultElevationAngle();
 	bool IsAtSetAngle();
 	float GetCurrentAngle();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
 	float GetFineAdjustmentAngle();
-	void SetPID(double P, double I, double D);
 	void SetToFeederPresetAngle();
 	float GetMinAngle();
 	float GetMaxAngle();
 	bool IsElevatorStalled();
 	void ProcessVoltageData();
-	void UpdateElevatorAngleConstants(float vmin, float vmax);
 };
 #endif

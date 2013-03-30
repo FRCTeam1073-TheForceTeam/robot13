@@ -19,16 +19,10 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	encoder = RobotMap::newShooterIREncoder;
     isShooterMotorOn = false;
 	ConfigureJaguarEncoder(shooterJag);
-	//SetPID(SHOOTER_DEFAULT_P, SHOOTER_DEFAULT_I, SHOOTER_DEFAULT_D);
 	speed = SHOOTER_DEFAULT_SPEED;
-	previousSpeed = SHOOTER_DEFAULT_SPEED;
 	scaleFactor = 1;
 	scaleType = identical;
 	isElevatorEncoderFailed = false;
-	//we update these values with preferences after the shooter gets constructed
-	//these two assignments ar emerely to ensure that these vars get some value in the realm of reality during construction
-	elevatorMinVoltage = ELEVATION_MIN_VOLTAGE;
-	elevatorMaxVoltage = ELEVATION_MAX_VOLTAGE;
 }
 void Shooter::InitDefaultCommand() {SetDefaultCommand(new ShooterPID());}
 void Shooter::ShooterOnOff(bool on){
@@ -58,15 +52,6 @@ bool Shooter::GetElevationEncoderFailed() {
 }
 
 float Shooter::GetElevationAngle() {return elevationAngle;}
-int Shooter::GetDefaultSpeed() {return defaultSpeed;}
-int Shooter::GetDefaultElevationAngle() {return defaultElevationAngle;}
-void Shooter::SetToDefaults(){
-	IncrementSpeed(defaultSpeed - speed);
-	elevationAngle = defaultElevationAngle;
-}
-void Shooter::UpdateDefaults(double distanceToTarget, double robotAngleToTarget){
-	//TODO: Takes Arguements and sets the speed and elevationAngle arguments
-}
 void Shooter::IncrementSpeed(int speedIncrement){
 	speed += speedIncrement;
 	if(isShooterMotorOn) 
@@ -115,10 +100,6 @@ void Shooter::TurnToSetAngle(){
 	else if (motorOutput < ELEVATION_INCREMENT_ANGLE_SPEED_DOWN)
 		motorOutput = ELEVATION_INCREMENT_ANGLE_SPEED_DOWN;
 	elevationVictor->Set(motorOutput);
-}
-void Shooter::SetPID(double P, double I, double D){
-	printf("Setting P:\t%f\nI:\t%f\nD:\t%f\n", P, I, D);
-	//shooterJag->SetPID(P, I, D);
 }
 void Shooter::ConfigureJaguarEncoder(CANJaguar* jaguar){
 	jaguar->ChangeControlMode(CANJaguar::kPercentVbus);
@@ -171,10 +152,7 @@ void Shooter::ProcessVoltageData()
 void Shooter::SetToFeederPresetAngle() {
 	SetRawElevationAngle(PRESET_FEEDER_STATION_ANGLE);
 }
-void Shooter::UpdateElevatorAngleConstants(float vmin, float vmax){
-	elevatorMinVoltage = vmin;
-	elevatorMaxVoltage = vmax;
-}
+
 void Shooter::SetJagPercentVoltage(float percentVoltage)
 {
 	if (isShooterMotorOn)
