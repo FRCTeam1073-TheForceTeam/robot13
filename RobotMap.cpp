@@ -10,7 +10,6 @@ SmartCANJaguar* RobotMap::driveTrainSecondaryRightMotor = NULL;
 #endif
 SmartGyro* RobotMap::driveTrainGyro = NULL;
 SpeedController* RobotMap::collectorMotor = NULL;
-DigitalInput* RobotMap::collectorDiscOnShooterBed = NULL;
 SmartCANJaguar* RobotMap::shooterJag = NULL;
 IREncoder* RobotMap::newShooterIREncoder = NULL;
 void RobotMap::init() {

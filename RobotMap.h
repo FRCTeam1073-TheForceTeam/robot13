@@ -16,7 +16,6 @@ public:
 #endif
 	static SmartGyro* driveTrainGyro;
 	static SpeedController* collectorMotor;
-	static DigitalInput* collectorDiscOnShooterBed;
 	static SmartCANJaguar* shooterJag;
 	
 	//Mag Encoders

@@ -59,7 +59,7 @@ void SendDiagnostics::Execute() {
 		float calcRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
 		float curAng = RobotMap::shooterElevationEncoder->GetVoltage(); //currently a voltage
 		curAng = ((curAng - 1.71) * DEGREES_PER_VOLT) + 10.5;
-		float curRPM = RobotMap::shooterJag->GetSpeed();
+		float curRPM = RobotMap::newShooterIREncoder->GetRPM();
 		bool doAngsMatch = (curAng <= calcAng + 5) && (curAng >= calcAng - 5);
 		bool doRPMsMatch = (curRPM <= calcRPM + 200) && (curRPM >= calcRPM - 200);
 		if(doAngsMatch && doRPMsMatch) {
@@ -82,7 +82,6 @@ void SendDiagnostics::Execute() {
 		//Shooter Encoders
 		diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		//Disc Present
-		diagnosticsTable->PutNumber("Disc In Shooter", RobotMap::collectorDiscOnShooterBed->Get());
 		
 		SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		
