@@ -29,6 +29,7 @@ private:
 	void ConfigureJaguarEncoder(CANJaguar* jaguar);
 	float ConvertVoltToAngle(float volts);
 	float elevatorMinVoltage, elevatorMaxVoltage;	//constants for eleaator encoder positions...
+	float previousSpeed;
 public:
 	void SetJagVoltageRampRate(float rampRate);
 	void TurnToSetAngle();
