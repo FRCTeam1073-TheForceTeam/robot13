@@ -14,6 +14,7 @@ AllignmentData* Robot::allignmentData = NULL;
 DigitalInput* Robot::jumper13 = NULL;
 DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
+TestSub* Robot::testSub = NULL;
 DigitalInput* Robot::jumper12 = NULL;
 Robot::WhichRobot_t Robot::whichRobot;
 
@@ -76,6 +77,8 @@ void Robot::RobotInit() {
 	else if(jumper14->Get() == 0)	whichRobot = mobileBase;
 	else if(jumper12->Get() == 0) whichRobot = libra;
 	else	whichRobot = newRobot;
+	
+	testSub = new TestSub();
 	
 	switch(whichRobot)
 	{
