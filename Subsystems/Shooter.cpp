@@ -28,7 +28,7 @@ void Shooter::InitDefaultCommand() {SetDefaultCommand(new ShooterPID());}
 void Shooter::ShooterOnOff(bool on){
 	isShooterMotorOn = on;
 	if(on){
-		printf("Shooter ON with Speed:%f", (float)speed);
+		printf("Shooter ON with Speed:%f\n", (float)speed);
 	}
 	else {
 		printf("Shooter Off\n");

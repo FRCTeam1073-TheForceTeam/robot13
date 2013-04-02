@@ -14,18 +14,18 @@ void ShooterToggleOnOff::Initialize(){
 }
 void ShooterToggleOnOff::Execute(){
 	
-	if(Robot::shooter->IsShooterMotorOn() == true)
-	{
-		puts("ramping the shooter");
-		Robot::shooter->ShooterRamp(iterationCount* TIMES_PER_SECOND /rampTimeSeconds);
-		iterationCount++;
-	}
-	else puts("Robot::shooter->IsShooterMotorOn() == false");
+//	if(Robot::shooter->IsShooterMotorOn() == true)
+//	{
+//		puts("ramping the shooter");
+//		Robot::shooter->ShooterRamp(iterationCount* TIMES_PER_SECOND /rampTimeSeconds);
+//		iterationCount++;
+//	}
+//	else puts("Robot::shooter->IsShooterMotorOn() == false");
 
 }
 bool ShooterToggleOnOff::IsFinished()
 {
-	return !Robot::shooter->IsShooterMotorOn() || (iterationCount * TIMES_PER_SECOND) >= rampTimeSeconds;
+	return true;
 }
 void ShooterToggleOnOff::End(){
 	
