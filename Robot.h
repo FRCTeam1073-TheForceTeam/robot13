@@ -10,7 +10,6 @@
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Diagnostics.h"
-#include "Subsystems/TestSub.h"
 #include "OI.h"
 #include "HardwarePortDefinitions.h"
 class Robot : public IterativeRobot {
@@ -24,7 +23,6 @@ public:
 	static Shooter* shooter;
 	static AllignmentData* allignmentData;
 	static Diagnostics* diagnostics;
-	static TestSub* testSub;
 	Robot();
 	virtual void RobotInit();
 	virtual void AutonomousInit();
