@@ -1,7 +1,7 @@
 #include "ShooterToggleOnOff.h"
 #define TIMES_PER_SECOND 0.05f
 ShooterToggleOnOff::ShooterToggleOnOff(){
-	Requires(Robot::shooter);
+	//Requires(Robot::shooter);
 	previousOnOff = off;
 	iterationCount = 0;
 	rampTimeSeconds = 1.0;	
