@@ -88,7 +88,7 @@ float Shooter::GetCurrentAngle(){
 }
 //TODO: Update with something realistic
 int Shooter::GetFineAdjustmentSpeed() {return 20;}
-int Shooter::GetCoarseAdjustmentSpeed() {return 200;}
+int Shooter::GetCoarseAdjustmentSpeed() {return 50;}
 float Shooter::GetFineAdjustmentAngle() {return .1;}
 void Shooter::TurnToSetAngle(){
 	float currentAngle = Robot::shooter->GetCurrentAngle(); 
