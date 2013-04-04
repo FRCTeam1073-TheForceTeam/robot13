@@ -35,7 +35,7 @@ void AutonomousSequence::End(){
 }
 void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
-	double waitTime = 7;
+	double waitTime = 5.5;
 #if 0
 	try{
 		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
@@ -66,7 +66,7 @@ void AutonomousSequence::DoSequence(){
 	AddSequential(new ShooterToggleOnOff()); // turns shooter on at default speed
 	AddSequential(new PrintCommand("Turned Shooter On!!!!!!!!!!!!!!!!!!!!!!!\n"));
 	AddSequential(new WaitCommand(GetAutonomousWaitTime())); // waits for full speed
-	AddSequential(new PrintCommand("Waited 7 Seconds\n"));
+	AddSequential(new PrintCommand("Waited 5.5 Seconds\n"));
 	AddSequential(new SpinFeeder()); //shoots all discs
 	AddSequential(new PrintCommand("Spun the feeder...\n"));
 }
