@@ -22,40 +22,22 @@ private:
 	int speed; 
 	float elevationAngle;
 	bool isShooterMotorOn;
-	bool isElevatorEncoderFailed;
 	void ConfigureJaguarEncoder(CANJaguar* jaguar);
-	float ConvertVoltToAngle(float volts);
 public:
 	void SetJagPercentVoltage(float percentVoltage);
-	void TurnToSetAngle();
 	SmartCANJaguar* shooterJag;
-	SpeedController* elevationVictor;
-	StallableAnalogEncoder* elevationEncoder;
 	IREncoder* encoder;
 	Shooter();
 	void InitDefaultCommand();
 	void IncrementSpeed(int speedIncrement);
-	void IncrementAngle(float angleIncrement);
-	void ElevatorUpDown(bool up);
-	void ElevatorOff();
-	void SetElevatorEncoderFailed(bool isFailed);
-	bool Shooter::GetElevationEncoderFailed();
 	void SetRawSpeed(int speed);	//used outside of HMI, maybe we add a Dash button?
-	void SetRawElevationAngle(float elevationAngle);
 	void ShooterOnOff(bool on);
 	void ShooterRamp(double rampPercent);
 	bool IsShooterMotorOn();
 	int GetFrontSetSpeed();	//speed used for shooter wheel
-	float GetElevationAngle();
-	bool IsAtSetAngle();
-	float GetCurrentAngle();
 	int GetFineAdjustmentSpeed();
 	int GetCoarseAdjustmentSpeed();
-	float GetFineAdjustmentAngle();
-	void SetToFeederPresetAngle();
 	float GetMinAngle();
 	float GetMaxAngle();
-	bool IsElevatorStalled();
-	void ProcessVoltageData();
 };
 #endif
