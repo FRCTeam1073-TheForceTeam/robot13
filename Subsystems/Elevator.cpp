@@ -18,7 +18,7 @@ float Elevator::GetAngle(){return angle;}
 float Elevator::GetCurrentAngle(){
 	float angle = ConvertVoltToAngle(encoder->GetVoltage());
 	printf ("Shooter::GetCurrentAngle angle is %f\n", angle);
-	return angle;
+	return angle; 
 }
 void Elevator::MotorOff(){motor->Set(0.0f);}
 void Elevator::TurnToSetAngle(){
@@ -36,12 +36,12 @@ void Elevator::IncrementAngle(float angleIncrement){
 	TurnToSetAngle();
 	Robot::allignmentData->SendCurrentAngle(angle);
 }
-void Elevator::SetRawAngle(float newAngle){IncrementAngle(newAngle - angle);}
+void Elevator::SetRawAngle(float newAngle){angle = newAngle;}
 
 float Elevator::ConvertVoltToAngle(float volt){
 	float voltDiff = MAX_VOLTAGE - MIN_VOLTAGE;
 	float angleDiff = MAX_ANGLE - MIN_ANGLE;
-	float degreesPerVolt = (angleDiff / voltDiff);//~71.35
+	float degreesPerVolt = (angleDiff / voltDiff);//72 manufacturing spec
 	float angleValue =((volt - MIN_VOLTAGE) * degreesPerVolt) + MIN_ANGLE; 
 	printf("ConvertVoltToAngle  Angle:%f\t Volt:%f\n", angle, volt);
 	return angleValue;
