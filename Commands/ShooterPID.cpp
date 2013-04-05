@@ -16,11 +16,13 @@ void ShooterPID::Execute(){
 	float targetRPM = Robot::shooter->GetFrontSetSpeed();
 	float errorRPM = targetRPM - actualRPM;
 	float percentVoltage = errorRPM * P;
-
+//#define DEBUG_PID_PRINT
+#ifdef DEBUG_PID_PRINT
 	if (counter % 10 == 0)
 	{
 		printf("RPM:%6.3f\tVolts:%5.2f\tTargSpeed: %5.0f\n", actualRPM, percentVoltage, targetRPM);
 	}
+#endif
 	
 	Robot::shooter->SetJagPercentVoltage(percentVoltage);
 	

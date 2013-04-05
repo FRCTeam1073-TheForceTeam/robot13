@@ -87,7 +87,7 @@ void SendDiagnostics::Execute() {
 		
 		//SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		
-		SmartDashboard::PutNumber("Shooter Current Speed", RobotMap::newShooterIREncoder->GetRPM()/30);
+		SmartDashboard::PutNumber("Shooter Current Speed", RobotMap::newShooterIREncoder->GetRPM());
 		
 		SmartDashboard::PutNumber("Shooter Current Speed TESTBOX", RobotMap::newShooterIREncoder->GetRPM());
 	}
