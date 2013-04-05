@@ -9,12 +9,15 @@ ShooterAdjustAngle::ShooterAdjustAngle(bool positive) {
 }
 void ShooterAdjustAngle::Initialize()
 {
-	if(positive && !IsAtTopLimit())
-		Robot::elevator->MotorUpDown(positive);
-	else if (!positive && !IsAtBottomLimit())
-		Robot::elevator->MotorUpDown(positive);
-	else
-		Robot::elevator->MotorOff();
+	if(!IsFinished()){
+		if(positive && !IsAtTopLimit())
+			Robot::elevator->MotorUpDown(positive);
+		else if (!positive && !IsAtBottomLimit())
+			Robot::elevator->MotorUpDown(positive);
+		else
+			Robot::elevator->MotorOff();
+	}
+	else Robot::elevator->MotorOff();
 }
 void ShooterAdjustAngle::Execute() {	
 	//printf("ShooterAdjustAngle::Execute run\n");
@@ -40,24 +43,16 @@ void ShooterAdjustAngle::Interrupted() {
 	End();
 }
 
-bool ShooterAdjustAngle::IsAtTopLimit()
-{
-	bool isStalled = Robot::elevator->Stall();
-	printf("IsAtEitherLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\tisStalled:%d\n", positive, Robot::elevator->GetCurrentAngle(), Robot::elevator->GetMaxAngle(), isStalled);
-	if (isStalled)
-		return false;
-	else if (Robot::elevator->GetCurrentAngle() < softTopAngleLimit)
+bool ShooterAdjustAngle::IsAtTopLimit(){
+	printf("IsAtEitherLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\n", positive, Robot::elevator->GetCurrentAngle(), Robot::elevator->GetMaxAngle());
+	if (Robot::elevator->GetCurrentAngle() < softTopAngleLimit)
 		return false;
 	return true;
 }
 
-bool ShooterAdjustAngle::IsAtBottomLimit()
-{
-	bool isStalled = Robot::elevator->Stall();
-		printf("IsAtBottomLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\tisStalled:%d\n", positive, Robot::elevator->GetCurrentAngle(), Robot::elevator->GetMaxAngle(), isStalled);
-		if (isStalled)
-			return false;
-		else if (Robot::elevator->GetCurrentAngle() > softBottomAngleLimit)
+bool ShooterAdjustAngle::IsAtBottomLimit(){
+		printf("IsAtBottomLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\n", positive, Robot::elevator->GetCurrentAngle(), Robot::elevator->GetMaxAngle());
+		if (Robot::elevator->GetCurrentAngle() > softBottomAngleLimit)
 			return false;
 		return true;
 }
