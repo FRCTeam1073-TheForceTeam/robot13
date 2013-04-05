@@ -1,6 +1,6 @@
 #ifndef HARDWARE_PORT_DEFINITIONS_H
 #define HARDWARE_PORT_DEFINITIONS_H
-//#define ADD_SECONDARY_DRIVE 
+#define ADD_SECONDARY_DRIVE 
 //Define the above constant to enable secondary drive CIM's (also add correct can ID's below)
 
 //Joystick IDs
@@ -9,7 +9,6 @@
 #define JOY_RIGHT 3
 
 //CAN Jaguar IDs
-#define JAGUAR_SHOOTER_BACK 7
 #define JAGUAR_SHOOTER_FRONT 5
 #define JAGUAR_DRIVE_LEFT 6
 #define JAGUAR_DRIVE_RIGHT 9
