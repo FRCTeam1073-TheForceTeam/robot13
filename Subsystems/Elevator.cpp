@@ -7,7 +7,7 @@
 #define ELEVATION_VOLTAGE_THRESHOLD 0.5f
 #define ELEVATION_MOTOR_VOLTAGE_UP 1.0
 #define ELEVATION_MOTOR_VOLTAGE_DOWN -1.0
-#define ELEVATION_FEEDER_ANGLE 45.0f	//this really SHOULD be just some proportion between min/max...
+#define ELEVATION_FEEDER_ANGLE 20.0f	//this really SHOULD be just some proportion between min/max...
 Elevator::Elevator() : Subsystem("Elevator"){
 	motor = RobotMap::shooterElevationVictor;
 	encoder = RobotMap::shooterElevationEncoder;

@@ -1,6 +1,6 @@
 #include "MoveShooterToSetElevationAngle.h"
 MoveShooterToSetElevationAngle::MoveShooterToSetElevationAngle() {
-	Requires(Robot::shooter);
+	Requires(Robot::elevator);
 	encoderCheck = false;
 }
 MoveShooterToSetElevationAngle::MoveShooterToSetElevationAngle(bool encoderCheck) {
