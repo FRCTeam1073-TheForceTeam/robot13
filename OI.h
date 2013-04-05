@@ -10,7 +10,6 @@ private:
 	SmartJoystick* operatorStick;
 	SmartJoystick* leftStick;
 	SmartJoystick* rightStick;
-	JoystickButton* engageAutoAim;
 	JoystickButton* shooterOnOffButton;
 	JoystickButton* feedButton;
 	JoystickButton* feedButtonReverse;

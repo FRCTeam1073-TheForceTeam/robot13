@@ -31,8 +31,6 @@ void OI::ConstructJoysticks(){
 }
 void OI::ConstructJoystickButtons(){
 	//use auto aim (calculated) variables
-	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
-	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
 	
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
