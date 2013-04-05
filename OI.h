@@ -22,6 +22,7 @@ private:
     JoystickButton* shooterSpeedDown;
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
+    JoystickButton* goToGoodShotAngle;
 public:
 	OI();
 	SmartJoystick* getLeftStick();
