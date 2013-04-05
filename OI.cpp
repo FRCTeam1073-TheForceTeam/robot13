@@ -34,9 +34,6 @@ void OI::ConstructJoystickButtons(){
 	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
 	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
 	
-	goToFeederAngle = new JoystickButton(operatorStick, OPERATOR_FEEDER_ANGLE_BTN);
-	goToFeederAngle->WhenPressed(new SetToFeederAngle());
-
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
