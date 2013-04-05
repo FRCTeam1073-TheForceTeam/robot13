@@ -57,10 +57,9 @@ void SendDiagnostics::Execute() {
 		//logic for locked on (DOESN'T INCLUDE LATERAL MOTION)
 		//basically checked if calc angles and rpms agree
 		bool isLockedOn = false;
-		float calcAng = Robot::allignmentData->GetCalculatedAngle(); //degrees
+		float calcAng = Robot::allignmentData->GetCalculatedAngle(); //degrees 
 		float calcRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
-		float curAng = RobotMap::shooterElevationEncoder->GetVoltage(); //currently a voltage
-		curAng = ((curAng - START_VOLTAGE) * DEGREES_PER_VOLT) + START_ANGLE;
+		float curAng = Robot::elevator->GetCurrentAngle(); //currently a voltage
 		float curRPM = RobotMap::newShooterIREncoder->GetRPM();
 		bool doAngsMatch = (curAng <= calcAng + 5) && (curAng >= calcAng - 5);
 		bool doRPMsMatch = (curRPM <= calcRPM + 200) && (curRPM >= calcRPM - 200);
