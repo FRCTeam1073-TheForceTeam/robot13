@@ -55,3 +55,4 @@ bool Elevator::GetEncoderFailed(){return isEncoderFailed;}
 bool Elevator::IsAtSetAngle(){return (fabs(angle - GetCurrentAngle()) < ELEVATION_VOLTAGE_THRESHOLD);}
 float Elevator::GetMinAngle(){return ConvertVoltToAngle(MIN_VOLTAGE);}
 float Elevator::GetMaxAngle(){return ConvertVoltToAngle(MAX_VOLTAGE);}
+float Elevator::GetGoodShootingAngle(){return 22.0f;}

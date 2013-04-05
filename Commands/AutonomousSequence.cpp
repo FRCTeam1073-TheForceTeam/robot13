@@ -63,7 +63,7 @@ void AutonomousSequence::DoSequence(){
 	
 	//AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle)); //don't need
 	//AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
-	Robot::elevator->SetRawAngle(21.0f);
+	Robot::elevator->SetRawAngle(Robot::elevator->GetGoodShootingAngle());
 	AddSequential(new ShooterToggleOnOff()); // turns shooter on at default speed
 	AddSequential(new PrintCommand("turning shooter on\n"));
 	AddSequential(new MoveShooterToSetElevationAngle(true));

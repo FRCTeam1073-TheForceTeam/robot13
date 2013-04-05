@@ -24,6 +24,7 @@ public:
 	bool IsAtSetAngle();
 	float GetMinAngle();
 	float GetMaxAngle();
+	float GetGoodShootingAngle();
 private:
 	float ConvertVoltToAngle(float volt);
 	float angle;
