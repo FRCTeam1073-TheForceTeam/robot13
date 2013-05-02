@@ -1,6 +1,6 @@
 #include "SetToFeederAngle.h"
 #include "MoveShooterToSetElevationAngle.h"
-#include "../Subsystems/Shooter.h"
+#include "../Subsystems/Elevator.h"
 
 SetToFeederAngle::SetToFeederAngle(){
 	AddSequential(new MoveShooterToSetElevationAngle());
@@ -8,7 +8,7 @@ SetToFeederAngle::SetToFeederAngle(){
 };
 
 void SetToFeederAngle::Initialize(){
-	Robot::shooter->SetToFeederPresetAngle();
+	Robot::elevator->SetToFeederAngle();
 	
 }
 

@@ -10,11 +10,11 @@ OI* Robot::oi = NULL;
 DriveTrain* Robot::driveTrain = NULL;
 Collector* Robot::collector = NULL;
 Shooter* Robot::shooter = NULL;
+Elevator* Robot::elevator = NULL;
 AllignmentData* Robot::allignmentData = NULL;
 DigitalInput* Robot::jumper13 = NULL;
 DigitalInput* Robot::jumper14 = NULL;
 Diagnostics* Robot::diagnostics = NULL;
-TestSub* Robot::testSub = NULL;
 DigitalInput* Robot::jumper12 = NULL;
 Robot::WhichRobot_t Robot::whichRobot;
 
@@ -64,10 +64,6 @@ void Robot::RobotInit() {
 	
 	prefs->Save();
 	
-	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
-	
-	//is elevation encoder failed preference
-	
 	
 	jumper12 = new DigitalInput(DIGITAL_JUMPER_12);
 	jumper13 = new DigitalInput(DIGITAL_JUMPER_13);
@@ -77,8 +73,6 @@ void Robot::RobotInit() {
 	else if(jumper14->Get() == 0)	whichRobot = mobileBase;
 	else if(jumper12->Get() == 0) whichRobot = libra;
 	else	whichRobot = newRobot;
-	
-	testSub = new TestSub();
 	
 	switch(whichRobot)
 	{
@@ -105,15 +99,16 @@ void Robot::RobotInit() {
 		collector = new Collector();
 		shooter = new Shooter();
 		allignmentData = new AllignmentData();
+		elevator = new Elevator();
+		elevator->SetEncoderFailed(isElevatorEncoderFailed);
+		//is elevation encoder failed preference		
 	}
-	
+
 	driveTrain = new DriveTrain();
 	diagnostics = new Diagnostics();
 	
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
-	
-	shooter->SetElevatorEncoderFailed(isElevatorEncoderFailed);
 	
 	chooser = new SendableChooser();
 	chooser->AddDefault("Right Back", new AutonomousSequence(AutonomousSequence::rightBack));
@@ -148,7 +143,7 @@ void Robot::AutonomousPeriodic() {
 	
 void Robot::TeleopInit() {
 	autonomousCommand->Cancel();
-	Robot::shooter->ElevatorOff();
+	Robot::elevator->MotorOff();
 	Robot::collector->MotorOff();
 }
 	

@@ -12,7 +12,6 @@ private:
 	SmartJoystick* leftStick;
 	SmartJoystick* rightStick;
 	SmartJoystick* xbox;
-	JoystickButton* engageAutoAim;
 	JoystickButton* shooterOnOffButton;
 	JoystickButton* feedButton;
 	JoystickButton* feedButtonReverse;
@@ -25,7 +24,7 @@ private:
     JoystickButton* shooterSpeedDown;
     JoystickButton* shooterElevationUp;
     JoystickButton* shooterElevationDown;
-    JoystickButton* goToFeederAngle;
+    JoystickButton* goToGoodShotAngle;
 public:
 	OI();
 	SmartJoystick* getLeftStick();

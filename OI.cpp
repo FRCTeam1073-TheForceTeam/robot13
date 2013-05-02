@@ -16,6 +16,7 @@
 #include "Commands/ManualShooterSpeedAdjust.h"
 #include "Commands/SetToFeederAngle.h"
 #include "Commands/SpinFeeder.h"
+#include "Commands/ElevateToGoodPosition.h"
 //#define DEBUG_DATA
 
 OI::OI() {
@@ -31,12 +32,7 @@ void OI::ConstructJoysticks(){
 }
 void OI::ConstructJoystickButtons(){
 	//use auto aim (calculated) variables
-	engageAutoAim = new JoystickButton(operatorStick, OPERATOR_SHOOTER_AUTOAIM_BTN);
-	engageAutoAim->WhileHeld(new SetShooterToCalculatedValues());
 	
-	goToFeederAngle = new JoystickButton(operatorStick, OPERATOR_FEEDER_ANGLE_BTN);
-	goToFeederAngle->WhenPressed(new SetToFeederAngle());
-
 	//dashboardy commands
 	writeDriveDataButton = new JoystickButton(leftStick, LEFT_DASHBOARD_WRITE_DRIVE_DATA_BTN);
 	writeDriveDataButton->WhileHeld(new WriteDriveData());
@@ -66,7 +62,8 @@ void OI::ConstructJoystickButtons(){
 	feedButton->WhileHeld(new SpinFeeder());	
 	feedButtonReverse = new JoystickButton(operatorStick, OPERATOR_FEEDER_REVERSE_BTN);
 	feedButtonReverse->WhileHeld(new SpinFeeder(false));	//reverses feeder while held
-	
+	goToGoodShotAngle = new JoystickButton(operatorStick, OPERATOR_GO_TO_GOOD_ANGLE_BTN);
+	goToGoodShotAngle->WhenPressed(new ElevateToGoodPosition());
 }
 void OI::ConstructSmartDashCommands(){
 #ifdef DEBUG_DATA

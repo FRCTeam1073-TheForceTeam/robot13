@@ -1,20 +1,27 @@
-#include "shooterAdjustAngle.h"
+#include "ShooterAdjustAngle.h"
+
+const float softTopAngleLimit = 25;
+const float softBottomAngleLimit = -0.6;
+
 ShooterAdjustAngle::ShooterAdjustAngle(bool positive) {
-	Requires(Robot::shooter);
+	Requires(Robot::elevator);
 	this->positive = positive;
 }
 void ShooterAdjustAngle::Initialize()
 {
-	if(positive && !IsAtTopLimit())
-		Robot::shooter->ElevatorUpDown(positive);
-	else if (!positive && !IsAtBottomLimit())
-		Robot::shooter->ElevatorUpDown(positive);
-	else
-		Robot::shooter->ElevatorOff();
+	if(!IsFinished()){
+		if(positive && !IsAtTopLimit())
+			Robot::elevator->MotorUpDown(positive);
+		else if (!positive && !IsAtBottomLimit())
+			Robot::elevator->MotorUpDown(positive);
+		else
+			Robot::elevator->MotorOff();
+	}
+	else Robot::elevator->MotorOff();
 }
 void ShooterAdjustAngle::Execute() {	
 	//printf("ShooterAdjustAngle::Execute run\n");
-	Robot::shooter->ProcessVoltageData();
+	Robot::elevator->encoder->ProcessVoltageData();
 }
 bool ShooterAdjustAngle::IsFinished() {
 	//printf("ShooterAdjustAngle::IsFinished run\n");
@@ -22,14 +29,13 @@ bool ShooterAdjustAngle::IsFinished() {
 		return false;
 	else if (!positive && !IsAtBottomLimit())
 		return false;
-
 	return true;
 }
 void ShooterAdjustAngle::End() 
 {
 	//printf("ShooterAdjustAngle::End Start\n");
-	Robot::shooter->ElevatorOff();
-	Robot::shooter->SetRawElevationAngle(Robot::shooter->GetCurrentAngle());
+	Robot::elevator->MotorOff();
+	Robot::elevator->SetRawAngle(Robot::elevator->GetCurrentAngle());
 	//printf("ShooterAdjustAngle::End End\n");
 }
 void ShooterAdjustAngle::Interrupted() {
@@ -37,26 +43,16 @@ void ShooterAdjustAngle::Interrupted() {
 	End();
 }
 
-bool ShooterAdjustAngle::IsAtTopLimit()
-{
-	bool isStalled = Robot::shooter->IsElevatorStalled();
-	printf("IsAtEitherLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\tisStalled:%d\n", positive, Robot::shooter->GetCurrentAngle(), Robot::shooter->GetMaxAngle(), isStalled);
-	if (isStalled)
+bool ShooterAdjustAngle::IsAtTopLimit(){
+	printf("IsAtEitherLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\n", positive, Robot::elevator->GetCurrentAngle(), Robot::elevator->GetMaxAngle());
+	if (Robot::elevator->GetCurrentAngle() < softTopAngleLimit)
 		return false;
-	else if (Robot::shooter->GetCurrentAngle() < Robot::shooter->GetMaxAngle())
-		return false;
-	else
-		return true;
+	return true;
 }
 
-bool ShooterAdjustAngle::IsAtBottomLimit()
-{
-	bool isStalled = Robot::shooter->IsElevatorStalled();
-		printf("IsAtBottomLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\tisStalled:%d\n", positive, Robot::shooter->GetCurrentAngle(), Robot::shooter->GetMaxAngle(), isStalled);
-		if (isStalled)
+bool ShooterAdjustAngle::IsAtBottomLimit(){
+		printf("IsAtBottomLimit. up: %d\tCurrent Angle: %f\tMax Angle:%f\n", positive, Robot::elevator->GetCurrentAngle(), Robot::elevator->GetMaxAngle());
+		if (Robot::elevator->GetCurrentAngle() > softBottomAngleLimit)
 			return false;
-		else if (Robot::shooter->GetCurrentAngle() > Robot::shooter->GetMinAngle())
-			return false;
-		else
-			return true;
+		return true;
 }

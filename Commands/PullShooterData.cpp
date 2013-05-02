@@ -6,8 +6,6 @@ PullShooterData::PullShooterData() {Requires(Robot::shooter);}
 void PullShooterData::Initialize() {
 #ifdef DEBUG_DATA
 	puts("Pull shooter data init");
-	Robot::shooter->SetPID(SmartDashboard::GetNumber(SHOOTER_P),
-			SmartDashboard::GetNumber(SHOOTER_I), SmartDashboard::GetNumber(SHOOTER_D));
 #endif
 }
 void PullShooterData::Execute(){

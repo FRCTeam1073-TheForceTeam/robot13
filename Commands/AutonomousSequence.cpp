@@ -3,7 +3,6 @@
 #include "AutonomousTurnToAngle.h"
 #include "Commands/WaitCommand.h"
 #include "ShooterToggleOnOff.h"
-#include "SetRawShooterStuffDontUse.h"
 #include "MoveShooterToSetElevationAngle.h"
 #include "ShooterToggleOnOff.h"
 #include "SpinFeeder.h"
@@ -30,12 +29,12 @@ void AutonomousSequence::Initialize(){
 	 	 
 }
 void AutonomousSequence::End(){
-	Robot::shooter->ElevatorOff();
+	Robot::elevator->MotorOff();
 	Robot::collector->MotorOff();
 }
 void AutonomousSequence::Interrupted(){End();}
 double AutonomousSequence::GetAutonomousWaitTime(){
-	double waitTime = 4;
+	double waitTime = 7;
 #if 0
 	try{
 		waitTime = SmartDashboard::GetNumber("AutonomousWaitTime");
@@ -48,8 +47,6 @@ double AutonomousSequence::GetAutonomousWaitTime(){
 	return waitTime;
 }
 void AutonomousSequence::DoSequence(){
-	float elevationAngle = 15;
-	float shooterSpeed = 2750;
 	switch(startPosition){
 	case leftBack: puts("got left"); break;
 	case rightBack: puts("got right"); break;
@@ -62,13 +59,17 @@ void AutonomousSequence::DoSequence(){
 	default: puts("hell broke loose"); break;	//to my understanding, left and right don't do anything prior to this sequence...
 	}
 	
+	//magic number for autonomous angle is 21 degrees...
+	
 	//AddSequential(new SetRawShooterStuffDontUse(shooterSpeed, elevationAngle)); //don't need
 	//AddSequential(new MoveShooterToSetElevationAngle(true));	//check for encoder failure
-	AddSequential(new PrintCommand("turning shooter on\n"));
+	Robot::elevator->SetRawAngle(Robot::elevator->GetGoodShootingAngle());
 	AddSequential(new ShooterToggleOnOff()); // turns shooter on at default speed
-	AddSequential(new PrintCommand("Turned Shooter On!!!!!!!!!!!!!!!!!!!!!!!\n"));
-	AddSequential(new WaitCommand(GetAutonomousWaitTime())); // waits for full speed
-	AddSequential(new PrintCommand("Waited 4 Seconds\n"));
+	AddSequential(new PrintCommand("turning shooter on\n"));
+	AddSequential(new MoveShooterToSetElevationAngle(true));
+	AddSequential(new PrintCommand("moved shooter to set angle"));
+	AddSequential(new WaitUntilCommand(GetAutonomousWaitTime()));
+	AddSequential(new PrintCommand("Waited 7 Seconds\n"));
 	AddSequential(new SpinFeeder()); //shoots all discs
 	AddSequential(new PrintCommand("Spun the feeder...\n"));
 }

@@ -4,6 +4,8 @@
 //#define DEBUG_DATA
 #define CAN_TIMEOUT -44087
 #define DEGREES_PER_VOLT 66.19
+#define START_VOLTAGE 1.71
+#define START_ANGLE 0
 SendDiagnostics::SendDiagnostics() {
 	diagnosticsTable = NetworkTable::GetTable("diagnosticsTable");
 	count = 0;
@@ -55,10 +57,9 @@ void SendDiagnostics::Execute() {
 		//logic for locked on (DOESN'T INCLUDE LATERAL MOTION)
 		//basically checked if calc angles and rpms agree
 		bool isLockedOn = false;
-		float calcAng = Robot::allignmentData->GetCalculatedAngle(); //degrees
+		float calcAng = Robot::allignmentData->GetCalculatedAngle(); //degrees 
 		float calcRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
-		float curAng = RobotMap::shooterElevationEncoder->GetVoltage(); //currently a voltage
-		curAng = ((curAng - 1.71) * DEGREES_PER_VOLT) + 10.5;
+		float curAng = Robot::elevator->GetCurrentAngle(); //currently a voltage
 		float curRPM = RobotMap::newShooterIREncoder->GetRPM();
 		bool doAngsMatch = (curAng <= calcAng + 5) && (curAng >= calcAng - 5);
 		bool doRPMsMatch = (curRPM <= calcRPM + 200) && (curRPM >= calcRPM - 200);
@@ -67,6 +68,7 @@ void SendDiagnostics::Execute() {
 		}
 		else isLockedOn = false;
 		SmartDashboard::PutBoolean("Is Locked On", isLockedOn);
+		SmartDashboard::PutNumber("Shooter Elevation Angle", curAng);
 		
 		
 		//drive encoders 
@@ -83,9 +85,11 @@ void SendDiagnostics::Execute() {
 		diagnosticsTable->PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		//Disc Present
 		
-		SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
+		//SmartDashboard::PutNumber("Shooter Elevation Angle", RobotMap::shooterElevationEncoder->GetVoltage());
 		
 		SmartDashboard::PutNumber("Shooter Current Speed", RobotMap::newShooterIREncoder->GetRPM());
+		
+		SmartDashboard::PutNumber("Shooter Current Speed TESTBOX", RobotMap::newShooterIREncoder->GetRPM());
 	}
 #ifdef DEBUG_DATA
 	//Gyro

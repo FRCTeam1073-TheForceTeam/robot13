@@ -1,25 +1,25 @@
 #include "MoveShooterToSetElevationAngle.h"
 MoveShooterToSetElevationAngle::MoveShooterToSetElevationAngle() {
-	Requires(Robot::shooter);
+	Requires(Robot::elevator);
 	encoderCheck = false;
 }
 MoveShooterToSetElevationAngle::MoveShooterToSetElevationAngle(bool encoderCheck) {
-	Requires(Robot::shooter);
+	Requires(Robot::elevator);
 	this->encoderCheck = encoderCheck;
 }
 void MoveShooterToSetElevationAngle::Initialize(){
-	if(encoderCheck && Robot::shooter->GetElevationEncoderFailed()) return;
-	Robot::shooter->TurnToSetAngle();
+	if(encoderCheck && Robot::elevator->GetEncoderFailed()) return;
+	Robot::elevator->TurnToSetAngle();
 }
 void MoveShooterToSetElevationAngle::Execute(){
 
-	if(encoderCheck && Robot::shooter->GetElevationEncoderFailed()) return;
+	if(encoderCheck && Robot::elevator->GetEncoderFailed()) return;
 	//to keep motors driving at speed proportional to error
-	Robot::shooter->TurnToSetAngle();
+	Robot::elevator->TurnToSetAngle();
 }
 bool MoveShooterToSetElevationAngle::IsFinished(){
-	if(encoderCheck && Robot::shooter->GetElevationEncoderFailed()) return true;
-	return Robot::shooter->IsAtSetAngle();
+	if(encoderCheck && Robot::elevator->GetEncoderFailed()) return true;
+	return Robot::elevator->IsAtSetAngle();
 }
-void MoveShooterToSetElevationAngle::End() {Robot::shooter->ElevatorOff();}
+void MoveShooterToSetElevationAngle::End() {Robot::elevator->MotorOff();}
 void MoveShooterToSetElevationAngle::Interrupted(){End();}

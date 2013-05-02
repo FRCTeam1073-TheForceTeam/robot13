@@ -9,7 +9,7 @@ void SetShooterToCalculatedValues::Initialize()
 	float calcVelocityRPM = Robot::allignmentData->GetCalculatedVelocityRPM();
 	if(calcAngle != DEFAULT && calcVelocityRPM != DEFAULT)
 	{
-		Robot::shooter->SetRawElevationAngle(calcAngle);
+		Robot::elevator->SetRawAngle(calcAngle);
 		Robot::shooter->SetRawSpeed((int)calcVelocityRPM);
 		printf("SetShooterToCalculatedValues angle: %f   distance: %f\n", calcAngle, calcVelocityRPM);
 	}
