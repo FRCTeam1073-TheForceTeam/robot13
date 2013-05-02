@@ -7,9 +7,11 @@ private:
 	void ConstructJoysticks();
 	void ConstructJoystickButtons();
 	void ConstructSmartDashCommands();
+	
 	SmartJoystick* operatorStick;
 	SmartJoystick* leftStick;
 	SmartJoystick* rightStick;
+	SmartJoystick* xbox;
 	JoystickButton* engageAutoAim;
 	JoystickButton* shooterOnOffButton;
 	JoystickButton* feedButton;
@@ -29,5 +31,6 @@ public:
 	SmartJoystick* getLeftStick();
 	SmartJoystick* getRightStick();
 	SmartJoystick* getOperatorStick();
+	SmartJoystick* getXbox();
 };
 #endif
