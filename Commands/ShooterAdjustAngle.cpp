@@ -10,9 +10,9 @@ ShooterAdjustAngle::ShooterAdjustAngle(bool positive) {
 void ShooterAdjustAngle::Initialize()
 {
 	if(!IsFinished()){
-		if(positive && !IsAtTopLimit())
+		if(positive)// && !IsAtTopLimit())
 			Robot::elevator->MotorUpDown(positive);
-		else if (!positive && !IsAtBottomLimit())
+		else if (!positive)// && !IsAtBottomLimit())
 			Robot::elevator->MotorUpDown(positive);
 		else
 			Robot::elevator->MotorOff();
@@ -25,9 +25,9 @@ void ShooterAdjustAngle::Execute() {
 }
 bool ShooterAdjustAngle::IsFinished() {
 	//printf("ShooterAdjustAngle::IsFinished run\n");
-	if(positive && !IsAtTopLimit())
+	if(positive)// && !IsAtTopLimit())
 		return false;
-	else if (!positive && !IsAtBottomLimit())
+	else if (!positive)// && !IsAtBottomLimit())
 		return false;
 	return true;
 }
